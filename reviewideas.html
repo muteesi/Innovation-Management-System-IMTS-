@@ -1,0 +1,451 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Idea Review - Innovation Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #FEF7EF;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #DD9024;
+            border-radius: 10px;
+        }
+        .bento-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(90, 12, 8, 0.08);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e5e2e1",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#fcf9f8",
+                      "outline-variant": "#dcc0bc",
+                      "on-tertiary-container": "#464000",
+                      "secondary-fixed": "#ffddb9",
+                      "on-tertiary-fixed-variant": "#4e4800",
+                      "outline": "#89726e",
+                      "on-background": "#1c1b1b",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#f6f3f2",
+                      "primary-container": "#5a0c08",
+                      "on-surface": "#1c1b1b",
+                      "on-secondary-container": "#6c4100",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#e27264",
+                      "secondary-container": "#fcaa3e",
+                      "primary-fixed-dim": "#ffb4a9",
+                      "on-surface-variant": "#56423f",
+                      "inverse-surface": "#313030",
+                      "on-tertiary-fixed": "#1f1c00",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#9f3f35",
+                      "primary-fixed": "#ffdad5",
+                      "on-primary-fixed-variant": "#802820",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#2b1700",
+                      "secondary": "#875300",
+                      "inverse-primary": "#ffb4a9",
+                      "inverse-on-surface": "#f3f0ef",
+                      "background": "#fcf9f8",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#f0eded",
+                      "tertiary": "#686000",
+                      "tertiary-fixed": "#f2e574",
+                      "surface-container-high": "#eae7e7",
+                      "surface-bright": "#fcf9f8",
+                      "secondary-fixed-dim": "#ffb964",
+                      "on-primary-fixed": "#410001",
+                      "tertiary-fixed-dim": "#d5c95b",
+                      "on-secondary-fixed-variant": "#663e00",
+                      "primary": "#380001",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#b9ae43"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "80px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "sm": "12px",
+                      "margin": "32px",
+                      "lg": "48px",
+                      "base": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Public Sans"],
+                      "label-sm": ["Public Sans"],
+                      "label-md": ["Public Sans"],
+                      "headline-md": ["Public Sans"],
+                      "title-lg": ["Public Sans"],
+                      "body-md": ["Public Sans"],
+                      "headline-lg": ["Public Sans"],
+                      "body-lg": ["Public Sans"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-[#FEF7EF] text-on-surface">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-primary dark:bg-primary-container shadow-md z-50">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 bg-on-primary-fixed rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed, professional emblem of the Bank of Uganda featuring heraldic symbols in rich gold and maroon colors, set against a dark, prestigious background to convey authority and security in a corporate banking environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuj3LGenq0bzaAjAxLbisbK9ECkJTJZBFA4MZjsjjmqLv6eU7G03FAjqDYYPb6uY76b1BHlRldEK-WzWk_lUBu9hg1YljgAAcwSR4xkiBC0YI-cFgPV2aNn2bYwIbjMu3fwXPLEsDvYP0SiGcc4lNggd2RczEMCeAdOhC9ZYJ0bjffm8Mdawk60XA3npOIAX8HFMLzyX-y_Y-A_14udT_kH9_9jySSNYin4fz8kp7vfq9vfKXv3-tnQ9gyxKbtLC5u5L0">
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary dark:text-on-primary-fixed leading-tight">IMTS</h1>
+<p class="font-label-sm text-label-sm text-on-primary-container opacity-80 uppercase tracking-widest">Digital Vault of Ideas</p>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant dark:text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm p-sm bg-secondary dark:bg-secondary-container text-on-secondary dark:text-on-secondary-container rounded-lg font-bold font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+<span class="">My Ideas</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant dark:text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="">Submit New Idea</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant dark:text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="flex-1">Notifications</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-[10px]">12</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant dark:text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg">
+<button class="w-full py-md bg-secondary text-on-secondary font-bold rounded-xl shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+<span class="">Submit Idea</span>
+</button>
+</div>
+</aside>
+<!-- Top App Bar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-gutter bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center gap-sm">
+<nav aria-label="Breadcrumb" class="flex text-on-surface-variant font-label-md text-label-md">
+<ol class="flex items-center space-x-2">
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Dashboard</a></li>
+<li class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-secondary transition-colors" href="#">Review Ideas</a>
+</li>
+<li class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">Blockchain Remittance Portal</span>
+</li>
+</ol>
+</nav>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative w-64">
+<input class="w-full bg-surface-container-low border-none rounded-full px-sm py-xs pl-10 text-label-md focus:ring-2 focus:ring-secondary/20" placeholder="Search ideas..." type="text">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors" data-icon="account_balance">account_balance</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors" data-icon="help_outline">help_outline</span>
+<div class="w-8 h-8 rounded-full bg-outline-variant overflow-hidden border border-outline">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of an executive in a business suit, looking confident and approachable. The lighting is soft and studio-quality, with a neutral, high-end office background to emphasize a corporate banking environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmsf_9J_8ZHa4_1TR1fw8ydq0-RZyIywgbIgPSFDY9hk7Rw_9ZvNEFEwODn_S5SsQ7I5Ma7DkjF6B9JJ2SMgWkadtknJdaN2AlUwZiXGn6O7zjubbz7NL0aTYemGoclVNQ7LB5e-OZSBnw5m-zjFpglF-GKjELpzn5-x2n2uAVHiEW7Lgsyu3l-dgodfkGxiRELe2WPFQNKGKtwsNo7qMWhIearjSfAPgTHToJjUwtUuzMxdv2xCz5Rg">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-xl max-w-[1400px] mx-auto min-h-screen">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Idea Details -->
+<div class="col-span-8 space-y-md">
+<!-- Submitter Profile Card -->
+<div class="bg-white p-lg rounded-xl shadow-sm border border-[#5A0C08]/5 flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-16 h-16 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-headline-md">
+                            OM
+                        </div>
+<div>
+<h2 class="font-title-lg text-title-lg text-primary">O. Mubiru</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">IT Dept, Senior Officer</p>
+<div class="flex gap-xs mt-sm">
+<span class="px-sm py-xs bg-surface-container-high rounded-full text-label-sm font-label-sm text-primary">FinTech</span>
+<span class="px-sm py-xs bg-surface-container-high rounded-full text-label-sm font-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_today">calendar_today</span>
+                                    Submitted Oct 12, 2023
+                                </span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<span class="px-md py-xs bg-secondary-container text-on-secondary-container rounded-full font-bold text-label-sm uppercase tracking-wide">Experimentation / Research</span>
+<span class="px-md py-xs bg-surface-container border border-secondary text-secondary rounded-full font-bold text-label-sm flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                            Under Review
+                        </span>
+</div>
+</div>
+<!-- Idea Content Section -->
+<div class="bg-white p-lg rounded-xl shadow-sm border border-[#5A0C08]/5">
+<h3 class="font-headline-md text-headline-md text-primary mb-md pb-xs border-b border-[#DD9024]">Blockchain Remittance Portal</h3>
+<div class="prose max-w-none text-on-surface-variant space-y-md">
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-xs">The Vision</h4>
+<p class="font-body-md text-body-md">A centralized, blockchain-enabled platform to facilitate real-time cross-border remittances for commercial banks. The portal leverages distributed ledger technology to bypass traditional correspondent banking delays, providing an immutable record for regulatory compliance and AML monitoring.</p>
+</div>
+<div class="grid grid-cols-2 gap-md py-md">
+<div class="bg-[#FFF27F]/20 p-md rounded-lg border border-[#FFF27F]">
+<h4 class="font-label-md text-label-md text-primary flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                                    Expected Impact
+                                </h4>
+<ul class="text-body-md list-disc list-inside space-y-1 opacity-80">
+<li class="">40% Reduction in settlement time</li>
+<li class="">Significant cost reduction for end-users</li>
+<li class="">Enhanced liquidity management</li>
+</ul>
+</div>
+<div class="bg-[#FFF27F]/20 p-md rounded-lg border border-[#FFF27F]">
+<h4 class="font-label-md text-label-md text-primary flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-sm" data-icon="inventory_2">inventory_2</span>
+                                    Resources Required
+                                </h4>
+<ul class="text-body-md list-disc list-inside space-y-1 opacity-80">
+<li class="">Enterprise Cloud credits (Azure/AWS)</li>
+<li class="">Senior Blockchain Specialist (Contract)</li>
+<li class="">Legal framework review</li>
+</ul>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-sm">Attachments</h4>
+<div class="flex gap-md">
+<button class="flex items-center gap-sm px-md py-sm bg-surface-container rounded-lg hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-error" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Technical_Proposal.pdf</span>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</button>
+<button class="flex items-center gap-sm px-md py-sm bg-surface-container rounded-lg hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-secondary" data-icon="image">image</span>
+<span class="font-label-md text-label-md">Architecture_Diagram.png</span>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Feedback Section -->
+<div class="bg-white p-lg rounded-xl shadow-sm border border-[#5A0C08]/5">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-lg text-title-lg text-primary">Reviewer Feedback</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">4 total comments</span>
+</div>
+<div class="max-h-[400px] overflow-y-auto pr-md custom-scrollbar space-y-md">
+<!-- Comment 1 -->
+<div class="flex gap-md p-md bg-surface rounded-xl">
+<div class="w-10 h-10 rounded-full bg-outline-variant overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male business analyst with glasses, professional and thoughtful, in a corporate office setting with warm ambient lighting. Detailed skin textures and realistic fabric on the suit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDshmRI9oo2-fYAuo8nusy_DgRkr7pLXRtX3iWcXSx5Eva7wVupAvuojtWustxnEibWcZUdjCd2q7-yc6K5jaXBBykpKQKvk7dSCYruroPo2gXj8IG6WPFglBW7MH_OUcEr3uzO1ciF30-z4ZtElKEVaNQHnXQvbu0nvP_uMic-5AlooHepna_y6vp6fc72sMVN9tIMG73G34lEu84Cgdcs400OyC7YV912ZJGkLzeeI122ZjlrxjZag">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-primary">J. Kabasomi (Legal)</span>
+<span class="text-label-sm text-on-surface-variant">2h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">The technical side looks solid, but we need to verify the KYC/AML compliance specifically for the clearing node. Have you checked the latest FIU guidelines?</p>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="flex gap-md p-md bg-surface rounded-xl">
+<div class="w-10 h-10 rounded-full bg-outline-variant overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of a female software architect in a modern workspace, intelligent and focused, high-resolution and professional lighting. Corporate banking design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPho3HdrXoUZHp-8lG9okYsMZrP_NJJHYMfl83_AwJj7NU9UaGT1AX4lvEQ6dtW-ga3-e5HozP9RSXc0QegVO_kas-Gh4kDi753l9LedszktUWVHEQYzN104KhCcRSktnd5EKBspwIpTTWKsNCUndgFs82W9sF2TWr8omhVDFlXsQW9OD0u_CWh_Dsd9Ie2fz4dd7sm8Q64epiHK2yfFqkQ9oEGoXbH8rn8Wu8SiynBWuoJ52NlxYB-g">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-primary">S. Okot (Operations)</span>
+<span class="text-label-sm text-on-surface-variant">5h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Excited about the cost reduction potential. We should consider a sandbox pilot with one commercial bank before full implementation.</p>
+</div>
+</div>
+<!-- Add Comment Input (Contextual) -->
+<div class="flex gap-md pt-md border-t border-outline-variant">
+<div class="w-10 h-10 rounded-full bg-primary-container shrink-0 flex items-center justify-center text-on-primary-container font-bold text-xs uppercase">Me</div>
+<div class="flex-1 space-y-sm">
+<textarea class="w-full bg-surface border border-outline-variant rounded-xl p-md font-body-md focus:ring-2 focus:ring-secondary/20 min-h-[100px] outline-none transition-all" placeholder="Add your professional feedback..."></textarea>
+<div class="flex justify-end">
+<button class="px-lg py-sm bg-secondary text-on-secondary font-bold rounded-lg hover:opacity-90 transition-all">Post Comment</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Management Actions -->
+<div class="col-span-4 space-y-md">
+<!-- Action Console -->
+<div class="bg-white p-lg rounded-xl shadow-sm border border-[#5A0C08]/5 sticky top-24">
+<h3 class="font-title-lg text-title-lg text-primary mb-md">Review Console</h3>
+<div class="space-y-md">
+<!-- Stage Selector -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Current Stage</label>
+<select class="w-full p-md bg-surface border border-outline-variant rounded-xl font-label-md text-label-md appearance-none cursor-pointer focus:border-secondary outline-none">
+<option>Ideation</option>
+<option selected="">Experimentation/Research</option>
+<option>Feasibility Study</option>
+<option>MVP Development</option>
+</select>
+</div>
+<!-- Status Selector -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Approval Status</label>
+<select class="w-full p-md bg-surface border border-outline-variant rounded-xl font-label-md text-label-md appearance-none cursor-pointer focus:border-secondary outline-none">
+<option>Draft</option>
+<option selected="">Under Review</option>
+<option>Requires Modification</option>
+<option>Approved for Prototype</option>
+<option>Rejected</option>
+</select>
+</div>
+<!-- Review Deadline -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Review Deadline</label>
+<div class="relative">
+<input class="w-full p-md bg-surface border border-outline-variant rounded-xl font-label-md text-label-md focus:border-secondary outline-none" type="date" value="2023-11-15">
+</div>
+</div>
+<!-- Assignee -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Assign to Reviewer</label>
+<select class="w-full p-md bg-surface border border-outline-variant rounded-xl font-label-md text-label-md appearance-none cursor-pointer focus:border-secondary outline-none">
+<option>Select team member...</option>
+<option selected="">M. Atwine (Senior Fintech Lead)</option>
+<option>H. Nakato (Security Specialist)</option>
+</select>
+</div>
+<!-- Main Actions -->
+<div class="pt-lg space-y-sm">
+<button class="w-full py-md bg-secondary text-on-secondary font-bold rounded-xl shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                                Save All Changes
+                            </button>
+<div class="grid grid-cols-2 gap-sm">
+<button class="py-md border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" data-icon="forward">forward</span>
+                                    Forward
+                                </button>
+<button class="py-md border-2 border-error text-error font-bold rounded-xl hover:bg-error hover:text-on-error transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+                                    Reject
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Audit Log / History -->
+<div class="bg-white p-lg rounded-xl shadow-sm border border-[#5A0C08]/5">
+<h3 class="font-title-lg text-title-lg text-primary mb-lg">Audit History</h3>
+<div class="space-y-lg relative before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant">
+<!-- History Item 1 -->
+<div class="relative pl-lg">
+<div class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-secondary border-4 border-white shadow-sm z-10"></div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Status changed to Under Review</p>
+<p class="text-label-sm text-on-surface-variant">by J. Doe • Oct 14, 2023</p>
+</div>
+<!-- History Item 2 -->
+<div class="relative pl-lg">
+<div class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-secondary-container border-4 border-white shadow-sm z-10"></div>
+<p class="font-label-md text-label-md text-on-surface font-bold">New attachment added</p>
+<p class="text-label-sm text-on-surface-variant">by O. Mubiru • Oct 12, 2023</p>
+</div>
+<!-- History Item 3 -->
+<div class="relative pl-lg opacity-60">
+<div class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-outline border-4 border-white shadow-sm z-10"></div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Idea submitted</p>
+<p class="text-label-sm text-on-surface-variant">by O. Mubiru • Oct 12, 2023</p>
+</div>
+</div>
+<button class="w-full mt-lg text-center font-label-md text-label-md text-secondary hover:underline">View full logs</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Success Toast (Hidden) -->
+<div class="fixed bottom-lg right-lg bg-primary-container text-on-primary-container px-lg py-md rounded-xl shadow-2xl flex items-center gap-md transform translate-y-24 transition-transform duration-300 z-50" id="save-toast">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" data-weight="fill">check_circle</span>
+<div class="font-label-md text-label-md">
+            Changes saved successfully
+        </div>
+<button class="ml-lg" onclick="hideToast()"><span class="material-symbols-outlined text-sm" data-icon="close">close</span></button>
+</div>
+<script>
+        function showToast() {
+            const toast = document.getElementById('save-toast');
+            toast.classList.remove('translate-y-24');
+            setTimeout(hideToast, 5000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('save-toast');
+            toast.classList.add('translate-y-24');
+        }
+
+        // Add interaction to the primary button
+        document.querySelector('button.bg-secondary.text-on-secondary').addEventListener('click', function() {
+            this.classList.add('scale-95');
+            setTimeout(() => {
+                this.classList.remove('scale-95');
+                showToast();
+            }, 150);
+        });
+    </script>
+
+
+</body></html>

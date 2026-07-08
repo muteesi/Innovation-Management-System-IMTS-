@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Innovation Hub - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#6c4100",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container": "#f0eded",
+                        "on-secondary-fixed-variant": "#663e00",
+                        "outline": "#89726e",
+                        "secondary-fixed": "#ffddb9",
+                        "inverse-primary": "#ffb4a9",
+                        "on-primary-fixed-variant": "#802820",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#fcaa3e",
+                        "primary": "#380001",
+                        "tertiary-container": "#b9ae43",
+                        "on-tertiary-container": "#464000",
+                        "tertiary-fixed": "#f2e574",
+                        "secondary": "#875300",
+                        "primary-fixed": "#ffdad5",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-surface": "#1c1b1b",
+                        "surface-tint": "#9f3f35",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-low": "#f6f3f2",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed": "#1f1c00",
+                        "surface": "#FEF7EF", /* Customized for user requirement */
+                        "surface-variant": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "background": "#FEF7EF", /* Customized for user requirement */
+                        "on-primary-fixed": "#410001",
+                        "on-primary-container": "#e27264",
+                        "primary-fixed-dim": "#ffb4a9",
+                        "on-secondary-fixed": "#2b1700",
+                        "secondary-fixed-dim": "#ffb964",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#4e4800",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#d5c95b",
+                        "tertiary": "#686000",
+                        "primary-container": "#5a0c08",
+                        "inverse-on-surface": "#f3f0ef",
+                        "outline-variant": "#dcc0bc",
+                        "on-background": "#1c1b1b",
+                        "on-surface-variant": "#56423f",
+                        "gold": "#DD9024",
+                        "maroon": "#5A0C08",
+                        "soft-yellow": "#FFF27F"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "80px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "label-sm": ["Public Sans"],
+                        "title-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-md": ["Public Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5A0C08;
+            border-radius: 4px;
+        }
+        .shadow-soft {
+            box-shadow: 0 4px 20px -2px rgba(90, 12, 8, 0.06);
+        }
+        .sidebar-active {
+            background-color: #fcaa3e; /* secondary-container matches logic from JSON */
+            color: #6c4100;
+            font-weight: 700;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-primary-container shadow-md flex flex-col p-md z-50">
+<div class="flex items-center gap-3 mb-lg">
+<img alt="Bank of Uganda" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG0pGy6ZDMgzTb09d3XEXQKH7xj59f3bXG1NDMcX07p3R4FJX0ThigkTJgjLE8F4OgQKLWJxkhrceAK_7r9N7_0SU40YmPSMER9drGftw0i7ZnIycRq00Gzof1SzU3U-lFbQYFYvt_kCzTREC-ugMtarn_Vh5VpukTE1SFsANGoYuJDhmgcvv8_2xkulW_KsqayPoeMuedOIQohZSPwM7pddonxFDNl-0-CLHjAr2cfr6UA7GnzcvltgEBo-FgeyupYkc"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary-fixed">IMTS</h1>
+<p class="font-label-sm text-label-sm text-on-primary opacity">Digital Vault Of Ideas</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 sidebar-active transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined fill-icon">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+<span class="font-label-md text-label-md">Review Ideas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-md text-label-md">Manage Categories</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Manage Resources</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Set Timelines</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Manage Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-on-primary-fixed-variant/20">
+<button class="w-full bg-gold text-on-primary font-bold py-3 rounded flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Submit Idea</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen bg-surface">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-gutter h-16 border-b border-outline-variant bg-surface sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-title-lg text-title-lg text-maroon font-extrabold uppercase tracking-tight">Innovation Management System</h2>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="relative hidden lg:block">
+<input class="pl-10 pr-4 py-2 rounded border border-on-surface/10 bg-white focus:border-gold focus:ring-2 focus:ring-gold/20 text-sm" placeholder="Search insights..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-maroon hover:text-gold transition-colors">account_balance</button>
+<button class="material-symbols-outlined text-maroon hover:text-gold transition-colors">notifications</button>
+<div class="w-10 h-10 rounded-full border-2 border-gold/30 bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged male African executive wearing a charcoal suit and a crisp white shirt. The background is a blurred office environment with warm morning sunlight streaming through large windows. The lighting is soft and flattering, emphasizing a mood of confident and authoritative leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPEi3Dq35RpA-uhErae5k73Rn07gQW5Ch0R1GQRP5wkqXDhsxb9GAlQuC9tMrjUPJI6v265EVirfwVLnBLt0mEpSJ6qnvUBSKL0roA2F71WsHQ01Reqn7-VVlXzaNopK_5VJQnwxxlPO3XI9l2p5ACWkgSgVqUbBVOMSVqPQJSFpU_TsLrE9YL50ZLnn13q7qmL1cHQ0G-JTOBBl1gVPhf2_BeXlTwEUyatZBo93meEwFELH8JLRBTRQ"/>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-[1280px] mx-auto p-gutter space-y-md">
+<!-- Statistics Row -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-gutter">
+<div class="bg-soft-yellow p-md border border-gold/10 shadow-soft rounded flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-maroon fill-icon">lightbulb</span>
+<span class="text-maroon font-bold text-2xl">45</span>
+</div>
+<span class="font-label-md text-label-md text-maroon/80">Total Ideas</span>
+</div>
+<div class="bg-soft-yellow p-md border border-gold/10 shadow-soft rounded flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-gold fill-icon">pending_actions</span>
+<span class="text-maroon font-bold text-2xl">12</span>
+</div>
+<span class="font-label-md text-label-md text-maroon/80">Pending Review</span>
+</div>
+<div class="bg-soft-yellow p-md border border-gold/10 shadow-soft rounded flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-blue-600 fill-icon">construction</span>
+<span class="text-maroon font-bold text-2xl">8</span>
+</div>
+<span class="font-label-md text-label-md text-maroon/80">In Development</span>
+</div>
+<div class="bg-soft-yellow p-md border border-gold/10 shadow-soft rounded flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-emerald-600 fill-icon">rocket_launch</span>
+<span class="text-maroon font-bold text-2xl">5</span>
+</div>
+<span class="font-label-md text-label-md text-maroon/80">Deployed</span>
+</div>
+<div class="bg-soft-yellow p-md border border-gold/10 shadow-soft rounded flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-emerald-700 fill-icon">check_circle</span>
+<span class="text-maroon font-bold text-2xl">15</span>
+</div>
+<span class="font-label-md text-label-md text-maroon/80">Approved</span>
+</div>
+<div class="bg-soft-yellow p-md border border-gold/10 shadow-soft rounded flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-error fill-icon">cancel</span>
+<span class="text-maroon font-bold text-2xl">5</span>
+</div>
+<span class="font-label-md text-label-md text-maroon/80">Declined</span>
+</div>
+</div>
+<!-- Dashboard Layout Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Pending Submissions Table Section -->
+<div class="col-span-12 lg:col-span-9 bg-white border border-outline-variant shadow-soft rounded overflow-hidden">
+<div class="p-md flex flex-wrap items-center justify-between gap-4 border-b border-outline-variant">
+<h3 class="font-headline-md text-maroon font-bold">Pending Submissions</h3>
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gold">filter_list</span>
+<select class="pl-10 pr-8 py-2 text-sm border border-outline-variant rounded focus:ring-gold focus:border-gold appearance-none bg-white">
+<option>All Categories</option>
+<option>FinTech</option>
+<option>Operations</option>
+<option>Policy</option>
+</select>
+</div>
+<button class="bg-gold/10 text-gold hover:bg-gold hover:text-white px-4 py-2 rounded text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span> Export
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="px-md py-4 text-maroon font-bold text-sm"><input class="rounded text-gold focus:ring-gold" type="checkbox"/></th>
+<th class="px-md py-4 text-maroon font-bold text-sm">Idea Title</th>
+<th class="px-md py-4 text-maroon font-bold text-sm">Submitter</th>
+<th class="px-md py-4 text-maroon font-bold text-sm">Date</th>
+<th class="px-md py-4 text-maroon font-bold text-sm">Category</th>
+<th class="px-md py-4 text-maroon font-bold text-sm">Status</th>
+<th class="px-md py-4 text-maroon font-bold text-sm">Actions</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<!-- Row 1 -->
+<tr class="bg-white border-b border-outline-variant/50 hover:bg-gold/5 transition-colors">
+<td class="px-md py-4"><input class="rounded text-gold focus:ring-gold" type="checkbox"/></td>
+<td class="px-md py-4 font-bold text-maroon">Blockchain Remittance Portal</td>
+<td class="px-md py-4">
+<div class="flex flex-col">
+<span class="font-medium">O. Mubiru</span>
+<span class="text-xs text-on-surface-variant">IT Dept</span>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">12 Oct 2023</td>
+<td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">FinTech</span></td>
+<td class="px-md py-4"><span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-xs font-bold uppercase tracking-wider">Pending</span></td>
+<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+</tr>
+<!-- Row 2 (Alternating) -->
+<tr class="bg-soft-yellow border-b border-outline-variant/50 hover:bg-gold/10 transition-colors">
+<td class="px-md py-4"><input class="rounded text-gold focus:ring-gold" type="checkbox"/></td>
+<td class="px-md py-4 font-bold text-maroon">AI-Driven Fraud Detection</td>
+<td class="px-md py-4">
+<div class="flex flex-col">
+<span class="font-medium">J. Namubiru</span>
+<span class="text-xs text-on-surface-variant">Risk Management</span>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">14 Oct 2023</td>
+<td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Security</span></td>
+<td class="px-md py-4"><span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">In Review</span></td>
+<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-white border-b border-outline-variant/50 hover:bg-gold/5 transition-colors">
+<td class="px-md py-4"><input class="rounded text-gold focus:ring-gold" type="checkbox"/></td>
+<td class="px-md py-4 font-bold text-maroon">Digital Asset Custody Framework</td>
+<td class="px-md py-4">
+<div class="flex flex-col">
+<span class="font-medium">K. Okello</span>
+<span class="text-xs text-on-surface-variant">Legal &amp; Compliance</span>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">15 Oct 2023</td>
+<td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Policy</span></td>
+<td class="px-md py-4"><span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-xs font-bold uppercase tracking-wider">Pending</span></td>
+<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+</tr>
+<!-- Row 4 (Alternating) -->
+<tr class="bg-soft-yellow border-b border-outline-variant/50 hover:bg-gold/10 transition-colors">
+<td class="px-md py-4"><input class="rounded text-gold focus:ring-gold" type="checkbox"/></td>
+<td class="px-md py-4 font-bold text-maroon">Central Bank Digital Currency (CBDC) Pilot</td>
+<td class="px-md py-4">
+<div class="flex flex-col">
+<span class="font-medium">S. Kateregga</span>
+<span class="text-xs text-on-surface-variant">Monetary Policy</span>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">16 Oct 2023</td>
+<td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Innovation</span></td>
+<td class="px-md py-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase tracking-wider">Approved</span></td>
+<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+</tr>
+<!-- Row 5 -->
+<tr class="bg-white border-b border-outline-variant/50 hover:bg-gold/5 transition-colors">
+<td class="px-md py-4"><input class="rounded text-gold focus:ring-gold" type="checkbox"/></td>
+<td class="px-md py-4 font-bold text-maroon">Unified HR Portal Revamp</td>
+<td class="px-md py-4">
+<div class="flex flex-col">
+<span class="font-medium">L. Atwine</span>
+<span class="text-xs text-on-surface-variant">Human Resources</span>
+</div>
+</td>
+<td class="px-md py-4 text-on-surface-variant">17 Oct 2023</td>
+<td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Operations</span></td>
+<td class="px-md py-4"><span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-bold uppercase tracking-wider">Declined</span></td>
+<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md flex items-center justify-between border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<button class="px-6 py-2 border border-maroon text-maroon font-bold rounded hover:bg-maroon hover:text-white transition-all">Bulk Action</button>
+<button class="px-6 py-2 border border-outline-variant text-on-surface-variant font-bold rounded hover:bg-surface-variant transition-all">View All</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<span class="text-sm font-medium">Page 1 of 4</span>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Quick Actions -->
+<div class="col-span-12 lg:col-span-3 space-y-md">
+<!-- Quick Action Panel -->
+<div class="bg-white border border-outline-variant shadow-soft rounded p-md">
+<h3 class="font-title-lg text-maroon font-bold mb-4">Quick Actions</h3>
+<div class="space-y-3">
+<button class="w-full flex items-center gap-3 p-3 bg-maroon text-white rounded font-bold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">description</span>
+<span>Generate Report</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 bg-gold text-white rounded font-bold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add_box</span>
+<span>Add Category</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 border border-maroon text-maroon rounded font-bold hover:bg-maroon/5 transition-all">
+<span class="material-symbols-outlined">schedule</span>
+<span>Set Timelines</span>
+</button>
+</div>
+</div>
+<!-- Innovation Tracker (Style System Custom Element) -->
+<div class="bg-white border border-outline-variant shadow-soft rounded p-md">
+<h3 class="font-title-lg text-maroon font-bold mb-4">Development Pipeline</h3>
+<div class="space-y-6">
+<div class="relative pl-6 border-l-2 border-maroon">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-maroon ring-4 ring-white"></div>
+<p class="text-xs font-bold text-maroon uppercase">Phase 1: Concept</p>
+<p class="text-sm text-on-surface-variant mt-1">4 ideas in review</p>
+</div>
+<div class="relative pl-6 border-l-2 border-gold">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gold ring-4 ring-white"></div>
+<p class="text-xs font-bold text-gold uppercase">Phase 2: Validation</p>
+<p class="text-sm text-on-surface-variant mt-1">2 prototypes testing</p>
+</div>
+<div class="relative pl-6 border-l-2 border-surface-variant">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-surface-variant ring-4 ring-white"></div>
+<p class="text-xs font-bold text-on-surface-variant uppercase">Phase 3: Scaling</p>
+<p class="text-sm text-on-surface-variant mt-1">Next cohort starts Dec</p>
+</div>
+</div>
+</div>
+<!-- Upcoming Deadlines -->
+<div class="bg-soft-yellow/50 border border-gold/20 shadow-soft rounded p-md">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-maroon">event</span>
+<h3 class="font-title-lg text-maroon font-bold">Timelines</h3>
+</div>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<div class="bg-white rounded p-2 text-center min-w-[45px] shadow-sm">
+<span class="block text-[10px] font-bold text-maroon uppercase">Oct</span>
+<span class="block text-lg font-extrabold text-maroon">25</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Q4 Idea Cutoff</p>
+<p class="text-xs text-on-surface-variant">Final day for submissions</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="bg-white rounded p-2 text-center min-w-[45px] shadow-sm">
+<span class="block text-[10px] font-bold text-maroon uppercase">Nov</span>
+<span class="block text-lg font-extrabold text-maroon">02</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Panel Review</p>
+<p class="text-xs text-on-surface-variant">Executive Board meeting</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Visual Flare: Animated Shader Background (Subtle Overlay) -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-0">
+
+</div>
+</div>
+<!-- FAB for urgent review (Contextual Suppression Logic applied elsewhere, but valid for Dashboard) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-maroon text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all group z-50">
+<span class="material-symbols-outlined group-hover:rotate-12 transition-transform">bolt</span>
+</button>
+</main>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.classList.add('scale-95');
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.classList.remove('scale-95');
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.classList.remove('scale-95');
+            });
+        });
+
+        // Hover states for table rows
+        const tableRows = document.querySelectorAll('tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.classList.add('shadow-inner');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.classList.remove('shadow-inner');
+            });
+        });
+    </script>
+</body></html>

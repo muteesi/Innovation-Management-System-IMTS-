@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Category Management | Innovation Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#802820",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-tertiary-container": "#464000",
+                    "on-primary-fixed": "#410001",
+                    "surface-container-low": "#f6f3f2",
+                    "secondary-fixed-dim": "#ffb964",
+                    "secondary": "#875300",
+                    "outline": "#89726e",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#313030",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#d5c95b",
+                    "primary-fixed": "#ffdad5",
+                    "on-primary": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed": "#2b1700",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#ffb4a9",
+                    "outline-variant": "#dcc0bc",
+                    "on-secondary-fixed-variant": "#663e00",
+                    "surface-variant": "#e5e2e1",
+                    "on-secondary-container": "#6c4100",
+                    "tertiary-fixed": "#f2e574",
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary-fixed": "#ffddb9",
+                    "on-tertiary-fixed-variant": "#4e4800",
+                    "surface-container-high": "#eae7e7",
+                    "surface-container": "#f0eded",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#9f3f35",
+                    "surface-dim": "#dcd9d9",
+                    "background": "#fcf9f8",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "on-primary-container": "#e27264",
+                    "on-surface-variant": "#56423f",
+                    "primary-fixed-dim": "#ffb4a9",
+                    "tertiary-container": "#b9ae43",
+                    "secondary-container": "#fcaa3e",
+                    "primary-fixed": "#ffdad5",
+                    "tertiary": "#686000",
+                    "surface-bright": "#fcf9f8",
+                    "primary": "#380001"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "xl": "80px",
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Public Sans"],
+                    "body-md": ["Public Sans"],
+                    "headline-md": ["Public Sans"],
+                    "title-lg": ["Public Sans"],
+                    "label-md": ["Public Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #FEF7EF; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .custom-shadow { shadow: 0 4px 6px -1px rgba(90, 12, 8, 0.04); }
+        .modal-backdrop { background-color: rgba(28, 27, 27, 0.4); backdrop-filter: blur(4px); }
+        .active-nav { background-color: #fcaa3e; color: #1c1b1b; }
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: rgba(128, 40, 32, 0.3); border-radius: 10px; }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SIDEBAR -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-primary-container text-on-primary-fixed flex flex-col p-md z-30 overflow-hidden">
+<div class="flex items-center gap-base mb-lg">
+<img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPBIKIOHEImIMheq7uwHa57HNY_CHbTMHF1fLvNAKSBBDAm6owO3s7dNQlSyAigNwdEGsNAdGGyd3HiDFPKB6sZHHuxM6qfcgIl2m9K-HZrH1srIHzOt_-dskzSmrWAZ5ap6yOrj5KnSaAp6dfiMN_kqwQ8_0fXDWf8DK4B317PgCMPHNJ2y74XKOpIsK1XP7A1LSl-fBw4bTUJmhJ4HnkFSU-SucAK8BVspl25_w1Ov5s9N640nYbLoaGgN9hDQaH9MQ"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">IMTS</h1>
+<p class="font-label-md text-label-md opacity-70 text-on-primary-fixed">Digital Vault of Ideas</p>
+</div>
+</div>
+<nav class="flex-1 space-y-xs sidebar-scroll overflow-y-auto">
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+                Review Ideas
+            </a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md active-nav transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
+                Manage Categories
+            </a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Manage Resources
+            </a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+                Set Timelines
+            </a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+                Manage Users
+            </a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Reports
+            </a>
+<div class="pt-lg">
+<a class="flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</div>
+</nav>
+<div class="mt-auto p-md bg-primary rounded-xl flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">JD</div>
+<div>
+<p class="font-label-md text-label-md text-on-primary">John Doe</p>
+<p class="text-[10px] uppercase tracking-wider text-on-primary-fixed opacity-60">Admin Hub</p>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="ml-64 flex-1 p-xl">
+<header class="flex justify-between items-center mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Manage Categories</h2>
+<p class="font-body-md text-body-md text-outline">Organize and classify innovation submissions</p>
+</div>
+<button class="bg-[#DD9024] hover:bg-[#c98220] text-primary px-lg py-sm rounded-lg font-label-md text-label-md flex items-center gap-xs shadow-md active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined">add</span>
+                Add New Category
+            </button>
+</header>
+<!-- CATEGORIES LIST -->
+<div class="space-y-md">
+<!-- FinTech Row -->
+<div class="bg-[#FFF27F] bg-opacity-30 border border-[#DD9024]/20 p-md rounded-xl flex items-center justify-between hover:bg-opacity-50 transition-colors">
+<div class="flex-1 grid grid-cols-12 items-center gap-md">
+<div class="col-span-3">
+<span class="font-title-lg text-title-lg text-primary block">FinTech</span>
+<span class="font-label-md text-label-md bg-secondary-container/20 text-on-secondary-container px-base py-xs rounded">Primary Sector</span>
+</div>
+<div class="col-span-5 text-on-surface-variant font-body-md text-body-md">
+                        Financial technology innovations focusing on mobile money and digital banking.
+                    </div>
+<div class="col-span-2 text-center">
+<span class="font-headline-md text-headline-md text-primary">12</span>
+<p class="text-[12px] text-outline uppercase font-bold">Ideas Submitted</p>
+</div>
+<div class="col-span-2 flex justify-end gap-md">
+<button class="p-base rounded-full hover:bg-secondary-container/30 text-secondary transition-colors" title="Edit">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-base rounded-full hover:bg-error-container text-error transition-colors" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Security Row -->
+<div class="bg-surface border border-outline-variant p-md rounded-xl flex items-center justify-between hover:shadow-sm transition-all">
+<div class="flex-1 grid grid-cols-12 items-center gap-md">
+<div class="col-span-3 font-title-lg text-title-lg text-primary">Security</div>
+<div class="col-span-5 text-on-surface-variant font-body-md text-body-md">
+                        Cyber security, data protection, and fraud prevention initiatives.
+                    </div>
+<div class="col-span-2 text-center">
+<span class="font-headline-md text-headline-md text-primary">8</span>
+<p class="text-[12px] text-outline uppercase font-bold">Ideas Submitted</p>
+</div>
+<div class="col-span-2 flex justify-end gap-md">
+<button class="p-base rounded-full hover:bg-secondary-container/30 text-secondary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-base rounded-full hover:bg-error-container text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Policy Row -->
+<div class="bg-surface border border-outline-variant p-md rounded-xl flex items-center justify-between hover:shadow-sm transition-all">
+<div class="flex-1 grid grid-cols-12 items-center gap-md">
+<div class="col-span-3 font-title-lg text-title-lg text-primary">Policy</div>
+<div class="col-span-5 text-on-surface-variant font-body-md text-body-md">
+                        Regulatory and compliance frameworks for future banking.
+                    </div>
+<div class="col-span-2 text-center">
+<span class="font-headline-md text-headline-md text-primary">5</span>
+<p class="text-[12px] text-outline uppercase font-bold">Ideas Submitted</p>
+</div>
+<div class="col-span-2 flex justify-end gap-md">
+<button class="p-base rounded-full hover:bg-secondary-container/30 text-secondary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-base rounded-full hover:bg-error-container text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Operations Row -->
+<div class="bg-surface border border-outline-variant p-md rounded-xl flex items-center justify-between hover:shadow-sm transition-all">
+<div class="flex-1 grid grid-cols-12 items-center gap-md">
+<div class="col-span-3 font-title-lg text-title-lg text-primary">Operations</div>
+<div class="col-span-5 text-on-surface-variant font-body-md text-body-md">
+                        Internal process improvements and automation workflows.
+                    </div>
+<div class="col-span-2 text-center">
+<span class="font-headline-md text-headline-md text-primary">15</span>
+<p class="text-[12px] text-outline uppercase font-bold">Ideas Submitted</p>
+</div>
+<div class="col-span-2 flex justify-end gap-md">
+<button class="p-base rounded-full hover:bg-secondary-container/30 text-secondary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-base rounded-full hover:bg-error-container text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Innovation Row -->
+<div class="bg-surface border border-outline-variant p-md rounded-xl flex items-center justify-between hover:shadow-sm transition-all">
+<div class="flex-1 grid grid-cols-12 items-center gap-md">
+<div class="col-span-3 font-title-lg text-title-lg text-primary">Innovation</div>
+<div class="col-span-5 text-on-surface-variant font-body-md text-body-md">
+                        Pure research and development for long-term strategies.
+                    </div>
+<div class="col-span-2 text-center">
+<span class="font-headline-md text-headline-md text-primary">5</span>
+<p class="text-[12px] text-outline uppercase font-bold">Ideas Submitted</p>
+</div>
+<div class="col-span-2 flex justify-end gap-md">
+<button class="p-base rounded-full hover:bg-secondary-container/30 text-secondary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-base rounded-full hover:bg-error-container text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- MODAL: EDIT CATEGORY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-md modal-backdrop" id="edit-modal">
+<div class="bg-surface w-full max-w-lg rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="bg-primary p-md flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg text-on-primary">Edit Category: FinTech</h3>
+<button class="text-on-primary/60 hover:text-on-primary" onclick="document.getElementById('edit-modal').style.display='none'">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-lg space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-primary mb-xs">Category Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-secondary focus:outline-none font-body-md text-body-md" type="text" value="FinTech"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-xs">Description</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-secondary focus:outline-none font-body-md text-body-md" rows="4">Financial technology innovations focusing on mobile money and digital banking.</textarea>
+</div>
+<div class="flex items-center gap-base">
+<input checked="" class="w-5 h-5 text-secondary border-outline-variant rounded focus:ring-secondary" id="featured" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface-variant" for="featured">Mark as High-Priority Sector</label>
+</div>
+</div>
+<div class="bg-surface-container p-md flex justify-end gap-sm">
+<button class="px-md py-sm rounded-lg font-label-md text-label-md text-primary border border-primary hover:bg-primary/10 transition-colors" onclick="document.getElementById('edit-modal').style.display='none'">Cancel</button>
+<button class="bg-[#DD9024] px-md py-sm rounded-lg font-label-md text-label-md text-primary hover:bg-[#c98220] shadow-sm font-bold">Save Changes</button>
+</div>
+</div>
+</div>
+<!-- MODAL: DELETE CONFIRMATION (SMALL OVERLAY) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-md modal-backdrop" id="delete-modal" style="display: none;">
+<div class="bg-surface w-full max-w-sm rounded-xl shadow-2xl p-lg space-y-md animate-in slide-in-from-bottom-10 duration-200">
+<div class="w-12 h-12 bg-error-container text-error rounded-full flex items-center justify-center mx-auto mb-md">
+<span class="material-symbols-outlined" style="font-size: 32px;">warning</span>
+</div>
+<h4 class="font-title-lg text-title-lg text-primary text-center">Delete Category?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">
+                This will archive the category. Existing ideas will need to be re-classified. This action cannot be easily undone.
+            </p>
+<div class="flex flex-col gap-base pt-md">
+<button class="w-full bg-error text-on-error py-sm rounded-lg font-label-md text-label-md font-bold">Delete Category</button>
+<button class="w-full py-sm rounded-lg font-label-md text-label-md text-outline hover:text-primary" onclick="document.getElementById('delete-modal').style.display='none'">Keep Category</button>
+</div>
+</div>
+</div>
+<script>
+        // Micro-interactions and Modal handling
+        function openDeleteModal() {
+            document.getElementById('delete-modal').style.display = 'flex';
+        }
+
+        // Simulating some interactive highlights
+        const rows = document.querySelectorAll('.bg-surface, .bg-\\[\\#FFF27F\\]');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.classList.add('scale-[1.005]');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.classList.remove('scale-[1.005]');
+            });
+        });
+
+        // Trigger delete modal for demo purposes on any delete button click
+        document.querySelectorAll('[title="Delete"]').forEach(btn => {
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                openDeleteModal();
+            };
+        });
+
+        // Trigger edit modal (it's already open for demo, let's allow closing it)
+        document.querySelectorAll('[title="Edit"]').forEach(btn => {
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                document.getElementById('edit-modal').style.display = 'flex';
+            };
+        });
+    </script>
+</body></html>
