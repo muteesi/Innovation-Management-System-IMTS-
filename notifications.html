@@ -113,28 +113,28 @@
 <!-- Sidebar Navigation Shell -->
 <nav class="fixed left-0 top-0 h-screen flex flex-col p-md bg-primary-container shadow-md w-64 z-50 overflow-y-auto">
 <div class="flex flex-col items-center mb-xl">
-<img alt="Bank of Uganda Crest" class="w-20 h-20 mb-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSHhHjcHgRrIDBXfM_EhYP-Mrif2rOcxMabzWA65TBf0mhh0eZc8tsDbqyyr_91xIrcax5xlplvTyam2DvixtXl2c6xNJduWxcvM91p9vFpRyyWLtE4CK1cmzgeznIfW-Xmp59iE1rcdeUIzm_-7r7skI3hra5N7xfUNJvPWzbijgiYECq1JXULMqQOfYBOfeVSsAha9aKq19U19LJW8mS77Fxz_HwH3p7D81tRPH6GERNMU7YHP4BjRhoZtNw8hkYtTY"/>
+<img alt="Bank of Uganda Crest" class="w-12 h-12 object-contain bg-white rounded-full p-1 mb-sm" src="BOU logo.png"/>
 <h1 class="font-headline-md text-headline-md font-bold text-on-primary-container text-center leading-tight">IMTS</h1>
 <p class="font-label-sm text-label-sm text-on-primary-container opacity-70 ">Digital Vault of Ideas</p>
 </div>
 <div class="flex flex-col gap-xs flex-grow">
 <!-- Dashboard -->
-<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 font-label-md text-label-md hover:bg-on-primary-fixed-variant/20 transition-colors rounded-lg" href="#">
+<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 font-label-md text-label-md hover:bg-on-primary-fixed-variant/20 transition-colors rounded-lg" href="staffdashboard.html">
 <span class="material-symbols-outlined">dashboard</span>
                 Dashboard
             </a>
 <!-- My Ideas -->
-<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 font-label-md text-label-md hover:bg-on-primary-fixed-variant/20 transition-colors rounded-lg" href="#">
+<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 font-label-md text-label-md hover:bg-on-primary-fixed-variant/20 transition-colors rounded-lg" href="staffdashboard.html">
 <span class="material-symbols-outlined">lightbulb</span>
                 My Ideas
             </a>
 <!-- Submit New Idea -->
-<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 font-label-md text-label-md hover:bg-on-primary-fixed-variant/20 transition-colors rounded-lg" href="#">
+<a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 font-label-md text-label-md hover:bg-on-primary-fixed-variant/20 transition-colors rounded-lg" href="submitinnovationideaform.html">
 <span class="material-symbols-outlined">add_circle</span>
                 Submit New Idea
             </a>
 <!-- Notifications (Active) -->
-<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold font-label-md text-label-md active:scale-95 duration-150 ease-in-out" href="#">
+<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold font-label-md text-label-md active:scale-95 duration-150 ease-in-out" href="notifications.html">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
                 Notifications
             </a>
@@ -144,7 +144,7 @@
                 Settings
             </a>
 </div>
-<button class="mt-xl bg-bou-gold text-primary font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs hover:brightness-110 transition-all shadow-lg">
+<button onclick="window.location.href='submitinnovationideaform.html'" class="mt-xl bg-bou-gold text-primary font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs hover:brightness-110 transition-all shadow-lg">
 <span class="material-symbols-outlined">rocket_launch</span>
             Submit Idea
         </button>
@@ -215,7 +215,7 @@
                         </p>
 </div>
 <div class="flex flex-col items-end gap-2">
-<button class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
+<button onclick="window.location.href='reviewideas.html'" class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
                             View Details
                             <span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </button>
@@ -236,7 +236,7 @@
                         </p>
 </div>
 <div class="flex flex-col items-end gap-2">
-<button class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
+<button onclick="window.location.href='reviewideas.html'" class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
                             View Roadmap
                             <span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </button>

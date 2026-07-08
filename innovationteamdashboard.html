@@ -127,22 +127,22 @@
 <!-- Sidebar Navigation -->
 <aside class="fixed left-0 top-0 h-screen w-64 bg-primary-container shadow-md flex flex-col p-md z-50">
 <div class="flex items-center gap-3 mb-lg">
-<img alt="Bank of Uganda" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG0pGy6ZDMgzTb09d3XEXQKH7xj59f3bXG1NDMcX07p3R4FJX0ThigkTJgjLE8F4OgQKLWJxkhrceAK_7r9N7_0SU40YmPSMER9drGftw0i7ZnIycRq00Gzof1SzU3U-lFbQYFYvt_kCzTREC-ugMtarn_Vh5VpukTE1SFsANGoYuJDhmgcvv8_2xkulW_KsqayPoeMuedOIQohZSPwM7pddonxFDNl-0-CLHjAr2cfr6UA7GnzcvltgEBo-FgeyupYkc"/>
+<img alt="Bank of Uganda" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="BOU logo.png"/>
 <div>
 <h1 class="font-headline-md text-headline-md font-bold text-on-primary-fixed">IMTS</h1>
 <p class="font-label-sm text-label-sm text-on-primary opacity">Digital Vault Of Ideas</p>
 </div>
 </div>
 <nav class="flex-1 space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 sidebar-active transition-all scale-95 duration-150" href="#">
+<a class="flex items-center gap-3 px-4 py-3 sidebar-active transition-all scale-95 duration-150" href="innovationteamdashboard.html">
 <span class="material-symbols-outlined fill-icon">dashboard</span>
 <span class="font-label-md text-label-md">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="reviewideas.html">
 <span class="material-symbols-outlined">rate_review</span>
 <span class="font-label-md text-label-md">Review Ideas</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="managecategoriesInnovationteam.html">
 <span class="material-symbols-outlined">category</span>
 <span class="font-label-md text-label-md">Manage Categories</span>
 </a>
@@ -154,11 +154,11 @@
 <span class="material-symbols-outlined">calendar_today</span>
 <span class="font-label-md text-label-md">Set Timelines</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="ITadmin.html">
 <span class="material-symbols-outlined">group</span>
 <span class="font-label-md text-label-md">Manage Users</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="reportsandanalytics.html">
 <span class="material-symbols-outlined">analytics</span>
 <span class="font-label-md text-label-md">Reports</span>
 </a>
@@ -168,7 +168,7 @@
 </a>
 </nav>
 <div class="mt-auto pt-md border-t border-on-primary-fixed-variant/20">
-<button class="w-full bg-gold text-on-primary font-bold py-3 rounded flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<button onclick="window.location.href='submitinnovationideaform.html'" class="w-full bg-gold text-on-primary font-bold py-3 rounded flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
 <span class="material-symbols-outlined">add_circle</span>
 <span>Submit Idea</span>
 </button>
@@ -289,7 +289,7 @@
 <td class="px-md py-4 text-on-surface-variant">12 Oct 2023</td>
 <td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">FinTech</span></td>
 <td class="px-md py-4"><span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-xs font-bold uppercase tracking-wider">Pending</span></td>
-<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+<td class="px-md py-4"><button onclick="window.location.href='reviewideas.html'" class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
 </tr>
 <!-- Row 2 (Alternating) -->
 <tr class="bg-soft-yellow border-b border-outline-variant/50 hover:bg-gold/10 transition-colors">
@@ -304,7 +304,7 @@
 <td class="px-md py-4 text-on-surface-variant">14 Oct 2023</td>
 <td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Security</span></td>
 <td class="px-md py-4"><span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">In Review</span></td>
-<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+<td class="px-md py-4"><button onclick="window.location.href='reviewideas.html'" class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
 </tr>
 <!-- Row 3 -->
 <tr class="bg-white border-b border-outline-variant/50 hover:bg-gold/5 transition-colors">
@@ -319,7 +319,7 @@
 <td class="px-md py-4 text-on-surface-variant">15 Oct 2023</td>
 <td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Policy</span></td>
 <td class="px-md py-4"><span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-xs font-bold uppercase tracking-wider">Pending</span></td>
-<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+<td class="px-md py-4"><button onclick="window.location.href='reviewideas.html'" class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
 </tr>
 <!-- Row 4 (Alternating) -->
 <tr class="bg-soft-yellow border-b border-outline-variant/50 hover:bg-gold/10 transition-colors">
@@ -334,7 +334,7 @@
 <td class="px-md py-4 text-on-surface-variant">16 Oct 2023</td>
 <td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Innovation</span></td>
 <td class="px-md py-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase tracking-wider">Approved</span></td>
-<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+<td class="px-md py-4"><button onclick="window.location.href='reviewideas.html'" class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
 </tr>
 <!-- Row 5 -->
 <tr class="bg-white border-b border-outline-variant/50 hover:bg-gold/5 transition-colors">
@@ -349,7 +349,7 @@
 <td class="px-md py-4 text-on-surface-variant">17 Oct 2023</td>
 <td class="px-md py-4"><span class="px-2 py-1 bg-surface-container rounded text-xs">Operations</span></td>
 <td class="px-md py-4"><span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-bold uppercase tracking-wider">Declined</span></td>
-<td class="px-md py-4"><button class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
+<td class="px-md py-4"><button onclick="window.location.href='reviewideas.html'" class="bg-gold text-white px-4 py-1.5 rounded font-bold hover:bg-gold/90 transition-opacity">Review</button></td>
 </tr>
 </tbody>
 </table>
@@ -372,11 +372,11 @@
 <div class="bg-white border border-outline-variant shadow-soft rounded p-md">
 <h3 class="font-title-lg text-maroon font-bold mb-4">Quick Actions</h3>
 <div class="space-y-3">
-<button class="w-full flex items-center gap-3 p-3 bg-maroon text-white rounded font-bold hover:opacity-90 transition-opacity">
+<button onclick="window.location.href='reportsandanalytics.html'" class="w-full flex items-center gap-3 p-3 bg-maroon text-white rounded font-bold hover:opacity-90 transition-opacity">
 <span class="material-symbols-outlined">description</span>
 <span>Generate Report</span>
 </button>
-<button class="w-full flex items-center gap-3 p-3 bg-gold text-white rounded font-bold hover:opacity-90 transition-opacity">
+<button onclick="window.location.href='managecategoriesInnovationteam.html'" class="w-full flex items-center gap-3 p-3 bg-gold text-white rounded font-bold hover:opacity-90 transition-opacity">
 <span class="material-symbols-outlined">add_box</span>
 <span>Add Category</span>
 </button>

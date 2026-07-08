@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics — Bank of Uganda IMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#5a0c08",
+                        "on-primary-fixed": "#410001",
+                        "primary": "#380001",
+                        "secondary": "#875300",
+                        "secondary-container": "#fcaa3e",
+                        "on-secondary-container": "#6c4100",
+                        "surface": "#FEF7EF",
+                        "outline-variant": "#dcc0bc",
+                        "on-surface-variant": "#56423f",
+                        "gold": "#DD9024",
+                        "maroon": "#5A0C08",
+                        "soft-yellow": "#FFF27F",
+                        "brand-cream": "#FEF7EF"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "xs": "4px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "lg": "48px"
+                    },
+                    fontFamily: {
+                        "sans": ["Public Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FEF7EF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5A0C08;
+            border-radius: 4px;
+        }
+        .shadow-soft {
+            box-shadow: 0 4px 20px -2px rgba(90, 12, 8, 0.06);
+        }
+        .sidebar-active {
+            background-color: #fcaa3e;
+            color: #6c4100;
+            font-weight: 700;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-[#1c1b1b] antialiased overflow-x-hidden">
+    <!-- Sidebar Navigation -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-primary-container shadow-md flex flex-col p-md z-50">
+        <div class="flex items-center gap-3 mb-lg">
+            <img alt="Bank of Uganda" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="BOU logo.png"/>
+            <div>
+                <h1 class="font-headline-md text-headline-md font-bold text-on-primary-fixed text-white text-lg">IMTS</h1>
+                <p class="font-label-sm text-label-sm text-white opacity-80 text-xs">Digital Vault Of Ideas</p>
+            </div>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-white opacity-80 hover:bg-white/10 transition-colors" href="innovationteamdashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-label-md text-label-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-white opacity-80 hover:bg-white/10 transition-colors" href="reviewideas.html">
+                <span class="material-symbols-outlined">rate_review</span>
+                <span class="font-label-md text-label-md">Review Ideas</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-white opacity-80 hover:bg-white/10 transition-colors" href="managecategoriesInnovationteam.html">
+                <span class="material-symbols-outlined">category</span>
+                <span class="font-label-md text-label-md">Manage Categories</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-white opacity-80 hover:bg-white/10 transition-colors" href="#">
+                <span class="material-symbols-outlined">inventory_2</span>
+                <span class="font-label-md text-label-md">Manage Resources</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-white opacity-80 hover:bg-white/10 transition-colors" href="#">
+                <span class="material-symbols-outlined">calendar_today</span>
+                <span class="font-label-md text-label-md">Set Timelines</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-white opacity-80 hover:bg-white/10 transition-colors" href="ITadmin.html">
+                <span class="material-symbols-outlined">group</span>
+                <span class="font-label-md text-label-md">Manage Users</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 sidebar-active transition-all scale-95 duration-150" href="reportsandanalytics.html">
+                <span class="material-symbols-outlined fill-icon">analytics</span>
+                <span class="font-label-md text-label-md">Reports</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-white opacity-80 hover:bg-white/10 transition-colors" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md text-label-md">Settings</span>
+            </a>
+        </nav>
+        <div class="mt-auto pt-md border-t border-white/10">
+            <button onclick="window.location.href='submitinnovationideaform.html'" class="w-full bg-gold text-white font-bold py-3 rounded flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span>Submit Idea</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Shell -->
+    <main class="ml-64 min-h-screen bg-surface">
+        <!-- Top App Bar -->
+        <header class="flex justify-between items-center w-full px-gutter h-16 border-b border-outline-variant bg-surface sticky top-0 z-40">
+            <div class="flex items-center gap-4">
+                <h2 class="font-title-lg text-title-lg text-maroon font-extrabold uppercase tracking-tight text-lg">Reports & Analytics Console</h2>
+            </div>
+            <div class="flex items-center gap-gutter">
+                <div class="relative hidden lg:block">
+                    <input class="pl-10 pr-4 py-2 rounded border border-on-surface/10 bg-white focus:border-gold focus:ring-2 focus:ring-gold/20 text-sm" placeholder="Search analytics..." type="text"/>
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="window.location.href='ITadmin.html'" class="material-symbols-outlined text-maroon hover:text-gold transition-colors">account_balance</button>
+                    <button onclick="window.location.href='notifications.html'" class="material-symbols-outlined text-maroon hover:text-gold transition-colors">notifications</button>
+                    <div class="w-10 h-10 rounded-full border-2 border-gold/30 bg-white flex items-center justify-center overflow-hidden cursor-pointer" onclick="window.location.href='login.html'">
+                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPEi3Dq35RpA-uhErae5k73Rn07gQW5Ch0R1GQRP5wkqXDhsxb9GAlQuC9tMrjUPJI6v265EVirfwVLnBLt0mEpSJ6qnvUBSKL0roA2F71WsHQ01Reqn7-VVlXzaNopK_5VJQnwxxlPO3XI9l2p5ACWkgSgVqUbBVOMSVqPQJSFpU_TsLrE9YL50ZLnn13q7qmL1cHQ0G-JTOBBl1gVPhf2_BeXlTwEUyatZBo93meEwFELH8JLRBTRQ"/>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-[1280px] mx-auto p-gutter space-y-md">
+            <!-- Breadcrumbs -->
+            <nav aria-label="Breadcrumb" class="text-sm text-on-surface-variant">
+                <ol class="flex items-center space-x-2">
+                    <li><a class="hover:text-gold transition-colors" href="innovationteamdashboard.html">Dashboard</a></li>
+                    <li><span class="material-symbols-outlined text-base">chevron_right</span></li>
+                    <li class="font-semibold text-maroon">Reports & Analytics</li>
+                </ol>
+            </nav>
+
+            <!-- Metrics Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-maroon">IMTS Insights</h1>
+                    <p class="text-sm text-on-surface-variant">Live key performance indicators and workflow velocity stats.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="alert('Exporting data as CSV...')" class="bg-white border border-outline-variant hover:border-gold hover:text-gold transition-all text-on-surface-variant px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1">
+                        <span class="material-symbols-outlined text-base">download</span> Export CSV
+                    </button>
+                    <button onclick="window.print()" class="bg-gold hover:opacity-90 text-white transition-opacity px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1">
+                        <span class="material-symbols-outlined text-base">print</span> Print PDF Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-md">
+                <div class="bg-white p-md rounded-xl border border-outline-variant shadow-soft flex items-center gap-4">
+                    <div class="w-12 h-12 bg-maroon/10 rounded-lg flex items-center justify-center text-maroon flex-shrink-0">
+                        <span class="material-symbols-outlined text-2xl fill-icon">lightbulb</span>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Submission Rate</span>
+                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">38 Ideas</h3>
+                        <p class="text-xs text-emerald-600 mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-xs">trending_up</span> +12% this qtr</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-md rounded-xl border border-outline-variant shadow-soft flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center text-gold flex-shrink-0">
+                        <span class="material-symbols-outlined text-2xl">query_builder</span>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Avg. Review Speed</span>
+                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">4.8 Days</h3>
+                        <p class="text-xs text-emerald-600 mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-xs">trending_down</span> -0.6 days improvement</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-md rounded-xl border border-outline-variant shadow-soft flex items-center gap-4">
+                    <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-green-700 flex-shrink-0">
+                        <span class="material-symbols-outlined text-2xl">check_circle</span>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Approval Ratio</span>
+                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">31.5%</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">12 of 38 approved</p>
+                    </div>
+                </div>
+
+                <div class="bg-soft-yellow/30 p-md rounded-xl border border-gold/20 shadow-soft flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-secondary flex-shrink-0">
+                        <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Prototype Budgets</span>
+                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">UGX 145M</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Allocated for experimentation</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+                <!-- SVG Chart: Submissions Over Time -->
+                <div class="bg-white border border-outline-variant p-md rounded-xl shadow-soft lg:col-span-2">
+                    <div class="flex justify-between items-center mb-md">
+                        <h3 class="font-bold text-maroon text-base">Submission Velocity (Year 2026)</h3>
+                        <select class="border border-outline-variant rounded p-1 text-xs outline-none bg-white">
+                            <option>Monthly View</option>
+                            <option>Quarterly View</option>
+                        </select>
+                    </div>
+                    <!-- Custom SVG Line Graph -->
+                    <div class="relative w-full h-64 bg-brand-cream/30 rounded-lg border border-outline-variant/30 flex items-center justify-center p-xs overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Grid lines -->
+                            <line x1="40" y1="20" x2="480" y2="20" stroke="#eae7e7" stroke-dasharray="4,4"/>
+                            <line x1="40" y1="70" x2="480" y2="70" stroke="#eae7e7" stroke-dasharray="4,4"/>
+                            <line x1="40" y1="120" x2="480" y2="120" stroke="#eae7e7" stroke-dasharray="4,4"/>
+                            <line x1="40" y1="170" x2="480" y2="170" stroke="#eae7e7" stroke-dasharray="4,4"/>
+                            
+                            <!-- Graph Axes -->
+                            <line x1="40" y1="20" x2="40" y2="180" stroke="#dcc0bc" stroke-width="1.5"/>
+                            <line x1="40" y1="180" x2="480" y2="180" stroke="#dcc0bc" stroke-width="1.5"/>
+                            
+                            <!-- Axis Labels (Y) -->
+                            <text x="15" y="25" fill="#56423f" font-size="9" font-family="Public Sans">20</text>
+                            <text x="15" y="75" fill="#56423f" font-size="9" font-family="Public Sans">15</text>
+                            <text x="15" y="125" fill="#56423f" font-size="9" font-family="Public Sans">10</text>
+                            <text x="20" y="175" fill="#56423f" font-size="9" font-family="Public Sans">5</text>
+
+                            <!-- Axis Labels (X) -->
+                            <text x="75" y="195" fill="#56423f" font-size="9" font-family="Public Sans" text-anchor="middle">May</text>
+                            <text x="155" y="195" fill="#56423f" font-size="9" font-family="Public Sans" text-anchor="middle">Jun</text>
+                            <text x="235" y="195" fill="#56423f" font-size="9" font-family="Public Sans" text-anchor="middle">Jul</text>
+                            <text x="315" y="195" fill="#56423f" font-size="9" font-family="Public Sans" text-anchor="middle">Aug</text>
+                            <text x="395" y="195" fill="#56423f" font-size="9" font-family="Public Sans" text-anchor="middle">Sep</text>
+                            <text x="455" y="195" fill="#56423f" font-size="9" font-family="Public Sans" text-anchor="middle">Oct</text>
+
+                            <!-- Filled Area Graph -->
+                            <path d="M 40,180 L 75,150 L 155,100 L 235,130 L 315,60 L 395,80 L 455,40 L 455,180 Z" fill="rgba(221, 144, 36, 0.15)"/>
+                            <!-- Line Graph -->
+                            <path d="M 40,180 L 75,150 L 155,100 L 235,130 L 315,60 L 395,80 L 455,40" fill="none" stroke="#5A0C08" stroke-width="3"/>
+                            
+                            <!-- Dots & Tooltips -->
+                            <circle cx="75" cy="150" r="4" fill="#DD9024" stroke="#fff" stroke-width="1.5"/>
+                            <circle cx="155" cy="100" r="4" fill="#DD9024" stroke="#fff" stroke-width="1.5"/>
+                            <circle cx="235" cy="130" r="4" fill="#DD9024" stroke="#fff" stroke-width="1.5"/>
+                            <circle cx="315" cy="60" r="4" fill="#DD9024" stroke="#fff" stroke-width="1.5"/>
+                            <circle cx="395" cy="80" r="4" fill="#DD9024" stroke="#fff" stroke-width="1.5"/>
+                            <circle cx="455" cy="40" r="4" fill="#DD9024" stroke="#fff" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- SVG Chart: Submissions by Category -->
+                <div class="bg-white border border-outline-variant p-md rounded-xl shadow-soft">
+                    <h3 class="font-bold text-maroon text-base mb-md">Ideas by Category</h3>
+                    <div class="flex flex-col items-center justify-center h-64 gap-sm">
+                        <!-- Horizontal Bar Graph for Clarity -->
+                        <div class="w-full space-y-3 px-sm">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-on-surface mb-1">
+                                    <span>FinTech</span>
+                                    <span>12 Ideas (31.5%)</span>
+                                </div>
+                                <div class="w-full bg-[#eae7e7] h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-maroon h-full" style="width: 31.5%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-on-surface mb-1">
+                                    <span>Security</span>
+                                    <span>9 Ideas (23.7%)</span>
+                                </div>
+                                <div class="w-full bg-[#eae7e7] h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-gold h-full" style="width: 23.7%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-on-surface mb-1">
+                                    <span>Policy</span>
+                                    <span>7 Ideas (18.4%)</span>
+                                </div>
+                                <div class="w-full bg-[#eae7e7] h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-amber-600 h-full" style="width: 18.4%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-on-surface mb-1">
+                                    <span>Operations</span>
+                                    <span>6 Ideas (15.8%)</span>
+                                </div>
+                                <div class="w-full bg-[#eae7e7] h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-600 h-full" style="width: 15.8%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-on-surface mb-1">
+                                    <span>Innovation</span>
+                                    <span>4 Ideas (10.6%)</span>
+                                </div>
+                                <div class="w-full bg-[#eae7e7] h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-blue-600 h-full" style="width: 10.6%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past Reports & Exports -->
+            <div class="bg-white border border-outline-variant rounded-xl shadow-soft overflow-hidden">
+                <div class="p-md border-b border-outline-variant flex items-center justify-between">
+                    <h3 class="font-bold text-maroon text-base">Archived Analytics Reports</h3>
+                    <button onclick="alert('Creating a new customized reports archive entry...')" class="bg-maroon text-white font-bold text-xs py-2 px-4 rounded hover:opacity-90 transition-opacity">+ Request New Period</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-surface border-b border-outline-variant">
+                                <th class="p-md text-maroon font-bold text-xs">Report Reference</th>
+                                <th class="p-md text-maroon font-bold text-xs">Reporting Period</th>
+                                <th class="p-md text-maroon font-bold text-xs">Submissions Count</th>
+                                <th class="p-md text-maroon font-bold text-xs">Approved Budget</th>
+                                <th class="p-md text-maroon font-bold text-xs">Generated By</th>
+                                <th class="p-md text-maroon font-bold text-xs text-right">Download Options</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b border-outline-variant/60 hover:bg-gold/5 transition-colors">
+                                <td class="p-md font-bold text-maroon">BOU-IMTS-REP-2026-Q2</td>
+                                <td class="p-md text-on-surface-variant">Apr 01, 2026 - Jun 30, 2026</td>
+                                <td class="p-md font-medium">18 Submissions</td>
+                                <td class="p-md">UGX 65,000,000</td>
+                                <td class="p-md">Joseph Katumba (IT Admin)</td>
+                                <td class="p-md text-right space-x-2">
+                                    <button onclick="alert('Downloading PDF...')" class="text-maroon font-bold hover:underline text-xs">PDF</button>
+                                    <span class="text-outline-variant">|</span>
+                                    <button onclick="alert('Downloading Excel...')" class="text-gold font-bold hover:underline text-xs">XLSX</button>
+                                </td>
+                            </tr>
+                            <tr class="bg-soft-yellow/10 border-b border-outline-variant/60 hover:bg-gold/5 transition-colors">
+                                <td class="p-md font-bold text-maroon">BOU-IMTS-REP-2026-Q1</td>
+                                <td class="p-md text-on-surface-variant">Jan 01, 2026 - Mar 31, 2026</td>
+                                <td class="p-md font-medium">12 Submissions</td>
+                                <td class="p-md">UGX 40,000,000</td>
+                                <td class="p-md">Namaganda Rose (Reviewer)</td>
+                                <td class="p-md text-right space-x-2">
+                                    <button onclick="alert('Downloading PDF...')" class="text-maroon font-bold hover:underline text-xs">PDF</button>
+                                    <span class="text-outline-variant">|</span>
+                                    <button onclick="alert('Downloading Excel...')" class="text-gold font-bold hover:underline text-xs">XLSX</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-outline-variant/60 hover:bg-gold/5 transition-colors">
+                                <td class="p-md font-bold text-maroon">BOU-IMTS-REP-2025-FY</td>
+                                <td class="p-md text-on-surface-variant">Jan 01, 2025 - Dec 31, 2025</td>
+                                <td class="p-md font-medium">42 Submissions</td>
+                                <td class="p-md">UGX 180,000,000</td>
+                                <td class="p-md">Executive Board Admin</td>
+                                <td class="p-md text-right space-x-2">
+                                    <button onclick="alert('Downloading PDF...')" class="text-maroon font-bold hover:underline text-xs">PDF</button>
+                                    <span class="text-outline-variant">|</span>
+                                    <button onclick="alert('Downloading Excel...')" class="text-gold font-bold hover:underline text-xs">XLSX</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
