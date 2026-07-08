@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | Bank of Uganda IMTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#686000",
+                    "on-background": "#1c1b1b",
+                    "primary": "#380001",
+                    "on-secondary-fixed-variant": "#663e00",
+                    "on-secondary-container": "#6c4100",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-tint": "#9f3f35",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#ffb4a9",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-container": "#b9ae43",
+                    "inverse-surface": "#313030",
+                    "background": "#fcf9f8",
+                    "inverse-primary": "#ffb4a9",
+                    "secondary-container": "#fcaa3e",
+                    "primary-container": "#5a0c08",
+                    "on-primary-container": "#e27264",
+                    "on-tertiary-fixed": "#1f1c00",
+                    "on-primary-fixed": "#410001",
+                    "tertiary-fixed": "#f2e574",
+                    "on-secondary-fixed": "#2b1700",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed": "#ffdad5",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f6f3f2",
+                    "surface": "#fcf9f8",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#eae7e7",
+                    "outline": "#89726e",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "on-surface-variant": "#56423f",
+                    "tertiary-fixed-dim": "#d5c95b",
+                    "surface-bright": "#fcf9f8",
+                    "secondary-fixed": "#ffddb9",
+                    "outline-variant": "#dcc0bc",
+                    "secondary-fixed-dim": "#ffb964",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#4e4800",
+                    "secondary": "#875300",
+                    "on-tertiary-container": "#464000",
+                    "surface-variant": "#e5e2e1",
+                    "on-primary-fixed-variant": "#802820",
+                    "on-error": "#ffffff",
+                    "brand-cream": "#FEF7EF",
+                    "brand-maroon": "#5A0C08",
+                    "brand-gold": "#DD9024",
+                    "brand-soft-yellow": "#FFF27F"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "24px",
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "lg": "48px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "label-md": ["Public Sans"],
+                    "body-md": ["Public Sans"],
+                    "label-sm": ["Public Sans"],
+                    "display-lg": ["Public Sans"],
+                    "body-lg": ["Public Sans"],
+                    "headline-lg": ["Public Sans"],
+                    "headline-md": ["Public Sans"],
+                    "title-lg": ["Public Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FEF7EF;
+            font-family: 'Public Sans', sans-serif;
+            color: #1c1b1b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tab-active {
+            border-bottom: 2px solid #DD9024;
+            color: #5A0C08;
+            font-weight: 700;
+        }
+        .input-focus:focus {
+            border-color: #DD9024;
+            box-shadow: 0 0 0 2px rgba(221, 144, 36, 0.2);
+            outline: none;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-primary-container flex flex-col py-lg z-50 shadow-md">
+<div class="px-margin mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-secondary-fixed">IMTS</h1>
+<p class="font-label-sm text-label-sm text-on-primary-container/80">Innovation Vault For Ideas</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Dashboard -->
+<a class="flex items-center px-margin py-base text-on-primary-container/80 mx-2 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-sm">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- My Ideas -->
+<a class="flex items-center px-margin py-base text-on-primary-container/80 mx-2 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-sm">lightbulb</span>
+<span class="font-label-md text-label-md">My Ideas</span>
+</a>
+<!-- Submit New Idea -->
+<a class="flex items-center px-margin py-base text-on-primary-container/80 mx-2 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-sm">add_circle</span>
+<span class="font-label-md text-label-md">Submit New Idea</span>
+</a>
+<!-- Notifications -->
+<a class="flex items-center px-margin py-base text-on-primary-container/80 mx-2 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-sm">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+<!-- Settings (ACTIVE) -->
+<a class="flex items-center px-margin py-base bg-secondary-container text-on-secondary-container rounded-lg mx-2 active:scale-[0.98] transition-transform shadow-sm" href="#">
+<span class="material-symbols-outlined mr-sm">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-margin">
+<button class="w-full bg-brand-gold text-primary font-bold py-sm rounded-lg shadow-sm hover:opacity-90 transition-all active:scale-95">
+                Submit New Idea
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-64 flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="w-full h-16 bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center px-margin py-base">
+<div class="flex items-center gap-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-md input-focus w-64 transition-all" placeholder="Search systems..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-brand-maroon cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined text-brand-maroon cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">help</span>
+</div>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-sm cursor-pointer group">
+<div class="text-right">
+<p class="font-label-md text-label-md text-primary leading-tight">K. Mugisha</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Senior Analyst</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-brand-gold object-cover" data-alt="A high-quality professional corporate portrait of a Ugandan man in a sharp navy blue business suit, photographed against a minimalist clean office background with soft cinematic lighting. The image conveys authority, leadership, and professional trust, suitable for a banking executive's profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGcpHuIOddtwE_e44VZW6Rgp2M_Q5sVGBhJcyQZ-CIr5WR-6hW2MaCOfILRyHq-DUxvr1PJ9GINY_pLCblYAN9w-1ERM5xcP0wVj5KgPi-g3hxyFVWkeSy89tIENRLGkqQbtJ_9MyOd0z2Q8vdrJiI0q6mO4iKhMyEUNvvK76_xDiH4wHq-QqnPZxQLK0pLM1YbCbog0lVW8DUFZzKen49FwwU86vkcDzbPVe-wlVwgcYH5A33_ZoeAQ"/>
+</div>
+</div>
+</header>
+<!-- Page Header -->
+<main class="flex-1 p-margin max-w-[1280px] mx-auto w-full">
+<header class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-brand-maroon">Settings</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs">Manage your account preferences and system configurations</p>
+</header>
+<!-- Horizontal Tabs -->
+<div class="flex border-b border-outline-variant mb-lg overflow-x-auto whitespace-nowrap scrollbar-hide">
+<button class="px-md py-base font-label-md text-label-md tab-active transition-all">Profile Settings</button>
+<button class="px-md py-base font-label-md text-label-md text-on-surface-variant hover:text-brand-maroon transition-all">Notifications Preferences</button>
+<button class="px-md py-base font-label-md text-label-md text-on-surface-variant hover:text-brand-maroon transition-all">Security</button>
+<button class="px-md py-base font-label-md text-label-md text-on-surface-variant hover:text-brand-maroon transition-all">Appearance</button>
+<button class="px-md py-base font-label-md text-label-md text-on-surface-variant hover:text-brand-maroon transition-all opacity-60 flex items-center gap-xs">
+                    System Configuration
+                    <span class="material-symbols-outlined text-[16px]">lock</span>
+</button>
+</div>
+<!-- Settings Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Card 1: Profile Section -->
+<section class="lg:col-span-8 bg-brand-soft-yellow p-lg rounded-xl shadow-sm border border-brand-maroon/5">
+<div class="flex flex-col md:flex-row gap-lg">
+<div class="flex flex-col items-center gap-md">
+<div class="relative">
+<img class="w-32 h-32 rounded-full border-4 border-brand-gold object-cover shadow-md" data-alt="A professional close-up of a business executive's circular profile avatar. The subject is a person of African descent with a warm, confident expression, dressed in professional business attire. The image is framed by a premium gold-toned border, set against a blurred modern architectural background with warm light leaks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG-flOKLGqa6AGkhbNcg-yf2UKzlzJjNdb0AskKgr0bhdKkzxA3E2J5hvOv5oAiruryRPlFLix7VckwjvJBbcrkrAriWEVNPaFmrmXUdTOJMTWFV9q28IRVViuK4hguPYeJDNSJhkl_z5aAUdE-QgWYNU1lsXRsJ5Qtwt0IFREr0N9GegPuZ4OLBbZZ5YJkeAz8KUQcF6JgvPAN8iHv3d7zwc519mXZFGcZOrVYkrMqpzP-rfG94l4yQ"/>
+<button class="absolute bottom-0 right-0 bg-brand-maroon text-white p-2 rounded-full shadow-lg hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+</button>
+</div>
+<button class="text-brand-maroon font-label-md text-label-md border-2 border-brand-maroon px-6 py-2 rounded-lg hover:bg-brand-maroon hover:text-white transition-all">
+                                Upload New Photo
+                            </button>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-brand-maroon">Full Name</label>
+<input class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus" type="text" value="Kevin Mugisha"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-brand-maroon">Email Address</label>
+<div class="relative">
+<input class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus" type="email" value="k.mugisha@bou.or.ug"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                        VERIFIED
+                                    </span>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-brand-maroon">Department</label>
+<select class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus">
+<option>Strategic Innovation</option>
+<option>Internal Audit</option>
+<option>Information Technology</option>
+<option>Financial Markets</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-brand-maroon">Job Title</label>
+<select class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus">
+<option>Senior Innovation Analyst</option>
+<option>Principal Officer</option>
+<option>Director</option>
+</select>
+</div>
+<div class="md:col-span-2 space-y-xs">
+<label class="font-label-md text-label-md text-brand-maroon">Phone Number</label>
+<input class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus" type="tel" value="+256 700 000 000"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 2: Change Password -->
+<section class="lg:col-span-4 bg-brand-soft-yellow p-lg rounded-xl shadow-sm border border-brand-maroon/5 space-y-md">
+<div class="flex items-center gap-xs border-b border-brand-maroon/10 pb-sm">
+<span class="material-symbols-outlined text-brand-maroon">lock_reset</span>
+<h3 class="font-title-lg text-title-lg text-brand-maroon">Update Password</h3>
+</div>
+<div class="space-y-sm">
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Current Password</label>
+<input class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus" placeholder="••••••••" type="password"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">New Password</label>
+<input class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus" id="new-password" placeholder="••••••••" type="password"/>
+<!-- Strength Indicator -->
+<div class="flex gap-1 mt-xs h-1">
+<div class="flex-1 bg-on-background/10 rounded-full transition-colors" id="p-bar-1"></div>
+<div class="flex-1 bg-on-background/10 rounded-full transition-colors" id="p-bar-2"></div>
+<div class="flex-1 bg-on-background/10 rounded-full transition-colors" id="p-bar-3"></div>
+</div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase mt-1" id="strength-text">Strength: Enter password</p>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Confirm New Password</label>
+<input class="w-full px-md py-base bg-white border border-on-background/10 rounded-lg text-body-md input-focus" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full bg-brand-gold text-primary font-bold py-sm rounded-lg hover:opacity-90 transition-all active:scale-95 shadow-sm mt-4">
+                        Update Password
+                    </button>
+</section>
+<!-- Card 3: 2FA & Privacy -->
+<section class="lg:col-span-12 bg-brand-soft-yellow p-lg rounded-xl shadow-sm border border-brand-maroon/5">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div class="flex gap-md">
+<div class="bg-brand-maroon/10 p-3 rounded-lg text-brand-maroon">
+<span class="material-symbols-outlined text-headline-md" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-brand-maroon">Two-Factor Authentication (2FA)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Add an extra layer of security to your IMTS account using your mobile device.</p>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-brand-maroon">Status: Enabled</span>
+<button class="w-12 h-6 bg-brand-gold rounded-full relative transition-colors duration-200" onclick="this.classList.toggle('bg-brand-gold'); this.children[0].classList.toggle('translate-x-6')">
+<div class="w-4 h-4 bg-white rounded-full absolute top-1 left-1 translate-x-6 transition-transform duration-200 shadow-sm"></div>
+</button>
+</div>
+<button class="bg-brand-maroon text-white font-bold px-lg py-sm rounded-lg hover:opacity-90 transition-all active:scale-95">
+                                Setup 2FA Device
+                            </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<footer class="mt-xl flex flex-col md:flex-row justify-between items-center border-t border-outline-variant pt-lg gap-md pb-lg">
+<div class="flex gap-md">
+<button class="bg-brand-gold text-primary font-bold px-xl py-base rounded-lg shadow-md hover:scale-[1.02] transition-all active:scale-95">
+                        Save All Changes
+                    </button>
+<button class="border-2 border-brand-maroon text-brand-maroon font-bold px-xl py-base rounded-lg hover:bg-brand-maroon/5 transition-all">
+                        Cancel
+                    </button>
+</div>
+<a class="text-error font-label-md text-label-md hover:underline flex items-center gap-xs group" href="#">
+<span class="material-symbols-outlined text-sm group-hover:rotate-12 transition-transform">no_accounts</span>
+                    Deactivate Account
+                </a>
+</footer>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-md bg-surface-container-lowest border-t border-outline-variant flex flex-row justify-between items-center px-margin mt-auto">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md font-semibold text-primary">BOU IMTS</span>
+<span class="text-outline">|</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Bank of Uganda. ISO 27001 Certified.</p>
+</div>
+<div class="flex gap-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Security Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Compliance Standards</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Internal Audit</a>
+</div>
+</footer>
+</div>
+<script>
+        // Password Strength Interaction
+        const passwordInput = document.getElementById('new-password');
+        const bars = [
+            document.getElementById('p-bar-1'),
+            document.getElementById('p-bar-2'),
+            document.getElementById('p-bar-3')
+        ];
+        const strengthText = document.getElementById('strength-text');
+
+        passwordInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (val.length === 0) {
+                bars.forEach(b => b.className = 'flex-1 bg-on-background/10 rounded-full transition-colors');
+                strengthText.innerText = 'Strength: Enter password';
+                strengthText.className = 'text-[10px] font-bold text-on-surface-variant uppercase mt-1';
+            } else if (val.length < 6) {
+                bars[0].className = 'flex-1 bg-error rounded-full transition-colors';
+                bars[1].className = 'flex-1 bg-on-background/10 rounded-full transition-colors';
+                bars[2].className = 'flex-1 bg-on-background/10 rounded-full transition-colors';
+                strengthText.innerText = 'Strength: Weak';
+                strengthText.className = 'text-[10px] font-bold text-error uppercase mt-1';
+            } else if (val.length < 10) {
+                bars[0].className = 'flex-1 bg-secondary-container rounded-full transition-colors';
+                bars[1].className = 'flex-1 bg-secondary-container rounded-full transition-colors';
+                bars[2].className = 'flex-1 bg-on-background/10 rounded-full transition-colors';
+                strengthText.innerText = 'Strength: Medium';
+                strengthText.className = 'text-[10px] font-bold text-secondary uppercase mt-1';
+            } else {
+                bars[0].className = 'flex-1 bg-green-500 rounded-full transition-colors';
+                bars[1].className = 'flex-1 bg-green-500 rounded-full transition-colors';
+                bars[2].className = 'flex-1 bg-green-500 rounded-full transition-colors';
+                strengthText.innerText = 'Strength: Strong';
+                strengthText.className = 'text-[10px] font-bold text-green-700 uppercase mt-1';
+            }
+        });
+    </script>
+</body></html>
