@@ -2,15 +2,13 @@
 
 **Version:** 0.2 (Draft)
 **Author:** Amanya Peter, Mutesi Flavia Kirabo, Kasamba Luqman
-**Stack constraints:** Windows Server, MS SQL Server. Backend language TBD — Spring Boot
-(Java) and ASP.NET Core (C#) are both viable; this document is written stack-agnostically
-where possible, with a side-by-side comparison in Section 11.
+**Stack constraints:** Windows Server, MS SQL Server. Backend language -ASP.NET Core (C#) are both viable;
 
 ---
 
 ## 1. Purpose & Scope
 
-This document defines the target microservices architecture for the commercial Innovation
+This document defines the target microservices architecture for the Innovation
 Management System — covering idea submission, review/evaluation, experimentation,
 deployment, and funding pipeline stages. It is a working draft intended to be refined as
 service boundaries are validated against real usage.
@@ -41,7 +39,7 @@ service boundaries are validated against real usage.
                                    └──────────┬───────────┘
                                               │ HTTPS
                                    ┌──────────▼───────────┐
-                                   │     API Gateway       │  (Spring Cloud Gateway / YARP)
+                                   │     API Gateway       │  (YARP)
                                    │  - Auth token check    │
                                    │  - Routing              │
                                    │  - Rate limiting        │
@@ -49,22 +47,22 @@ service boundaries are validated against real usage.
                     ┌───────────┬─────────────┼─────────────┬───────────────┐
                     ▼           ▼             ▼             ▼               ▼
             ┌──────────┐ ┌───────────┐ ┌────────────┐ ┌───────────┐ ┌──────────────┐
-            │  Identity │ │   Idea     │ │  Review &   │ │  Funding   │ │ Document /    │
-            │  & Access │ │Submission  │ │  Workflow   │ │  Pipeline  │ │  Attachment   │
-            │  Service  │ │  Service   │ │  Service    │ │  Service   │ │   Service     │
-            └─────┬────┘ └─────┬─────┘ └──────┬──────┘ └─────┬─────┘ └──────┬───────┘
-                  │            │              │              │              │
-                  │            └──────┬───────┴──────┬───────┴──────┬───────┘
-                  │                   │  Event Bus (RabbitMQ/Kafka)  │
+            │ Identity │ │   Idea    │ │  Review &  │ │  Funding  │ │ Document /   │
+            │ & Access │ │Submission │ │  Workflow  │ │  Pipeline │ │  Attachment  │
+            │ Service  │ │  Service  │ │  Service   │ │  Service  │ │   Service    │
+            └─────┬────┘ └─────┬─────┘ └──────┬─────┘ └─────┬─────┘ └──────┬───────┘
+                  │            │              │             │              │
+                  │            └──────┬───────┴──────┬──────┴──────┬───────┘
+                  │                   │  Event Bus (Kafka)  
                   │                   └───────────────┬──────────────┘
                   │                          ┌─────────▼──────────┐
-                  │                          │  Notification        │
-                  │                          │  Service              │
-                  │                          └───────────────────────┘
+                  │                          │  Notification      │
+                  │                          │  Service           │
+                  │                          └────────────────────┘
                   │                          ┌───────────────────────┐
                   └─────────────────────────►│  Reporting/Analytics  │
-                                              │  Service (read model)│
-                                              └───────────────────────┘
+                                             │  Service (read model) │
+                                             └───────────────────────┘
 
    Config Server + Service Registry (Spring Cloud Config + Eureka, or .NET equivalent) — all services
 ```
