@@ -6,7 +6,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Innovation Hub · Resources</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
@@ -16,57 +17,57 @@
             theme: {
                 extend: {
                     colors: {
-                        "on-surface": "#1c1b1b",
-                        "on-primary-fixed": "#410001",
-                        "on-error": "#ffffff",
-                        "surface-container-high": "#eae7e7",
-                        "primary-fixed": "#ffdad5",
-                        "tertiary": "#686000",
-                        "outline-variant": "#dcc0bc",
-                        "on-primary-fixed-variant": "#802820",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#663e00",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-container": "#6c4100",
+                        "secondary": "#875300",
                         "tertiary-container": "#b9ae43",
-                        "surface-tint": "#9f3f35",
-                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-high": "#eae7e7",
                         "tertiary-fixed": "#f2e574",
-                        "secondary-fixed-dim": "#ffb964",
-                        "on-tertiary-fixed-variant": "#4e4800",
-                        "error": "#ba1a1a",
-                        "secondary-container": "#fcaa3e",
-                        "primary-fixed-dim": "#ffb4a9",
+                        "primary-fixed": "#ffdad5",
                         "inverse-surface": "#313030",
+                        "secondary-fixed-dim": "#ffb964",
+                        "primary-fixed-dim": "#ffb4a9",
+                        "on-surface": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#d5c95b",
+                        "secondary-fixed": "#ffddb9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#410001",
+                        "primary-container": "#5a0c08",
+                        "tertiary": "#686000",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-fixed": "#1f1c00",
+                        "on-primary-container": "#e27264",
+                        "background": "#fcf9f8",
+                        "secondary-container": "#fcaa3e",
                         "inverse-primary": "#ffb4a9",
-                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary-fixed-variant": "#802820",
+                        "surface-tint": "#9f3f35",
+                        "surface": "#fcf9f8",
+                        "on-error-container": "#93000a",
                         "outline": "#89726e",
                         "surface-container-lowest": "#ffffff",
-                        "on-primary": "#ffffff",
-                        "surface-variant": "#e5e2e1",
-                        "secondary-fixed": "#ffddb9",
-                        "on-tertiary-fixed": "#1f1c00",
-                        "on-tertiary": "#ffffff",
-                        "background": "#fcf9f8",
-                        "on-background": "#1c1b1b",
-                        "surface-dim": "#dcd9d9",
-                        "surface": "#fcf9f8",
-                        "surface-bright": "#fcf9f8",
-                        "on-primary-container": "#e27264",
-                        "on-secondary-fixed-variant": "#663e00",
-                        "on-secondary-fixed": "#2b1700",
-                        "surface-container": "#f0eded",
-                        "primary-container": "#5a0c08",
-                        "on-secondary": "#ffffff",
-                        "tertiary-fixed-dim": "#d5c95b",
-                        "secondary": "#875300",
-                        "on-error-container": "#93000a",
-                        "surface-container-highest": "#e5e2e1",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f3f0ef",
                         "on-tertiary-container": "#464000",
+                        "on-tertiary-fixed-variant": "#4e4800",
                         "primary": "#380001",
-                        "on-secondary-container": "#6c4100",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dcd9d9",
+                        "outline-variant": "#dcc0bc",
+                        "on-background": "#1c1b1b",
+                        "surface-container": "#f0eded",
+                        "on-error": "#ffffff",
                         "on-surface-variant": "#56423f",
-                        "surface-container-low": "#f6f3f2",
-                        "cream-bg": "#FEF7EF",
-                        "soft-yellow": "#FFF27F",
-                        "maroon-accent": "#5A0C08",
-                        "gold-accent": "#DD9024"
+                        "on-secondary-fixed": "#2b1700",
+                        "brand-maroon": "#5A0C08",
+                        "brand-gold": "#DD9024",
+                        "brand-cream": "#FFF27F",
+                        "brand-bg": "#FEF7EF"
                     },
                     borderRadius: {
                         DEFAULT: "0.125rem",
@@ -75,439 +76,495 @@
                         full: "0.75rem"
                     },
                     spacing: {
-                        xl: "80px",
-                        lg: "48px",
                         base: "8px",
                         sm: "12px",
                         gutter: "24px",
-                        md: "24px",
+                        xl: "80px",
+                        xs: "4px",
                         margin: "32px",
-                        xs: "4px"
+                        md: "24px",
+                        lg: "48px"
                     },
                     fontFamily: {
                         "label-sm": ["Public Sans"],
-                        "label-md": ["Public Sans"],
-                        "headline-md": ["Public Sans"],
                         "body-lg": ["Public Sans"],
                         "headline-lg": ["Public Sans"],
-                        "title-lg": ["Public Sans"],
-                        "display-lg": ["Public Sans"],
+                        "label-md": ["Public Sans"],
                         "body-md": ["Public Sans"],
-                        "headline-lg-mobile": ["Public Sans"]
-                    },
-                    fontSize: {
-                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
-                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
-                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
-                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
-                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
-                        "title-lg": ["20px", { lineHeight: "28px", fontWeight: "600" }],
-                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
-                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
-                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }]
+                        "title-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"]
                     }
                 }
             }
         }
     </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
         body {
             background-color: #FEF7EF;
         }
 
-        ::-webkit-scrollbar {
-            width: 6px;
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        ::-webkit-scrollbar-track {
-            background: transparent;
+        .shadow-soft {
+            box-shadow: 0 4px 20px -2px rgba(90, 12, 8, 0.04);
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #dcc0bc;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #89726e;
-        }
-
-        .resource-card {
-            transition: all 0.2s ease;
-        }
-
-        .resource-card:hover {
+        .shadow-lift:hover {
+            box-shadow: 0 10px 30px -5px rgba(90, 12, 8, 0.08);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(90, 12, 8, 0.08);
+            transition: all 0.3s ease;
         }
 
         .category-chip {
-            transition: all 0.15s ease;
+            transition: all 0.2s ease;
             cursor: pointer;
         }
 
         .category-chip.active {
-            background-color: #DD9024;
+            background-color: #5A0C08;
             color: white;
-            border-color: #DD9024;
+            border-color: #5A0C08;
         }
 
         .category-chip:hover:not(.active) {
             background-color: #f0eded;
         }
+
+        /* Prevent text selection on interactive elements to reinforce read-only feel */
+        .no-select {
+            user-select: none;
+        }
     </style>
 </head>
 
-<body class="text-on-surface font-body-md overflow-hidden h-screen flex">
+<body class="font-body-md text-on-surface">
 
     <!-- ===== SIDEBAR ===== -->
-    <nav class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-maroon-accent z-50 shadow-md">
-        <div class="flex items-center gap-sm mb-lg px-xs">
-            <img alt="Bank of Uganda Crest" class="w-12 h-12 rounded-full object-contain bg-white p-1"
-                src="../BOU logo.png" />
-            <div class="flex flex-col">
-                <span class="font-headline-md text-headline-md font-bold text-on-primary">IMTS</span>
-                <span class="font-label-sm text-label-sm text-on-primary opacity-70">Digital Vault of Ideas</span>
+    <aside
+        class="fixed left-0 top-0 h-full w-64 bg-primary-container text-on-primary-container flex flex-col py-lg z-50 shadow-md">
+        <div class="px-margin mb-lg flex items-center gap-3">
+            <div
+                class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center font-bold text-on-secondary shadow-md">
+                IM</div>
+            <div>
+                <h1 class="font-headline-md text-headline-md font-bold text-secondary leading-tight">IMTS</h1>
+                <p class="text-[10px] uppercase tracking-widest opacity-70">Innovation Vault</p>
             </div>
         </div>
-
-        <div class="flex-1 space-y-xs">
-            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+        <nav class="flex-1 space-y-1 px-2">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg"
                 href="staffdashboard.html">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-label-md text-label-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+            <a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg"
                 href="MyIdeas.html">
                 <span class="material-symbols-outlined">lightbulb</span>
                 <span class="font-label-md text-label-md">My Ideas</span>
             </a>
-            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
-                href="submitinnovationideaform.html">
-                <span class="material-symbols-outlined">add_circle</span>
-                <span class="font-label-md text-label-md">Submit New Idea</span>
-            </a>
-            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors relative"
-                href="notifications.html">
-                <span class="material-symbols-outlined">notifications</span>
-                <span class="font-label-md text-label-md">Notifications</span>
-                <span
-                    class="absolute right-sm top-1/2 -translate-y-1/2 bg-secondary text-on-secondary text-[10px] px-1.5 py-0.5 rounded-full">3</span>
-            </a>
-
-            <!-- Active: Resources -->
-            <a class="flex items-center gap-sm p-sm transition-all bg-gold-accent text-on-secondary rounded-lg font-bold scale-95 duration-150 ease-in-out"
+            <a class="flex items-center gap-3 px-4 py-3 bg-secondary text-on-secondary font-medium shadow-md rounded-lg mx-2"
                 href="resources.html">
                 <span class="material-symbols-outlined">folder_open</span>
                 <span class="font-label-md text-label-md">Resources</span>
             </a>
-
-            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+            <a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg"
+                href="notifications.html">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="font-label-md text-label-md">Notifications</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg"
                 href="settings.html">
                 <span class="material-symbols-outlined">settings</span>
                 <span class="font-label-md text-label-md">Settings</span>
             </a>
-        </div>
-
-        <div class="mt-auto border-t border-on-primary-fixed-variant/20 pt-md">
+        </nav>
+        <div class="mt-auto px-4">
             <button onclick="window.location.href='submitinnovationideaform.html'"
-                class="w-full bg-gold-accent hover:bg-secondary transition-colors text-black font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
-                <span class="font-label-md text-label-md">Submit Idea</span>
+                class="w-full bg-brand-gold text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-lg">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span>Submit New Idea</span>
             </button>
         </div>
-    </nav>
+    </aside>
 
     <!-- ===== MAIN CONTENT ===== -->
-    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto bg-cream-bg">
+    <main class="ml-64 flex flex-col min-h-screen">
 
-        <!-- ===== TOP BAR ===== -->
+        <!-- ===== TOP APP BAR ===== -->
         <header
-            class="flex justify-between items-center w-full px-gutter h-16 sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-outline-variant">
-            <div class="flex flex-col">
-                <h1 class="font-title-lg text-title-lg text-primary leading-tight">Resources</h1>
-                <p class="font-label-sm text-label-sm text-on-surface-variant">Browse and access innovation resources,
-                    templates, and guidelines</p>
-            </div>
-            <div class="flex items-center gap-gutter">
-                <div
-                    class="relative hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-sm py-1.5 w-64 focus-within:border-gold-accent transition-colors">
-                    <span class="material-symbols-outlined text-outline">search</span>
-                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline"
+            class="w-full h-16 flex justify-between items-center px-margin py-base bg-surface border-b border-outline-variant shadow-sm z-40">
+            <div class="flex items-center gap-base flex-1 max-w-xl">
+                <div class="relative w-full">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-body-md focus:ring-2 focus:ring-brand-gold transition-all"
                         placeholder="Search resources..." type="text" id="searchResources" />
                 </div>
-                <div class="flex items-center gap-sm">
-                    <button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
-                        <span class="material-symbols-outlined text-primary">account_balance</span>
-                    </button>
-                    <button onclick="window.location.href='support.html'"
-                        class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
-                        <span class="material-symbols-outlined text-primary">help_outline</span>
-                    </button>
-                    <div class="h-8 w-px bg-outline-variant mx-xs"></div>
-                    <div class="flex items-center gap-xs cursor-pointer group">
-                        <div class="w-10 h-10 rounded-full border-2 border-gold-accent overflow-hidden">
-                            <img class="w-full h-full object-cover" alt="Portrait of Jonathan Doe"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk3WQTswPIr0Jl5tuV4MiL0FNAjrjdZygecSzuqU9k68yUxMD8ypOkB0Utq1c6DFrIbFp8-Hno8OtDkUeVR7QGVx1f45JGbS1rTRBChgWZC5_KUNEPzDyoz_9dPM_567uqWHODI_nIH7fkj5j-5AAt5edKvviVCsBYJz0XMhZ0vojkrGeq0B7mYUOh-XyJpk450rpZjpaOnDxgwvbqS6JeyJqxZwwjttr-vOW9P9JeqJySGAqNRNYUbw" />
-                        </div>
-                        <span
-                            class="material-symbols-outlined text-on-surface group-hover:text-gold-accent transition-colors">keyboard_arrow_down</span>
+            </div>
+            <div class="flex items-center gap-md">
+                <button class="p-2 hover:bg-surface-container-high rounded-full transition-colors relative">
+                    <span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+                </button>
+                <button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">help</span>
+                </button>
+                <div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+                    <div class="text-right hidden md:block">
+                        <p class="font-label-md text-label-md text-on-surface">Jonathan Doe</p>
+                        <p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">IT Department</p>
                     </div>
+                    <img class="w-10 h-10 rounded-full border-2 border-brand-gold object-cover" alt="Profile"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk3WQTswPIr0Jl5tuV4MiL0FNAjrjdZygecSzuqU9k68yUxMD8ypOkB0Utq1c6DFrIbFp8-Hno8OtDkUeVR7QGVx1f45JGbS1rTRBChgWZC5_KUNEPzDyoz_9dPM_567uqWHODI_nIH7fkj5j-5AAt5edKvviVCsBYJz0XMhZ0vojkrGeq0B7mYUOh-XyJpk450rpZjpaOnDxgwvbqS6JeyJqxZwwjttr-vOW9P9JeqJySGAqNRNYUbw" />
                 </div>
             </div>
         </header>
 
-        <!-- ===== RESOURCES CONTENT ===== -->
-        <div class="max-w-[1280px] mx-auto w-full px-gutter py-lg">
+        <!-- ===== CONTENT ===== -->
+        <div class="p-margin flex flex-col gap-lg max-w-[1400px] mx-auto w-full">
 
-            <!-- ===== CATEGORY FILTERS ===== -->
-            <div class="flex flex-wrap items-center gap-sm mb-lg">
-                <span class="font-label-md text-label-md text-on-surface-variant mr-xs">Filter by:</span>
+            <!-- Page Header -->
+            <section class="flex flex-col md:flex-row justify-between items-end gap-md">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-brand-maroon">Innovation Resources Library</h2>
+                    <p class="text-body-lg text-on-surface-variant">Browse and access key documents, policies,
+                        templates, and guides</p>
+                </div>
+                <div
+                    class="text-sm text-on-surface-variant/70 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant">
+                    <span class="material-symbols-outlined text-sm align-middle mr-1">info</span>
+                    View &amp; download only
+                </div>
+            </section>
+
+            <!-- Statistics Row -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                <div
+                    class="bg-surface-container-lowest p-md rounded-xl shadow-soft border border-outline-variant flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-brand-maroon">
+                        <span class="material-symbols-outlined">folder_open</span>
+                    </div>
+                    <div>
+                        <p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Total Resources</p>
+                        <p class="text-headline-md font-bold text-brand-maroon">47</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-container-lowest p-md rounded-xl shadow-soft border border-outline-variant flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary">
+                        <span class="material-symbols-outlined">new_releases</span>
+                    </div>
+                    <div>
+                        <p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Recently Added</p>
+                        <p class="text-headline-md font-bold text-brand-maroon">08</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-container-lowest p-md rounded-xl shadow-soft border border-outline-variant flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-brand-cream/30 flex items-center justify-center text-brand-gold">
+                        <span class="material-symbols-outlined">download_for_offline</span>
+                    </div>
+                    <div>
+                        <p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Most Downloaded</p>
+                        <p class="text-headline-md font-bold text-brand-maroon">03</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-brand-cream/20 p-md rounded-xl shadow-soft border border-brand-gold/30 flex flex-col justify-center">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Storage Used</p>
+                        <p class="text-label-md font-bold text-brand-maroon">245 MB / 1 GB</p>
+                    </div>
+                    <div class="w-full bg-surface-container-high rounded-full h-2">
+                        <div class="bg-brand-gold h-2 rounded-full" style="width: 24.5%;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category Filters -->
+            <section class="flex flex-wrap items-center gap-2 py-2 overflow-x-auto no-scrollbar">
                 <button
-                    class="category-chip active px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                    class="category-chip active px-4 py-1.5 bg-brand-maroon text-white rounded-full text-label-md shadow-md"
                     data-category="all">All Resources</button>
-                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
-                    data-category="policy">Policy &amp; Frameworks</button>
-                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                <button
+                    class="category-chip px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors"
+                    data-category="policy">Policy &amp; Guidelines</button>
+                <button
+                    class="category-chip px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors"
                     data-category="templates">Templates</button>
-                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                <button
+                    class="category-chip px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors"
                     data-category="training">Training &amp; Guides</button>
-                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
-                    data-category="external">External Links</button>
-                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                <button
+                    class="category-chip px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors"
+                    data-category="research">Research &amp; Reports</button>
+                <button
+                    class="category-chip px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors"
                     data-category="tools">Tools &amp; Software</button>
-            </div>
+                <button
+                    class="category-chip px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors"
+                    data-category="external">External Links</button>
+            </section>
 
-            <!-- ===== RESOURCES GRID ===== -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md" id="resourcesGrid">
-                <!-- Resource cards will be rendered by JavaScript -->
-            </div>
+            <!-- Resources Grid -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter mb-lg"
+                id="resourcesGrid">
+                <!-- Cards rendered by JavaScript -->
+            </section>
 
-            <!-- ===== EMPTY STATE (hidden by default) ===== -->
+            <!-- Empty State -->
             <div id="emptyState" class="text-center py-xl hidden">
                 <span class="material-symbols-outlined text-5xl text-outline/50">search_off</span>
                 <p class="font-title-lg text-title-lg text-on-surface-variant mt-sm">No resources found</p>
                 <p class="text-on-surface-variant/70">Try adjusting your search or filter criteria.</p>
             </div>
 
-            <!-- ===== UPLOAD RESOURCE CTA ===== -->
+            <!-- Simple note about resources -->
             <div
-                class="mt-lg bg-soft-yellow/30 border-2 border-dashed border-gold-accent/40 rounded-xl p-md text-center">
-                <span class="material-symbols-outlined text-gold-accent text-3xl">upload_file</span>
-                <h3 class="font-title-lg text-title-lg text-maroon-accent mt-xs">Have a resource to share?</h3>
-                <p class="text-on-surface-variant text-sm mb-sm">Contribute to the innovation knowledge base by
-                    uploading useful documents, templates, or links.</p>
-                <button
-                    class="px-lg py-sm bg-gold-accent text-white font-label-md text-label-md rounded-lg shadow-sm hover:brightness-95 transition-all"
-                    onclick="alert('Upload resource modal would open here')">
-                    <span class="material-symbols-outlined text-sm align-middle mr-xs">upload</span>
-                    Upload Resource
-                </button>
+                class="mt-lg bg-surface-container-low border border-outline-variant rounded-xl p-md text-center text-on-surface-variant/70 text-sm">
+                <span class="material-symbols-outlined text-sm align-middle mr-1">info</span>
+                Resources are provided for reference and download. For questions about specific resources, please
+                contact the Innovation Team.
             </div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
+        <!-- Footer -->
         <footer
-            class="mt-auto px-gutter py-md bg-white border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
-            <div class="flex items-center gap-sm">
-                <img alt="Logo" class="w-8 h-8 object-contain"
-                    src="https://lh3.googleusercontent.com/aida/AP1WRLtBrPb474XFFVnZZ9XQnjnYQxQJHeIcpjUgsbB8oetY3lHgrRHZnC40-6Nv_Ig_Va_WM3UmTk-BdgMUfhFgY1uMKofsVkgdIH7icTi8-mok-J4N0ZAa7N0Wct4GPs-7qPs1DBwNCMXNdZaSYwtMWSLpeHDiLqOdundCH8duJtO6NnrKBvLySEqZ2eGvCrCtn-vyI3hvV5UfFkFqKNr7cle3qSVCDey6HZOyouleI1l0uRGQaPhKIzUe07HN" />
-                <p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Bank of Uganda Innovation Hub. All
-                    Rights Reserved.</p>
+            class="w-full py-md ml-0 bg-surface-container-lowest border-t border-outline-variant flex flex-row justify-between items-center px-margin mt-auto">
+            <div class="flex items-center gap-4">
+                <span class="font-label-md text-label-md font-semibold text-primary">IMTS</span>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Bank of Uganda. ISO 27001
+                    Certified.</p>
             </div>
-            <div class="flex items-center gap-md">
-                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
+            <div class="flex gap-gutter">
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline"
                     href="#">Security Policy</a>
-                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="#">Terms
-                    of Innovation</a>
-                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
-                    href="support.html">Contact Support</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline"
+                    href="#">Compliance Standards</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline"
+                    href="#">Contact Support</a>
             </div>
         </footer>
     </main>
 
-    <!-- ===== FAB ===== -->
-    <button onclick="window.location.href='submitinnovationideaform.html'"
-        class="fixed bottom-gutter right-gutter w-14 h-14 bg-maroon-accent text-on-primary rounded-full shadow-lg flex items-center justify-center group hover:scale-110 active:scale-95 transition-all duration-300 z-50">
-        <span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform duration-300"
-            style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
-    </button>
-
     <script>
         // ===== RESOURCES DATA =====
-        const resources = [
-            {
-                id: 1,
-                title: "Innovation Policy Framework",
-                description: "Comprehensive policy document outlining the innovation management process, evaluation criteria, and implementation guidelines.",
-                category: "policy",
-                type: "PDF",
-                size: "2.4 MB",
-                icon: "description",
-                date: "Updated Oct 2024",
-                link: "#"
-            },
-            {
-                id: 2,
-                title: "Idea Submission Guidelines",
-                description: "Step-by-step guide on how to prepare and submit innovation ideas, including required sections and best practices.",
-                category: "policy",
-                type: "PDF",
-                size: "1.8 MB",
-                icon: "picture_as_pdf",
-                date: "Updated Sep 2024",
-                link: "#"
-            },
-            {
-                id: 3,
-                title: "Innovation Impact Template",
-                description: "Excel template for measuring and documenting the impact of implemented innovations, with pre-built KPI dashboards.",
-                category: "templates",
-                type: "Excel",
-                size: "856 KB",
-                icon: "table_chart",
-                date: "Updated Aug 2024",
-                link: "#"
-            },
-            {
-                id: 4,
-                title: "Innovation Training Video Series",
-                description: "Five-part video series covering the innovation lifecycle from ideation to implementation, featuring expert insights.",
-                category: "training",
-                type: "Video",
-                size: "5 videos",
-                icon: "video_library",
-                date: "Updated Jul 2024",
-                link: "#"
-            },
-            {
-                id: 5,
-                title: "BOU Innovation Portal",
-                description: "External portal with additional resources, case studies, and collaboration tools for innovation practitioners.",
-                category: "external",
-                type: "Link",
-                size: "External",
-                icon: "link",
-                date: "Updated Jun 2024",
-                link: "#"
-            },
-            {
-                id: 6,
-                title: "Innovation Project Canvas",
-                description: "Strategic canvas template for mapping innovation projects, including value proposition, stakeholders, and success metrics.",
-                category: "templates",
-                type: "PDF",
-                size: "1.2 MB",
-                icon: "dashboard",
-                date: "Updated Oct 2024",
-                link: "#"
-            },
-            {
-                id: 7,
-                title: "Agile Innovation Methodology",
-                description: "Guide to applying agile principles in innovation projects, with practical frameworks and team collaboration strategies.",
-                category: "training",
-                type: "PDF",
-                size: "3.1 MB",
-                icon: "menu_book",
-                date: "Updated Sep 2024",
-                link: "#"
-            },
-            {
-                id: 8,
-                title: "Innovation Metrics Dashboard",
-                description: "Power BI template for tracking innovation KPIs and visualizing progress across different innovation portfolios.",
-                category: "tools",
-                type: "Power BI",
-                size: "4.2 MB",
-                icon: "insights",
-                date: "Updated Aug 2024",
-                link: "#"
-            },
-            {
-                id: 9,
-                title: "Regulatory Innovation Guidelines",
-                description: "Framework for developing regulatory innovations in the financial sector, with compliance considerations and risk assessment.",
-                category: "policy",
-                type: "PDF",
-                size: "2.8 MB",
-                icon: "gavel",
-                date: "Updated Jul 2024",
-                link: "#"
-            }
-        ];
+        const resources = [{
+            id: 1,
+            title: "Innovation Strategy 2024-2026",
+            description: "Comprehensive policy document outlining the innovation management process, evaluation criteria, and implementation guidelines.",
+            category: "policy",
+            type: "PDF",
+            size: "4.2 MB",
+            icon: "description",
+            downloads: 128,
+            uploadedBy: "James O.",
+            date: "Oct 2024",
+            status: "Published",
+            link: "#"
+        }, {
+            id: 2,
+            title: "Project Budget Template V2",
+            description: "Excel template for measuring and documenting the impact of implemented innovations, with pre-built KPI dashboards.",
+            category: "templates",
+            type: "XLSX",
+            size: "850 KB",
+            icon: "table_chart",
+            downloads: 45,
+            uploadedBy: "Sarah M.",
+            date: "Sep 2024",
+            status: "Published",
+            link: "#"
+        }, {
+            id: 3,
+            title: "Innovation Pitch Deck 2024",
+            description: "Five-part video series covering the innovation lifecycle from ideation to implementation, featuring expert insights.",
+            category: "training",
+            type: "PPTX",
+            size: "12.5 MB",
+            icon: "slideshow",
+            downloads: 0,
+            uploadedBy: "Brian K.",
+            date: "Aug 2024",
+            status: "Draft",
+            link: "#"
+        }, {
+            id: 4,
+            title: "Research Survey Results - Q1",
+            description: "External portal with additional resources, case studies, and collaboration tools for innovation practitioners.",
+            category: "research",
+            type: "ZIP",
+            size: "85 MB",
+            icon: "folder_zip",
+            downloads: 22,
+            uploadedBy: "David A.",
+            date: "Jul 2024",
+            status: "Published",
+            link: "#"
+        }, {
+            id: 5,
+            title: "Innovation Project Canvas",
+            description: "Strategic canvas template for mapping innovation projects, including value proposition, stakeholders, and success metrics.",
+            category: "templates",
+            type: "PDF",
+            size: "1.2 MB",
+            icon: "dashboard",
+            downloads: 67,
+            uploadedBy: "Sarah M.",
+            date: "Oct 2024",
+            status: "Published",
+            link: "#"
+        }, {
+            id: 6,
+            title: "Agile Innovation Methodology",
+            description: "Guide to applying agile principles in innovation projects, with practical frameworks and team collaboration strategies.",
+            category: "training",
+            type: "PDF",
+            size: "3.1 MB",
+            icon: "menu_book",
+            downloads: 34,
+            uploadedBy: "James O.",
+            date: "Sep 2024",
+            status: "Published",
+            link: "#"
+        }, {
+            id: 7,
+            title: "Innovation Metrics Dashboard",
+            description: "Power BI template for tracking innovation KPIs and visualizing progress across different innovation portfolios.",
+            category: "tools",
+            type: "Power BI",
+            size: "4.2 MB",
+            icon: "insights",
+            downloads: 18,
+            uploadedBy: "David A.",
+            date: "Aug 2024",
+            status: "Published",
+            link: "#"
+        }, {
+            id: 8,
+            title: "Regulatory Innovation Guidelines",
+            description: "Framework for developing regulatory innovations in the financial sector, with compliance considerations and risk assessment.",
+            category: "policy",
+            type: "PDF",
+            size: "2.8 MB",
+            icon: "gavel",
+            downloads: 56,
+            uploadedBy: "Sarah M.",
+            date: "Jul 2024",
+            status: "Published",
+            link: "#"
+        }, {
+            id: 9,
+            title: "BOU Innovation Portal",
+            description: "External portal with additional resources, case studies, and collaboration tools for innovation practitioners.",
+            category: "external",
+            type: "Link",
+            size: "External",
+            icon: "link",
+            downloads: 89,
+            uploadedBy: "Brian K.",
+            date: "Jun 2024",
+            status: "Published",
+            link: "#"
+        }];
 
-        // ===== RENDER RESOURCES =====
-        function renderResources(filterCategory = 'all', searchTerm = '') {
+        // ===== RENDER FUNCTION =====
+        function renderResources(category = 'all', searchTerm = '') {
             const grid = document.getElementById('resourcesGrid');
-            const emptyState = document.getElementById('emptyState');
+            const empty = document.getElementById('emptyState');
 
-            const filtered = resources.filter(res => {
-                const categoryMatch = filterCategory === 'all' || res.category === filterCategory;
+            const filtered = resources.filter(r => {
+                const catMatch = category === 'all' || r.category === category;
                 const searchMatch = searchTerm === '' ||
-                    res.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    res.description.toLowerCase().includes(searchTerm.toLowerCase());
-                return categoryMatch && searchMatch;
+                    r.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    r.description.toLowerCase().includes(searchTerm.toLowerCase());
+                return catMatch && searchMatch;
             });
 
             if (filtered.length === 0) {
                 grid.innerHTML = '';
-                emptyState.classList.remove('hidden');
+                empty.classList.remove('hidden');
                 return;
             }
-            emptyState.classList.add('hidden');
+            empty.classList.add('hidden');
 
-            grid.innerHTML = filtered.map(res => `
-        <div class="resource-card bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md cursor-pointer" onclick="window.open('${res.link}', '_blank')">
-          <div class="flex items-start gap-sm mb-sm">
-            <div class="w-10 h-10 rounded-full bg-soft-yellow/50 flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-gold-accent text-xl">${res.icon}</span>
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="font-title-lg text-title-lg text-maroon-accent truncate">${res.title}</h3>
-              <div class="flex items-center gap-xs flex-wrap mt-xs">
-                <span class="text-xs font-medium px-xs py-0.5 rounded-full bg-primary-fixed/20 text-primary-container">${res.type}</span>
-                <span class="text-xs text-on-surface-variant/60">${res.size}</span>
-                <span class="text-xs text-on-surface-variant/60">•</span>
-                <span class="text-xs text-on-surface-variant/60">${res.date}</span>
+            grid.innerHTML = filtered.map(r => {
+                const statusColor = r.status === 'Published' ? 'bg-green-50 text-green-700 border-green-200' :
+                    'bg-amber-50 text-amber-700 border-amber-200';
+                const statusDot = r.status === 'Published' ? 'bg-green-500' : 'bg-amber-500';
+                return `
+          <div class="bg-white rounded-xl border border-outline-variant p-md flex flex-col gap-md shadow-soft shadow-lift group relative">
+            <div class="absolute top-4 right-4">
+              <div class="flex items-center gap-1.5 px-2 py-1 ${statusColor} rounded-full text-[10px] font-bold border">
+                <span class="w-1.5 h-1.5 ${statusDot} rounded-full"></span>
+                ${r.status}
               </div>
             </div>
+            <div class="w-full h-32 bg-surface-container-low rounded-lg flex items-center justify-center text-on-surface-variant/40 transition-colors group-hover:bg-surface-container">
+              <span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">${r.icon}</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h4 class="font-title-lg text-title-lg text-brand-maroon leading-tight">${r.title}</h4>
+              <span class="inline-block px-2 py-0.5 bg-brand-cream/30 text-secondary text-[11px] font-bold rounded w-fit capitalize">${r.category.replace('_', ' & ')}</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-label-sm text-on-surface-variant">
+              <div>
+                <p class="text-[10px] uppercase opacity-60">Type</p>
+                <p class="font-bold">${r.type}</p>
+              </div>
+              <div>
+                <p class="text-[10px] uppercase opacity-60">Size</p>
+                <p class="font-bold">${r.size}</p>
+              </div>
+              <div>
+                <p class="text-[10px] uppercase opacity-60">DLs</p>
+                <p class="font-bold">${r.downloads}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-outline-variant">
+              <div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-[10px] font-bold text-on-surface-variant">${r.uploadedBy.charAt(0)}</div>
+              <p class="text-[11px] text-on-surface-variant">Uploaded by <span class="font-semibold text-on-surface">${r.uploadedBy}</span></p>
+            </div>
+            <!-- ONLY Download button - NO Edit, NO Delete, NO Manage -->
+            <button class="w-full py-2 bg-brand-maroon text-white rounded-lg text-label-md flex items-center justify-center gap-2 hover:bg-primary-container transition-colors" onclick="handleDownload('${r.title}')">
+              <span class="material-symbols-outlined text-[18px]">download</span> Download
+            </button>
           </div>
-          <p class="text-on-surface-variant text-sm line-clamp-2">${res.description}</p>
-          <div class="mt-sm flex items-center justify-between">
-            <span class="text-xs text-on-surface-variant/60 capitalize">${res.category}</span>
-            <span class="text-xs text-gold-accent font-medium flex items-center gap-xs">
-              View
-              <span class="material-symbols-outlined text-sm">open_in_new</span>
-            </span>
-          </div>
-        </div>
-      `).join('');
+        `;
+            }).join('');
         }
 
-        // ===== CATEGORY FILTER INTERACTION =====
+        // ===== DOWNLOAD HANDLER =====
+        function handleDownload(title) {
+            // Simulate download - in production this would trigger the actual file download
+            alert(`Downloading "${title}"...\n\nIn a production environment, this would initiate the file download.`);
+        }
+
+        // ===== CATEGORY FILTER =====
         document.querySelectorAll('.category-chip').forEach(chip => {
             chip.addEventListener('click', function () {
                 document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
                 const category = this.dataset.category;
-                const searchTerm = document.getElementById('searchResources').value;
-                renderResources(category, searchTerm);
+                const search = document.getElementById('searchResources').value;
+                renderResources(category, search);
             });
         });
 
-        // ===== SEARCH FUNCTIONALITY =====
+        // ===== SEARCH =====
         document.getElementById('searchResources').addEventListener('input', function () {
-            const activeChip = document.querySelector('.category-chip.active');
-            const category = activeChip ? activeChip.dataset.category : 'all';
+            const active = document.querySelector('.category-chip.active');
+            const category = active ? active.dataset.category : 'all';
             renderResources(category, this.value);
         });
 
-        // ===== INITIAL RENDER =====
+        // ===== INIT =====
         renderResources('all', '');
     </script>
 </body>
