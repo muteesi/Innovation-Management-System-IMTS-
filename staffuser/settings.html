@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Settings | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #FEF7EF;
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-[#FEF7EF] text-slate-800 font-body-md min-h-screen">
+    <!-- SIDE NAVIGATION SHELL -->
+    <aside class="h-screen w-64 fixed left-0 top-0 bg-[#5A0C08] border-r border-[#DD9024] border-opacity-30 shadow-md flex flex-col py-6 px-4 z-50 text-white">
+        <div class="flex items-center gap-3 mb-8 px-2">
+            <img alt="Bank of Uganda Crest" class="h-10 w-10 object-contain bg-white rounded-full p-1" src="../BOU logo.png"/>
+            <div class="flex flex-col">
+                <span class="font-bold text-lg tracking-tight text-white">IMTS</span>
+                <span class="text-[10px] text-amber-400">Staff Portal</span>
+            </div>
+        </div>
+        <nav class="flex-grow space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-350 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="staffdashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-355 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="MyIdeas.html">
+                <span class="material-symbols-outlined">lightbulb</span>
+                My Ideas
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-355 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="submitinnovationideaform.html">
+                <span class="material-symbols-outlined">add_circle</span>
+                Submit New Idea
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-355 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg relative" href="notifications.html">
+                <span class="material-symbols-outlined">notifications</span>
+                Notifications
+                <span class="absolute right-3 bg-[#DD9024] text-white text-[10px] px-1.5 py-0.5 rounded-full">3</span>
+            </a>
+            <!-- Active: Settings -->
+            <a class="flex items-center gap-3 px-4 py-3 bg-[#DD9024] text-white font-bold transition-colors duration-200 text-sm rounded-lg" href="settings.html">
+                <span class="material-symbols-outlined filled-icon">settings</span>
+                Settings
+            </a>
+        </nav>
+        <div class="pt-4 border-t border-slate-700 mt-auto">
+            <a class="flex items-center gap-3 px-4 py-2.5 text-slate-300 hover:bg-[#DD9024]/20 hover:text-white transition-all text-xs rounded-lg" href="support.html">
+                <span class="material-symbols-outlined text-sm">help</span>
+                Support
+            </a>
+            <a class="flex items-center gap-3 px-4 py-2.5 text-red-400 hover:bg-red-500/10 transition-all text-xs rounded-lg" href="../login.html">
+                <span class="material-symbols-outlined text-sm">logout</span>
+                Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN SECTION -->
+    <main class="ml-64 p-8 max-w-[1280px] mx-auto w-full">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-[#5A0C08] tracking-tight">Staff Portal Settings</h2>
+            <p class="text-sm text-slate-500 mt-1">Configure layout options, change password credentials and toggle notification emails.</p>
+        </div>
+
+        <section class="max-w-[720px] bg-white rounded-xl border border-orange-100 shadow-sm p-6 space-y-6">
+            <!-- Account Info -->
+            <div>
+                <h3 class="text-sm font-bold text-[#5A0C08] mb-3">User Profile Detail</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-650 mb-1">Full Name</label>
+                        <input class="w-full text-xs border border-slate-200 rounded-lg p-2.5 bg-slate-50" type="text" value="Jonathan Doe" readonly/>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-650 mb-1">Official Email</label>
+                        <input class="w-full text-xs border border-slate-200 rounded-lg p-2.5 bg-slate-50" type="email" value="j.doe@bou.or.ug" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-slate-100"/>
+
+            <!-- Notification preferences -->
+            <div>
+                <h3 class="text-sm font-bold text-[#5A0C08] mb-3">Notification Preferences</h3>
+                <div class="space-y-3">
+                    <label class="flex items-start gap-3">
+                        <input class="mt-0.5 border-slate-300 text-[#DD9024] focus:ring-[#DD9024] rounded" type="checkbox" checked/>
+                        <div class="text-xs">
+                            <p class="font-semibold text-slate-700">Email updates on review milestones</p>
+                            <p class="text-[10px] text-slate-400">Receive alert when an evaluator logs comments or updates grades.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <button class="bg-[#5A0C08] hover:bg-opacity-95 text-white font-bold text-xs py-2 px-4 rounded-lg shadow-sm">Save settings</button>
+        </section>
+    </main>
+</body>
+</html>

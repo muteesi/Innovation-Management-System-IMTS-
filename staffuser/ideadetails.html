@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Idea Details | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #FEF7EF;
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-[#FEF7EF] text-slate-800 font-body-md min-h-screen">
+    <!-- SIDE NAVIGATION SHELL -->
+    <aside class="h-screen w-64 fixed left-0 top-0 bg-[#5A0C08] border-r border-[#DD9024] border-opacity-30 shadow-md flex flex-col py-6 px-4 z-50 text-white">
+        <div class="flex items-center gap-3 mb-8 px-2">
+            <img alt="Bank of Uganda Crest" class="h-10 w-10 object-contain bg-white rounded-full p-1" src="../BOU logo.png"/>
+            <div class="flex flex-col">
+                <span class="font-bold text-lg tracking-tight text-white">IMTS</span>
+                <span class="text-[10px] text-amber-400">Staff Portal</span>
+            </div>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-350 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="staffdashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-355 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="MyIdeas.html">
+                <span class="material-symbols-outlined">lightbulb</span>
+                My Ideas
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-355 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="submitinnovationideaform.html">
+                <span class="material-symbols-outlined">add_circle</span>
+                Submit New Idea
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-355 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg relative" href="notifications.html">
+                <span class="material-symbols-outlined">notifications</span>
+                Notifications
+                <span class="absolute right-3 bg-[#DD9024] text-white text-[10px] px-1.5 py-0.5 rounded-full">3</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-355 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="settings.html">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+        </nav>
+        <div class="pt-4 border-t border-slate-700 mt-auto">
+            <a class="flex items-center gap-3 px-4 py-2.5 text-slate-300 hover:bg-[#DD9024]/20 hover:text-white transition-all text-xs rounded-lg" href="support.html">
+                <span class="material-symbols-outlined text-sm">help</span>
+                Support
+            </a>
+            <a class="flex items-center gap-3 px-4 py-2.5 text-red-400 hover:bg-red-500/10 transition-all text-xs rounded-lg" href="../login.html">
+                <span class="material-symbols-outlined text-sm">logout</span>
+                Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN SECTION -->
+    <main class="ml-64 p-8 max-w-[1280px] mx-auto w-full">
+        <!-- Breadcrumb & Header -->
+        <div class="mb-8">
+            <nav class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                <a class="hover:underline" href="staffdashboard.html">Dashboard</a>
+                <span class="material-symbols-outlined text-xs">chevron_right</span>
+                <a class="hover:underline" href="MyIdeas.html">My Ideas</a>
+                <span class="material-symbols-outlined text-xs">chevron_right</span>
+                <span class="text-slate-650">Idea Details</span>
+            </nav>
+            <h2 class="text-2xl font-bold text-[#5A0C08] tracking-tight">Idea #1024 — Unified Retail Settlement API</h2>
+            <p class="text-sm text-slate-500 mt-1">Cross-platform validation tool overview, reviewer commentaries, and developmental status markers.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left 2 Cols: Description and Logs -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Proposal Spec Card -->
+                <div class="bg-white p-6 rounded-xl border border-orange-100 shadow-sm">
+                    <h3 class="font-bold text-sm text-[#5A0C08] mb-4">Submission Summary</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        This system establishes a singular gateway clearing network allowing cooperative banks, telecoms and commercial banking houses to perform direct local transactions at micro-second delays.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 text-xs">
+                        <div>
+                            <span class="text-slate-450 block font-semibold text-[10px] uppercase">Submission Category</span>
+                            <span class="text-slate-700 font-bold block mt-0.5">FinTech & Payments</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-450 block font-semibold text-[10px] uppercase">Co-Authors</span>
+                            <span class="text-slate-700 font-bold block mt-0.5">M. Mukasa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Milestones and Timeline -->
+                <div class="bg-white p-6 rounded-xl border border-orange-100 shadow-sm">
+                    <h3 class="font-bold text-sm text-[#5A0C08] mb-4">Developmental Milestones</h3>
+                    <div class="relative border-l-2 border-orange-150 pl-4 space-y-6">
+                        <div class="relative">
+                            <span class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-white"></span>
+                            <h4 class="text-xs font-bold text-slate-705">Idea Submitted</h4>
+                            <p class="text-[10px] text-slate-400">Oct 24, 2026 - Jonathan Doe</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-[#DD9024] rounded-full border-2 border-white animate-pulse"></span>
+                            <h4 class="text-xs font-bold text-slate-705">Initial Review in Progress</h4>
+                            <p class="text-[10px] text-slate-400">Under evaluation by Milton Reviewer (Innovation Team)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right 1 Col: Status and score card -->
+            <div class="space-y-6">
+                <!-- Current status card -->
+                <div class="bg-white p-6 rounded-xl border border-orange-100 shadow-sm">
+                    <h3 class="font-bold text-xs text-[#5A0C08] uppercase tracking-wider mb-4 pb-2 border-b border-orange-50">Evaluation</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <span class="text-[10px] text-slate-400 font-bold block uppercase mb-1">Status</span>
+                            <span class="bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-full text-xs">REVIEW</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-400 font-bold block uppercase mb-1">Average Evaluation Grade</span>
+                            <span class="text-2xl font-black text-[#5A0C08]">7.8 / 10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

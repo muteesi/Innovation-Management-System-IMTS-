@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>System Settings | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #FEF7EF;
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-slate-800 font-body-md min-h-screen">
+    <!-- SIDE NAVIGATION SHELL -->
+    <aside class="h-screen w-64 fixed left-0 top-0 bg-[#5A0C08] border-r border-[#DD9024] border-opacity-30 shadow-md flex flex-col py-6 px-4 z-50 text-white">
+        <div class="flex items-center gap-3 mb-8 px-2">
+            <img alt="Bank of Uganda Crest" class="h-10 w-10 object-contain bg-white rounded-full p-1" src="../BOU logo.png"/>
+            <div class="flex flex-col">
+                <span class="font-bold text-lg tracking-tight text-white">IMTS</span>
+                <span class="text-[10px] text-amber-400">IT Administration</span>
+            </div>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="admindashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="ITadmin.html">
+                <span class="material-symbols-outlined">group</span>
+                Manage Users
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="manageaccounts.html">
+                <span class="material-symbols-outlined">account_balance_wallet</span>
+                Manage Accounts
+            </a>
+            <!-- Active Tab: System Settings -->
+            <a class="flex items-center gap-3 px-4 py-3 bg-[#DD9024] text-white rounded-lg font-bold transition-transform active:scale-95 text-sm" href="systemsettings.html">
+                <span class="material-symbols-outlined filled-icon">settings</span>
+                System Settings
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="auditlog.html">
+                <span class="material-symbols-outlined">security</span>
+                Audit Log
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="reports.html">
+                <span class="material-symbols-outlined">assessment</span>
+                Reports
+            </a>
+        </nav>
+        <div class="pt-4 border-t border-slate-700 mt-auto">
+            <button onclick="window.location.href='reports.html'" class="w-full bg-[#DD9024] hover:bg-amber-600 text-white font-bold py-2.5 rounded-lg mb-4 text-xs transition-transform active:scale-95">
+                New Security Report
+            </button>
+            <div class="space-y-1">
+                <a class="flex items-center gap-3 px-4 py-2.5 text-slate-300 hover:bg-[#DD9024]/20 hover:text-white transition-all text-xs rounded-lg" href="support.html">
+                    <span class="material-symbols-outlined text-sm">help</span>
+                    Support
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2.5 text-red-400 hover:bg-red-500/10 transition-all text-xs rounded-lg" href="../login.html">
+                    <span class="material-symbols-outlined text-sm">logout</span>
+                    Log Out
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- TOP NAVIGATION SHELL -->
+    <header class="flex justify-between items-center w-full px-6 py-4 ml-64 max-w-[calc(100%-16rem)] bg-white border-b border-orange-100 sticky top-0 z-40">
+        <div class="flex items-center gap-4 flex-1">
+            <span class="text-sm font-bold text-[#5A0C08]">BANK OF UGANDA</span>
+            <div class="h-4 w-px bg-slate-200"></div>
+            <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider">IT Administrative Control Center</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2">
+                <button class="p-2 text-slate-500 hover:text-[#5A0C08] rounded-full hover:bg-slate-55 transition-colors relative">
+                    <span class="material-symbols-outlined text-xl">notifications</span>
+                    <span class="absolute top-1 right-1 w-2 h-2 bg-emerald-500 rounded-full"></span>
+                </button>
+            </div>
+            <div class="h-6 w-px bg-slate-200"></div>
+            <div class="flex items-center gap-3">
+                <div class="text-right">
+                    <p class="text-xs font-bold text-[#5A0C08]">S. Katumba</p>
+                    <p class="text-[9px] text-slate-400 uppercase tracking-tighter">System Administrator</p>
+                </div>
+                <div class="w-8 h-8 rounded-full border border-[#DD9024] bg-slate-300 flex items-center justify-center font-bold text-xs text-[#5A0C08]">SK</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 p-8 max-w-[1280px] mx-auto w-full">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-[#5A0C08] tracking-tight">Global System Settings</h2>
+            <p class="text-sm text-slate-500 mt-1">Configure user login constraints, password requirements, maintenance modes, and security configurations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left 8 Columns: Settings configurations -->
+            <section class="lg:col-span-8 space-y-6">
+                <!-- IP Whitelist Card -->
+                <div class="bg-white rounded-xl border border-orange-100 shadow-sm p-6">
+                    <h3 class="text-sm font-bold text-[#5A0C08] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">lan</span> IP Access Restrictions
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-650 mb-1">Permitted Subnet / IP Range</label>
+                            <input class="w-full text-xs placeholder-slate-400 border border-slate-200 rounded-lg p-2.5 bg-slate-50 focus:ring-[#DD9024] focus:border-[#DD9024] outline-none" type="text" value="10.100.*.*; 10.150.*.*"/>
+                            <p class="text-[10px] text-slate-400 mt-1">Allows connections only from authorized Bank of Uganda subnets.</p>
+                        </div>
+                        <button class="bg-[#5A0C08] text-white hover:bg-opacity-95 text-xs font-bold py-2 px-4 rounded-lg">Save IP Policy</button>
+                    </div>
+                </div>
+
+                <!-- Password Policy Card -->
+                <div class="bg-white rounded-xl border border-orange-100 shadow-sm p-6">
+                    <h3 class="text-sm font-bold text-[#5A0C08] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">password</span> Password Complexity
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-650 mb-1">Minimum Characters</label>
+                            <input class="w-full text-xs border border-slate-200 rounded-lg p-2 bg-slate-50 focus:ring-[#DD9024]" type="number" value="12"/>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-650 mb-1">Enforce Unique Sequence</label>
+                            <select class="w-full text-xs border border-slate-200 rounded-lg p-2 bg-slate-50">
+                                <option>Yes (last 5 passwords)</option>
+                                <option>Yes (last 10 passwords)</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right 4 Columns: Maintenance and Actions -->
+            <section class="lg:col-span-4 space-y-6">
+                <!-- Maintenance Mode Card -->
+                <div class="bg-white rounded-xl border border-orange-100 shadow-sm p-6 space-y-4">
+                    <h3 class="text-xs font-bold text-slate-700 uppercase tracking-widest">Portal Maintenance</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">Maintenance Window</p>
+                            <p class="text-[10px] text-slate-400">Lock general staff users out</p>
+                        </div>
+                        <button class="w-10 h-6 bg-slate-200 rounded-full relative transition-colors duration-200" onclick="this.classList.toggle('bg-amber-500'); this.children[0].classList.toggle('translate-x-4')">
+                            <div class="w-4 h-4 bg-white rounded-full absolute top-1 left-1 transition-transform duration-200 shadow-sm"></div>
+                        </button>
+                    </div>
+                    <button class="w-full bg-[#DD9024] text-white hover:bg-amber-600 font-bold py-2 rounded-lg text-xs">Save Settings</button>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

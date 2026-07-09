@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sitemap | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #FEF7EF;
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="w-full bg-[#5A0C08] text-white py-6 shadow-md border-b-4 border-[#DD9024]">
+        <div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <img alt="Bank of Uganda Crest" class="h-14 w-14 object-contain bg-white rounded-full p-1" src="BOU logo.png"/>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">IMTS Portal Map & Navigation Index</h1>
+                    <p class="text-sm opacity-85">Innovation Management & Technology System Directory</p>
+                </div>
+            </div>
+            <a href="login.html" class="flex items-center gap-2 bg-[#DD9024] hover:bg-amber-600 text-white font-bold py-2.5 px-5 rounded-lg shadow transition-all transform active:scale-95 text-sm">
+                <span class="material-symbols-outlined text-base">login</span>
+                Go to Portal Login
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-[1280px] mx-auto w-full px-6 py-10">
+        <!-- Dashboard Overview cards -->
+        <div class="mb-10 p-6 bg-white rounded-xl shadow-sm border border-orange-100 flex flex-col md:flex-row items-center gap-6">
+            <div class="w-12 h-12 bg-amber-100 text-[#DD9024] rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-2xl">info</span>
+            </div>
+            <div>
+                <h2 class="text-lg font-bold text-[#5A0C08] mb-1">Strict Role Security Architecture</h2>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    To comply with security and data policies at Bank of Uganda, cross-role directory access is restricted. Sidebars, headers, and dashboard action buttons are locked to each user's specific folder. No specific user profile should ever view or trigger pages outside their corresponding role bucket.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- IT Admin Folder Card -->
+            <div class="bg-white rounded-xl border border-red-100 shadow-sm overflow-hidden flex flex-col">
+                <div class="px-6 py-5 bg-[#5A0C08] bg-opacity-[0.03] border-b border-red-50 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[#5A0C08] text-2xl font-bold">admin_panel_settings</span>
+                    <div>
+                        <h3 class="font-bold text-[#5A0C08]">IT Admin Pages</h3>
+                        <p class="text-xs text-[#5A0C08] opacity-80">Directory: <code class="bg-[#5A0C08] bg-opacity-10 px-1.5 py-0.5 rounded text-[10px]">/IT Admin/</code></p>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">dashboard</span>
+                            <div>
+                                <a href="IT Admin/admindashboard.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">IT Admin Dashboard</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Internal uptime gauges, database status, ledger counts, and system metrics.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">group</span>
+                            <div>
+                                <a href="IT Admin/ITadmin.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">User Directory</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Manage user privileges, edit account types, and invite staff users.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">manage_accounts</span>
+                            <div>
+                                <a href="IT Admin/manageaccounts.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Manage DB Accounts</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Database keys, ledger signature configs, and API route tokens mapper.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">security</span>
+                            <div>
+                                <a href="IT Admin/auditlog.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Audit Ledger Logs</a>
+                                <p class="text-xs text-slate-500 mt-0.5">ISO 27001 compliant activity logs of user login times, edits, and system changes.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">settings</span>
+                            <div>
+                                <a href="IT Admin/systemsettings.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Global System Settings</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Configure 2FA controls, IP whitelists, LDAP syncs, and maintenance windows.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">assessment</span>
+                            <div>
+                                <a href="IT Admin/reports.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Admin Security Reports</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Generate daily security report datasets, signoffs, and user metrics.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">help</span>
+                            <div>
+                                <a href="IT Admin/support.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Admin Support Queue</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Uptime pinger console, server route tracer, and admin support ticket tracker.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Innovation Team Folder Card -->
+            <div class="bg-white rounded-xl border border-[#DD9024] border-opacity-20 shadow-sm overflow-hidden flex flex-col">
+                <div class="px-6 py-5 bg-[#DD9024] bg-opacity-[0.03] border-b border-amber-50 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[#DD9024] text-2xl font-bold">rate_review</span>
+                    <div>
+                        <h3 class="font-bold text-[#5A0C08]">Innovation Team</h3>
+                        <p class="text-xs text-[#DD9024]">Directory: <code class="bg-[#DD9024] bg-opacity-10 px-1.5 py-0.5 rounded text-[10px]">/innovationteam/</code></p>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">dashboard</span>
+                            <div>
+                                <a href="innovationteam/innovationteamdashboard.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Innovation Dashboard</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Central hub showing active cohorts, review statuses, and key stats.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">fact_check</span>
+                            <div>
+                                <a href="innovationteam/reviewideas.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Review & Grade Ideas</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Evaluate, comment, grade, approve, or forward submitted ideas.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">category</span>
+                            <div>
+                                <a href="innovationteam/managecategoriesInnovationteam.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Manage Categories</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Add, edit, or remove technology tags and taxonomy branches.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">inventory_2</span>
+                            <div>
+                                <a href="innovationteam/manageresources.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Manage Resources</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Innovation funding controls and expert panel lists.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">calendar_today</span>
+                            <div>
+                                <a href="innovationteam/settimelines.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Set Review Timelines</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Manage submission cohort cycles and review windows.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">analytics</span>
+                            <div>
+                                <a href="innovationteam/reportsandanalytics.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Reports & Charts</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Uptake statistics, category spreads, and analytical charts.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">settings</span>
+                            <div>
+                                <a href="innovationteam/settings.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Evaluator Preferences</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Specific email alert thresholds and evaluator dashboard settings.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">contact_support</span>
+                            <div>
+                                <a href="innovationteam/support.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Mentor Help Desk</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Support and guidance details for innovation coaches and evaluators.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Staff User Folder Card -->
+            <div class="bg-white rounded-xl border border-orange-100 shadow-sm overflow-hidden flex flex-col">
+                <div class="px-6 py-5 bg-[#5A0C08] bg-opacity-[0.01] border-b border-orange-50 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-orange-700 text-2xl font-bold">lightbulb_holder</span>
+                    <div>
+                        <h3 class="font-bold text-[#5A0C08]">Staff User Pages</h3>
+                        <p class="text-xs text-slate-500">Directory: <code class="bg-[#5A0C08] bg-opacity-5 px-1.5 py-0.5 rounded text-[10px]">/staffuser/</code></p>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">dashboard</span>
+                            <div>
+                                <a href="staffuser/staffdashboard.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Staff Dashboard</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Staff dashboard showing metrics, my ideas snippets, and basic activity.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">lightbulb</span>
+                            <div>
+                                <a href="staffuser/MyIdeas.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">My Submitted Ideas</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Comprehensive grid of your ideas, showing stages, scores, and status actions.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">edit_document</span>
+                            <div>
+                                <a href="staffuser/submitinnovationideaform.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Submit New Proposal</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Portal to describe a new idea, categorize, and submit to the evaluators.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">info</span>
+                            <div>
+                                <a href="staffuser/ideadetails.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">Idea Detail Viewer</a>
+                                <p class="text-xs text-slate-500 mt-0.5">View-only screen displaying timelines, milestone progress, and reviewer comments.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">notifications</span>
+                            <div>
+                                <a href="staffuser/notifications.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">My Alert Inbox</a>
+                                <p class="text-xs text-slate-500 mt-0.5 font-semibold">User-scoped notifications from status changes or comments on ideas.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">settings</span>
+                            <div>
+                                <a href="staffuser/settings.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">User Profile Settings</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Update password, upload avatar, toggle SMS alerts, or reset 2FA.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-xs bg-slate-100 p-1.5 rounded text-slate-500 mt-0.5">help</span>
+                            <div>
+                                <a href="staffuser/support.html" class="text-sm font-bold text-slate-700 hover:text-[#DD9024] hover:underline">User Support Portal</a>
+                                <p class="text-xs text-slate-500 mt-0.5">Help instructions, FAQs, and ticket submission forms for portal issues.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-6 bg-white border-t border-orange-100 text-center text-xs text-slate-500">
+        <p>© 2024 Bank of Uganda. ISO 27001 Certified Security Infrastructure.</p>
+    </footer>
+</body>
+</html>
