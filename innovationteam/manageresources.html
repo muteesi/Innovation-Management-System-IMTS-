@@ -1,135 +1,579 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Manage Resources | Bank of Uganda Innovation Hub</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <style>
-        body {
-            background-color: #FEF7EF;
-            font-family: 'Public Sans', sans-serif;
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Resources | Bank of Uganda IMTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#663e00",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-container": "#6c4100",
+                        "secondary": "#875300",
+                        "tertiary-container": "#b9ae43",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed": "#f2e574",
+                        "primary-fixed": "#ffdad5",
+                        "inverse-surface": "#313030",
+                        "secondary-fixed-dim": "#ffb964",
+                        "primary-fixed-dim": "#ffb4a9",
+                        "on-surface": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#d5c95b",
+                        "secondary-fixed": "#ffddb9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#410001",
+                        "primary-container": "#5a0c08",
+                        "tertiary": "#686000",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-fixed": "#1f1c00",
+                        "on-primary-container": "#e27264",
+                        "background": "#fcf9f8",
+                        "secondary-container": "#fcaa3e",
+                        "inverse-primary": "#ffb4a9",
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary-fixed-variant": "#802820",
+                        "surface-tint": "#9f3f35",
+                        "surface": "#fcf9f8",
+                        "on-error-container": "#93000a",
+                        "outline": "#89726e",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary-container": "#464000",
+                        "on-tertiary-fixed-variant": "#4e4800",
+                        "primary": "#380001",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dcd9d9",
+                        "outline-variant": "#dcc0bc",
+                        "on-background": "#1c1b1b",
+                        "surface-container": "#f0eded",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#56423f",
+                        "on-secondary-fixed": "#2b1700",
+                        "brand-maroon": "#5A0C08",
+                        "brand-gold": "#DD9024",
+                        "brand-cream": "#FFF27F",
+                        "brand-bg": "#FEF7EF"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "margin": "32px",
+                        "md": "24px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "title-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"]
+                    }
+                }
+            }
         }
+    </script>
+<style>
+        body { background-color: #FEF7EF; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .filled-icon {
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        .sidebar-active {
+            background-color: #875300;
+            color: #ffffff;
+            border-radius: 0.5rem;
         }
-        .active-icon {
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        .shadow-soft {
+            box-shadow: 0 4px 20px -2px rgba(90, 12, 8, 0.04);
+        }
+        .shadow-lift:hover {
+            box-shadow: 0 10px 30px -5px rgba(90, 12, 8, 0.08);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
         }
     </style>
 </head>
-<body class="bg-surface font-body-md text-on-surface antialiased overflow-x-hidden">
-    <!-- Sidebar Navigation -->
-    <aside class="fixed left-0 top-0 h-screen w-64 bg-primary-container shadow-md flex flex-col p-md z-50 text-white" style="background-color: #5A0C08;">
-        <div class="flex items-center gap-3 mb-lg p-2">
-            <img alt="Bank of Uganda" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../BOU logo.png"/>
-            <div>
-                <h1 class="font-bold text-lg text-white">IMTS</h1>
-                <p class="text-xs text-amber-400">Innovation Team</p>
-            </div>
-        </div>
-        <nav class="flex-grow space-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-all text-sm rounded-lg" href="innovationteamdashboard.html">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span>Dashboard</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-all text-sm rounded-lg" href="reviewideas.html">
-                <span class="material-symbols-outlined">rate_review</span>
-                <span>Review Ideas</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-all text-sm rounded-lg" href="managecategoriesInnovationteam.html">
-                <span class="material-symbols-outlined">category</span>
-                <span>Manage Categories</span>
-            </a>
-            <!-- Active: Manage Resources -->
-            <a class="flex items-center gap-3 px-4 py-3 bg-[#DD9024] text-white font-bold transition-all text-sm rounded-lg" href="manageresources.html">
-                <span class="material-symbols-outlined active-icon">inventory_2</span>
-                <span>Manage Resources</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-all text-sm rounded-lg" href="settimelines.html">
-                <span class="material-symbols-outlined">calendar_today</span>
-                <span>Set Timelines</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-all text-sm rounded-lg" href="reportsandanalytics.html">
-                <span class="material-symbols-outlined">analytics</span>
-                <span>Reports</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-all text-sm rounded-lg" href="settings.html">
-                <span class="material-symbols-outlined">settings</span>
-                <span>Settings</span>
-            </a>
-        </nav>
-        <div class="mt-auto pt-md border-t border-slate-700">
-            <a class="flex items-center gap-3 px-4 py-2 text-slate-350 hover:bg-[#DD9024]/20 hover:text-white transition-all text-xs rounded-lg mb-2" href="support.html">
-                <span class="material-symbols-outlined">help</span>
-                <span>Support</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-2 text-red-400 hover:bg-red-500/10 transition-all text-xs rounded-lg" href="../login.html">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Log Out</span>
-            </a>
-        </div>
-    </aside>
-
-    <!-- Main Content Shell -->
-    <main class="ml-64 min-h-screen bg-[#FEF7EF] p-8">
-        <!-- Header -->
-        <header class="mb-8">
-            <h2 class="text-2xl font-bold text-[#5A0C08]">Manage Innovation Resources</h2>
-            <p class="text-sm text-slate-500 mt-1">Review mentor matching networks, budget lines, and active implementation resources.</p>
-        </header>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Left 2 Cols: Resources Table -->
-            <div class="lg:col-span-2 space-y-6">
-                <!-- Mentors database -->
-                <div class="bg-white rounded-xl border border-orange-100 shadow-sm overflow-hidden">
-                    <div class="p-6 border-b border-orange-50 bg-slate-55 flex items-center justify-between">
-                        <span class="font-bold text-sm text-[#5A0C08]">Expert Innovation Evaluators</span>
-                        <span class="text-xs bg-[#DD9024] bg-opacity-[0.08] text-[#DD9024] px-2.5 py-0.5 rounded font-semibold">Active Panel</span>
-                    </div>
-                    <div class="divide-y divide-slate-100 font-label-md text-xs">
-                        <div class="px-6 py-4 flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-slate-700 text-xs">Dr. Florence Nsubuga</p>
-                                <p class="text-[10px] text-slate-400">Research & Cryptographic Policy Hub</p>
-                            </div>
-                            <span class="bg-[#5A0C08] bg-opacity-5 text-[#5A0C08] px-2 py-0.5 rounded text-[10px]">FINTECH</span>
+<body class="font-body-md text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-primary-container text-on-primary-container flex flex-col py-lg z-50 shadow-md">
+<div class="px-margin mb-lg flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center font-bold text-on-secondary shadow-md">IM</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary leading-tight">IMTS</h1>
+<p class="text-[10px] uppercase tracking-widest opacity-70">Innovation Vault</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="font-label-md text-label-md">My Ideas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary text-on-secondary font-medium shadow-md rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">folder_managed</span>
+<span class="font-label-md text-label-md">Manage Resources</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 font-medium hover:bg-on-primary-container/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full bg-brand-gold text-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-lg" onclick="openModal()">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Submit New Idea</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="w-full h-16 flex justify-between items-center px-margin py-base bg-surface border-b border-outline-variant shadow-sm z-40">
+<div class="flex items-center gap-base flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-body-md focus:ring-2 focus:ring-brand-gold transition-all" placeholder="Global system search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">help</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+<div class="text-right hidden md:block">
+<p class="font-label-md text-label-md text-on-surface">Dr. Sarah Mubiru</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Senior Innovation Officer</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-brand-gold object-cover" data-alt="A professional headshot of a female African executive with short hair, wearing a navy blue blazer and minimalist gold earrings, photographed in a high-key corporate studio setting with soft lighting and a neutral grey background to maintain the professional bank aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAkp5G0a9XSG0-OA8RvOOOLeK_T4wJHeQIm62U_r004-s4Ev3aBmE2IqdhNb6C_1rM47OtSPbSyi78N6xxX_iZsj9_EFvQqen-rwiaS2uSKFk22fEIiCgwTqXpMp-0RQa_P88z-ulWIJAkRBJYGdpEavSIqI1nPbyyTGIFN1SRCTXbOqdPYhGke-7WByidZpVj5MFp1fVZmlduq_HHCREhYlc-sb6DHv0u8KZn_1aL-WmDqEiuOIgGDw"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-margin flex flex-col gap-lg max-w-[1400px] mx-auto w-full">
+<!-- Page Header -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-brand-maroon">Innovation Resources Library</h2>
+<p class="text-body-lg text-on-surface-variant">Manage key documents, policies, templates, and resources for the innovation ecosystem</p>
+</div>
+<div class="flex items-center gap-base">
+<button class="px-6 py-2.5 border-2 border-brand-maroon text-brand-maroon font-bold rounded-xl hover:bg-brand-maroon/5 transition-colors active:scale-95">
+                        Manage Categories
+                    </button>
+<button class="px-6 py-2.5 bg-brand-gold text-primary font-bold rounded-xl flex items-center gap-2 shadow-lg hover:brightness-105 active:scale-95 transition-all" onclick="document.getElementById('uploadModal').classList.remove('hidden')">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+                        Upload New Resource
+                    </button>
+</div>
+</section>
+<!-- Statistics Row -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-soft border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-brand-maroon">
+<span class="material-symbols-outlined">folder_open</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Total Resources</p>
+<p class="text-headline-md font-bold text-brand-maroon">47</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-soft border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">new_releases</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Recently Added</p>
+<p class="text-headline-md font-bold text-brand-maroon">08</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-soft border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-brand-cream/30 flex items-center justify-center text-brand-gold">
+<span class="material-symbols-outlined">download_for_offline</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Most Downloaded</p>
+<p class="text-headline-md font-bold text-brand-maroon">03</p>
+</div>
+</div>
+<div class="bg-brand-cream/20 p-md rounded-xl shadow-soft border border-brand-gold/30 flex flex-col justify-center">
+<div class="flex justify-between items-center mb-2">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Storage Used</p>
+<p class="text-label-md font-bold text-brand-maroon">245 MB / 1 GB</p>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-brand-gold h-2 rounded-full" style="width: 24.5%;"></div>
+</div>
+</div>
+</section>
+<!-- Quick Action Toolbar & Search -->
+<section class="flex flex-col gap-base">
+<div class="bg-surface-container-low p-base rounded-xl flex flex-wrap items-center justify-between gap-md border border-outline-variant">
+<div class="flex items-center gap-xs">
+<button class="px-4 py-2 hover:bg-surface-container-high rounded-lg flex items-center gap-2 text-label-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span> Add New
+                        </button>
+<button class="px-4 py-2 hover:bg-surface-container-high rounded-lg flex items-center gap-2 text-label-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">create_new_folder</span> Folder
+                        </button>
+<div class="h-6 w-[1px] bg-outline-variant mx-2"></div>
+<button class="px-4 py-2 text-on-surface-variant/40 flex items-center gap-2 text-label-md cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[20px]">delete</span> Delete
+                        </button>
+<button class="px-4 py-2 hover:bg-surface-container-high rounded-lg flex items-center gap-2 text-label-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">drive_file_move</span> Move
+                        </button>
+</div>
+<div class="flex items-center gap-base">
+<div class="bg-surface-container rounded-lg p-1 flex">
+<button class="p-1.5 bg-surface-container-lowest shadow-sm rounded-md text-brand-maroon">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined text-[20px]">list</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined text-[20px]">view_compact</span>
+</button>
+</div>
+<select class="bg-surface-container border-none text-label-md rounded-lg py-2 pl-3 pr-8 focus:ring-brand-gold">
+<option>Sort by: Date</option>
+<option>Name</option>
+<option>Downloads</option>
+<option>Size</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-base">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-brand-gold focus:border-brand-gold outline-none shadow-sm transition-all" placeholder="Search resources by title, description, or tags..." type="text"/>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 py-2 overflow-x-auto no-scrollbar">
+<button class="px-4 py-1.5 bg-brand-maroon text-white rounded-full text-label-md shadow-md">All Resources</button>
+<button class="px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">Innovation Strategy</button>
+<button class="px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">Policy & Guidelines</button>
+<button class="px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">Templates</button>
+<button class="px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">Training Materials</button>
+<button class="px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">Research & Reports</button>
+<button class="px-4 py-1.5 bg-white border border-outline-variant text-on-surface-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">Tools & Software</button>
+</div>
+</section>
+<!-- Resources Display (Grid View) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter mb-lg">
+<!-- Resource Card: PDF -->
+<div class="bg-white rounded-xl border border-outline-variant p-md flex flex-col gap-md shadow-soft shadow-lift group relative">
+<div class="absolute top-4 right-4">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-bold border border-green-200">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> PUBLISHED
                         </div>
-                        <div class="px-6 py-4 flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-slate-700 text-xs">Mr. Samuel Sempa</p>
-                                <p class="text-[10px] text-slate-400">Payment Gateway Compliance Unit</p>
-                            </div>
-                            <span class="bg-[#5A0C08] bg-opacity-5 text-[#5A0C08] px-2 py-0.5 rounded text-[10px]">PAYMENTS</span>
+</div>
+<div class="w-full h-32 bg-red-50 rounded-lg flex items-center justify-center text-red-600 transition-colors group-hover:bg-red-100">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-title-lg text-title-lg text-brand-maroon leading-tight">Innovation Strategy 2024-2026</h4>
+<span class="inline-block px-2 py-0.5 bg-brand-cream/30 text-secondary text-[11px] font-bold rounded w-fit">POLICY & GUIDELINES</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-label-sm text-on-surface-variant">
+<div>
+<p class="text-[10px] uppercase opacity-60">Type</p>
+<p class="font-bold">PDF</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">Size</p>
+<p class="font-bold">4.2 MB</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">DLs</p>
+<p class="font-bold">128</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant">
+<img class="w-6 h-6 rounded-full border border-outline-variant" data-alt="A portrait of a male professional of African descent wearing a light blue dress shirt and glasses, smiling warmly. He is posed in a bright, modern office with soft-focus greenery in the background, reinforcing the corporate yet accessible innovation theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaY9SxfHcVIQIA-yez8hm6ORw2-0iMdkk6C1-9XayAGMjOOSN1rh5SYbvL1Uizn9sXcnv7y2TKB9UjePJL99E9hEKE0zE1SuL7VMyLWitysWA7IqG8qpLD449SGKHiVL7mVbbCpsoqfiYfF-5jdcJT6PKjsqk7jKKL0ynlwJFYLGuM-ccT7fRjKs4PRWYKwOCgu8wXwVCpnmNXIeSLD8_ZE77dzGB6tR7zXqnKZXFY7D7uPi8FTt8qIQ"/>
+<p class="text-[11px] text-on-surface-variant">Uploaded by <span class="font-semibold text-on-surface">James O.</span></p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-brand-maroon text-white rounded-lg text-label-md flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download
+                        </button>
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg text-error hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Resource Card: XLSX -->
+<div class="bg-white rounded-xl border border-outline-variant p-md flex flex-col gap-md shadow-soft shadow-lift group relative">
+<div class="absolute top-4 right-4">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-bold border border-green-200">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> PUBLISHED
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right 1 Col: Budget metrics -->
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-xl border border-orange-100 shadow-sm">
-                    <h3 class="font-bold text-sm text-[#5A0C08] mb-3">Resource Allocation</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <p class="text-[10px] text-slate-400 font-bold uppercase">Funding Ledger Q1</p>
-                            <div class="flex justify-between font-bold text-xs text-slate-700 mb-1">
-                                <span>Allocated Budget</span>
-                                <span>UGX 25,000,000</span>
-                            </div>
-                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                                <div class="bg-[#DD9024] h-full" style="width: 48%;"></div>
-                            </div>
+</div>
+<div class="w-full h-32 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 transition-colors group-hover:bg-emerald-100">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">table_chart</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-title-lg text-title-lg text-brand-maroon leading-tight">Project Budget Template V2</h4>
+<span class="inline-block px-2 py-0.5 bg-brand-cream/30 text-secondary text-[11px] font-bold rounded w-fit">TEMPLATES</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-label-sm text-on-surface-variant">
+<div>
+<p class="text-[10px] uppercase opacity-60">Type</p>
+<p class="font-bold">XLSX</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">Size</p>
+<p class="font-bold">850 KB</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">DLs</p>
+<p class="font-bold">45</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant">
+<img class="w-6 h-6 rounded-full border border-outline-variant" data-alt="A close-up portrait of a female professional of African descent with braided hair, wearing a high-quality white silk blouse and delicate silver jewelry. The lighting is soft and directional, typical of a high-end financial institution's marketing photography, set against a blurred background of a modern bank atrium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcUatqI-E-ePGnx4sX7DptEZjMIkZSZBAPVqL0lsjYA1ewnsuV6LOAA1zm1kCnYTXeMEOu2XFouxOYYE6mOMkD-tQdeghB_mt3kTJ4A3b_aUr6JUdpY7TVJebnWFZUywHLOMSOCrDSV4Otop-Rb8v8NBMwZlUI0vjNMvBasnvfJIpO2ENxdceC5bb5wl-Y78JIfMqunDNeSAi1MiSfbgtXW5_VheLPIGISiGvpG7yXG5Prnqp1BDFpaw"/>
+<p class="text-[11px] text-on-surface-variant">Uploaded by <span class="font-semibold text-on-surface">Sarah M.</span></p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-brand-maroon text-white rounded-lg text-label-md flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download
+                        </button>
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg text-error hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Resource Card: PPTX -->
+<div class="bg-white rounded-xl border border-outline-variant p-md flex flex-col gap-md shadow-soft shadow-lift group relative">
+<div class="absolute top-4 right-4">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-amber-50 text-amber-700 rounded-full text-[10px] font-bold border border-amber-200">
+<span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span> DRAFT
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
+</div>
+<div class="w-full h-32 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 transition-colors group-hover:bg-orange-100">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">slideshow</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-title-lg text-title-lg text-brand-maroon leading-tight">Innovation Pitch Deck 2024</h4>
+<span class="inline-block px-2 py-0.5 bg-brand-cream/30 text-secondary text-[11px] font-bold rounded w-fit">TRAINING MATERIALS</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-label-sm text-on-surface-variant">
+<div>
+<p class="text-[10px] uppercase opacity-60">Type</p>
+<p class="font-bold">PPTX</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">Size</p>
+<p class="font-bold">12.5 MB</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">DLs</p>
+<p class="font-bold">0</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-[10px] font-bold text-on-surface-variant">BK</div>
+<p class="text-[11px] text-on-surface-variant">Uploaded by <span class="font-semibold text-on-surface">Brian K.</span></p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-brand-maroon text-white rounded-lg text-label-md flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download
+                        </button>
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg text-error hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Resource Card: ZIP -->
+<div class="bg-white rounded-xl border border-outline-variant p-md flex flex-col gap-md shadow-soft shadow-lift group relative">
+<div class="absolute top-4 right-4">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-bold border border-green-200">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> PUBLISHED
+                        </div>
+</div>
+<div class="w-full h-32 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 transition-colors group-hover:bg-blue-100">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">folder_zip</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-title-lg text-title-lg text-brand-maroon leading-tight">Research Survey Results - Q1</h4>
+<span class="inline-block px-2 py-0.5 bg-brand-cream/30 text-secondary text-[11px] font-bold rounded w-fit">RESEARCH & REPORTS</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-label-sm text-on-surface-variant">
+<div>
+<p class="text-[10px] uppercase opacity-60">Type</p>
+<p class="font-bold">ZIP</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">Size</p>
+<p class="font-bold">85 MB</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">DLs</p>
+<p class="font-bold">22</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant">
+<img class="w-6 h-6 rounded-full border border-outline-variant" data-alt="A portrait of a male data scientist of African descent in a contemporary workspace with multiple monitors displaying data visualizations. He is wearing a dark grey sweater and has a thoughtful, focused expression. The office lighting is bright and clean, emphasizing a high-tech and professional innovation environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe-LnilBhXNwTWHzgai7qAMWfa-auLQzLZ2jUdfnZ1ztACJnT8Hq3KP_ZRXjp2JwTJEONoOt0aVuItc2-HXDvFHgHBDV2_g12IbagB1yU82VADWLReSxhOnJzuL8_TNOCO-tQB8_aVfQ9gr4NuxGv9sPe2EXDawCuvaH2KPCrcCN1EtPNbrhiT6rUe7iffmAQJx27e3Sv2vrghpP205od6pBHWHU8gWwO3nZlqPmVP2EUS5bxgBlNFiA"/>
+<p class="text-[11px] text-on-surface-variant">Uploaded by <span class="font-semibold text-on-surface">David A.</span></p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-brand-maroon text-white rounded-lg text-label-md flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Download
+                        </button>
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg text-error hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full py-md ml-0 bg-surface-container-lowest border-t border-outline-variant flex flex-row justify-between items-center px-margin mt-auto">
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md font-semibold text-primary">IMTS</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Bank of Uganda. ISO 27001 Certified.</p>
+</div>
+<div class="flex gap-gutter">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline" href="#">Security Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline" href="#">Compliance Standards</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline" href="#">Internal Audit</a>
+</div>
+</footer>
+</main>
+<!-- Upload New Resource Modal -->
+<div class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" id="uploadModal">
+<div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<!-- Modal Header -->
+<div class="px-margin py-md bg-primary-container text-on-primary flex justify-between items-center">
+<div>
+<h3 class="text-headline-md font-bold text-secondary">Upload New Resource</h3>
+<p class="text-label-sm opacity-80">Add assets to the Innovation Vault</p>
+</div>
+<button class="p-2 hover:bg-on-primary/10 rounded-full transition-colors" onclick="document.getElementById('uploadModal').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Stepper -->
+<div class="px-margin pt-md flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-brand-maroon text-white flex items-center justify-center font-bold text-sm">1</div>
+<span class="text-label-md text-brand-maroon font-bold">Basic Info</span>
+</div>
+<div class="flex-1 h-[2px] bg-outline-variant mx-4"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-sm">2</div>
+<span class="text-label-md text-on-surface-variant">Upload</span>
+</div>
+<div class="flex-1 h-[2px] bg-outline-variant mx-4"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-sm">3</div>
+<span class="text-label-md text-on-surface-variant">Review</span>
+</div>
+</div>
+<!-- Modal Body -->
+<div class="p-margin flex flex-col gap-md">
+<div class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-bold text-brand-maroon">Resource Title</label>
+<input class="w-full px-4 py-2 border border-outline-variant rounded-xl focus:ring-2 focus:ring-brand-gold focus:border-brand-gold outline-none" placeholder="Enter descriptive name..." type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-bold text-brand-maroon">Category</label>
+<select class="w-full px-4 py-2 border border-outline-variant rounded-xl focus:ring-2 focus:ring-brand-gold focus:border-brand-gold outline-none">
+<option>Policy & Guidelines</option>
+<option>Templates</option>
+<option>Strategy</option>
+<option>Training</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-bold text-brand-maroon">Description</label>
+<textarea class="w-full px-4 py-2 border border-outline-variant rounded-xl focus:ring-2 focus:ring-brand-gold focus:border-brand-gold outline-none" placeholder="Briefly explain what this resource contains..." rows="3"></textarea>
+</div>
+<!-- Drag & Drop Area -->
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-lg flex flex-col items-center justify-center gap-base bg-surface-container-low hover:bg-brand-cream/10 transition-colors cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-gold group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="font-bold text-brand-maroon">Click to upload or drag and drop</p>
+<p class="text-label-sm text-on-surface-variant">PDF, XLSX, PPTX, or ZIP (Max 50MB)</p>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-2">
+<input class="rounded text-brand-gold focus:ring-brand-gold" id="notify" type="checkbox"/>
+<label class="text-label-sm text-on-surface-variant" for="notify">Notify relevant stakeholders</label>
+</div>
+<div class="flex items-center gap-2">
+<input class="rounded text-brand-gold focus:ring-brand-gold" id="version" type="checkbox"/>
+<label class="text-label-sm text-on-surface-variant" for="version">Mark as major version (v1.0)</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-margin py-md bg-surface-container-low border-t border-outline-variant flex justify-end gap-base">
+<button class="px-6 py-2.5 text-on-surface-variant font-bold hover:bg-surface-container-high rounded-xl transition-colors" onclick="document.getElementById('uploadModal').classList.add('hidden')">
+                    Cancel
+                </button>
+<button class="px-8 py-2.5 bg-brand-gold text-primary font-bold rounded-xl shadow-lg active:scale-95 transition-all">
+                    Next: Settings
+                </button>
+</div>
+</div>
+</div>
+<script>
+        function openModal() {
+            // Placeholder for sidebar submit idea button
+            alert("This would open the Submit New Idea flow.");
+        }
+    </script>
+</body></html>
