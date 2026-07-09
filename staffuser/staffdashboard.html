@@ -1,23 +1,21 @@
 <!DOCTYPE html>
+<html class="light" lang="en">
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Bank of Uganda Innovation Hub | Staff Dashboard</title>
-<!-- Tailwind CSS with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Google Font: Public Sans (specified in config) -->
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind Configuration -->
-<script id="tailwind-config">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bank of Uganda Innovation Hub | Staff Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
+                    colors: {
                         "on-surface": "#1c1b1b",
                         "on-primary-fixed": "#410001",
                         "on-error": "#ffffff",
@@ -70,23 +68,23 @@
                         "maroon-accent": "#5A0C08",
                         "gold-accent": "#DD9024"
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
                     },
-                    "spacing": {
-                        "xl": "80px",
-                        "lg": "48px",
-                        "base": "8px",
-                        "sm": "12px",
-                        "gutter": "24px",
-                        "md": "24px",
-                        "margin": "32px",
-                        "xs": "4px"
+                    spacing: {
+                        xl: "80px",
+                        lg: "48px",
+                        base: "8px",
+                        sm: "12px",
+                        gutter: "24px",
+                        md: "24px",
+                        margin: "32px",
+                        xs: "4px"
                     },
-                    "fontFamily": {
+                    fontFamily: {
                         "label-sm": ["Public Sans"],
                         "label-md": ["Public Sans"],
                         "headline-md": ["Public Sans"],
@@ -97,302 +95,381 @@
                         "body-md": ["Public Sans"],
                         "headline-lg-mobile": ["Public Sans"]
                     },
-                    "fontSize": {
-                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
-                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
-                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    fontSize: {
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                        "title-lg": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }]
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-<style>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        body {
-            background-color: #FEF7EF; /* Overriding with cream background as per prompt */
-        }
-        /* Custom scrollbar for better professional look */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #dcc0bc; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #89726e; }
 
-        .sidebar-active-shadow {
-            box-shadow: inset 4px 0 0 0 #DD9024;
+        body {
+            background-color: #FEF7EF;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #dcc0bc;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #89726e;
+        }
+
+        .resource-card {
+            transition: all 0.2s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(90, 12, 8, 0.08);
         }
     </style>
 </head>
-<body class="text-on-surface font-body-md overflow-hidden h-screen flex">
-<!-- Sidebar (SideNavBar) -->
-<!-- Using JSON style_shell_layout: "fixed left-0 top-0 h-screen flex flex-col p-md" -->
-<!-- style_bg_color: bg-primary (mapped to maroon #5A0C08) -->
-<nav class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-maroon-accent z-50 shadow-md">
-<!-- Sidebar Header -->
-<div class="flex items-center gap-sm mb-lg px-xs">
-<img alt="Bank of Uganda Crest" class="w-12 h-12 rounded-full object-contain bg-white p-1" src="../BOU logo.png"/>
-<div class="flex flex-col">
-<span class="font-headline-md text-headline-md font-bold text-on-primary">IMTS</span>
-<span class="font-label-sm text-label-sm text-on-primary opacity-70">Digital Vault of Ideas</span>
-</div>
-</div>
-<!-- Navigation Tabs -->
-<div class="flex-1 space-y-xs">
-<!-- Active: Dashboard -->
-<a class="flex items-center gap-sm p-sm transition-all bg-gold-accent text-on-secondary rounded-lg font-bold scale-95 duration-150 ease-in-out" href="staffdashboard.html">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-label-md text-label-md">Dashboard</span>
-</a>
-    <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="MyIdeas.html">
-        <span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
-        <span class="font-label-md text-label-md">My Ideas</span>
-    </a>
-    <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="submitinnovationideaform.html">
-        <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
-        <span class="font-label-md text-label-md">Submit New Idea</span>
-    </a>
-    <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors relative" href="notifications.html">
-        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-        <span class="font-label-md text-label-md">Notifications</span>
-        <span class="absolute right-sm top-1/2 -translate-y-1/2 bg-secondary text-on-secondary text-[10px] px-1.5 py-0.5 rounded-full">3</span>
-    </a>
-    <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors" href="settings.html">
-        <span class="material-symbols-outlined" data-icon="settings">settings</span>
-        <span class="font-label-md text-label-md">Settings</span>
-    </a>
-</div>
-<!-- Sidebar Footer / CTA -->
-<div class="mt-auto border-t border-on-primary-fixed-variant/20 pt-md">
-<button onclick="window.location.href='submitinnovationideaform.html'" class="w-full bg-gold-accent hover:bg-secondary transition-colors text-black font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs">
-<span class="material-symbols-outlined" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
-<span class="font-label-md text-label-md">Submit Idea</span>
-</button>
-</div>
-</nav>
-<!-- Main Content Canvas -->
-<main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto bg-cream-bg">
-<!-- TopAppBar -->
-<header class="flex justify-between items-center w-full px-gutter h-16 sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-outline-variant">
-<div class="flex flex-col">
-<h1 class="font-title-lg text-title-lg text-primary leading-tight">Welcome Back, <span class="font-bold">Jonathan Doe</span></h1>
-<p class="font-label-sm text-label-sm text-on-surface-variant">Thursday, 24 October 2024</p>
-</div>
-<div class="flex items-center gap-gutter">
-<div class="relative hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-sm py-1.5 w-64 focus-within:border-gold-accent transition-colors">
-<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline" placeholder="Search ideas..." type="text"/>
-</div>
-<div class="flex items-center gap-sm">
-<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
-<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
-</button>
-            <button onclick="window.location.href='support.html'" class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
-                <span class="material-symbols-outlined text-primary" data-icon="help_outline">help_outline</span>
-            </button>
-<div class="h-8 w-px bg-outline-variant mx-xs"></div>
-<div class="flex items-center gap-xs cursor-pointer group">
-<div class="w-10 h-10 rounded-full border-2 border-gold-accent overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A professional portrait of a financial executive in a formal suit, with a clean background, soft lighting, and high-quality photography reflecting the professional atmosphere of a national bank." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk3WQTswPIr0Jl5tuV4MiL0FNAjrjdZygecSzuqU9k68yUxMD8ypOkB0Utq1c6DFrIbFp8-Hno8OtDkUeVR7QGVx1f45JGbS1rTRBChgWZC5_KUNEPzDyoz_9dPM_567uqWHODI_nIH7fkj5j-5AAt5edKvviVCsBYJz0XMhZ0vojkrGeq0B7mYUOh-XyJpk450rpZjpaOnDxgwvbqS6JeyJqxZwwjttr-vOW9P9JeqJySGAqNRNYUbw"/>
-</div>
-<span class="material-symbols-outlined text-on-surface group-hover:text-gold-accent transition-colors" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
-</div>
-</div>
-</div>
-</header>
-<!-- Dashboard Content -->
-<div class="max-w-[1280px] mx-auto w-full px-gutter py-lg">
-<!-- Quick Statistics Grid -->
-<section class="mb-lg">
-<div class="flex items-center justify-between mb-sm">
-<h2 class="font-headline-md text-headline-md text-maroon-accent">Quick Statistics</h2>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
-<!-- Stat Card 1 -->
-<div class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
-<span class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Total Submitted</span>
-<div class="flex items-end justify-between">
-<span class="font-display-lg text-display-lg text-maroon-accent leading-none">12</span>
-<span class="material-symbols-outlined text-maroon-accent/30 text-4xl" data-icon="description">description</span>
-</div>
-</div>
-<!-- Stat Card 2 -->
-<div class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
-<span class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Under Review</span>
-<div class="flex items-end justify-between">
-<span class="font-display-lg text-display-lg text-maroon-accent leading-none">04</span>
-<span class="material-symbols-outlined text-gold-accent text-4xl" data-icon="pending">pending</span>
-</div>
-</div>
-<!-- Stat Card 3 -->
-<div class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
-<span class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Approved</span>
-<div class="flex items-end justify-between">
-<span class="font-display-lg text-display-lg text-maroon-accent leading-none">06</span>
-<span class="material-symbols-outlined text-green-700 text-4xl" data-icon="verified">verified</span>
-</div>
-</div>
-<!-- Stat Card 4 -->
-<div class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
-<span class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">In Development</span>
-<div class="flex items-end justify-between">
-<span class="font-display-lg text-display-lg text-maroon-accent leading-none">02</span>
-<span class="material-symbols-outlined text-blue-700 text-4xl" data-icon="engineering">engineering</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Main Split Layout -->
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
-<!-- Recent Ideas Column -->
-<div class="lg:col-span-2 flex flex-col gap-md">
-<div class="flex items-center justify-between">
-<h2 class="font-headline-md text-headline-md text-maroon-accent">Your Recent Ideas</h2>
-<button onclick="window.location.href='staffdashboard.html'" class="text-maroon-accent hover:text-gold-accent font-label-md text-label-md transition-colors flex items-center gap-xs">
-                            View All My Ideas
-                            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</button>
-</div>
-<!-- Idea Card 1 -->
-<div class="bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
-<div class="flex justify-between items-start mb-sm">
-<div class="flex flex-col gap-xs">
-<h3 class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">Digital KYC Blockchain Ledger</h3>
-<div class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm">
-<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span> Oct 12, 2024</span>
-<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm" data-icon="category">category</span> Fintech Solutions</span>
-</div>
-</div>
-<span class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-gold-accent/10 text-gold-accent border border-gold-accent/20">Under Review</span>
-</div>
-<p class="text-on-surface-variant font-body-md mb-md line-clamp-2">A decentralized system for verifying customer identity across all commercial banks in Uganda to reduce fraud and administrative overhead.</p>
-                    <button onclick="window.location.href='ideadetails.html'" class="font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
-</div>
-<!-- Idea Card 2 -->
-<div class="bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
-<div class="flex justify-between items-start mb-sm">
-<div class="flex flex-col gap-xs">
-<h3 class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">Micro-Loan AI Risk Engine</h3>
-<div class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm">
-<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span> Sep 28, 2024</span>
-<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm" data-icon="category">category</span> Risk Management</span>
-</div>
-</div>
-<span class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-blue-100 text-blue-700 border border-blue-200">In Development</span>
-</div>
-<p class="text-on-surface-variant font-body-md mb-md line-clamp-2">Using machine learning algorithms to assess creditworthiness for unbanked populations using mobile money transaction patterns.</p>
-                    <button onclick="window.location.href='ideadetails.html'" class="font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
-</div>
-<!-- Idea Card 3 -->
-<div class="bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
-<div class="flex justify-between items-start mb-sm">
-<div class="flex flex-col gap-xs">
-<h3 class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">Cashless Marketplace Initiative</h3>
-<div class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm">
-<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span> Aug 15, 2024</span>
-<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm" data-icon="category">category</span> Public Policy</span>
-</div>
-</div>
-<span class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-green-100 text-green-700 border border-green-200">Approved</span>
-</div>
-<p class="text-on-surface-variant font-body-md mb-md line-clamp-2">Strategy for promoting digital payment systems in traditional local markets through subsidized QR point-of-sale terminals.</p>
-                    <button onclick="window.location.href='ideadetails.html'" class="font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
-</div>
-</div>
-<!-- Right Column: Notifications & Activity -->
-<div class="flex flex-col gap-md">
-<h2 class="font-headline-md text-headline-md text-maroon-accent">Recent Notifications</h2>
-<div class="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
-<div class="p-sm bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
-<span class="font-label-md text-label-md">Unread (3)</span>
-<button class="text-xs text-gold-accent hover:underline">Mark all as read</button>
-</div>
-<div class="flex flex-col">
-<!-- Notification 1 -->
-<div class="p-md hover:bg-surface-container-lowest transition-colors border-b border-outline-variant flex gap-sm relative">
-<div class="w-2 h-2 bg-gold-accent rounded-full absolute top-md left-sm"></div>
-<div class="w-10 h-10 rounded-full bg-maroon-accent/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-maroon-accent" data-icon="rate_review">rate_review</span>
-</div>
-<div class="flex flex-col">
-<p class="font-label-md text-label-md text-on-surface">Your idea "Digital KYC" has moved to stage 2: Technical Committee Review.</p>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs">2 hours ago</span>
-</div>
-</div>
-<!-- Notification 2 -->
-<div class="p-md hover:bg-surface-container-lowest transition-colors border-b border-outline-variant flex gap-sm relative">
-<div class="w-2 h-2 bg-gold-accent rounded-full absolute top-md left-sm"></div>
-<div class="w-10 h-10 rounded-full bg-maroon-accent/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-maroon-accent" data-icon="celebration">celebration</span>
-</div>
-<div class="flex flex-col">
-<p class="font-label-md text-label-md text-on-surface">"Micro-Loan AI" was featured in the Bank's monthly innovation newsletter.</p>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs">5 hours ago</span>
-</div>
-</div>
-<!-- Notification 3 -->
-<div class="p-md hover:bg-surface-container-lowest transition-colors flex gap-sm relative">
-<div class="w-2 h-2 bg-gold-accent rounded-full absolute top-md left-sm"></div>
-<div class="w-10 h-10 rounded-full bg-maroon-accent/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-maroon-accent" data-icon="forum">forum</span>
-</div>
-<div class="flex flex-col">
-<p class="font-label-md text-label-md text-on-surface">Admin commented on your idea: "Please provide technical specs for the API."</p>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Yesterday</span>
-</div>
-</div>
-</div>
-                <button onclick="window.location.href='notifications.html'" class="w-full py-sm text-center font-label-md text-label-md text-on-surface-variant bg-surface-container-low hover:bg-surface-container-high transition-colors">See All Notifications</button>
-</div>
-<!-- Innovation Tracker Teaser -->
-<div class="bg-maroon-accent p-md rounded-xl text-white shadow-md relative overflow-hidden">
-<!-- Abstract pattern -->
-<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-gold-accent/20 rounded-full blur-2xl"></div>
-<h3 class="font-title-lg text-title-lg mb-sm relative z-10">Innovation Goal 2024</h3>
-<p class="font-body-md mb-md relative z-10 opacity-90">We are 75% towards our annual digital transformation target. Your contributions matter.</p>
-<div class="w-full h-2 bg-white/20 rounded-full mb-xs relative z-10">
-<div class="h-full bg-gold-accent rounded-full" style="width: 75%"></div>
-</div>
-<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest opacity-70 relative z-10">
-<span>Stage 1: Launch</span>
-<span>Stage 4: Optimization</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Footer -->
-<footer class="mt-auto px-gutter py-md bg-white border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
-<div class="flex items-center gap-sm">
-<img alt="Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLtBrPb474XFFVnZZ9XQnjnYQxQJHeIcpjUgsbB8oetY3lHgrRHZnC40-6Nv_Ig_Va_WM3UmTk-BdgMUfhFgY1uMKofsVkgdIH7icTi8-mok-J4N0ZAa7N0Wct4GPs-7qPs1DBwNCMXNdZaSYwtMWSLpeHDiLqOdundCH8duJtO6NnrKBvLySEqZ2eGvCrCtn-vyI3hvV5UfFkFqKNr7cle3qSVCDey6HZOyouleI1l0uRGQaPhKIzUe07HN"/>
-<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
-</div>
-<div class="flex items-center gap-md">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="#">Security Policy</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="#">Terms of Innovation</a>
-            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="support.html">Contact Support</a>
-</div>
-</footer>
-</main>
-<!-- FAB for quick action -->
-<button onclick="window.location.href='submitinnovationideaform.html'" class="fixed bottom-gutter right-gutter w-14 h-14 bg-maroon-accent text-on-primary rounded-full shadow-lg flex items-center justify-center group hover:scale-110 active:scale-95 transition-all duration-300 z-50">
-<span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform duration-300" data-icon="add" style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
-</button>
-<script>
-        // Simple interactivity for demonstration
-        document.querySelectorAll('.group').forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                // Potential hover effects via JS if needed beyond Tailwind
-            });
-        });
 
-        // Initialize any tooltips or dynamic data here
-        console.log("Innovation Hub Dashboard Loaded");
-    </script>
-</body></html>
+<body class="text-on-surface font-body-md overflow-hidden h-screen flex">
+
+    <!-- ===== SIDEBAR ===== -->
+    <nav class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-maroon-accent z-50 shadow-md">
+        <div class="flex items-center gap-sm mb-lg px-xs">
+            <img alt="Bank of Uganda Crest" class="w-12 h-12 rounded-full object-contain bg-white p-1"
+                src="../BOU logo.png" />
+            <div class="flex flex-col">
+                <span class="font-headline-md text-headline-md font-bold text-on-primary">IMTS</span>
+                <span class="font-label-sm text-label-sm text-on-primary opacity-70">Digital Vault of Ideas</span>
+            </div>
+        </div>
+
+        <div class="flex-1 space-y-xs">
+            <a class="flex items-center gap-sm p-sm transition-all bg-gold-accent text-on-secondary rounded-lg font-bold scale-95 duration-150 ease-in-out"
+                href="staffdashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-label-md text-label-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="MyIdeas.html">
+                <span class="material-symbols-outlined">lightbulb</span>
+                <span class="font-label-md text-label-md">My Ideas</span>
+            </a>
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="submitinnovationideaform.html">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span class="font-label-md text-label-md">Submit New Idea</span>
+            </a>
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors relative"
+                href="notifications.html">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="font-label-md text-label-md">Notifications</span>
+                <span
+                    class="absolute right-sm top-1/2 -translate-y-1/2 bg-secondary text-on-secondary text-[10px] px-1.5 py-0.5 rounded-full">3</span>
+            </a>
+
+            <!-- ===== RESOURCES NAV ITEM (NEW) ===== -->
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="resources.html">
+                <span class="material-symbols-outlined">folder_open</span>
+                <span class="font-label-md text-label-md">Resources</span>
+            </a>
+
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="settings.html">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md text-label-md">Settings</span>
+            </a>
+        </div>
+
+        <div class="mt-auto border-t border-on-primary-fixed-variant/20 pt-md">
+            <button onclick="window.location.href='submitinnovationideaform.html'"
+                class="w-full bg-gold-accent hover:bg-secondary transition-colors text-black font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                <span class="font-label-md text-label-md">Submit Idea</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto bg-cream-bg">
+
+        <!-- ===== TOP BAR ===== -->
+        <header
+            class="flex justify-between items-center w-full px-gutter h-16 sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-outline-variant">
+            <div class="flex flex-col">
+                <h1 class="font-title-lg text-title-lg text-primary leading-tight">Welcome Back, <span
+                        class="font-bold">Jonathan Doe</span></h1>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">Thursday, 24 October 2024</p>
+            </div>
+            <div class="flex items-center gap-gutter">
+                <div
+                    class="relative hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-sm py-1.5 w-64 focus-within:border-gold-accent transition-colors">
+                    <span class="material-symbols-outlined text-outline">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline"
+                        placeholder="Search ideas..." type="text" />
+                </div>
+                <div class="flex items-center gap-sm">
+                    <button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+                        <span class="material-symbols-outlined text-primary">account_balance</span>
+                    </button>
+                    <button onclick="window.location.href='support.html'"
+                        class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+                        <span class="material-symbols-outlined text-primary">help_outline</span>
+                    </button>
+                    <div class="h-8 w-px bg-outline-variant mx-xs"></div>
+                    <div class="flex items-center gap-xs cursor-pointer group">
+                        <div class="w-10 h-10 rounded-full border-2 border-gold-accent overflow-hidden">
+                            <img class="w-full h-full object-cover" alt="Portrait of Jonathan Doe"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk3WQTswPIr0Jl5tuV4MiL0FNAjrjdZygecSzuqU9k68yUxMD8ypOkB0Utq1c6DFrIbFp8-Hno8OtDkUeVR7QGVx1f45JGbS1rTRBChgWZC5_KUNEPzDyoz_9dPM_567uqWHODI_nIH7fkj5j-5AAt5edKvviVCsBYJz0XMhZ0vojkrGeq0B7mYUOh-XyJpk450rpZjpaOnDxgwvbqS6JeyJqxZwwjttr-vOW9P9JeqJySGAqNRNYUbw" />
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface group-hover:text-gold-accent transition-colors">keyboard_arrow_down</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== DASHBOARD CONTENT ===== -->
+        <div class="max-w-[1280px] mx-auto w-full px-gutter py-lg">
+
+            <!-- ===== QUICK STATISTICS ===== -->
+            <section class="mb-lg">
+                <div class="flex items-center justify-between mb-sm">
+                    <h2 class="font-headline-md text-headline-md text-maroon-accent">Quick Statistics</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+                    <div
+                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        <span
+                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Total
+                            Submitted</span>
+                        <div class="flex items-end justify-between">
+                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">12</span>
+                            <span class="material-symbols-outlined text-maroon-accent/30 text-4xl">description</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        <span
+                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Under
+                            Review</span>
+                        <div class="flex items-end justify-between">
+                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">04</span>
+                            <span class="material-symbols-outlined text-gold-accent text-4xl">pending</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        <span
+                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Approved</span>
+                        <div class="flex items-end justify-between">
+                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">06</span>
+                            <span class="material-symbols-outlined text-green-700 text-4xl">verified</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        <span
+                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">In
+                            Development</span>
+                        <div class="flex items-end justify-between">
+                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">02</span>
+                            <span class="material-symbols-outlined text-blue-700 text-4xl">engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== RECENT IDEAS (full width, no resources panel) ===== -->
+            <div class="flex flex-col gap-md">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-headline-md text-headline-md text-maroon-accent">Your Recent Ideas</h2>
+                    <button onclick="window.location.href='staffdashboard.html'"
+                        class="text-maroon-accent hover:text-gold-accent font-label-md text-label-md transition-colors flex items-center gap-xs">
+                        View All My Ideas
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                        <div class="flex justify-between items-start mb-sm">
+                            <div class="flex flex-col gap-xs">
+                                <h3
+                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    Digital KYC Blockchain Ledger</h3>
+                                <div
+                                    class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">calendar_today</span> Oct 12,
+                                        2024</span>
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">category</span> Fintech
+                                        Solutions</span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-gold-accent/10 text-gold-accent border border-gold-accent/20 shrink-0">Under
+                                Review</span>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md mb-md line-clamp-2 flex-1">A decentralized system
+                            for verifying customer identity across all commercial banks in Uganda to reduce fraud and
+                            administrative overhead.</p>
+                        <button onclick="window.location.href='ideadetails.html'"
+                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                        <div class="flex justify-between items-start mb-sm">
+                            <div class="flex flex-col gap-xs">
+                                <h3
+                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    Micro-Loan AI Risk Engine</h3>
+                                <div
+                                    class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">calendar_today</span> Sep 28,
+                                        2024</span>
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">category</span> Risk
+                                        Management</span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-blue-100 text-blue-700 border border-blue-200 shrink-0">In
+                                Development</span>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md mb-md line-clamp-2 flex-1">Using machine learning
+                            algorithms to assess creditworthiness for unbanked populations using mobile money
+                            transaction patterns.</p>
+                        <button onclick="window.location.href='ideadetails.html'"
+                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                        <div class="flex justify-between items-start mb-sm">
+                            <div class="flex flex-col gap-xs">
+                                <h3
+                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    Cashless Marketplace Initiative</h3>
+                                <div
+                                    class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">calendar_today</span> Aug 15,
+                                        2024</span>
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">category</span> Public
+                                        Policy</span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-green-100 text-green-700 border border-green-200 shrink-0">Approved</span>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md mb-md line-clamp-2 flex-1">Strategy for promoting
+                            digital payment systems in traditional local markets through subsidized QR point-of-sale
+                            terminals.</p>
+                        <button onclick="window.location.href='ideadetails.html'"
+                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                        <div class="flex justify-between items-start mb-sm">
+                            <div class="flex flex-col gap-xs">
+                                <h3
+                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    Fraud Detection Dashboard</h3>
+                                <div
+                                    class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">calendar_today</span> Jul 02,
+                                        2024</span>
+                                    <span class="flex items-center gap-xs"><span
+                                            class="material-symbols-outlined text-sm">category</span> Security</span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-gold-accent/10 text-gold-accent border border-gold-accent/20 shrink-0">Under
+                                Review</span>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md mb-md line-clamp-2 flex-1">Real-time dashboard
+                            integrating transaction data from multiple banks to flag suspicious patterns using anomaly
+                            detection.</p>
+                        <button onclick="window.location.href='ideadetails.html'"
+                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                    </div>
+                </div>
+
+                <!-- Innovation Goal Teaser -->
+                <div class="bg-maroon-accent p-md rounded-xl text-white shadow-md relative overflow-hidden mt-md">
+                    <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-gold-accent/20 rounded-full blur-2xl"></div>
+                    <h3 class="font-title-lg text-title-lg mb-sm relative z-10">Innovation Goal 2024</h3>
+                    <p class="font-body-md mb-md relative z-10 opacity-90">We are 75% towards our annual digital
+                        transformation target. Your contributions matter.</p>
+                    <div class="w-full h-2 bg-white/20 rounded-full mb-xs relative z-10">
+                        <div class="h-full bg-gold-accent rounded-full" style="width: 75%"></div>
+                    </div>
+                    <div
+                        class="flex justify-between text-[10px] font-bold uppercase tracking-widest opacity-70 relative z-10">
+                        <span>Stage 1: Launch</span>
+                        <span>Stage 4: Optimization</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer
+            class="mt-auto px-gutter py-md bg-white border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+            <div class="flex items-center gap-sm">
+                <img alt="Logo" class="w-8 h-8 object-contain"
+                    src="https://lh3.googleusercontent.com/aida/AP1WRLtBrPb474XFFVnZZ9XQnjnYQxQJHeIcpjUgsbB8oetY3lHgrRHZnC40-6Nv_Ig_Va_WM3UmTk-BdgMUfhFgY1uMKofsVkgdIH7icTi8-mok-J4N0ZAa7N0Wct4GPs-7qPs1DBwNCMXNdZaSYwtMWSLpeHDiLqOdundCH8duJtO6NnrKBvLySEqZ2eGvCrCtn-vyI3hvV5UfFkFqKNr7cle3qSVCDey6HZOyouleI1l0uRGQaPhKIzUe07HN" />
+                <p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Bank of Uganda Innovation Hub. All
+                    Rights Reserved.</p>
+            </div>
+            <div class="flex items-center gap-md">
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
+                    href="#">Security Policy</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="#">Terms
+                    of Innovation</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
+                    href="support.html">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ===== FAB ===== -->
+    <button onclick="window.location.href='submitinnovationideaform.html'"
+        class="fixed bottom-gutter right-gutter w-14 h-14 bg-maroon-accent text-on-primary rounded-full shadow-lg flex items-center justify-center group hover:scale-110 active:scale-95 transition-all duration-300 z-50">
+        <span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform duration-300"
+            style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
+    </button>
+
+</body>
+
+</html>

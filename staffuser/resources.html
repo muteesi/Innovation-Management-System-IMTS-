@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Innovation Hub · Resources</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed": "#410001",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "primary-fixed": "#ffdad5",
+                        "tertiary": "#686000",
+                        "outline-variant": "#dcc0bc",
+                        "on-primary-fixed-variant": "#802820",
+                        "tertiary-container": "#b9ae43",
+                        "surface-tint": "#9f3f35",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-fixed": "#f2e574",
+                        "secondary-fixed-dim": "#ffb964",
+                        "on-tertiary-fixed-variant": "#4e4800",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fcaa3e",
+                        "primary-fixed-dim": "#ffb4a9",
+                        "inverse-surface": "#313030",
+                        "inverse-primary": "#ffb4a9",
+                        "error-container": "#ffdad6",
+                        "outline": "#89726e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-fixed": "#ffddb9",
+                        "on-tertiary-fixed": "#1f1c00",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fcf9f8",
+                        "on-background": "#1c1b1b",
+                        "surface-dim": "#dcd9d9",
+                        "surface": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-container": "#e27264",
+                        "on-secondary-fixed-variant": "#663e00",
+                        "on-secondary-fixed": "#2b1700",
+                        "surface-container": "#f0eded",
+                        "primary-container": "#5a0c08",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#d5c95b",
+                        "secondary": "#875300",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-container": "#464000",
+                        "primary": "#380001",
+                        "on-secondary-container": "#6c4100",
+                        "on-surface-variant": "#56423f",
+                        "surface-container-low": "#f6f3f2",
+                        "cream-bg": "#FEF7EF",
+                        "soft-yellow": "#FFF27F",
+                        "maroon-accent": "#5A0C08",
+                        "gold-accent": "#DD9024"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        xl: "80px",
+                        lg: "48px",
+                        base: "8px",
+                        sm: "12px",
+                        gutter: "24px",
+                        md: "24px",
+                        margin: "32px",
+                        xs: "4px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "title-lg": ["Public Sans"],
+                        "display-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"]
+                    },
+                    fontSize: {
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                        "title-lg": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #FEF7EF;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #dcc0bc;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #89726e;
+        }
+
+        .resource-card {
+            transition: all 0.2s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(90, 12, 8, 0.08);
+        }
+
+        .category-chip {
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .category-chip.active {
+            background-color: #DD9024;
+            color: white;
+            border-color: #DD9024;
+        }
+
+        .category-chip:hover:not(.active) {
+            background-color: #f0eded;
+        }
+    </style>
+</head>
+
+<body class="text-on-surface font-body-md overflow-hidden h-screen flex">
+
+    <!-- ===== SIDEBAR ===== -->
+    <nav class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-maroon-accent z-50 shadow-md">
+        <div class="flex items-center gap-sm mb-lg px-xs">
+            <img alt="Bank of Uganda Crest" class="w-12 h-12 rounded-full object-contain bg-white p-1"
+                src="../BOU logo.png" />
+            <div class="flex flex-col">
+                <span class="font-headline-md text-headline-md font-bold text-on-primary">IMTS</span>
+                <span class="font-label-sm text-label-sm text-on-primary opacity-70">Digital Vault of Ideas</span>
+            </div>
+        </div>
+
+        <div class="flex-1 space-y-xs">
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="staffdashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-label-md text-label-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="MyIdeas.html">
+                <span class="material-symbols-outlined">lightbulb</span>
+                <span class="font-label-md text-label-md">My Ideas</span>
+            </a>
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="submitinnovationideaform.html">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span class="font-label-md text-label-md">Submit New Idea</span>
+            </a>
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors relative"
+                href="notifications.html">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="font-label-md text-label-md">Notifications</span>
+                <span
+                    class="absolute right-sm top-1/2 -translate-y-1/2 bg-secondary text-on-secondary text-[10px] px-1.5 py-0.5 rounded-full">3</span>
+            </a>
+
+            <!-- Active: Resources -->
+            <a class="flex items-center gap-sm p-sm transition-all bg-gold-accent text-on-secondary rounded-lg font-bold scale-95 duration-150 ease-in-out"
+                href="resources.html">
+                <span class="material-symbols-outlined">folder_open</span>
+                <span class="font-label-md text-label-md">Resources</span>
+            </a>
+
+            <a class="flex items-center gap-sm p-sm text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20 transition-colors"
+                href="settings.html">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md text-label-md">Settings</span>
+            </a>
+        </div>
+
+        <div class="mt-auto border-t border-on-primary-fixed-variant/20 pt-md">
+            <button onclick="window.location.href='submitinnovationideaform.html'"
+                class="w-full bg-gold-accent hover:bg-secondary transition-colors text-black font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                <span class="font-label-md text-label-md">Submit Idea</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto bg-cream-bg">
+
+        <!-- ===== TOP BAR ===== -->
+        <header
+            class="flex justify-between items-center w-full px-gutter h-16 sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-outline-variant">
+            <div class="flex flex-col">
+                <h1 class="font-title-lg text-title-lg text-primary leading-tight">Resources</h1>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">Browse and access innovation resources,
+                    templates, and guidelines</p>
+            </div>
+            <div class="flex items-center gap-gutter">
+                <div
+                    class="relative hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-sm py-1.5 w-64 focus-within:border-gold-accent transition-colors">
+                    <span class="material-symbols-outlined text-outline">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline"
+                        placeholder="Search resources..." type="text" id="searchResources" />
+                </div>
+                <div class="flex items-center gap-sm">
+                    <button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+                        <span class="material-symbols-outlined text-primary">account_balance</span>
+                    </button>
+                    <button onclick="window.location.href='support.html'"
+                        class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+                        <span class="material-symbols-outlined text-primary">help_outline</span>
+                    </button>
+                    <div class="h-8 w-px bg-outline-variant mx-xs"></div>
+                    <div class="flex items-center gap-xs cursor-pointer group">
+                        <div class="w-10 h-10 rounded-full border-2 border-gold-accent overflow-hidden">
+                            <img class="w-full h-full object-cover" alt="Portrait of Jonathan Doe"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk3WQTswPIr0Jl5tuV4MiL0FNAjrjdZygecSzuqU9k68yUxMD8ypOkB0Utq1c6DFrIbFp8-Hno8OtDkUeVR7QGVx1f45JGbS1rTRBChgWZC5_KUNEPzDyoz_9dPM_567uqWHODI_nIH7fkj5j-5AAt5edKvviVCsBYJz0XMhZ0vojkrGeq0B7mYUOh-XyJpk450rpZjpaOnDxgwvbqS6JeyJqxZwwjttr-vOW9P9JeqJySGAqNRNYUbw" />
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface group-hover:text-gold-accent transition-colors">keyboard_arrow_down</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== RESOURCES CONTENT ===== -->
+        <div class="max-w-[1280px] mx-auto w-full px-gutter py-lg">
+
+            <!-- ===== CATEGORY FILTERS ===== -->
+            <div class="flex flex-wrap items-center gap-sm mb-lg">
+                <span class="font-label-md text-label-md text-on-surface-variant mr-xs">Filter by:</span>
+                <button
+                    class="category-chip active px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                    data-category="all">All Resources</button>
+                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                    data-category="policy">Policy &amp; Frameworks</button>
+                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                    data-category="templates">Templates</button>
+                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                    data-category="training">Training &amp; Guides</button>
+                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                    data-category="external">External Links</button>
+                <button class="category-chip px-sm py-xs rounded-full border border-outline-variant text-sm font-medium"
+                    data-category="tools">Tools &amp; Software</button>
+            </div>
+
+            <!-- ===== RESOURCES GRID ===== -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md" id="resourcesGrid">
+                <!-- Resource cards will be rendered by JavaScript -->
+            </div>
+
+            <!-- ===== EMPTY STATE (hidden by default) ===== -->
+            <div id="emptyState" class="text-center py-xl hidden">
+                <span class="material-symbols-outlined text-5xl text-outline/50">search_off</span>
+                <p class="font-title-lg text-title-lg text-on-surface-variant mt-sm">No resources found</p>
+                <p class="text-on-surface-variant/70">Try adjusting your search or filter criteria.</p>
+            </div>
+
+            <!-- ===== UPLOAD RESOURCE CTA ===== -->
+            <div
+                class="mt-lg bg-soft-yellow/30 border-2 border-dashed border-gold-accent/40 rounded-xl p-md text-center">
+                <span class="material-symbols-outlined text-gold-accent text-3xl">upload_file</span>
+                <h3 class="font-title-lg text-title-lg text-maroon-accent mt-xs">Have a resource to share?</h3>
+                <p class="text-on-surface-variant text-sm mb-sm">Contribute to the innovation knowledge base by
+                    uploading useful documents, templates, or links.</p>
+                <button
+                    class="px-lg py-sm bg-gold-accent text-white font-label-md text-label-md rounded-lg shadow-sm hover:brightness-95 transition-all"
+                    onclick="alert('Upload resource modal would open here')">
+                    <span class="material-symbols-outlined text-sm align-middle mr-xs">upload</span>
+                    Upload Resource
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer
+            class="mt-auto px-gutter py-md bg-white border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+            <div class="flex items-center gap-sm">
+                <img alt="Logo" class="w-8 h-8 object-contain"
+                    src="https://lh3.googleusercontent.com/aida/AP1WRLtBrPb474XFFVnZZ9XQnjnYQxQJHeIcpjUgsbB8oetY3lHgrRHZnC40-6Nv_Ig_Va_WM3UmTk-BdgMUfhFgY1uMKofsVkgdIH7icTi8-mok-J4N0ZAa7N0Wct4GPs-7qPs1DBwNCMXNdZaSYwtMWSLpeHDiLqOdundCH8duJtO6NnrKBvLySEqZ2eGvCrCtn-vyI3hvV5UfFkFqKNr7cle3qSVCDey6HZOyouleI1l0uRGQaPhKIzUe07HN" />
+                <p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Bank of Uganda Innovation Hub. All
+                    Rights Reserved.</p>
+            </div>
+            <div class="flex items-center gap-md">
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
+                    href="#">Security Policy</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="#">Terms
+                    of Innovation</a>
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
+                    href="support.html">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ===== FAB ===== -->
+    <button onclick="window.location.href='submitinnovationideaform.html'"
+        class="fixed bottom-gutter right-gutter w-14 h-14 bg-maroon-accent text-on-primary rounded-full shadow-lg flex items-center justify-center group hover:scale-110 active:scale-95 transition-all duration-300 z-50">
+        <span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform duration-300"
+            style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
+    </button>
+
+    <script>
+        // ===== RESOURCES DATA =====
+        const resources = [
+            {
+                id: 1,
+                title: "Innovation Policy Framework",
+                description: "Comprehensive policy document outlining the innovation management process, evaluation criteria, and implementation guidelines.",
+                category: "policy",
+                type: "PDF",
+                size: "2.4 MB",
+                icon: "description",
+                date: "Updated Oct 2024",
+                link: "#"
+            },
+            {
+                id: 2,
+                title: "Idea Submission Guidelines",
+                description: "Step-by-step guide on how to prepare and submit innovation ideas, including required sections and best practices.",
+                category: "policy",
+                type: "PDF",
+                size: "1.8 MB",
+                icon: "picture_as_pdf",
+                date: "Updated Sep 2024",
+                link: "#"
+            },
+            {
+                id: 3,
+                title: "Innovation Impact Template",
+                description: "Excel template for measuring and documenting the impact of implemented innovations, with pre-built KPI dashboards.",
+                category: "templates",
+                type: "Excel",
+                size: "856 KB",
+                icon: "table_chart",
+                date: "Updated Aug 2024",
+                link: "#"
+            },
+            {
+                id: 4,
+                title: "Innovation Training Video Series",
+                description: "Five-part video series covering the innovation lifecycle from ideation to implementation, featuring expert insights.",
+                category: "training",
+                type: "Video",
+                size: "5 videos",
+                icon: "video_library",
+                date: "Updated Jul 2024",
+                link: "#"
+            },
+            {
+                id: 5,
+                title: "BOU Innovation Portal",
+                description: "External portal with additional resources, case studies, and collaboration tools for innovation practitioners.",
+                category: "external",
+                type: "Link",
+                size: "External",
+                icon: "link",
+                date: "Updated Jun 2024",
+                link: "#"
+            },
+            {
+                id: 6,
+                title: "Innovation Project Canvas",
+                description: "Strategic canvas template for mapping innovation projects, including value proposition, stakeholders, and success metrics.",
+                category: "templates",
+                type: "PDF",
+                size: "1.2 MB",
+                icon: "dashboard",
+                date: "Updated Oct 2024",
+                link: "#"
+            },
+            {
+                id: 7,
+                title: "Agile Innovation Methodology",
+                description: "Guide to applying agile principles in innovation projects, with practical frameworks and team collaboration strategies.",
+                category: "training",
+                type: "PDF",
+                size: "3.1 MB",
+                icon: "menu_book",
+                date: "Updated Sep 2024",
+                link: "#"
+            },
+            {
+                id: 8,
+                title: "Innovation Metrics Dashboard",
+                description: "Power BI template for tracking innovation KPIs and visualizing progress across different innovation portfolios.",
+                category: "tools",
+                type: "Power BI",
+                size: "4.2 MB",
+                icon: "insights",
+                date: "Updated Aug 2024",
+                link: "#"
+            },
+            {
+                id: 9,
+                title: "Regulatory Innovation Guidelines",
+                description: "Framework for developing regulatory innovations in the financial sector, with compliance considerations and risk assessment.",
+                category: "policy",
+                type: "PDF",
+                size: "2.8 MB",
+                icon: "gavel",
+                date: "Updated Jul 2024",
+                link: "#"
+            }
+        ];
+
+        // ===== RENDER RESOURCES =====
+        function renderResources(filterCategory = 'all', searchTerm = '') {
+            const grid = document.getElementById('resourcesGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            const filtered = resources.filter(res => {
+                const categoryMatch = filterCategory === 'all' || res.category === filterCategory;
+                const searchMatch = searchTerm === '' ||
+                    res.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    res.description.toLowerCase().includes(searchTerm.toLowerCase());
+                return categoryMatch && searchMatch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(res => `
+        <div class="resource-card bg-white p-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md cursor-pointer" onclick="window.open('${res.link}', '_blank')">
+          <div class="flex items-start gap-sm mb-sm">
+            <div class="w-10 h-10 rounded-full bg-soft-yellow/50 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-gold-accent text-xl">${res.icon}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-title-lg text-title-lg text-maroon-accent truncate">${res.title}</h3>
+              <div class="flex items-center gap-xs flex-wrap mt-xs">
+                <span class="text-xs font-medium px-xs py-0.5 rounded-full bg-primary-fixed/20 text-primary-container">${res.type}</span>
+                <span class="text-xs text-on-surface-variant/60">${res.size}</span>
+                <span class="text-xs text-on-surface-variant/60">•</span>
+                <span class="text-xs text-on-surface-variant/60">${res.date}</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-on-surface-variant text-sm line-clamp-2">${res.description}</p>
+          <div class="mt-sm flex items-center justify-between">
+            <span class="text-xs text-on-surface-variant/60 capitalize">${res.category}</span>
+            <span class="text-xs text-gold-accent font-medium flex items-center gap-xs">
+              View
+              <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </span>
+          </div>
+        </div>
+      `).join('');
+        }
+
+        // ===== CATEGORY FILTER INTERACTION =====
+        document.querySelectorAll('.category-chip').forEach(chip => {
+            chip.addEventListener('click', function () {
+                document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const category = this.dataset.category;
+                const searchTerm = document.getElementById('searchResources').value;
+                renderResources(category, searchTerm);
+            });
+        });
+
+        // ===== SEARCH FUNCTIONALITY =====
+        document.getElementById('searchResources').addEventListener('input', function () {
+            const activeChip = document.querySelector('.category-chip.active');
+            const category = activeChip ? activeChip.dataset.category : 'all';
+            renderResources(category, this.value);
+        });
+
+        // ===== INITIAL RENDER =====
+        renderResources('all', '');
+    </script>
+</body>
+
+</html>
