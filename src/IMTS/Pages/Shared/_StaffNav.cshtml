@@ -1,0 +1,46 @@
+@{
+    var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+    bool IsActive(string page) => currentPage.Equals(page, StringComparison.OrdinalIgnoreCase);
+}
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-brand-maroon z-50 shadow-md">
+    <div class="flex items-center gap-sm mb-lg px-xs">
+        <img alt="Bank of Uganda Crest" class="w-12 h-12 rounded-full object-contain bg-white p-1" src="~/BOU logo.png" />
+        <div class="flex flex-col">
+            <span class="font-headline-md text-headline-md font-bold text-on-primary">IMTS</span>
+            <span class="font-label-sm text-label-sm text-on-primary opacity-70">Digital Vault of Ideas</span>
+        </div>
+    </div>
+    <div class="flex-1 space-y-xs">
+        <a class="flex items-center gap-sm p-sm transition-all @(IsActive("/StaffUser/Dashboard") ? "bg-brand-gold text-on-secondary rounded-lg font-bold" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/StaffUser/Dashboard">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-md text-label-md">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-sm p-sm @(IsActive("/StaffUser/MyIdeas") ? "bg-brand-gold text-on-secondary rounded-lg font-bold" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/StaffUser/MyIdeas">
+            <span class="material-symbols-outlined">lightbulb</span>
+            <span class="font-label-md text-label-md">My Ideas</span>
+        </a>
+        <a class="flex items-center gap-sm p-sm @(IsActive("/StaffUser/SubmitIdea") ? "bg-brand-gold text-on-secondary rounded-lg font-bold" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/StaffUser/SubmitIdea">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="font-label-md text-label-md">Submit New Idea</span>
+        </a>
+        <a class="flex items-center gap-sm p-sm @(IsActive("/StaffUser/Notifications") ? "bg-brand-gold text-on-secondary rounded-lg font-bold" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors relative" href="~/StaffUser/Notifications">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="font-label-md text-label-md">Notifications</span>
+            <span class="absolute right-sm top-1/2 -translate-y-1/2 bg-secondary text-on-secondary text-[10px] px-1.5 py-0.5 rounded-full">3</span>
+        </a>
+        <a class="flex items-center gap-sm p-sm @(IsActive("/StaffUser/Resources") ? "bg-brand-gold text-on-secondary rounded-lg font-bold" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/StaffUser/Resources">
+            <span class="material-symbols-outlined">folder_open</span>
+            <span class="font-label-md text-label-md">Resources</span>
+        </a>
+        <a class="flex items-center gap-sm p-sm @(IsActive("/StaffUser/Settings") ? "bg-brand-gold text-on-secondary rounded-lg font-bold" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/StaffUser/Settings">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="font-label-md text-label-md">Settings</span>
+        </a>
+    </div>
+    <div class="mt-auto border-t border-on-primary-fixed-variant/20 pt-md">
+        <button onclick="window.location.href='@Url.Page("/StaffUser/SubmitIdea")'" class="w-full bg-brand-gold hover:bg-secondary transition-colors text-black font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+            <span class="font-label-md text-label-md">Submit Idea</span>
+        </button>
+    </div>
+</aside>

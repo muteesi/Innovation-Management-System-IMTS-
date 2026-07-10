@@ -1,0 +1,75 @@
+@page
+@model IMTS.Pages.StaffUser.NotificationsModel
+@{
+    string IconFor(string type) => type switch
+    {
+        "status" => "lightbulb",
+        "comment" => "chat",
+        "reminder" => "alarm",
+        _ => "notifications"
+    };
+
+    string ColorFor(string type) => type switch
+    {
+        "status" => "text-yellow-600 bg-yellow-100",
+        "comment" => "text-blue-600 bg-blue-100",
+        "reminder" => "text-red-600 bg-red-100",
+        _ => "text-gray-600 bg-gray-100"
+    };
+}
+
+<div class="max-w-3xl mx-auto space-y-lg">
+    @if (!string.IsNullOrEmpty(TempData["SuccessMessage"]?.ToString()))
+    {
+        <div class="bg-green-100 text-green-800 p-md rounded-sm font-label-md text-label-md">@TempData["SuccessMessage"]</div>
+    }
+
+    <div class="flex items-center justify-between">
+        <h2 class="font-title-md text-title-md font-bold text-brand-maroon">All Notifications</h2>
+        <form method="post" asp-page-handler="MarkAllRead">
+            <button type="submit" class="font-label-md text-label-md text-brand-gold hover:underline flex items-center gap-xs">
+                <span class="material-symbols-outlined text-[18px]">done_all</span> Mark All as Read
+            </button>
+        </form>
+    </div>
+
+    <div class="space-y-sm">
+        @if (Model.Notifications.Count == 0)
+        {
+            <div class="bg-white rounded-sm shadow-soft p-lg text-center text-on-surface-variant">
+                <span class="material-symbols-outlined text-5xl">notifications_off</span>
+                <p class="font-body-md text-body-md mt-sm">No notifications yet</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var notif in Model.Notifications)
+            {
+                <div class="bg-white rounded-sm shadow-soft p-md flex items-start gap-md @(!notif.IsRead ? "border-l-4 border-brand-gold" : "") transition-colors">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 @ColorFor(notif.Type)">
+                        <span class="material-symbols-outlined">@IconFor(notif.Type)</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-start justify-between gap-sm">
+                            <p class="font-body-md text-body-md text-on-surface @(!notif.IsRead ? "font-semibold" : "")">@notif.Message</p>
+                            @if (!notif.IsRead)
+                            {
+                                <span class="w-2 h-2 rounded-full bg-brand-gold shrink-0 mt-2"></span>
+                            }
+                        </div>
+                        <p class="font-label-sm text-label-sm text-outline mt-1">
+                            @{
+                                var diff = DateTime.Now - notif.CreatedAt;
+                                string timeAgo;
+                                if (diff.TotalMinutes < 60) timeAgo = $"{(int)diff.TotalMinutes}m ago";
+                                else if (diff.TotalHours < 24) timeAgo = $"{(int)diff.TotalHours}h ago";
+                                else timeAgo = $"{(int)diff.TotalDays}d ago";
+                            }
+                            @timeAgo
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

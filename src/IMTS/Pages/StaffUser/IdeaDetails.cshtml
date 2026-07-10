@@ -1,0 +1,118 @@
+@page "/StaffUser/IdeaDetails/{id:int}"
+@model IMTS.Pages.StaffUser.IdeaDetailsModel
+
+@{
+    string StatusBadge(string status) => status switch
+    {
+        "Under Review" => "bg-yellow-100 text-yellow-800",
+        "In Development" => "bg-blue-100 text-blue-800",
+        "Approved" => "bg-green-100 text-green-800",
+        "Declined" => "bg-red-100 text-red-800",
+        "Pending" => "bg-yellow-50 text-yellow-600",
+        _ => "bg-gray-100 text-gray-800"
+    };
+}
+
+<div class="max-w-4xl mx-auto space-y-lg">
+    <a asp-page="/StaffUser/MyIdeas" class="inline-flex items-center gap-xs font-label-md text-label-md text-brand-gold hover:underline">
+        <span class="material-symbols-outlined">arrow_back</span> Back to My Ideas
+    </a>
+
+    @if (Model.Idea != null)
+    {
+        <div class="bg-white rounded-sm shadow-soft p-lg">
+            <div class="flex items-start justify-between mb-md">
+                <div>
+                    <h2 class="font-title-lg text-title-lg font-bold text-brand-maroon">@Model.Idea.Title</h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Submitted on @Model.Idea.SubmittedDate.ToString("MMMM dd, yyyy")</p>
+                </div>
+                <span class="font-label-md text-label-md px-sm py-1 rounded-full @StatusBadge(Model.Idea.Status)">@Model.Idea.Status</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+                <div class="lg:col-span-2 space-y-lg">
+                    <section>
+                        <h3 class="font-title-md text-title-md font-bold text-brand-maroon mb-sm flex items-center gap-xs">
+                            <span class="material-symbols-outlined">description</span> Overview
+                        </h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">@Model.Idea.Summary</p>
+                    </section>
+
+                    <section>
+                        <h3 class="font-title-md text-title-md font-bold text-brand-maroon mb-sm flex items-center gap-xs">
+                            <span class="material-symbols-outlined">edit_note</span> Description
+                        </h3>
+                        <div class="font-body-md text-body-md text-on-surface-variant space-y-sm">
+                            <p><span class="font-semibold text-on-surface">Category:</span> @Model.Idea.Category</p>
+                            <p><span class="font-semibold text-on-surface">Submitter:</span> @Model.Idea.Submitter</p>
+                            <p><span class="font-semibold text-on-surface">Department:</span> @Model.Idea.Department</p>
+                            @if (!string.IsNullOrEmpty(Model.Idea.Priority))
+                            {
+                                <p><span class="font-semibold text-on-surface">Priority:</span> @Model.Idea.Priority</p>
+                            }
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="font-title-md text-title-md font-bold text-brand-maroon mb-sm flex items-center gap-xs">
+                            <span class="material-symbols-outlined">timeline</span> Timeline
+                        </h3>
+                        <div class="space-y-sm">
+                            <div class="flex items-center gap-sm">
+                                <div class="w-3 h-3 rounded-full bg-brand-gold"></div>
+                                <div>
+                                    <p class="font-label-md text-label-md font-medium">Submitted</p>
+                                    <p class="font-label-sm text-label-sm text-outline">@Model.Idea.SubmittedDate.ToString("MMM dd, yyyy")</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-sm">
+                                <div class="w-3 h-3 rounded-full @(Model.Idea.Status != "Pending" ? "bg-brand-gold" : "bg-outline-variant")"></div>
+                                <div>
+                                    <p class="font-label-md text-label-md font-medium">Under Review</p>
+                                    <p class="font-label-sm text-label-sm text-outline">@(Model.Idea.Status != "Pending" ? "In progress" : "Awaiting")</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="space-y-md">
+                    <div class="bg-brand-cream rounded-sm p-md">
+                        <h3 class="font-title-sm text-title-sm font-bold text-brand-maroon mb-sm">Quick Info</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="font-label-sm text-label-sm text-outline">Status</span>
+                                <span class="font-label-sm text-label-sm font-medium">@Model.Idea.Status</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-label-sm text-label-sm text-outline">Category</span>
+                                <span class="font-label-sm text-label-sm font-medium">@Model.Idea.Category</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-label-sm text-label-sm text-outline">Submitted</span>
+                                <span class="font-label-sm text-label-sm font-medium">@Model.Idea.SubmittedDate.ToString("MMM dd, yyyy")</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section>
+                        <h3 class="font-title-sm text-title-sm font-bold text-brand-maroon mb-sm flex items-center gap-xs">
+                            <span class="material-symbols-outlined">attachment</span> Attachments
+                        </h3>
+                        <div class="border border-dashed border-outline-variant rounded-sm p-md text-center text-outline font-label-sm text-label-sm">
+                            <span class="material-symbols-outlined text-3xl">cloud_upload</span>
+                            <p>No attachments yet</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="bg-white rounded-sm shadow-soft p-lg text-center text-on-surface-variant">
+            <span class="material-symbols-outlined text-5xl">error_outline</span>
+            <p class="font-body-md text-body-md mt-sm">Idea not found.</p>
+        </div>
+    }
+</div>

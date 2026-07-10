@@ -1,0 +1,114 @@
+@page
+@model IMTS.Pages.InnovationTeam.SetTimelinesModel
+@{
+    ViewData["Title"] = "Set Timelines";
+}
+<div class="space-y-lg">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="bg-green-50 border border-green-200 text-green-700 font-label-md text-label-md p-sm rounded-sm flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">check_circle</span>
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+        <div class="lg:col-span-2 space-y-md">
+            <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+                <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Calendar Overview</h2>
+                <div class="grid grid-cols-7 gap-1 text-center text-xs">
+                    @{
+                        var days = new[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+                        var firstDay = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+                        var daysInMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+                        var startOffset = (int)firstDay.DayOfWeek;
+                    }
+                    @foreach (var d in days)
+                    {
+                        <div class="font-bold text-on-surface-variant py-1">@d</div>
+                    }
+                    @for (int i = 0; i < startOffset; i++)
+                    {
+                        <div></div>
+                    }
+                    @for (int day = 1; day <= daysInMonth; day++)
+                    {
+                        var dt = new DateTime(DateTime.Today.Year, DateTime.Today.Month, day);
+                        var hasDeadline = Model.Timelines.Any(t => t.EndDate.Date == dt.Date);
+                        <div class="py-2 rounded-sm @(hasDeadline ? "bg-brand-gold/20 text-brand-maroon font-bold" : "hover:bg-outline-variant/30") @(dt.Date == DateTime.Today.Date ? "ring-1 ring-brand-gold" : "") cursor-pointer transition-colors">
+                            @day
+                            @if (hasDeadline)
+                            {
+                                <div class="w-1 h-1 bg-brand-gold rounded-full mx-auto mt-0.5"></div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+                <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Active Timelines</h2>
+                <div class="space-y-3">
+                    @foreach (var tl in Model.Timelines)
+                    {
+                        <div class="flex items-start gap-3 p-sm border border-outline-variant/50 rounded-sm hover:bg-brand-cream transition-colors">
+                            <span class="material-symbols-outlined text-brand-gold text-[24px] mt-0.5">event_note</span>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-label-md text-label-md font-bold text-on-surface">@tl.Title</h4>
+                                    <span class="text-xs bg-brand-soft-yellow text-brand-maroon px-2 py-0.5 rounded-sm">@tl.Phase</span>
+                                </div>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">@tl.Description</p>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">
+                                    <span class="material-symbols-outlined text-[14px]">calendar_month</span>
+                                    @tl.StartDate.ToString("MMM dd") - @tl.EndDate.ToString("MMM dd, yyyy")
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <button class="text-brand-gold hover:text-[#c47e1d] transition-colors" title="Edit">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="text-red-500 hover:text-red-700 transition-colors" title="Delete">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Add Timeline</h2>
+            <form method="post" asp-page-handler="Add" class="space-y-3">
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="NewTitle">Title</label>
+                    <input asp-for="NewTitle" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" placeholder="Timeline title" required />
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="NewDescription">Description</label>
+                    <textarea asp-for="NewDescription" rows="2" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none resize-none" placeholder="Brief description..."></textarea>
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="NewStartDate">Start Date</label>
+                    <input asp-for="NewStartDate" type="date" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" />
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="NewEndDate">End Date</label>
+                    <input asp-for="NewEndDate" type="date" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" />
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="NewPhase">Phase</label>
+                    <select asp-for="NewPhase" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none">
+                        <option value="">Select phase...</option>
+                        @foreach (var p in Model.Phases)
+                        {
+                            <option value="@p">@p</option>
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-brand-gold hover:bg-[#c47e1d] text-white font-label-sm text-label-sm py-3 rounded-sm transition-colors">Add Timeline</button>
+            </form>
+        </div>
+    </div>
+</div>

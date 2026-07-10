@@ -1,0 +1,70 @@
+@page
+@model IMTS.Pages.InnovationTeam.ManageCategoriesModel
+@{
+    ViewData["Title"] = "Manage Categories";
+}
+<div class="space-y-lg">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="bg-green-50 border border-green-200 text-green-700 font-label-md text-label-md p-sm rounded-sm flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">check_circle</span>
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+        <div class="lg:col-span-2 bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">All Categories</h2>
+            <div class="space-y-2">
+                @foreach (var cat in Model.Categories)
+                {
+                    <div class="flex items-center justify-between p-sm border border-outline-variant/50 rounded-sm hover:bg-brand-cream transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-brand-gold text-[24px]">@cat.Icon</span>
+                            <div>
+                                <p class="font-label-md text-label-md font-medium text-on-surface">@cat.Name</p>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant">@cat.Description</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="bg-brand-soft-yellow text-brand-maroon font-label-sm text-label-sm px-2 py-0.5 rounded-sm">@cat.IdeaCount ideas</span>
+                            <button class="text-brand-gold hover:text-[#c47e1d] transition-colors" title="Edit">
+                                <span class="material-symbols-outlined text-[20px]">edit</span>
+                            </button>
+                            <button class="text-red-500 hover:text-red-700 transition-colors" title="Delete">
+                                <span class="material-symbols-outlined text-[20px]">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Add New Category</h2>
+            <form method="post" asp-page-handler="Add" class="space-y-3">
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="NewCategoryName">Category Name</label>
+                    <input asp-for="NewCategoryName" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" placeholder="e.g. Data Analytics" required />
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="NewCategoryDescription">Description</label>
+                    <textarea asp-for="NewCategoryDescription" rows="3" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none resize-none" placeholder="Brief description..."></textarea>
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1">Icon</label>
+                    <div class="flex flex-wrap gap-2">
+                        @foreach (var icon in Model.AvailableIcons)
+                        {
+                            <label class="cursor-pointer">
+                                <input type="radio" asp-for="NewCategoryIcon" value="@icon" class="hidden peer" />
+                                <span class="material-symbols-outlined text-[28px] text-outline border border-outline-variant rounded-sm p-1 peer-checked:border-brand-gold peer-checked:text-brand-gold peer-checked:bg-brand-gold/10 transition-all">@icon</span>
+                            </label>
+                        }
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-brand-gold hover:bg-[#c47e1d] text-white font-label-sm text-label-sm py-3 rounded-sm transition-colors">Add Category</button>
+            </form>
+        </div>
+    </div>
+</div>

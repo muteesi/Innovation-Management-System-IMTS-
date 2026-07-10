@@ -1,0 +1,49 @@
+@{
+    var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+    bool IsActive(string page) => currentPage.Equals(page, StringComparison.OrdinalIgnoreCase);
+}
+<aside class="fixed left-0 top-0 h-screen w-64 bg-primary-container shadow-md flex flex-col p-md z-50">
+    <div class="flex items-center gap-3 mb-lg">
+        <img alt="Bank of Uganda" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="~/BOU logo.png" />
+        <div>
+            <h1 class="font-headline-md text-headline-md font-bold text-on-primary-fixed">IMTS</h1>
+            <p class="font-label-sm text-label-sm text-on-primary opacity">Digital Vault Of Ideas</p>
+        </div>
+    </div>
+    <nav class="flex-1 space-y-1">
+        <a class="flex items-center gap-3 px-4 py-3 @(IsActive("/InnovationTeam/Dashboard") ? "sidebar-active scale-95 duration-150" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/InnovationTeam/Dashboard">
+            <span class="material-symbols-outlined @(IsActive("/InnovationTeam/Dashboard") ? "fill-icon" : "")">dashboard</span>
+            <span class="font-label-md text-label-md">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 @(IsActive("/InnovationTeam/ReviewIdeas") ? "sidebar-active scale-95 duration-150" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/InnovationTeam/ReviewIdeas">
+            <span class="material-symbols-outlined">rate_review</span>
+            <span class="font-label-md text-label-md">Review Ideas</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 @(IsActive("/InnovationTeam/ManageCategories") ? "sidebar-active scale-95 duration-150" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/InnovationTeam/ManageCategories">
+            <span class="material-symbols-outlined">category</span>
+            <span class="font-label-md text-label-md">Manage Categories</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 @(IsActive("/InnovationTeam/ManageResources") ? "sidebar-active scale-95 duration-150" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/InnovationTeam/ManageResources">
+            <span class="material-symbols-outlined">inventory_2</span>
+            <span class="font-label-md text-label-md">Manage Resources</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 @(IsActive("/InnovationTeam/SetTimelines") ? "sidebar-active scale-95 duration-150" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/InnovationTeam/SetTimelines">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span class="font-label-md text-label-md">Set Timelines</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 @(IsActive("/InnovationTeam/Reports") ? "sidebar-active scale-95 duration-150" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/InnovationTeam/Reports">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="font-label-md text-label-md">Reports</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 @(IsActive("/InnovationTeam/Settings") ? "sidebar-active scale-95 duration-150" : "text-on-primary-fixed-variant opacity-80 hover:bg-on-primary-fixed-variant/20") transition-colors" href="~/InnovationTeam/Settings">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="font-label-md text-label-md">Settings</span>
+        </a>
+    </nav>
+    <div class="mt-auto pt-md border-t border-on-primary-fixed-variant/20">
+        <a class="flex items-center gap-3 px-4 py-2 text-slate-300 hover:bg-[#DD9024]/20 hover:text-white transition-all text-xs rounded-lg mb-2" href="~/InnovationTeam/Support">
+            <span class="material-symbols-outlined">help</span>
+            <span>Support</span>
+        </a>
+    </div>
+</aside>

@@ -1,0 +1,143 @@
+@page
+@model IMTS.Pages.ItAdmin.SystemSettingsModel
+<div class="space-y-lg">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="bg-success/10 text-success px-lg py-md rounded-sm font-label-md text-label-md flex items-center gap-sm border border-success/20">
+            <span class="material-symbols-outlined">check_circle</span>
+            <span>@Model.SuccessMessage</span>
+        </div>
+    }
+
+    <div class="flex gap-sm border-b border-outline-variant/30 mb-lg">
+        <a asp-page="/ItAdmin/SystemSettings" asp-route-section="general" class="px-lg py-sm font-label-md text-label-md transition-colors border-b-2 @(Model.ActiveSection == "general" ? "border-brand-gold text-brand-maroon font-bold" : "border-transparent text-on-surface-variant hover:text-on-surface")">General</a>
+        <a asp-page="/ItAdmin/SystemSettings" asp-route-section="security" class="px-lg py-sm font-label-md text-label-md transition-colors border-b-2 @(Model.ActiveSection == "security" ? "border-brand-gold text-brand-maroon font-bold" : "border-transparent text-on-surface-variant hover:text-on-surface")">Security</a>
+        <a asp-page="/ItAdmin/SystemSettings" asp-route-section="email" class="px-lg py-sm font-label-md text-label-md transition-colors border-b-2 @(Model.ActiveSection == "email" ? "border-brand-gold text-brand-maroon font-bold" : "border-transparent text-on-surface-variant hover:text-on-surface")">Email</a>
+        <a asp-page="/ItAdmin/SystemSettings" asp-route-section="notification" class="px-lg py-sm font-label-md text-label-md transition-colors border-b-2 @(Model.ActiveSection == "notification" ? "border-brand-gold text-brand-maroon font-bold" : "border-transparent text-on-surface-variant hover:text-on-surface")">Notifications</a>
+    </div>
+
+    @if (Model.ActiveSection == "general")
+    {
+        <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+            <div class="flex items-center gap-sm mb-md">
+                <span class="material-symbols-outlined text-brand-gold">settings</span>
+                <h2 class="font-label-lg text-label-lg font-bold text-on-surface">General Settings</h2>
+            </div>
+            <form method="post" asp-page-handler="General" class="space-y-md max-w-2xl">
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">System Name</label>
+                    <input asp-for="SystemName" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Support Email</label>
+                    <input asp-for="SupportEmail" type="email" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+                </div>
+                <div class="flex items-center gap-sm">
+                    <input asp-for="MaintenanceMode" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                    <label class="font-label-md text-label-md text-on-surface">Enable Maintenance Mode</label>
+                </div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">When enabled, only IT Administrators can access the system.</p>
+                <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors">Save General Settings</button>
+            </form>
+        </div>
+    }
+
+    @if (Model.ActiveSection == "security")
+    {
+        <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+            <div class="flex items-center gap-sm mb-md">
+                <span class="material-symbols-outlined text-brand-gold">security</span>
+                <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Security Settings</h2>
+            </div>
+            <form method="post" asp-page-handler="Security" class="space-y-md max-w-2xl">
+                <div class="grid grid-cols-2 gap-md">
+                    <div>
+                        <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Minimum Password Length</label>
+                        <input asp-for="MinPasswordLength" type="number" min="6" max="32" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+                    </div>
+                    <div>
+                        <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Session Timeout (minutes)</label>
+                        <input asp-for="SessionTimeoutMinutes" type="number" min="5" max="480" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+                    </div>
+                </div>
+                <div class="space-y-sm">
+                    <div class="flex items-center gap-sm">
+                        <input asp-for="RequireSpecialChars" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                        <label class="font-label-md text-label-md text-on-surface">Require Special Characters</label>
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <input asp-for="RequireNumbers" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                        <label class="font-label-md text-label-md text-on-surface">Require Numbers</label>
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <input asp-for="Enforce2FA" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                        <label class="font-label-md text-label-md text-on-surface">Enforce Two-Factor Authentication</label>
+                    </div>
+                </div>
+                <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors">Save Security Settings</button>
+            </form>
+        </div>
+    }
+
+    @if (Model.ActiveSection == "email")
+    {
+        <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+            <div class="flex items-center gap-sm mb-md">
+                <span class="material-symbols-outlined text-brand-gold">mail</span>
+                <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Email Settings</h2>
+            </div>
+            <form method="post" asp-page-handler="Email" class="space-y-md max-w-2xl">
+                <div class="grid grid-cols-2 gap-md">
+                    <div>
+                        <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">SMTP Host</label>
+                        <input asp-for="SmtpHost" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+                    </div>
+                    <div>
+                        <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">SMTP Port</label>
+                        <input asp-for="SmtpPort" type="number" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+                    </div>
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">SMTP Username</label>
+                    <input asp-for="SmtpUsername" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+                </div>
+                <div class="flex items-center gap-sm">
+                    <input asp-for="UseSsl" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                    <label class="font-label-md text-label-md text-on-surface">Use SSL/TLS</label>
+                </div>
+                <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors">Save Email Settings</button>
+            </form>
+        </div>
+    }
+
+    @if (Model.ActiveSection == "notification")
+    {
+        <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+            <div class="flex items-center gap-sm mb-md">
+                <span class="material-symbols-outlined text-brand-gold">notifications</span>
+                <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Notification Settings</h2>
+            </div>
+            <form method="post" asp-page-handler="Notification" class="space-y-md max-w-2xl">
+                <div class="space-y-sm">
+                    <div class="flex items-center gap-sm">
+                        <input asp-for="NotifyOnAccountLock" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                        <label class="font-label-md text-label-md text-on-surface">Notify on Account Lock</label>
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <input asp-for="NotifyOnFailedLogin" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                        <label class="font-label-md text-label-md text-on-surface">Notify on Failed Login Attempts</label>
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <input asp-for="NotifyOnNewUser" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                        <label class="font-label-md text-label-md text-on-surface">Notify on New User Registration</label>
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <input asp-for="DailyDigestEnabled" class="w-5 h-5 rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                        <label class="font-label-md text-label-md text-on-surface">Enable Daily Digest Emails</label>
+                    </div>
+                </div>
+                <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors">Save Notification Settings</button>
+            </form>
+        </div>
+    }
+</div>

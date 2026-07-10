@@ -1,0 +1,11 @@
+{
+  "name": "bou-imts",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./styles/site.css -o ./src/IMTS/wwwroot/css/site.css --minify",
+    "watch:css": "tailwindcss -i ./styles/site.css -o ./src/IMTS/wwwroot/css/site.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

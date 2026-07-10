@@ -1,0 +1,230 @@
+@page
+@model IMTS.Pages.ItAdmin.DashboardModel
+<div class="space-y-lg">
+    <div class="grid grid-cols-4 gap-md">
+        <div class="bg-white rounded-sm p-lg shadow-soft border border-outline-variant/40">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Total Users</p>
+                    <p class="font-headline-lg text-headline-lg font-bold text-brand-maroon mt-1">@Model.TotalUsers</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-brand-gold/60">group</span>
+            </div>
+            <div class="mt-sm flex items-center gap-xs text-label-sm font-label-sm text-success">
+                <span class="material-symbols-outlined text-sm">trending_up</span>
+                <span>+12 this month</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-sm p-lg shadow-soft border border-outline-variant/40">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Active Users</p>
+                    <p class="font-headline-lg text-headline-lg font-bold text-brand-maroon mt-1">@Model.ActiveUsers</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-brand-gold/60">verified_user</span>
+            </div>
+            <div class="mt-sm flex items-center gap-xs text-label-sm font-label-sm text-success">
+                <span class="material-symbols-outlined text-sm">trending_up</span>
+                <span>93.7% active rate</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-sm p-lg shadow-soft border border-outline-variant/40">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Locked Accounts</p>
+                    <p class="font-headline-lg text-headline-lg font-bold text-brand-maroon mt-1">@Model.LockedAccounts</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-brand-gold/60">lock</span>
+            </div>
+            <div class="mt-sm flex items-center gap-xs text-label-sm font-label-sm text-warning">
+                <span class="material-symbols-outlined text-sm">warning</span>
+                <span>Requires attention</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-sm p-lg shadow-soft border border-outline-variant/40">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Failed Logins</p>
+                    <p class="font-headline-lg text-headline-lg font-bold text-brand-maroon mt-1">@Model.FailedLogins</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-brand-gold/60">report</span>
+            </div>
+            <div class="mt-sm flex items-center gap-xs text-label-sm font-label-sm text-error">
+                <span class="material-symbols-outlined text-sm">trending_down</span>
+                <span>Last 24 hours</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex gap-lg">
+        <div class="flex-1">
+            <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 overflow-hidden">
+                <div class="px-lg py-md border-b border-outline-variant/30 flex items-center justify-between">
+                    <div class="flex items-center gap-sm">
+                        <span class="material-symbols-outlined text-brand-gold">people</span>
+                        <h2 class="font-label-lg text-label-lg font-bold text-on-surface">User Management</h2>
+                    </div>
+                    <a asp-page="/ItAdmin/ManageAccounts" class="flex items-center gap-xs font-label-sm text-label-sm text-brand-gold hover:underline">
+                        <span>View All</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-surface-container-low text-left font-label-sm text-label-sm text-on-surface-variant">
+                                <th class="px-lg py-sm font-medium">Username</th>
+                                <th class="px-lg py-sm font-medium">Role</th>
+                                <th class="px-lg py-sm font-medium">Department</th>
+                                <th class="px-lg py-sm font-medium">Status</th>
+                                <th class="px-lg py-sm font-medium">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.Users)
+                            {
+                                <tr class="border-t border-outline-variant/20 hover:bg-surface-container-low transition-colors">
+                                    <td class="px-lg py-sm">
+                                        <div class="flex items-center gap-sm">
+                                            <div class="w-9 h-9 rounded-full bg-brand-gold/20 flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-brand-maroon text-sm">person</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-label-md text-label-md font-semibold text-on-surface">@user.FullName</p>
+                                                <p class="font-label-sm text-label-sm text-on-surface-variant">@@@user.Username</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-lg py-sm">
+                                        <span class="px-sm py-0.5 rounded-sm font-label-sm text-label-sm @(user.Role == "Reviewer" ? "bg-brand-soft-yellow text-brand-maroon" : "bg-surface-container-low text-on-surface-variant")">@user.Role</span>
+                                    </td>
+                                    <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant">@user.Department</td>
+                                    <td class="px-lg py-sm">
+                                        @{
+                                            var statusColor = user.Status switch
+                                            {
+                                                "Active" => "text-success bg-success/10",
+                                                "Locked" => "text-warning bg-warning/10",
+                                                "Disabled" => "text-error bg-error/10",
+                                                _ => "text-on-surface-variant bg-surface-container-low"
+                                            };
+                                        }
+                                        <span class="inline-flex items-center gap-xs px-sm py-0.5 rounded-sm font-label-sm text-label-sm @statusColor">
+                                            <span class="w-1.5 h-1.5 rounded-full @(user.Status == "Active" ? "bg-success" : user.Status == "Locked" ? "bg-warning" : "bg-error")"></span>
+                                            @user.Status
+                                        </span>
+                                    </td>
+                                    <td class="px-lg py-sm">
+                                        <div class="flex items-center gap-xs">
+                                            <button class="p-xs hover:bg-surface-container-high rounded-sm transition-colors" title="Edit">
+                                                <span class="material-symbols-outlined text-sm text-on-surface-variant">edit</span>
+                                            </button>
+                                            <button class="p-xs hover:bg-surface-container-high rounded-sm transition-colors" title="@(user.Status == "Locked" ? "Unlock" : "Lock")">
+                                                <span class="material-symbols-outlined text-sm text-on-surface-variant">@(user.Status == "Locked" ? "lock_open" : "lock")</span>
+                                            </button>
+                                            <button class="p-xs hover:bg-surface-container-high rounded-sm transition-colors" title="Reset Password">
+                                                <span class="material-symbols-outlined text-sm text-on-surface-variant">key</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-80 space-y-md">
+            <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+                <div class="flex items-center gap-sm mb-md">
+                    <span class="material-symbols-outlined text-brand-gold">bolt</span>
+                    <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Quick Actions</h2>
+                </div>
+                <div class="space-y-sm">
+                    <button class="w-full flex items-center gap-sm px-md py-sm bg-surface-container-low hover:bg-surface-container-high rounded-sm transition-colors text-left font-label-md text-label-md text-on-surface">
+                        <span class="material-symbols-outlined text-brand-gold">password</span>
+                        <span>Reset Password</span>
+                    </button>
+                    <button class="w-full flex items-center gap-sm px-md py-sm bg-surface-container-low hover:bg-surface-container-high rounded-sm transition-colors text-left font-label-md text-label-md text-on-surface">
+                        <span class="material-symbols-outlined text-brand-gold">lock_open</span>
+                        <span>Lock / Unlock Account</span>
+                    </button>
+                    <button class="w-full flex items-center gap-sm px-md py-sm bg-surface-container-low hover:bg-surface-container-high rounded-sm transition-colors text-left font-label-md text-label-md text-on-surface">
+                        <span class="material-symbols-outlined text-brand-gold">manage_accounts</span>
+                        <span>Change Role</span>
+                    </button>
+                    <button class="w-full flex items-center gap-sm px-md py-sm bg-surface-container-low hover:bg-surface-container-high rounded-sm transition-colors text-left font-label-md text-label-md text-on-surface">
+                        <span class="material-symbols-outlined text-brand-gold">person_add</span>
+                        <span>Create New User</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+                <div class="flex items-center gap-sm mb-md">
+                    <span class="material-symbols-outlined text-brand-gold">history</span>
+                    <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Recent Audit Trail</h2>
+                </div>
+                <div class="space-y-sm">
+                    @foreach (var log in Model.AuditLogs)
+                    {
+                        <div class="flex items-start gap-sm pb-sm @(!log.Equals(Model.AuditLogs.Last()) ? "border-b border-outline-variant/20" : "")">
+                            <div class="mt-0.5">
+                                @{
+                                    var sevIcon = log.Severity switch
+                                    {
+                                        "error" => "error",
+                                        "warning" => "warning",
+                                        _ => "info"
+                                    };
+                                    var sevColor = log.Severity switch
+                                    {
+                                        "error" => "text-error",
+                                        "warning" => "text-warning",
+                                        _ => "text-brand-gold"
+                                    };
+                                }
+                                <span class="material-symbols-outlined text-sm @sevColor">@sevIcon</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-label-md text-label-md text-on-surface truncate">@log.Event</p>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant">
+                                    @log.User &middot; @log.Timestamp.ToString("MMM dd, HH:mm")
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <a asp-page="/ItAdmin/AuditLog" class="mt-sm flex items-center justify-center gap-xs font-label-sm text-label-sm text-brand-gold hover:underline pt-sm">
+                    <span>View Full Audit Log</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-md">
+                <div class="flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-sm text-success">check_circle</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant">System Status: <span class="text-success font-semibold">Healthy</span></span>
+                </div>
+                <div class="flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-sm text-brand-gold">memory</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant">CPU: <span class="text-on-surface font-semibold">23%</span></span>
+                </div>
+                <div class="flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-sm text-brand-gold">storage</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant">Memory: <span class="text-on-surface font-semibold">1.2 GB / 4 GB</span></span>
+                </div>
+                <div class="flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-sm text-brand-gold">cloud</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant">Uptime: <span class="text-on-surface font-semibold">14d 7h 32m</span></span>
+                </div>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Last checked: @DateTime.Now.ToString("MMM dd, yyyy HH:mm")</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+@page
+@model IMTS.Pages.InnovationTeam.ReportsAndAnalyticsModel
+@{
+    ViewData["Title"] = "Reports & Analytics";
+}
+<div class="space-y-lg">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-md">
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <div class="flex items-center justify-between mb-1">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Submission Rate</span>
+                <span class="text-green-600 font-label-sm text-label-sm flex items-center gap-0.5">
+                    <span class="material-symbols-outlined text-[16px]">trending_up</span> @Model.SubmissionRateChange
+                </span>
+            </div>
+            <span class="font-headline-md text-headline-md font-bold text-brand-maroon">@Model.SubmissionRateValue</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant ml-1">Ideas</span>
+        </div>
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <div class="flex items-center justify-between mb-1">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Avg Review Speed</span>
+                <span class="text-red-600 font-label-sm text-label-sm flex items-center gap-0.5">
+                    <span class="material-symbols-outlined text-[16px]">trending_down</span> @Model.AvgReviewSpeedChange
+                </span>
+            </div>
+            <span class="font-headline-md text-headline-md font-bold text-brand-maroon">@Model.AvgReviewSpeedDays</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant ml-1">Days</span>
+        </div>
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <div class="flex items-center justify-between mb-1">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Approval Ratio</span>
+                <span class="text-amber-600 font-label-sm text-label-sm flex items-center gap-0.5">
+                    <span class="material-symbols-outlined text-[16px]">trending_up</span>
+                </span>
+            </div>
+            <span class="font-headline-md text-headline-md font-bold text-brand-maroon">@Model.ApprovalRatioLabel</span>
+        </div>
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <div class="flex items-center justify-between mb-1">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Prototype Budgets</span>
+            </div>
+            <span class="font-headline-md text-headline-md font-bold text-brand-maroon">@Model.PrototypeBudget</span>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Submission Velocity</h2>
+            <svg viewBox="0 0 400 160" class="w-full h-40" preserveAspectRatio="none">
+                <polyline fill="none" stroke="#DD9024" stroke-width="2" points="0,140 50,120 100,90 150,100 200,60 250,70 300,40 350,30 400,50" />
+                <polyline fill="none" stroke="#DD9024" stroke-width="2" stroke-dasharray="4,4" points="0,140 50,120 100,90 150,100 200,60 250,70 300,40 350,30 400,50" />
+                <circle cx="0" cy="140" r="3" fill="#DD9024" />
+                <circle cx="50" cy="120" r="3" fill="#DD9024" />
+                <circle cx="100" cy="90" r="3" fill="#DD9024" />
+                <circle cx="150" cy="100" r="3" fill="#DD9024" />
+                <circle cx="200" cy="60" r="3" fill="#DD9024" />
+                <circle cx="250" cy="70" r="3" fill="#DD9024" />
+                <circle cx="300" cy="40" r="3" fill="#DD9024" />
+                <circle cx="350" cy="30" r="3" fill="#DD9024" />
+                <circle cx="400" cy="50" r="3" fill="#DD9024" />
+                <text x="200" y="20" text-anchor="middle" class="fill-on-surface-variant" font-size="8">Ideas per Month (Last 4 Quarters)</text>
+            </svg>
+        </div>
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Ideas by Category</h2>
+            <div class="space-y-2">
+                @{
+                    var maxCount = Model.CategoryStats.Any() ? Model.CategoryStats.Max(c => c.Count) : 1;
+                }
+                @foreach (var stat in Model.CategoryStats)
+                {
+                    <div>
+                        <div class="flex justify-between font-label-sm text-label-sm mb-1">
+                            <span class="text-on-surface">@stat.Category</span>
+                            <span class="text-on-surface-variant">@stat.Count</span>
+                        </div>
+                        <div class="w-full h-3 bg-outline-variant/50 rounded-sm overflow-hidden">
+                            <div class="h-full bg-brand-gold rounded-sm" style="width:@((double)stat.Count / maxCount * 100)%"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+        <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Archived Reports</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="border-b border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+                        <th class="py-2 pr-2">Report Title</th>
+                        <th class="py-2 pr-2">Date Generated</th>
+                        <th class="py-2 pr-2">Format</th>
+                        <th class="py-2 pr-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var report in Model.ArchivedReports)
+                    {
+                        <tr class="border-b border-outline-variant/50 hover:bg-brand-cream transition-colors">
+                            <td class="py-3 pr-2 font-medium text-on-surface">@report.Title</td>
+                            <td class="py-3 pr-2 text-on-surface-variant">@report.DateGenerated.ToString("MMM dd, yyyy")</td>
+                            <td class="py-3 pr-2">
+                                <span class="bg-brand-soft-yellow text-brand-maroon font-label-sm text-label-sm px-2 py-0.5 rounded-sm">@report.Format</span>
+                            </td>
+                            <td class="py-3 pr-2">
+                                <div class="flex items-center gap-2">
+                                    <button class="text-brand-gold hover:text-[#c47e1d] font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+                                        <span class="material-symbols-outlined text-[18px]">download</span> @report.Format
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

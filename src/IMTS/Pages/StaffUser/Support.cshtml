@@ -1,0 +1,121 @@
+@page
+@model IMTS.Pages.StaffUser.SupportModel
+
+<div class="max-w-4xl mx-auto space-y-lg">
+    @if (!string.IsNullOrEmpty(TempData["SuccessMessage"]?.ToString()))
+    {
+        <div class="bg-green-100 text-green-800 p-md rounded-sm font-label-md text-label-md">@TempData["SuccessMessage"]</div>
+    }
+
+    <div class="bg-white rounded-sm shadow-soft p-lg">
+        <h3 class="font-title-md text-title-md font-bold text-brand-maroon mb-md flex items-center gap-xs">
+            <span class="material-symbols-outlined">question_answer</span> Frequently Asked Questions
+        </h3>
+        <div class="space-y-sm" x-data="{ open: null }">
+            @{
+                var faqs = new[]
+                {
+                    ("How do I submit a new idea?", "Navigate to 'Submit New Idea' from the sidebar or use the FAB button on your Dashboard. Follow the 4-step submission form to provide all required details about your innovation."),
+                    ("How are ideas evaluated?", "Ideas go through a multi-stage review process. They are first reviewed by the Innovation Team, then assessed for feasibility, impact, and strategic alignment before a final decision is made."),
+                    ("How long does the review process take?", "The typical review cycle takes 4-6 weeks. You will receive notifications at each stage of the review process."),
+                    ("Can I edit my idea after submission?", "Once submitted, ideas cannot be edited directly. If you need to make changes, please contact the Innovation Team through the support form below.")
+                };
+            }
+            @for (int i = 0; i < faqs.Length; i++)
+            {
+                var q = faqs[i].Item1;
+                var a = faqs[i].Item2;
+                <div class="border border-outline-variant rounded-sm overflow-hidden">
+                    <button type="button" onclick="toggleFaq(@i)" class="w-full flex items-center justify-between p-md text-left hover:bg-brand-cream transition-colors">
+                        <span class="font-body-md text-body-md font-medium text-brand-maroon">@q</span>
+                        <span class="material-symbols-outlined text-outline transition-transform" id="faq-icon-@i">expand_more</span>
+                    </button>
+                    <div id="faq-answer-@i" class="hidden px-md pb-md font-body-sm text-body-sm text-on-surface-variant">
+                        @a
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+        <div class="lg:col-span-2 bg-white rounded-sm shadow-soft p-lg">
+            <h3 class="font-title-md text-title-md font-bold text-brand-maroon mb-md flex items-center gap-xs">
+                <span class="material-symbols-outlined">mail</span> Contact Us
+            </h3>
+            <form method="post" class="space-y-md">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-md text-label-md text-on-surface" asp-for="ContactName">Your Name <span class="text-red-500">*</span></label>
+                        <input asp-for="ContactName" class="w-full px-3 py-2.5 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" required />
+                        <span asp-validation-for="ContactName" class="text-red-500 font-label-sm text-label-sm"></span>
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-md text-label-md text-on-surface" asp-for="ContactEmail">Email <span class="text-red-500">*</span></label>
+                        <input asp-for="ContactEmail" type="email" class="w-full px-3 py-2.5 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" required />
+                        <span asp-validation-for="ContactEmail" class="text-red-500 font-label-sm text-label-sm"></span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label class="font-label-md text-label-md text-on-surface" asp-for="ContactSubject">Subject <span class="text-red-500">*</span></label>
+                    <input asp-for="ContactSubject" class="w-full px-3 py-2.5 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" required />
+                    <span asp-validation-for="ContactSubject" class="text-red-500 font-label-sm text-label-sm"></span>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label class="font-label-md text-label-md text-on-surface" asp-for="ContactMessage">Message <span class="text-red-500">*</span></label>
+                    <textarea asp-for="ContactMessage" rows="5" class="w-full px-3 py-2.5 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" required></textarea>
+                    <span asp-validation-for="ContactMessage" class="text-red-500 font-label-sm text-label-sm"></span>
+                </div>
+                <button type="submit" class="bg-brand-gold hover:bg-secondary text-white font-label-md text-label-md py-2.5 px-lg rounded-sm transition-colors">Submit Request</button>
+            </form>
+        </div>
+
+        <div class="bg-white rounded-sm shadow-soft p-lg">
+            <h3 class="font-title-md text-title-md font-bold text-brand-maroon mb-md flex items-center gap-xs">
+                <span class="material-symbols-outlined">support_agent</span> IT Support
+            </h3>
+            <div class="space-y-md">
+                <div class="flex items-center gap-sm">
+                    <div class="w-10 h-10 rounded-full bg-brand-maroon/10 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-brand-maroon">mail</span>
+                    </div>
+                    <div>
+                        <p class="font-label-sm text-label-sm text-outline">Email</p>
+                        <p class="font-body-sm text-body-sm font-medium">itsupport@bankofuganda.org</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-sm">
+                    <div class="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-brand-gold">call</span>
+                    </div>
+                    <div>
+                        <p class="font-label-sm text-label-sm text-outline">Phone</p>
+                        <p class="font-body-sm text-body-sm font-medium">+256 414 258 000</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-sm">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-green-600">location_on</span>
+                    </div>
+                    <div>
+                        <p class="font-label-sm text-label-sm text-outline">Location</p>
+                        <p class="font-body-sm text-body-sm font-medium">Plot 37/43 Kampala Road</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function toggleFaq(index) {
+            var answer = document.getElementById('faq-answer-' + index);
+            var icon = document.getElementById('faq-icon-' + index);
+            var isOpen = !answer.classList.contains('hidden');
+            answer.classList.toggle('hidden');
+            icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+    </script>
+}

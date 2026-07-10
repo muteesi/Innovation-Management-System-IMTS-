@@ -1,0 +1,147 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = IMTS
+build_property.RootNamespace = IMTS
+build_property.ProjectDir = /home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS
+build_property._RazorSourceGeneratorDebug = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/ManageCategories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vTWFuYWdlQ2F0ZWdvcmllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/ManageResources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vTWFuYWdlUmVzb3VyY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/Reports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vUmVwb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/ReviewIdeas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vUmV2aWV3SWRlYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/SetTimelines.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vU2V0VGltZWxpbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vU2V0dGluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/InnovationTeam/Support.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ub3ZhdGlvblRlYW0vU3VwcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/ItAdmin/AuditLog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRBZG1pbi9BdWRpdExvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/ItAdmin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRBZG1pbi9EYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/ItAdmin/ManageAccounts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRBZG1pbi9NYW5hZ2VBY2NvdW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/ItAdmin/Reports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRBZG1pbi9SZXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/ItAdmin/Support.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRBZG1pbi9TdXBwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/ItAdmin/SystemSettings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRBZG1pbi9TeXN0ZW1TZXR0aW5ncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Shared/_InnovationTeamNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Jbm5vdmF0aW9uVGVhbU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Shared/_ItAdminNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19JdEFkbWluTmF2LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Shared/_StaffNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19TdGFmZk5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL0Rhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/IdeaDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL0lkZWFEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/MyIdeas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL015SWRlYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/Notifications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL05vdGlmaWNhdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/Resources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL1Jlc291cmNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL1NldHRpbmdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/SubmitIdea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL1N1Ym1pdElkZWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/StaffUser/Support.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RhZmZVc2VyL1N1cHBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

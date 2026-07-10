@@ -1,0 +1,92 @@
+@page
+@model IMTS.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-brand-cream">
+    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-gold blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-maroon blur-[120px] rounded-full"></div>
+    </div>
+    <main class="flex-grow flex items-center justify-center w-full px-4 z-10">
+        <div class="w-full max-w-[440px] bg-brand-soft-yellow rounded-sm overflow-hidden login-card-shadow relative">
+            <div class="h-1.5 w-full bg-brand-gold"></div>
+            <div class="p-lg md:p-xl flex flex-col items-center">
+                <div class="mb-md">
+                    <img alt="Bank of Uganda Logo" class="w-24 h-24 object-contain" src="~/BOU logo.png" />
+                </div>
+                <div class="text-center mb-lg">
+                    <h1 class="text-brand-maroon font-headline-md text-headline-md leading-tight">Innovation Management System</h1>
+                    <p class="text-on-surface-variant font-body-md text-body-md mt-2">Portal Secure Access</p>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="w-full bg-error-container text-on-error-container p-sm rounded-sm mb-md font-label-md text-label-md">@Model.ErrorMessage</div>
+                }
+                <form method="post" class="w-full space-y-md">
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-on-surface font-label-md text-label-md" for="username">Username</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">person</span>
+                            <input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm transition-all duration-200 outline-none font-body-md text-body-md" id="username" asp-for="Username" placeholder="Enter your username" required />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-on-surface font-label-md text-label-md" for="password">Password</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">lock</span>
+                            <input class="w-full pl-10 pr-10 py-3 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm transition-all duration-200 outline-none font-body-md text-body-md" id="password" asp-for="Password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required type="password" />
+                            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-brand-maroon" onclick="togglePassword()">
+                                <span class="material-symbols-outlined text-[20px]">visibility</span>
+                            </button>
+                        </div>
+                        <div class="flex justify-end mt-1">
+                            <a class="text-brand-gold font-label-md text-label-md hover:underline decoration-2 transition-all" href="#">Forgot Password?</a>
+                        </div>
+                    </div>
+                    <div class="pt-sm">
+                        <button class="w-full bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md py-4 rounded-sm shadow-sm transition-all active:scale-[0.98] uppercase tracking-wider" type="submit">Login</button>
+                    </div>
+                    <div class="text-center pt-md border-t border-brand-maroon/5 mt-lg">
+                        <p class="text-on-surface-variant font-label-sm text-label-sm">
+                            Need help accessing the portal?
+                            <a class="text-brand-maroon font-bold hover:underline" href="#">Contact IT Support</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="fixed bottom-0 left-0 w-full py-md px-margin flex flex-col md:flex-row justify-between items-center gap-sm bg-surface-container-low border-t border-outline-variant z-20">
+        <div class="flex flex-col md:flex-row items-center gap-base">
+            <span class="text-label-md font-label-md font-bold text-on-surface">BOU IMS</span>
+            <span class="hidden md:block text-outline-variant">|</span>
+            <p class="text-label-sm font-label-sm text-on-surface-variant">&copy; Bank of Uganda, All Rights Reserved</p>
+        </div>
+        <nav class="flex items-center gap-lg">
+            <a class="text-label-sm font-label-sm text-on-surface-variant hover:text-brand-maroon transition-colors" href="#">Privacy Policy</a>
+            <a class="text-label-sm font-label-sm text-on-surface-variant hover:text-brand-maroon transition-colors" href="#">Terms of Service</a>
+            <a class="text-label-sm font-label-sm text-on-surface-variant hover:text-brand-maroon transition-colors" href="#">Security Standards</a>
+            <a class="text-label-sm font-label-sm text-on-surface-variant hover:text-brand-maroon transition-colors" href="#">Contact Support</a>
+        </nav>
+        <div class="flex items-center gap-sm">
+            <span class="material-symbols-outlined text-outline text-[18px]">verified_user</span>
+            <span class="text-label-sm font-label-sm text-outline">Secure Environment</span>
+        </div>
+    </footer>
+</div>
+@section Scripts {
+    <script>
+        function togglePassword() {
+            var pass = document.getElementById('password');
+            var icon = event.currentTarget.querySelector('span');
+            if (pass.type === 'password') {
+                pass.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                pass.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+    </script>
+}

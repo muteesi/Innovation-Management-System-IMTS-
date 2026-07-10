@@ -1,0 +1,145 @@
+@page
+@model IMTS.Pages.ItAdmin.SupportModel
+@{
+    var priorityColor = "";
+    var statusColor = "";
+}
+<div class="space-y-lg">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="bg-success/10 text-success px-lg py-md rounded-sm font-label-md text-label-md flex items-center gap-sm border border-success/20">
+            <span class="material-symbols-outlined">check_circle</span>
+            <span>@Model.SuccessMessage</span>
+        </div>
+    }
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+        <div class="flex items-center gap-sm mb-md">
+            <span class="material-symbols-outlined text-brand-gold">contact_support</span>
+            <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Submit Support Request</h2>
+        </div>
+        <form method="post" asp-page-handler="Submit" class="space-y-md max-w-2xl">
+            <div class="grid grid-cols-2 gap-md">
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Subject</label>
+                    <input asp-for="Subject" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" placeholder="Brief description of the issue" required />
+                </div>
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Priority</label>
+                    <select asp-for="Priority" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md">
+                        <option value="Low">Low</option>
+                        <option value="Normal" selected>Normal</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Message</label>
+                <textarea asp-for="Message" rows="4" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md resize-y" placeholder="Describe the issue in detail..." required></textarea>
+            </div>
+            <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors flex items-center gap-xs">
+                <span class="material-symbols-outlined text-sm">send</span>
+                <span>Submit Request</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 overflow-hidden">
+        <div class="px-lg py-md border-b border-outline-variant/30 flex items-center gap-sm">
+            <span class="material-symbols-outlined text-brand-gold">support</span>
+            <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Support Tickets</h2>
+            <span class="px-sm py-0.5 bg-surface-container-low text-on-surface-variant rounded-sm font-label-sm text-label-sm">@Model.Tickets.Count tickets</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-surface-container-low text-left font-label-sm text-label-sm text-on-surface-variant">
+                        <th class="px-lg py-sm font-medium">ID</th>
+                        <th class="px-lg py-sm font-medium">Subject</th>
+                        <th class="px-lg py-sm font-medium">Submitted By</th>
+                        <th class="px-lg py-sm font-medium">Department</th>
+                        <th class="px-lg py-sm font-medium">Priority</th>
+                        <th class="px-lg py-sm font-medium">Status</th>
+                        <th class="px-lg py-sm font-medium">Last Updated</th>
+                        <th class="px-lg py-sm font-medium">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ticket in Model.Tickets)
+                    {
+                        <tr class="border-t border-outline-variant/20 hover:bg-surface-container-low transition-colors">
+                            <td class="px-lg py-sm font-label-md text-label-md font-semibold text-on-surface">#@ticket.Id</td>
+                            <td class="px-lg py-sm font-label-md text-label-md font-medium text-on-surface">@ticket.Subject</td>
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant">@ticket.SubmittedBy</td>
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant">@ticket.Department</td>
+                            <td class="px-lg py-sm">
+                                @{
+                                    priorityColor = ticket.Priority switch
+                                    {
+                                        "Critical" => "bg-error/10 text-error",
+                                        "High" => "bg-warning/10 text-warning",
+                                        "Low" => "bg-surface-container-low text-on-surface-variant",
+                                        _ => "bg-brand-soft-yellow text-brand-maroon"
+                                    };
+                                }
+                                <span class="px-sm py-0.5 rounded-sm font-label-sm text-label-sm @priorityColor">@ticket.Priority</span>
+                            </td>
+                            <td class="px-lg py-sm">
+                                @{
+                                    statusColor = ticket.Status switch
+                                    {
+                                        "Open" => "bg-info/10 text-info",
+                                        "In Progress" => "bg-warning/10 text-warning",
+                                        "Resolved" => "bg-success/10 text-success",
+                                        "Closed" => "bg-surface-container-low text-on-surface-variant",
+                                        _ => "bg-surface-container-low text-on-surface-variant"
+                                    };
+                                }
+                                <span class="inline-flex items-center gap-xs px-sm py-0.5 rounded-sm font-label-sm text-label-sm @statusColor">
+                                    <span class="w-1.5 h-1.5 rounded-full @(ticket.Status == "Open" ? "bg-info" : ticket.Status == "In Progress" ? "bg-warning" : ticket.Status == "Resolved" ? "bg-success" : "bg-on-surface-variant")"></span>
+                                    @ticket.Status
+                                </span>
+                            </td>
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant">@ticket.LastUpdated.ToString("MMM dd, HH:mm")</td>
+                            <td class="px-lg py-sm">
+                                @if (ticket.Status == "Open")
+                                {
+                                    <form method="post" asp-page-handler="UpdateStatus" class="inline">
+                                        <input type="hidden" name="ticketId" value="@ticket.Id" />
+                                        <input type="hidden" name="status" value="In Progress" />
+                                        <button type="submit" class="px-sm py-0.5 bg-brand-gold/10 text-brand-gold hover:bg-brand-gold/20 rounded-sm font-label-sm text-label-sm transition-colors">Accept</button>
+                                    </form>
+                                }
+                                @if (ticket.Status == "In Progress")
+                                {
+                                    <form method="post" asp-page-handler="UpdateStatus" class="inline">
+                                        <input type="hidden" name="ticketId" value="@ticket.Id" />
+                                        <input type="hidden" name="status" value="Resolved" />
+                                        <button type="submit" class="px-sm py-0.5 bg-success/10 text-success hover:bg-success/20 rounded-sm font-label-sm text-label-sm transition-colors">Resolve</button>
+                                    </form>
+                                }
+                                @if (ticket.Status == "Resolved")
+                                {
+                                    <form method="post" asp-page-handler="UpdateStatus" class="inline">
+                                        <input type="hidden" name="ticketId" value="@ticket.Id" />
+                                        <input type="hidden" name="status" value="Closed" />
+                                        <button type="submit" class="px-sm py-0.5 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high rounded-sm font-label-sm text-label-sm transition-colors">Close</button>
+                                    </form>
+                                }
+                                @if (ticket.Status == "Closed" || ticket.Status == "Resolved")
+                                {
+                                    <form method="post" asp-page-handler="UpdateStatus" class="inline">
+                                        <input type="hidden" name="ticketId" value="@ticket.Id" />
+                                        <input type="hidden" name="status" value="Open" />
+                                        <button type="submit" class="px-sm py-0.5 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high rounded-sm font-label-sm text-label-sm transition-colors">Reopen</button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

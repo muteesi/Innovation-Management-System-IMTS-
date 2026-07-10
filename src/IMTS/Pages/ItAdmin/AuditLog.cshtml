@@ -1,0 +1,112 @@
+@page
+@model IMTS.Pages.ItAdmin.AuditLogModel
+@{
+    var severityIcon = "";
+}
+<div class="space-y-lg">
+    @if (TempData["ExportMessage"] is string exportMsg)
+    {
+        <div class="bg-brand-soft-yellow text-brand-maroon px-lg py-md rounded-sm font-label-md text-label-md flex items-center gap-sm border border-brand-gold/20">
+            <span class="material-symbols-outlined">info</span>
+            <span>@exportMsg</span>
+        </div>
+    }
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+        <div class="flex items-center gap-sm mb-md">
+            <span class="material-symbols-outlined text-brand-gold">filter_alt</span>
+            <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Filter Audit Logs</h2>
+        </div>
+        <form method="post" asp-page-handler="Filter" class="flex flex-wrap items-end gap-md">
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">From Date</label>
+                <input asp-for="DateFrom" type="date" class="px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">To Date</label>
+                <input asp-for="DateTo" type="date" class="px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" />
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Severity</label>
+                <select asp-for="SeverityFilter" class="px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md">
+                    <option value="">All Severities</option>
+                    <option value="info">Info</option>
+                    <option value="warning">Warning</option>
+                    <option value="error">Error</option>
+                </select>
+            </div>
+            <div class="flex items-center gap-sm">
+                <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-sm">filter_alt</span>
+                    <span>Apply Filters</span>
+                </button>
+                <form method="post" asp-page-handler="Export" style="display:inline">
+                    <button type="submit" class="px-lg py-2 bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded-sm transition-colors flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        <span>Export CSV</span>
+                    </button>
+                </form>
+            </div>
+        </form>
+    </div>
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 overflow-hidden">
+        <div class="px-lg py-md border-b border-outline-variant/30 flex items-center gap-sm">
+            <span class="material-symbols-outlined text-brand-gold">security</span>
+            <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Audit Log Entries</h2>
+            <span class="px-sm py-0.5 bg-surface-container-low text-on-surface-variant rounded-sm font-label-sm text-label-sm">@Model.FilteredLogs.Count entries</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-surface-container-low text-left font-label-sm text-label-sm text-on-surface-variant">
+                        <th class="px-lg py-sm font-medium">Timestamp</th>
+                        <th class="px-lg py-sm font-medium">Event</th>
+                        <th class="px-lg py-sm font-medium">User</th>
+                        <th class="px-lg py-sm font-medium">IP Address</th>
+                        <th class="px-lg py-sm font-medium">Severity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var log in Model.FilteredLogs)
+                    {
+                        <tr class="border-t border-outline-variant/20 hover:bg-surface-container-low transition-colors">
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface">@log.Timestamp.ToString("MMM dd, yyyy HH:mm")</td>
+                            <td class="px-lg py-sm font-label-md text-label-md font-medium text-on-surface">@log.Event</td>
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant">
+                                <span class="flex items-center gap-xs">
+                                    <span class="material-symbols-outlined text-sm">person</span>
+                                    @log.User
+                                </span>
+                            </td>
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant font-mono">@log.IpAddress</td>
+                            <td class="px-lg py-sm">
+                                <span class="inline-flex items-center gap-xs px-sm py-0.5 rounded-sm font-label-sm text-label-sm @AuditLogModel.GetSeverityBadgeClass(log.Severity)">
+                                    @{
+                                        severityIcon = log.Severity.ToLower() switch
+                                        {
+                                            "error" => "error",
+                                            "warning" => "warning",
+                                            _ => "info"
+                                        };
+                                    }
+                                    <span class="material-symbols-outlined text-sm">@severityIcon</span>
+                                    @log.Severity
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.FilteredLogs.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="px-lg py-xl text-center">
+                                <span class="material-symbols-outlined text-4xl text-outline mb-sm block">list_alt</span>
+                                <p class="font-body-md text-body-md text-on-surface-variant">No audit log entries match the current filters.</p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

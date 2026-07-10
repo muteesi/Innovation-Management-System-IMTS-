@@ -1,0 +1,228 @@
+@page
+@model IMTS.Pages.ItAdmin.ManageAccountsModel
+@{
+    var statusColor = "";
+}
+<div class="space-y-lg">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="bg-success/10 text-success px-lg py-md rounded-sm font-label-md text-label-md flex items-center gap-sm border border-success/20">
+            <span class="material-symbols-outlined">check_circle</span>
+            <span>@Model.SuccessMessage</span>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="bg-error/10 text-error px-lg py-md rounded-sm font-label-md text-label-md flex items-center gap-sm border border-error/20">
+            <span class="material-symbols-outlined">error</span>
+            <span>@Model.ErrorMessage</span>
+        </div>
+    }
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+        <div class="flex items-center gap-sm mb-md">
+            <span class="material-symbols-outlined text-brand-gold">search</span>
+            <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Search & Filter</h2>
+        </div>
+        <form method="post" asp-page-handler="Search" class="flex flex-wrap items-end gap-md">
+            <div class="flex-1 min-w-[200px]">
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Search</label>
+                <input asp-for="SearchTerm" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" placeholder="Name, username, or email..." />
+            </div>
+            <div class="w-48">
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Department</label>
+                <select asp-for="DepartmentFilter" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md">
+                    <option value="">All Departments</option>
+                    @foreach (var dept in Model.AllDepartments)
+                    {
+                        <option value="@dept">@dept</option>
+                    }
+                </select>
+            </div>
+            <div class="w-40">
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Role</label>
+                <select asp-for="RoleFilter" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md">
+                    <option value="">All Roles</option>
+                    @foreach (var role in Model.AllRoles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors flex items-center gap-xs">
+                <span class="material-symbols-outlined text-sm">search</span>
+                <span>Search</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 p-lg">
+        <div class="flex items-center gap-sm mb-md">
+            <span class="material-symbols-outlined text-brand-gold">person_add</span>
+            <h2 class="font-label-lg text-label-lg font-bold text-on-surface">Create New User</h2>
+        </div>
+        <form method="post" asp-page-handler="Create" class="grid grid-cols-3 gap-md">
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Username</label>
+                <input asp-for="NewUsername" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" placeholder="e.g. j.doe" required />
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Full Name</label>
+                <input asp-for="NewFullName" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" placeholder="e.g. John Doe" required />
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Email</label>
+                <input asp-for="NewEmail" type="email" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" placeholder="e.g. j.doe@bou.or.ug" />
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Department</label>
+                <select asp-for="NewDepartment" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md">
+                    <option value="">Select Department</option>
+                    @foreach (var dept in Model.AllDepartments)
+                    {
+                        <option value="@dept">@dept</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Role</label>
+                <select asp-for="NewRole" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md">
+                    @foreach (var role in Model.AllRoles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Initial Password</label>
+                <input asp-for="NewPassword" type="password" class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-body-md text-body-md" placeholder="Leave blank for auto-generate" />
+            </div>
+            <div class="col-span-3 pt-sm">
+                <button type="submit" class="px-lg py-2 bg-brand-gold hover:bg-[#c47e1d] text-white font-label-md text-label-md rounded-sm transition-colors flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-sm">person_add</span>
+                    <span>Create User</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="bg-white rounded-sm shadow-soft border border-outline-variant/40 overflow-hidden">
+        <div class="px-lg py-md border-b border-outline-variant/30 flex items-center justify-between">
+            <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-brand-gold">people</span>
+                <h2 class="font-label-lg text-label-lg font-bold text-on-surface">User Accounts</h2>
+                <span class="px-sm py-0.5 bg-surface-container-low text-on-surface-variant rounded-sm font-label-sm text-label-sm">@Model.FilteredUsers.Count users</span>
+            </div>
+            <form method="post" asp-page-handler="BulkAction" class="flex items-center gap-sm">
+                <select asp-for="BulkAction" class="px-md py-1.5 bg-surface-container-lowest border border-outline-variant focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-sm outline-none font-label-sm text-label-sm">
+                    <option value="">Bulk Actions</option>
+                    <option value="lock">Lock Selected</option>
+                    <option value="unlock">Unlock Selected</option>
+                    <option value="enable">Enable Selected</option>
+                    <option value="disable">Disable Selected</option>
+                </select>
+                <button type="submit" class="px-md py-1.5 bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-sm transition-colors">Apply</button>
+            </form>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-surface-container-low text-left font-label-sm text-label-sm text-on-surface-variant">
+                        <th class="px-lg py-sm font-medium w-10">
+                            <input type="checkbox" class="rounded border-outline-variant" />
+                        </th>
+                        <th class="px-lg py-sm font-medium">User</th>
+                        <th class="px-lg py-sm font-medium">Role</th>
+                        <th class="px-lg py-sm font-medium">Department</th>
+                        <th class="px-lg py-sm font-medium">Status</th>
+                        <th class="px-lg py-sm font-medium">Last Login</th>
+                        <th class="px-lg py-sm font-medium">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.PagedUsers)
+                    {
+                        <tr class="border-t border-outline-variant/20 hover:bg-surface-container-low transition-colors">
+                            <td class="px-lg py-sm">
+                                <input type="checkbox" class="rounded border-outline-variant" />
+                            </td>
+                            <td class="px-lg py-sm">
+                                <div class="flex items-center gap-sm">
+                                    <div class="w-9 h-9 rounded-full bg-brand-gold/20 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-brand-maroon text-sm">person</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-label-md text-label-md font-semibold text-on-surface">@user.FullName</p>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant">@user.Email</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-lg py-sm">
+                                <span class="px-sm py-0.5 rounded-sm font-label-sm text-label-sm @(user.Role == "Reviewer" ? "bg-brand-soft-yellow text-brand-maroon" : user.Role == "ITAdmin" ? "bg-brand-maroon/10 text-brand-maroon" : "bg-surface-container-low text-on-surface-variant")">@user.Role</span>
+                            </td>
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant">@user.Department</td>
+                            <td class="px-lg py-sm">
+                                @{
+                                    statusColor = user.Status switch
+                                    {
+                                        "Active" => "text-success bg-success/10",
+                                        "Locked" => "text-warning bg-warning/10",
+                                        "Disabled" => "text-error bg-error/10",
+                                        _ => "text-on-surface-variant bg-surface-container-low"
+                                    };
+                                }
+                                <span class="inline-flex items-center gap-xs px-sm py-0.5 rounded-sm font-label-sm text-label-sm @statusColor">
+                                    <span class="w-1.5 h-1.5 rounded-full @(user.Status == "Active" ? "bg-success" : user.Status == "Locked" ? "bg-warning" : "bg-error")"></span>
+                                    @user.Status
+                                </span>
+                            </td>
+                            <td class="px-lg py-sm font-body-md text-body-md text-on-surface-variant">@user.LastLogin.ToString("MMM dd, yyyy")</td>
+                            <td class="px-lg py-sm">
+                                <div class="flex items-center gap-xs">
+                                    <button class="p-xs hover:bg-surface-container-high rounded-sm transition-colors" title="Edit">
+                                        <span class="material-symbols-outlined text-sm text-on-surface-variant">edit</span>
+                                    </button>
+                                    <button class="p-xs hover:bg-surface-container-high rounded-sm transition-colors" title="@(user.Status == "Locked" ? "Unlock" : "Lock")">
+                                        <span class="material-symbols-outlined text-sm text-on-surface-variant">@(user.Status == "Locked" ? "lock_open" : "lock")</span>
+                                    </button>
+                                    <button class="p-xs hover:bg-surface-container-high rounded-sm transition-colors" title="Reset Password">
+                                        <span class="material-symbols-outlined text-sm text-on-surface-variant">key</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.PagedUsers.Any())
+                    {
+                        <tr>
+                            <td colspan="7" class="px-lg py-xl text-center">
+                                <span class="material-symbols-outlined text-4xl text-outline mb-sm block">search_off</span>
+                                <p class="font-body-md text-body-md text-on-surface-variant">No users found matching your criteria.</p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @if (Model.TotalPages > 1)
+        {
+            <div class="px-lg py-md border-t border-outline-variant/30 flex items-center justify-between">
+                <p class="font-label-sm text-label-sm text-on-surface-variant">
+                    Showing @((Model.CurrentPage - 1) * Model.PageSize + 1) - @(Math.Min(Model.CurrentPage * Model.PageSize, Model.FilteredUsers.Count)) of @Model.FilteredUsers.Count
+                </p>
+                <div class="flex items-center gap-xs">
+                    <a asp-page="/ItAdmin/ManageAccounts" asp-route-page="@(Model.CurrentPage - 1)" class="p-xs hover:bg-surface-container-high rounded-sm transition-colors @(Model.CurrentPage <= 1 ? "pointer-events-none opacity-40" : "")">
+                        <span class="material-symbols-outlined text-sm">chevron_left</span>
+                    </a>
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <a asp-page="/ItAdmin/ManageAccounts" asp-route-page="@i" class="px-sm py-0.5 rounded-sm font-label-sm text-label-sm transition-colors @(i == Model.CurrentPage ? "bg-brand-gold text-white" : "hover:bg-surface-container-high text-on-surface-variant")">@i</a>
+                    }
+                    <a asp-page="/ItAdmin/ManageAccounts" asp-route-page="@(Model.CurrentPage + 1)" class="p-xs hover:bg-surface-container-high rounded-sm transition-colors @(Model.CurrentPage >= Model.TotalPages ? "pointer-events-none opacity-40" : "")">
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

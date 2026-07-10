@@ -1,4 +1,5 @@
 module.exports = {
+  content: ["./src/IMTS/Pages/**/*.cshtml", "./**/*.html"],
   darkMode: "class",
   theme: {
     extend: {

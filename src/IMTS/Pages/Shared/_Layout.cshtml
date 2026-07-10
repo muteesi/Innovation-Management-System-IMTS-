@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>@ViewData["Title"] - Bank of Uganda Innovation Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dcc0bc; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #89726e; }
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .sidebar-active { background-color: #fcaa3e; color: #6c4100; font-weight: 700; border-radius: 0.25rem; }
+        .shadow-soft { box-shadow: 0 4px 20px -2px rgba(90, 12, 8, 0.06); }
+    </style>
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="text-on-surface font-body-md antialiased overflow-x-hidden">
+    @{
+        var role = ViewData["Role"]?.ToString() ?? "";
+    }
+
+    @if (role == "Staff")
+    {
+        <partial name="_StaffNav" />
+    }
+    else if (role == "Reviewer")
+    {
+        <partial name="_InnovationTeamNav" />
+    }
+    else if (role == "ITAdmin")
+    {
+        <partial name="_ItAdminNav" />
+    }
+
+    @if (!string.IsNullOrEmpty(role))
+    {
+        <main class="@(role == "Staff" ? "ml-64" : role == "Reviewer" ? "ml-64" : role == "ITAdmin" ? "ml-64" : "") flex-1 flex flex-col h-full overflow-y-auto bg-brand-cream min-h-screen">
+            <header class="flex justify-between items-center w-full px-gutter h-16 sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-outline-variant">
+                <div class="flex flex-col">
+                    <h1 class="font-title-lg text-title-lg text-primary leading-tight">
+                        @ViewData["Heading"]
+                    </h1>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">@ViewData["Subheading"]</p>
+                </div>
+                <div class="flex items-center gap-gutter">
+                    <div class="relative hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-sm py-1.5 w-64 focus-within:border-brand-gold transition-colors">
+                        <span class="material-symbols-outlined text-outline">search</span>
+                        <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline" placeholder="Search..." type="text" />
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <button class="p-xs hover:bg-surface-container-high rounded-full transition-colors" onclick="window.location.href='@Url.Page("/Login")'">
+                            <span class="material-symbols-outlined text-primary">account_balance</span>
+                        </button>
+                        <button class="p-xs hover:bg-surface-container-high rounded-full transition-colors" onclick="window.location.href='@Url.Page("/" + role + "/Support")'">
+                            <span class="material-symbols-outlined text-primary">help_outline</span>
+                        </button>
+                        <div class="h-8 w-px bg-outline-variant mx-xs"></div>
+                        <div class="flex items-center gap-xs cursor-pointer group">
+                            <div class="w-10 h-10 rounded-full border-2 border-brand-gold overflow-hidden bg-white flex items-center justify-center">
+                                @if (ViewData["AvatarUrl"] is string avatar && !string.IsNullOrEmpty(avatar))
+                                {
+                                    <img class="w-full h-full object-cover" src="@avatar" alt="User" />
+                                }
+                                else
+                                {
+                                    <span class="material-symbols-outlined text-brand-gold">person</span>
+                                }
+                            </div>
+                            <span class="material-symbols-outlined text-on-surface group-hover:text-brand-gold transition-colors">keyboard_arrow_down</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="max-w-[1280px] mx-auto w-full px-gutter py-lg">
+                @RenderBody()
+            </div>
+            <footer class="mt-auto px-gutter py-md bg-white border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+                <div class="flex items-center gap-sm">
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">&copy; @DateTime.Now.Year Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+                </div>
+                <div class="flex items-center gap-md">
+                    <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-brand-maroon" href="#">Security Policy</a>
+                    <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-brand-maroon" href="#">Terms of Innovation</a>
+                    <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-brand-maroon" href="@Url.Page("/" + role + "/Support")">Contact Support</a>
+                </div>
+            </footer>
+        </main>
+    }
+    else
+    {
+        <main class="flex-1">
+            @RenderBody()
+        </main>
+    }
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

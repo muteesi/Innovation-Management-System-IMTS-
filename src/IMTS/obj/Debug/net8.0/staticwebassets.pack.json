@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/wwwroot/BOU logo.png",
+      "PackagePath": "staticwebassets/BOU logo.png"
+    },
+    {
+      "Id": "/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/home/peter/Documents/BOU/Innovation-Management-System-IMTS-/src/IMTS/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.IMTS.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.IMTS.props",
+      "PackagePath": "build\\IMTS.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.IMTS.props",
+      "PackagePath": "buildMultiTargeting\\IMTS.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.IMTS.props",
+      "PackagePath": "buildTransitive\\IMTS.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

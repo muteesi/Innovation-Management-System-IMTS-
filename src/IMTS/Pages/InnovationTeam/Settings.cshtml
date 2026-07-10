@@ -1,0 +1,92 @@
+@page
+@model IMTS.Pages.InnovationTeam.SettingsModel
+@{
+    ViewData["Title"] = "Settings";
+}
+<div class="space-y-lg">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="bg-green-50 border border-green-200 text-green-700 font-label-md text-label-md p-sm rounded-sm flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">check_circle</span>
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <form method="post" class="max-w-2xl space-y-lg">
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Profile</h2>
+            <div class="flex items-center gap-4 mb-md">
+                <div class="w-16 h-16 rounded-full border-2 border-brand-gold overflow-hidden bg-white flex items-center justify-center">
+                    @if (!string.IsNullOrEmpty(Model.CurrentUser.AvatarUrl))
+                    {
+                        <img class="w-full h-full object-cover" src="@Model.CurrentUser.AvatarUrl" alt="Avatar" />
+                    }
+                    else
+                    {
+                        <span class="material-symbols-outlined text-brand-gold text-[32px]">person</span>
+                    }
+                </div>
+                <div>
+                    <p class="font-title-md text-title-md font-bold text-on-surface">@Model.CurrentUser.FullName</p>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">@@@Model.CurrentUser.Username</p>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">@Model.CurrentUser.Department - @Model.CurrentUser.Role</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Review Preferences</h2>
+            <div class="space-y-3">
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="DefaultReviewTimeline">Default Review Timeline (Days)</label>
+                    <select asp-for="DefaultReviewTimeline" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none">
+                        <option value="7">7 Days</option>
+                        <option value="14">14 Days</option>
+                        <option value="21">21 Days</option>
+                        <option value="30">30 Days</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Notification Settings</h2>
+            <div class="space-y-3">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" asp-for="NotifyOnNewSubmission" class="rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                    <span class="font-label-md text-label-md text-on-surface">Notify on new submissions</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" asp-for="NotifyOnStatusChange" class="rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                    <span class="font-label-md text-label-md text-on-surface">Notify on status changes</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" asp-for="NotifyOnComment" class="rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                    <span class="font-label-md text-label-md text-on-surface">Notify on comments</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-sm border border-outline-variant shadow-soft p-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon mb-md">Email Notifications</h2>
+            <div class="space-y-3">
+                <div>
+                    <label class="font-label-sm text-label-sm text-on-surface block mb-1" asp-for="EmailAddress">Email Address</label>
+                    <input asp-for="EmailAddress" type="email" class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-white text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" />
+                </div>
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" asp-for="EmailDailyDigest" class="rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                    <span class="font-label-md text-label-md text-on-surface">Daily digest email</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" asp-for="EmailWeeklySummary" class="rounded border-outline-variant text-brand-gold focus:ring-brand-gold" />
+                    <span class="font-label-md text-label-md text-on-surface">Weekly summary email</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="flex justify-end">
+            <button type="submit" class="bg-brand-gold hover:bg-[#c47e1d] text-white font-label-sm text-label-sm px-6 py-3 rounded-sm transition-colors">Save Settings</button>
+        </div>
+    </form>
+</div>

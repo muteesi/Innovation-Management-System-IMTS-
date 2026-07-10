@@ -1,0 +1,50 @@
+@{
+    var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+    bool IsActive(string page) => currentPage.Equals(page, StringComparison.OrdinalIgnoreCase);
+}
+<aside class="h-screen w-64 fixed left-0 top-0 bg-primary-container border-r border-outline-variant shadow-sm flex flex-col py-md px-sm z-50">
+    <div class="flex items-center gap-sm mb-lg px-xs">
+        <img alt="Bank of Uganda Crest" class="h-10 w-10 object-contain bg-white rounded-full p-1" src="~/BOU logo.png" />
+        <div class="flex flex-col">
+            <span class="font-headline-md text-headline-md font-bold text-on-primary-container leading-none">IMTS</span>
+            <span class="font-label-sm text-label-sm text-on-primary-container/80">Digital Vault Of Ideas</span>
+        </div>
+    </div>
+    <nav class="flex-1 space-y-1">
+        <a class="flex items-center gap-sm px-md py-sm @(IsActive("/ItAdmin/Dashboard") ? "text-on-secondary-container bg-secondary-container rounded-lg font-bold" : "text-on-primary-container hover:bg-primary-fixed-variant") transition-colors duration-200 font-label-md text-label-md" href="~/ItAdmin/Dashboard">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+            Dashboard
+        </a>
+        <a class="flex items-center gap-sm px-md py-sm @(IsActive("/ItAdmin/ManageAccounts") ? "text-on-secondary-container bg-secondary-container rounded-lg font-bold" : "text-on-primary-container hover:bg-primary-fixed-variant") transition-colors duration-200 font-label-md text-label-md" href="~/ItAdmin/ManageAccounts">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            Manage Accounts
+        </a>
+        <a class="flex items-center gap-sm px-md py-sm @(IsActive("/ItAdmin/SystemSettings") ? "text-on-secondary-container bg-secondary-container rounded-lg font-bold" : "text-on-primary-container hover:bg-primary-fixed-variant") transition-colors duration-200 font-label-md text-label-md" href="~/ItAdmin/SystemSettings">
+            <span class="material-symbols-outlined">settings</span>
+            System Settings
+        </a>
+        <a class="flex items-center gap-sm px-md py-sm @(IsActive("/ItAdmin/AuditLog") ? "text-on-secondary-container bg-secondary-container rounded-lg font-bold" : "text-on-primary-container hover:bg-primary-fixed-variant") transition-colors duration-200 font-label-md text-label-md" href="~/ItAdmin/AuditLog">
+            <span class="material-symbols-outlined">security</span>
+            Audit Log
+        </a>
+        <a class="flex items-center gap-sm px-md py-sm @(IsActive("/ItAdmin/Reports") ? "text-on-secondary-container bg-secondary-container rounded-lg font-bold" : "text-on-primary-container hover:bg-primary-fixed-variant") transition-colors duration-200 font-label-md text-label-md" href="~/ItAdmin/Reports">
+            <span class="material-symbols-outlined">assessment</span>
+            Reports
+        </a>
+    </nav>
+    <div class="pt-md border-t border-outline-variant/30 mt-auto">
+        <button onclick="window.location.href='@Url.Page("/ItAdmin/Reports")'" class="w-full bg-brand-gold text-primary font-bold py-sm rounded-lg mb-md text-label-md active:scale-95 transition-transform">
+            New Security Report
+        </button>
+        <div class="space-y-1">
+            <a class="flex items-center gap-sm px-md py-sm text-on-primary-container hover:bg-primary-fixed-variant transition-colors duration-200 font-label-md text-label-md" href="~/ItAdmin/Support">
+                <span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+            <a class="flex items-center gap-sm px-md py-sm text-on-primary-container hover:bg-primary-fixed-variant transition-colors duration-200 font-label-md text-label-md" href="~/Login">
+                <span class="material-symbols-outlined text-error">logout</span>
+                Log Out
+            </a>
+        </div>
+    </div>
+</aside>

@@ -1,0 +1,92 @@
+@page
+@model IMTS.Pages.StaffUser.DashboardModel
+@{
+    var statusColor = (string status) => status switch
+    {
+        "Under Review" => "bg-yellow-100 text-yellow-800",
+        "In Development" => "bg-blue-100 text-blue-800",
+        "Approved" => "bg-green-100 text-green-800",
+        "Declined" => "bg-red-100 text-red-800",
+        "Pending" => "bg-yellow-50 text-yellow-600",
+        _ => "bg-gray-100 text-gray-800"
+    };
+}
+
+<div class="space-y-lg">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+        <div class="bg-white rounded-sm shadow-soft p-md border-l-4 border-brand-maroon">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Total Submitted</p>
+                    <p class="font-headline-md text-headline-md font-bold text-brand-maroon">@Model.TotalSubmitted</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-brand-maroon/30">lightbulb</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-sm shadow-soft p-md border-l-4 border-yellow-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Under Review</p>
+                    <p class="font-headline-md text-headline-md font-bold text-yellow-600">@Model.UnderReview</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-yellow-500/30">rate_review</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-sm shadow-soft p-md border-l-4 border-green-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Approved</p>
+                    <p class="font-headline-md text-headline-md font-bold text-green-600">@Model.Approved</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-green-500/30">check_circle</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-sm shadow-soft p-md border-l-4 border-blue-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">In Development</p>
+                    <p class="font-headline-md text-headline-md font-bold text-blue-600">@Model.InDevelopment</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-blue-500/30">construction</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-sm shadow-soft p-lg">
+        <div class="flex items-center justify-between mb-md">
+            <h2 class="font-title-md text-title-md font-bold text-brand-maroon">Your Recent Ideas</h2>
+            <a asp-page="/StaffUser/MyIdeas" class="font-label-md text-label-md text-brand-gold hover:underline">View All</a>
+        </div>
+        @if (Model.RecentIdeas.Count == 0)
+        {
+            <div class="text-center py-xl text-on-surface-variant">
+                <span class="material-symbols-outlined text-5xl">emoji_objects</span>
+                <p class="font-body-md text-body-md mt-sm">No ideas submitted yet.</p>
+                <a asp-page="/StaffUser/SubmitIdea" class="inline-block mt-md bg-brand-gold text-white font-label-md text-label-md py-sm px-lg rounded-sm">Submit Your First Idea</a>
+            </div>
+        }
+        else
+        {
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                @foreach (var idea in Model.RecentIdeas)
+                {
+                    <div class="border border-outline-variant rounded-sm p-md hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between mb-sm">
+                            <h3 class="font-title-sm text-title-sm font-semibold text-brand-maroon">@idea.Title</h3>
+                            <span class="font-label-sm text-label-sm px-sm py-0.5 rounded-full @statusColor(idea.Status)">@idea.Status</span>
+                        </div>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-sm">@idea.Category</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-sm text-label-sm text-outline">@idea.SubmittedDate.ToString("MMM dd, yyyy")</span>
+                            <a asp-page="/StaffUser/IdeaDetails" asp-route-id="@idea.Id" class="font-label-md text-label-md text-brand-gold hover:underline">Details</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <a asp-page="/StaffUser/SubmitIdea" class="fixed bottom-lg right-lg w-14 h-14 bg-brand-gold hover:bg-secondary text-white rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 z-50">
+        <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">add</span>
+    </a>
+</div>

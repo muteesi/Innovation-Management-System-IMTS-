@@ -6,6 +6,43 @@
 
 ---
 
+## Getting Started
+
+### Prerequisites
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Node.js 18+](https://nodejs.org/) (for Tailwind CSS build)
+
+### Quick Start
+
+```bash
+# 1. Install Tailwind CLI and build the CSS
+npm install
+npm run build:css
+
+# 2. Run the ASP.NET Core application
+dotnet run --project src/IMTS
+```
+
+The app starts at `http://localhost:5000`. Login with any of these usernames (password is ignored):
+
+| Username (any case) | Role | Dashboard |
+|---|---|---|
+| `staff`, `jonathan`, `john`, `j.doe` | Staff User | `/StaffUser/Dashboard` |
+| `admin`, `katumba`, `j.katumba` | IT Admin | `/ItAdmin/Dashboard` |
+| `reviewer`, `rose`, `r.namaganda`, `namaganda` | Innovation Team | `/InnovationTeam/Dashboard` |
+
+### Tailwind CSS (development)
+
+```bash
+npm run watch:css   # watches and rebuilds on changes
+npm run build:css   # one-off production build
+```
+
+The project uses a single canonical `tailwind.config.js` with the brand palette. The CLI build output goes to `src/IMTS/wwwroot/css/site.css` and is linked from the shared `_Layout.cshtml`.
+
+---
+
 ## 1. Purpose & Scope
 
 This document defines the target microservices architecture for the Innovation
