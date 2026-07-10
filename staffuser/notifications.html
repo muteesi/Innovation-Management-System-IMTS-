@@ -7,95 +7,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-variant": "#e5e2e1",
-                        "on-primary-fixed": "#410001",
-                        "on-secondary-fixed": "#2b1700",
-                        "surface": "#fcf9f8",
-                        "error": "#ba1a1a",
-                        "secondary-fixed": "#ffddb9",
-                        "outline": "#89726e",
-                        "on-tertiary-container": "#464000",
-                        "tertiary": "#686000",
-                        "on-surface-variant": "#56423f",
-                        "surface-dim": "#dcd9d9",
-                        "surface-bright": "#fcf9f8",
-                        "on-error-container": "#93000a",
-                        "tertiary-fixed-dim": "#d5c95b",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f6f3f2",
-                        "secondary": "#875300",
-                        "on-secondary-fixed-variant": "#663e00",
-                        "tertiary-fixed": "#f2e574",
-                        "surface-container-highest": "#e5e2e1",
-                        "secondary-container": "#fcaa3e",
-                        "surface-container": "#f0eded",
-                        "primary-container": "#5a0c08",
-                        "surface-tint": "#9f3f35",
-                        "on-background": "#1c1b1b",
-                        "on-secondary": "#ffffff",
-                        "error-container": "#ffdad6",
-                        "outline-variant": "#dcc0bc",
-                        "on-surface": "#1c1b1b",
-                        "inverse-primary": "#ffb4a9",
-                        "on-secondary-container": "#6c4100",
-                        "on-tertiary-fixed": "#1f1c00",
-                        "primary": "#380001",
-                        "on-primary-fixed-variant": "#802820",
-                        "background": "#fcf9f8",
-                        "on-error": "#ffffff",
-                        "primary-fixed-dim": "#ffb4a9",
-                        "surface-container-high": "#eae7e7",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-container": "#e27264",
-                        "on-tertiary-fixed-variant": "#4e4800",
-                        "inverse-surface": "#313030",
-                        "secondary-fixed-dim": "#ffb964",
-                        "on-primary": "#ffffff",
-                        "tertiary-container": "#b9ae43",
-                        "primary-fixed": "#ffdad5",
-                        "inverse-on-surface": "#f3f0ef",
-                        "bou-cream": "#FEF7EF",
-                        "bou-gold": "#DD9024",
-                        "bou-maroon": "#5A0C08"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "lg": "48px",
-                        "md": "24px",
-                        "xl": "80px",
-                        "margin": "32px",
-                        "gutter": "24px",
-                        "base": "8px",
-                        "xs": "4px",
-                        "sm": "12px"
-                    },
-                    "fontFamily": {
-                        "body-md": ["Public Sans"],
-                        "label-md": ["Public Sans"],
-                        "display-lg": ["Public Sans"],
-                        "headline-lg": ["Public Sans"],
-                        "title-lg": ["Public Sans"],
-                        "body-lg": ["Public Sans"],
-                        "headline-md": ["Public Sans"],
-                        "headline-lg-mobile": ["Public Sans"],
-                        "label-sm": ["Public Sans"]
-                    }
-                }
-            }
-        }
-    </script>
+<script src="tailwind-config.js"></script>
 <style>
         body { font-family: 'Public Sans', sans-serif; background-color: #FEF7EF; }
         .material-symbols-outlined {
@@ -168,14 +80,14 @@ Log Out
 <!-- Search Bar -->
 <div class="relative hidden lg:block">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="bg-surface-container-low border border-outline-variant rounded-full pl-10 pr-4 py-1.5 w-64 focus:ring-2 focus:ring-bou-gold focus:border-bou-gold outline-none text-body-md" placeholder="Search notifications..." type="text"/>
+<input class="bg-surface-container-low border border-outline-variant rounded-full pl-10 pr-4 py-1.5 w-64 focus:ring-2 focus:ring-brand-gold focus:border-brand-gold outline-none text-body-md" placeholder="Search notifications..." type="text"/>
 </div>
 <div class="flex items-center gap-sm">
 <button class="material-symbols-outlined text-primary hover:text-secondary transition-colors p-2 rounded-full hover:bg-surface-container">account_balance</button>
 <button onclick="window.location.href='support.html'" class="material-symbols-outlined text-primary hover:text-secondary transition-colors p-2 rounded-full hover:bg-surface-container">help_outline</button>
 <div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
 <div class="flex items-center gap-2">
-<div class="w-10 h-10 rounded-full border-2 border-bou-gold bg-cover bg-center" data-alt="A professional headshot of a financial executive at the Bank of Uganda, looking confident and smiling slightly. The background is a blurred office environment with soft lighting, matching the corporate and authoritative aesthetic of a central bank." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJ7KjjrkMDZCnH8l9IJGSUtdvUR6Crq1W1B_aECU2S5IFPWgDY2YEE-TsbhnhnT1qKTwe7NYxr7jwl5jHufrIP87OUVzgde58GtKrpO0QgH-Ygbm4-yJbzcg-BkmiIXMbXDnRKAunQvvHZ7zz29uQDHnMjETpVu_7hErUXobCQfLX0RWAGFmIVoowRc1VqcsCalF9WrksI7ay7L54_JKdU_YMeQ1Okvac_mAV5LTHBRHy7jewWNCn9VA')"></div>
+<div class="w-10 h-10 rounded-full border-2 border-brand-gold bg-cover bg-center" data-alt="A professional headshot of a financial executive at the Bank of Uganda, looking confident and smiling slightly. The background is a blurred office environment with soft lighting, matching the corporate and authoritative aesthetic of a central bank." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJ7KjjrkMDZCnH8l9IJGSUtdvUR6Crq1W1B_aECU2S5IFPWgDY2YEE-TsbhnhnT1qKTwe7NYxr7jwl5jHufrIP87OUVzgde58GtKrpO0QgH-Ygbm4-yJbzcg-BkmiIXMbXDnRKAunQvvHZ7zz29uQDHnMjETpVu_7hErUXobCQfLX0RWAGFmIVoowRc1VqcsCalF9WrksI7ay7L54_JKdU_YMeQ1Okvac_mAV5LTHBRHy7jewWNCn9VA')"></div>
 <div class="hidden xl:block">
 <p class="font-label-md text-label-md text-on-surface leading-none">Namaganda Rose</p>
 <p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Senior Analyst</p>
@@ -190,34 +102,34 @@ Log Out
 <!-- Page Header Area -->
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-lg">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-bou-maroon">Notification Center</h2>
+<h2 class="font-headline-lg text-headline-lg text-brand-maroon">Notification Center</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Stay updated with the latest activity across the digital vault.</p>
 </div>
-<button class="flex items-center gap-xs bg-bou-gold hover:bg-on-secondary-fixed-variant text-on-primary px-md py-sm rounded-lg font-bold shadow-sm transition-all transform active:scale-95">
+<button class="flex items-center gap-xs bg-brand-gold hover:bg-on-secondary-fixed-variant text-on-primary px-md py-sm rounded-lg font-bold shadow-sm transition-all transform active:scale-95">
 <span class="material-symbols-outlined text-body-md">done_all</span>
                     Mark All as Read
                 </button>
 </div>
 <!-- Filter Bar -->
 <div class="flex items-center gap-sm mb-md overflow-x-auto pb-2 scrollbar-hide">
-<button class="px-md py-2 bg-bou-maroon text-on-primary rounded-full font-label-md text-label-md whitespace-nowrap">All Notifications</button>
-<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-bou-gold hover:text-bou-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">New Ideas</button>
-<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-bou-gold hover:text-bou-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">Status Changes</button>
-<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-bou-gold hover:text-bou-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">Comments</button>
-<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-bou-gold hover:text-bou-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">System Updates</button>
+<button class="px-md py-2 bg-brand-maroon text-on-primary rounded-full font-label-md text-label-md whitespace-nowrap">All Notifications</button>
+<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-brand-gold hover:text-brand-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">New Ideas</button>
+<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-brand-gold hover:text-brand-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">Status Changes</button>
+<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-brand-gold hover:text-brand-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">Comments</button>
+<button class="px-md py-2 bg-surface border border-outline-variant text-on-surface-variant hover:border-brand-gold hover:text-brand-gold transition-all rounded-full font-label-md text-label-md whitespace-nowrap">System Updates</button>
 </div>
 <!-- Notifications List -->
 <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
 <!-- Notification Item: Unread -->
-<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-bou-cream/50 transition-colors group cursor-pointer relative">
-<div class="w-2 h-full absolute left-0 top-0 bg-bou-gold"></div>
+<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-brand-cream/50 transition-colors group cursor-pointer relative">
+<div class="w-2 h-full absolute left-0 top-0 bg-brand-gold"></div>
 <div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-bou-gold" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="material-symbols-outlined text-brand-gold" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
 </div>
 <div class="flex-grow">
 <div class="flex items-center gap-2 mb-1">
-<span class="font-label-md text-label-md text-bou-maroon">Idea Submission</span>
-<span class="w-2 h-2 rounded-full bg-bou-gold active-dot"></span>
+<span class="font-label-md text-label-md text-brand-maroon">Idea Submission</span>
+<span class="w-2 h-2 rounded-full bg-brand-gold active-dot"></span>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-snug">New idea submitted: <span class="font-bold">"Mobile Micro-Lending Portal for Rural SMEs"</span> by Kato John.</p>
 <p class="font-label-sm text-label-sm text-on-surface-variant mt-2 flex items-center gap-1">
@@ -225,43 +137,43 @@ Log Out
                         </p>
 </div>
 <div class="flex flex-col items-end gap-2">
-<button onclick="window.location.href='ideadetails.html'" class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
+<button onclick="window.location.href='ideadetails.html'" class="text-brand-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
                             View Details
                             <span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </button>
 </div>
 </div>
 <!-- Notification Item: Status Change -->
-<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-bou-cream/50 transition-colors group cursor-pointer">
+<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-brand-cream/50 transition-colors group cursor-pointer">
 <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-bou-gold">refresh</span>
+<span class="material-symbols-outlined text-brand-gold">refresh</span>
 </div>
 <div class="flex-grow">
 <div class="flex items-center gap-2 mb-1">
-<span class="font-label-md text-label-md text-bou-maroon">Status Update</span>
+<span class="font-label-md text-label-md text-brand-maroon">Status Update</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface leading-snug">Your idea <span class="font-bold">"Blockchain-based Land Registry Integration"</span> moved to <span class="text-bou-gold font-bold">Feasibility Study</span> phase.</p>
+<p class="font-body-md text-body-md text-on-surface leading-snug">Your idea <span class="font-bold">"Blockchain-based Land Registry Integration"</span> moved to <span class="text-brand-gold font-bold">Feasibility Study</span> phase.</p>
 <p class="font-label-sm text-label-sm text-on-surface-variant mt-2 flex items-center gap-1">
 <span class="material-symbols-outlined text-sm">schedule</span> 5 hours ago
                         </p>
 </div>
 <div class="flex flex-col items-end gap-2">
-<button onclick="window.location.href='ideadetails.html'" class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
+<button onclick="window.location.href='ideadetails.html'" class="text-brand-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
                             View Roadmap
                             <span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </button>
 </div>
 </div>
 <!-- Notification Item: Comment -->
-<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-bou-cream/50 transition-colors group cursor-pointer relative">
-<div class="w-2 h-full absolute left-0 top-0 bg-bou-gold"></div>
+<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-brand-cream/50 transition-colors group cursor-pointer relative">
+<div class="w-2 h-full absolute left-0 top-0 bg-brand-gold"></div>
 <div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-bou-gold" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="material-symbols-outlined text-brand-gold" style="font-variation-settings: 'FILL' 1;">chat</span>
 </div>
 <div class="flex-grow">
 <div class="flex items-center gap-2 mb-1">
-<span class="font-label-md text-label-md text-bou-maroon">New Comment</span>
-<span class="w-2 h-2 rounded-full bg-bou-gold active-dot"></span>
+<span class="font-label-md text-label-md text-brand-maroon">New Comment</span>
+<span class="w-2 h-2 rounded-full bg-brand-gold active-dot"></span>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-snug"><span class="font-bold">Director of Research</span> commented on your proposal: "This aligns perfectly with our 2025 digital strategy..."</p>
 <p class="font-label-sm text-label-sm text-on-surface-variant mt-2 flex items-center gap-1">
@@ -269,20 +181,20 @@ Log Out
                         </p>
 </div>
 <div class="flex flex-col items-end gap-2">
-<button class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
+<button class="text-brand-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
                             Reply
                             <span class="material-symbols-outlined text-[18px]">reply</span>
 </button>
 </div>
 </div>
 <!-- Notification Item: System Update -->
-<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-bou-cream/50 transition-colors group cursor-pointer">
+<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-brand-cream/50 transition-colors group cursor-pointer">
 <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-bou-maroon">security</span>
+<span class="material-symbols-outlined text-brand-maroon">security</span>
 </div>
 <div class="flex-grow">
 <div class="flex items-center gap-2 mb-1">
-<span class="font-label-md text-label-md text-bou-maroon">System Security</span>
+<span class="font-label-md text-label-md text-brand-maroon">System Security</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-snug">The Innovation Management System will undergo scheduled maintenance on <span class="font-bold">Saturday, Oct 26th</span> from 02:00 to 04:00 EAT.</p>
 <p class="font-label-sm text-label-sm text-on-surface-variant mt-2 flex items-center gap-1">
@@ -290,28 +202,28 @@ Log Out
                         </p>
 </div>
 <div class="flex flex-col items-end gap-2">
-<button class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
+<button class="text-brand-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
                             Read Policy
                             <span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </button>
 </div>
 </div>
 <!-- Notification Item: Idea Approved -->
-<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-bou-cream/50 transition-colors group cursor-pointer">
+<div class="flex items-start gap-md p-md border-b border-outline-variant hover:bg-brand-cream/50 transition-colors group cursor-pointer">
 <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-bou-gold" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="material-symbols-outlined text-brand-gold" style="font-variation-settings: 'FILL' 1;">stars</span>
 </div>
 <div class="flex-grow">
 <div class="flex items-center gap-2 mb-1">
-<span class="font-label-md text-label-md text-bou-maroon">Recognition</span>
+<span class="font-label-md text-label-md text-brand-maroon">Recognition</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface leading-snug">Congratulations! Your idea <span class="font-bold">"E-Payment Gateway for Government Bonds"</span> has been selected for the <span class="text-bou-gold font-bold">Innovation Excellence Award</span>.</p>
+<p class="font-body-md text-body-md text-on-surface leading-snug">Congratulations! Your idea <span class="font-bold">"E-Payment Gateway for Government Bonds"</span> has been selected for the <span class="text-brand-gold font-bold">Innovation Excellence Award</span>.</p>
 <p class="font-label-sm text-label-sm text-on-surface-variant mt-2 flex items-center gap-1">
 <span class="material-symbols-outlined text-sm">schedule</span> 2 days ago
                         </p>
 </div>
 <div class="flex flex-col items-end gap-2">
-<button class="text-bou-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
+<button class="text-brand-maroon font-bold text-label-md flex items-center gap-1 hover:underline">
                             View Certificate
                             <span class="material-symbols-outlined text-[18px]">military_tech</span>
 </button>
@@ -325,7 +237,7 @@ Log Out
 <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-50" disabled="">
 <span class="material-symbols-outlined">chevron_left</span>
 </button>
-<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-bou-maroon text-on-primary font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-brand-maroon text-on-primary font-bold">1</button>
 <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors">2</button>
 <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors">3</button>
 <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors">
@@ -337,7 +249,7 @@ Log Out
 </main>
 <!-- Contextual FAB (Hidden on this screen as per instructions, but available for dashboard navigation) -->
 <div class="fixed bottom-margin right-margin md:hidden">
-<button class="bg-bou-gold text-on-primary-fixed w-14 h-14 rounded-full shadow-xl flex items-center justify-center active:scale-95 transition-transform">
+<button class="bg-brand-gold text-on-primary-fixed w-14 h-14 rounded-full shadow-xl flex items-center justify-center active:scale-95 transition-transform">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -346,7 +258,7 @@ Log Out
         document.querySelectorAll('.group').forEach(item => {
             item.addEventListener('click', function() {
                 const unreadDot = this.querySelector('.active-dot');
-                const accentBorder = this.querySelector('.bg-bou-gold.absolute');
+                const accentBorder = this.querySelector('.bg-brand-gold.absolute');
                 if (unreadDot) {
                     unreadDot.classList.add('opacity-0', 'transition-opacity', 'duration-500');
                     setTimeout(() => unreadDot.remove(), 500);
@@ -363,10 +275,10 @@ Log Out
         filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterButtons.forEach(b => {
-                    b.classList.remove('bg-bou-maroon', 'text-on-primary');
+                    b.classList.remove('bg-brand-maroon', 'text-on-primary');
                     b.classList.add('bg-surface', 'border', 'border-outline-variant', 'text-on-surface-variant');
                 });
-                btn.classList.add('bg-bou-maroon', 'text-on-primary');
+                btn.classList.add('bg-brand-maroon', 'text-on-primary');
                 btn.classList.remove('bg-surface', 'border', 'border-outline-variant', 'text-on-surface-variant');
             });
         });

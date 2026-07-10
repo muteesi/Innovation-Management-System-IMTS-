@@ -6,110 +6,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Bank of Uganda Innovation Hub | Staff Dashboard</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "on-surface": "#1c1b1b",
-                        "on-primary-fixed": "#410001",
-                        "on-error": "#ffffff",
-                        "surface-container-high": "#eae7e7",
-                        "primary-fixed": "#ffdad5",
-                        "tertiary": "#686000",
-                        "outline-variant": "#dcc0bc",
-                        "on-primary-fixed-variant": "#802820",
-                        "tertiary-container": "#b9ae43",
-                        "surface-tint": "#9f3f35",
-                        "inverse-on-surface": "#f3f0ef",
-                        "tertiary-fixed": "#f2e574",
-                        "secondary-fixed-dim": "#ffb964",
-                        "on-tertiary-fixed-variant": "#4e4800",
-                        "error": "#ba1a1a",
-                        "secondary-container": "#fcaa3e",
-                        "primary-fixed-dim": "#ffb4a9",
-                        "inverse-surface": "#313030",
-                        "inverse-primary": "#ffb4a9",
-                        "error-container": "#ffdad6",
-                        "outline": "#89726e",
-                        "surface-container-lowest": "#ffffff",
-                        "on-primary": "#ffffff",
-                        "surface-variant": "#e5e2e1",
-                        "secondary-fixed": "#ffddb9",
-                        "on-tertiary-fixed": "#1f1c00",
-                        "on-tertiary": "#ffffff",
-                        "background": "#fcf9f8",
-                        "on-background": "#1c1b1b",
-                        "surface-dim": "#dcd9d9",
-                        "surface": "#fcf9f8",
-                        "surface-bright": "#fcf9f8",
-                        "on-primary-container": "#e27264",
-                        "on-secondary-fixed-variant": "#663e00",
-                        "on-secondary-fixed": "#2b1700",
-                        "surface-container": "#f0eded",
-                        "primary-container": "#5a0c08",
-                        "on-secondary": "#ffffff",
-                        "tertiary-fixed-dim": "#d5c95b",
-                        "secondary": "#875300",
-                        "on-error-container": "#93000a",
-                        "surface-container-highest": "#e5e2e1",
-                        "on-tertiary-container": "#464000",
-                        "primary": "#380001",
-                        "on-secondary-container": "#6c4100",
-                        "on-surface-variant": "#56423f",
-                        "surface-container-low": "#f6f3f2",
-                        "cream-bg": "#FEF7EF",
-                        "soft-yellow": "#FFF27F",
-                        "maroon-accent": "#5A0C08",
-                        "gold-accent": "#DD9024"
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.125rem",
-                        lg: "0.25rem",
-                        xl: "0.5rem",
-                        full: "0.75rem"
-                    },
-                    spacing: {
-                        xl: "80px",
-                        lg: "48px",
-                        base: "8px",
-                        sm: "12px",
-                        gutter: "24px",
-                        md: "24px",
-                        margin: "32px",
-                        xs: "4px"
-                    },
-                    fontFamily: {
-                        "label-sm": ["Public Sans"],
-                        "label-md": ["Public Sans"],
-                        "headline-md": ["Public Sans"],
-                        "body-lg": ["Public Sans"],
-                        "headline-lg": ["Public Sans"],
-                        "title-lg": ["Public Sans"],
-                        "display-lg": ["Public Sans"],
-                        "body-md": ["Public Sans"],
-                        "headline-lg-mobile": ["Public Sans"]
-                    },
-                    fontSize: {
-                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
-                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
-                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
-                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
-                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
-                        "title-lg": ["20px", { lineHeight: "28px", fontWeight: "600" }],
-                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
-                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
-                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }]
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="tailwind-config.js"></script>
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -150,7 +51,7 @@
 <body class="text-on-surface font-body-md overflow-hidden h-screen flex">
 
     <!-- ===== SIDEBAR ===== -->
-    <nav class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-maroon-accent z-50 shadow-md">
+    <nav class="fixed left-0 top-0 h-screen w-64 flex flex-col p-md bg-brand-maroon z-50 shadow-md">
         <div class="flex items-center gap-sm mb-lg px-xs">
             <img alt="Bank of Uganda Crest" class="w-12 h-12 rounded-full object-contain bg-white p-1"
                 src="../BOU logo.png" />
@@ -161,7 +62,7 @@
         </div>
 
         <div class="flex-1 space-y-xs">
-            <a class="flex items-center gap-sm p-sm transition-all bg-gold-accent text-on-secondary rounded-lg font-bold scale-95 duration-150 ease-in-out"
+            <a class="flex items-center gap-sm p-sm transition-all bg-brand-gold text-on-secondary rounded-lg font-bold scale-95 duration-150 ease-in-out"
                 href="staffdashboard.html">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-label-md text-label-md">Dashboard</span>
@@ -200,7 +101,7 @@
 
         <div class="mt-auto border-t border-on-primary-fixed-variant/20 pt-md">
             <button onclick="window.location.href='submitinnovationideaform.html'"
-                class="w-full bg-gold-accent hover:bg-secondary transition-colors text-black font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs">
+                class="w-full bg-brand-gold hover:bg-secondary transition-colors text-black font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
                 <span class="font-label-md text-label-md">Submit Idea</span>
             </button>
@@ -208,7 +109,7 @@
     </nav>
 
     <!-- ===== MAIN CONTENT ===== -->
-    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto bg-cream-bg">
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto bg-brand-cream">
 
         <!-- ===== TOP BAR ===== -->
         <header
@@ -220,7 +121,7 @@
             </div>
             <div class="flex items-center gap-gutter">
                 <div
-                    class="relative hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-sm py-1.5 w-64 focus-within:border-gold-accent transition-colors">
+                    class="relative hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-sm py-1.5 w-64 focus-within:border-brand-gold transition-colors">
                     <span class="material-symbols-outlined text-outline">search</span>
                     <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline"
                         placeholder="Search ideas..." type="text" />
@@ -235,12 +136,12 @@
                     </button>
                     <div class="h-8 w-px bg-outline-variant mx-xs"></div>
                     <div class="flex items-center gap-xs cursor-pointer group">
-                        <div class="w-10 h-10 rounded-full border-2 border-gold-accent overflow-hidden">
+                        <div class="w-10 h-10 rounded-full border-2 border-brand-gold overflow-hidden">
                             <img class="w-full h-full object-cover" alt="Portrait of Jonathan Doe"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk3WQTswPIr0Jl5tuV4MiL0FNAjrjdZygecSzuqU9k68yUxMD8ypOkB0Utq1c6DFrIbFp8-Hno8OtDkUeVR7QGVx1f45JGbS1rTRBChgWZC5_KUNEPzDyoz_9dPM_567uqWHODI_nIH7fkj5j-5AAt5edKvviVCsBYJz0XMhZ0vojkrGeq0B7mYUOh-XyJpk450rpZjpaOnDxgwvbqS6JeyJqxZwwjttr-vOW9P9JeqJySGAqNRNYUbw" />
                         </div>
                         <span
-                            class="material-symbols-outlined text-on-surface group-hover:text-gold-accent transition-colors">keyboard_arrow_down</span>
+                            class="material-symbols-outlined text-on-surface group-hover:text-brand-gold transition-colors">keyboard_arrow_down</span>
                     </div>
                 </div>
             </div>
@@ -252,45 +153,45 @@
             <!-- ===== QUICK STATISTICS ===== -->
             <section class="mb-lg">
                 <div class="flex items-center justify-between mb-sm">
-                    <h2 class="font-headline-md text-headline-md text-maroon-accent">Quick Statistics</h2>
+                    <h2 class="font-headline-md text-headline-md text-brand-maroon">Quick Statistics</h2>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
                     <div
-                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        class="bg-brand-soft-yellow p-md rounded-xl border border-brand-gold/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
                         <span
-                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Total
+                            class="font-label-md text-label-md text-brand-maroon uppercase tracking-wider opacity-70">Total
                             Submitted</span>
                         <div class="flex items-end justify-between">
-                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">12</span>
-                            <span class="material-symbols-outlined text-maroon-accent/30 text-4xl">description</span>
+                            <span class="font-display-lg text-display-lg text-brand-maroon leading-none">12</span>
+                            <span class="material-symbols-outlined text-brand-maroon/30 text-4xl">description</span>
                         </div>
                     </div>
                     <div
-                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        class="bg-brand-soft-yellow p-md rounded-xl border border-brand-gold/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
                         <span
-                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Under
+                            class="font-label-md text-label-md text-brand-maroon uppercase tracking-wider opacity-70">Under
                             Review</span>
                         <div class="flex items-end justify-between">
-                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">04</span>
-                            <span class="material-symbols-outlined text-gold-accent text-4xl">pending</span>
+                            <span class="font-display-lg text-display-lg text-brand-maroon leading-none">04</span>
+                            <span class="material-symbols-outlined text-brand-gold text-4xl">pending</span>
                         </div>
                     </div>
                     <div
-                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        class="bg-brand-soft-yellow p-md rounded-xl border border-brand-gold/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
                         <span
-                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">Approved</span>
+                            class="font-label-md text-label-md text-brand-maroon uppercase tracking-wider opacity-70">Approved</span>
                         <div class="flex items-end justify-between">
-                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">06</span>
+                            <span class="font-display-lg text-display-lg text-brand-maroon leading-none">06</span>
                             <span class="material-symbols-outlined text-green-700 text-4xl">verified</span>
                         </div>
                     </div>
                     <div
-                        class="bg-soft-yellow p-md rounded-xl border border-gold-accent/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
+                        class="bg-brand-soft-yellow p-md rounded-xl border border-brand-gold/20 shadow-sm flex flex-col gap-xs transition-transform hover:-translate-y-1">
                         <span
-                            class="font-label-md text-label-md text-maroon-accent uppercase tracking-wider opacity-70">In
+                            class="font-label-md text-label-md text-brand-maroon uppercase tracking-wider opacity-70">In
                             Development</span>
                         <div class="flex items-end justify-between">
-                            <span class="font-display-lg text-display-lg text-maroon-accent leading-none">02</span>
+                            <span class="font-display-lg text-display-lg text-brand-maroon leading-none">02</span>
                             <span class="material-symbols-outlined text-blue-700 text-4xl">engineering</span>
                         </div>
                     </div>
@@ -300,9 +201,9 @@
             <!-- ===== RECENT IDEAS (full width, no resources panel) ===== -->
             <div class="flex flex-col gap-md">
                 <div class="flex items-center justify-between">
-                    <h2 class="font-headline-md text-headline-md text-maroon-accent">Your Recent Ideas</h2>
+                    <h2 class="font-headline-md text-headline-md text-brand-maroon">Your Recent Ideas</h2>
                     <button onclick="window.location.href='staffdashboard.html'"
-                        class="text-maroon-accent hover:text-gold-accent font-label-md text-label-md transition-colors flex items-center gap-xs">
+                        class="text-brand-maroon hover:text-brand-gold font-label-md text-label-md transition-colors flex items-center gap-xs">
                         View All My Ideas
                         <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </button>
@@ -315,7 +216,7 @@
                         <div class="flex justify-between items-start mb-sm">
                             <div class="flex flex-col gap-xs">
                                 <h3
-                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    class="font-title-lg text-title-lg text-brand-maroon group-hover:text-brand-gold transition-colors">
                                     Digital KYC Blockchain Ledger</h3>
                                 <div
                                     class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
@@ -328,14 +229,14 @@
                                 </div>
                             </div>
                             <span
-                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-gold-accent/10 text-gold-accent border border-gold-accent/20 shrink-0">Under
+                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-brand-gold/10 text-brand-gold border border-brand-gold/20 shrink-0">Under
                                 Review</span>
                         </div>
                         <p class="text-on-surface-variant font-body-md mb-md line-clamp-2 flex-1">A decentralized system
                             for verifying customer identity across all commercial banks in Uganda to reduce fraud and
                             administrative overhead.</p>
                         <button onclick="window.location.href='ideadetails.html'"
-                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                            class="self-start font-label-md text-label-md text-brand-maroon border border-brand-maroon px-md py-xs rounded-lg hover:bg-brand-maroon hover:text-white transition-all">Details</button>
                     </div>
 
                     <!-- Card 2 -->
@@ -344,7 +245,7 @@
                         <div class="flex justify-between items-start mb-sm">
                             <div class="flex flex-col gap-xs">
                                 <h3
-                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    class="font-title-lg text-title-lg text-brand-maroon group-hover:text-brand-gold transition-colors">
                                     Micro-Loan AI Risk Engine</h3>
                                 <div
                                     class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
@@ -364,7 +265,7 @@
                             algorithms to assess creditworthiness for unbanked populations using mobile money
                             transaction patterns.</p>
                         <button onclick="window.location.href='ideadetails.html'"
-                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                            class="self-start font-label-md text-label-md text-brand-maroon border border-brand-maroon px-md py-xs rounded-lg hover:bg-brand-maroon hover:text-white transition-all">Details</button>
                     </div>
 
                     <!-- Card 3 -->
@@ -373,7 +274,7 @@
                         <div class="flex justify-between items-start mb-sm">
                             <div class="flex flex-col gap-xs">
                                 <h3
-                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    class="font-title-lg text-title-lg text-brand-maroon group-hover:text-brand-gold transition-colors">
                                     Cashless Marketplace Initiative</h3>
                                 <div
                                     class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
@@ -392,7 +293,7 @@
                             digital payment systems in traditional local markets through subsidized QR point-of-sale
                             terminals.</p>
                         <button onclick="window.location.href='ideadetails.html'"
-                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                            class="self-start font-label-md text-label-md text-brand-maroon border border-brand-maroon px-md py-xs rounded-lg hover:bg-brand-maroon hover:text-white transition-all">Details</button>
                     </div>
 
                     <!-- Card 4 -->
@@ -401,7 +302,7 @@
                         <div class="flex justify-between items-start mb-sm">
                             <div class="flex flex-col gap-xs">
                                 <h3
-                                    class="font-title-lg text-title-lg text-maroon-accent group-hover:text-gold-accent transition-colors">
+                                    class="font-title-lg text-title-lg text-brand-maroon group-hover:text-brand-gold transition-colors">
                                     Fraud Detection Dashboard</h3>
                                 <div
                                     class="flex items-center gap-sm text-on-surface-variant font-label-sm text-label-sm flex-wrap">
@@ -413,25 +314,25 @@
                                 </div>
                             </div>
                             <span
-                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-gold-accent/10 text-gold-accent border border-gold-accent/20 shrink-0">Under
+                                class="px-sm py-xs rounded-full font-label-sm text-label-sm bg-brand-gold/10 text-brand-gold border border-brand-gold/20 shrink-0">Under
                                 Review</span>
                         </div>
                         <p class="text-on-surface-variant font-body-md mb-md line-clamp-2 flex-1">Real-time dashboard
                             integrating transaction data from multiple banks to flag suspicious patterns using anomaly
                             detection.</p>
                         <button onclick="window.location.href='ideadetails.html'"
-                            class="self-start font-label-md text-label-md text-maroon-accent border border-maroon-accent px-md py-xs rounded-lg hover:bg-maroon-accent hover:text-white transition-all">Details</button>
+                            class="self-start font-label-md text-label-md text-brand-maroon border border-brand-maroon px-md py-xs rounded-lg hover:bg-brand-maroon hover:text-white transition-all">Details</button>
                     </div>
                 </div>
 
                 <!-- Innovation Goal Teaser -->
-                <div class="bg-maroon-accent p-md rounded-xl text-white shadow-md relative overflow-hidden mt-md">
-                    <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-gold-accent/20 rounded-full blur-2xl"></div>
+                <div class="bg-brand-maroon p-md rounded-xl text-white shadow-md relative overflow-hidden mt-md">
+                    <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-brand-gold/20 rounded-full blur-2xl"></div>
                     <h3 class="font-title-lg text-title-lg mb-sm relative z-10">Innovation Goal 2024</h3>
                     <p class="font-body-md mb-md relative z-10 opacity-90">We are 75% towards our annual digital
                         transformation target. Your contributions matter.</p>
                     <div class="w-full h-2 bg-white/20 rounded-full mb-xs relative z-10">
-                        <div class="h-full bg-gold-accent rounded-full" style="width: 75%"></div>
+                        <div class="h-full bg-brand-gold rounded-full" style="width: 75%"></div>
                     </div>
                     <div
                         class="flex justify-between text-[10px] font-bold uppercase tracking-widest opacity-70 relative z-10">
@@ -453,11 +354,11 @@
                     Rights Reserved.</p>
             </div>
             <div class="flex items-center gap-md">
-                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-brand-maroon"
                     href="#">Security Policy</a>
-                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="#">Terms
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-brand-maroon" href="#">Terms
                     of Innovation</a>
-                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent"
+                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-brand-maroon"
                     href="support.html">Contact Support</a>
             </div>
         </footer>
@@ -465,7 +366,7 @@
 
     <!-- ===== FAB ===== -->
     <button onclick="window.location.href='submitinnovationideaform.html'"
-        class="fixed bottom-gutter right-gutter w-14 h-14 bg-maroon-accent text-on-primary rounded-full shadow-lg flex items-center justify-center group hover:scale-110 active:scale-95 transition-all duration-300 z-50">
+        class="fixed bottom-gutter right-gutter w-14 h-14 bg-brand-maroon text-on-primary rounded-full shadow-lg flex items-center justify-center group hover:scale-110 active:scale-95 transition-all duration-300 z-50">
         <span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform duration-300"
             style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
     </button>

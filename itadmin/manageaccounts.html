@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Audit Log | Bank of Uganda IMTS</title>
+    <title>Manage Accounts | Bank of Uganda IMTS</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <nav class="flex-1 space-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="admindashboard.html">
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="ITadmin.html">
                 <span class="material-symbols-outlined">dashboard</span>
                 Dashboard
             </a>
@@ -38,17 +38,17 @@
                 <span class="material-symbols-outlined">group</span>
                 Manage Users
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="manageaccounts.html">
-                <span class="material-symbols-outlined">account_balance_wallet</span>
+            <!-- Active Tab: Manage Accounts -->
+            <a class="flex items-center gap-3 px-4 py-3 bg-[#DD9024] text-white rounded-lg font-bold transition-transform active:scale-95 text-sm" href="manageaccounts.html">
+                <span class="material-symbols-outlined filled-icon">account_balance_wallet</span>
                 Manage Accounts
             </a>
             <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="systemsettings.html">
                 <span class="material-symbols-outlined">settings</span>
                 System Settings
             </a>
-            <!-- Active Tab: Audit Log -->
-            <a class="flex items-center gap-3 px-4 py-3 bg-[#DD9024] text-white rounded-lg font-bold transition-transform active:scale-95 text-sm" href="auditlog.html">
-                <span class="material-symbols-outlined filled-icon">security</span>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="auditlog.html">
+                <span class="material-symbols-outlined">security</span>
                 Audit Log
             </a>
             <a class="flex items-center gap-3 px-4 py-3 text-slate-200 hover:bg-[#DD9024]/20 hover:text-white transition-colors duration-200 text-sm rounded-lg" href="reports.html">
@@ -101,72 +101,91 @@
     <!-- MAIN CONTENT -->
     <main class="ml-64 p-8 max-w-[1280px] mx-auto w-full">
         <!-- Page Header -->
-        <div class="mb-8 flex justify-between items-end">
+        <div class="mb-8 flex justify-between items-start">
             <div>
-                <h2 class="text-2xl font-bold text-[#5A0C08] tracking-tight">Audit Log Ledger</h2>
-                <p class="text-sm text-slate-500 mt-1">Audit security trails, login operations, category changes and privilege modifications (ISO 27001 compliant).</p>
+                <h2 class="text-2xl font-bold text-[#5A0C08] tracking-tight">Database & API Accounts</h2>
+                <p class="text-sm text-slate-500 mt-1">Configure secure access keys, ledger keys, and database server pool links.</p>
             </div>
-            <div class="flex gap-2">
-                <button class="bg-[#5A0C08] bg-opacity-[0.08] hover:bg-opacity-15 text-[#5A0C08] font-bold py-2.5 px-4 rounded-lg text-xs transition-transform active:scale-95">
-                    Export Ledger (CSV)
-                </button>
-            </div>
+            <button class="bg-[#5A0C08] hover:bg-opacity-95 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 text-xs shadow-sm transition-transform active:scale-95">
+                <span class="material-symbols-outlined text-sm">key</span>
+                Generate API Token
+            </button>
         </div>
 
-        <!-- Audit Table -->
+        <!-- Accounts Grid -->
         <div class="bg-white rounded-xl border border-orange-100 shadow-sm overflow-hidden">
             <div class="p-6 border-b border-orange-50 bg-slate-50 flex items-center justify-between">
-                <span class="font-bold text-sm text-slate-700">Security Events Table</span>
-                <span class="text-xs text-[#DD9024] font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">verified_user</span> Cryptographically Signed
-                </span>
+                <span class="font-bold text-sm text-slate-700">Credential Allocation & Keys Directory</span>
+                <span class="text-xs text-slate-400 font-semibold">ISO 27001 Security Locked</span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left font-label-md text-sm">
                     <thead>
                         <tr class="bg-slate-50 text-slate-400 font-bold border-b border-slate-200 text-xs">
-                            <th class="px-6 py-3 font-semibold">Timestamp</th>
-                            <th class="px-6 py-3 font-semibold">User</th>
-                            <th class="px-6 py-3 font-semibold">IP Address</th>
-                            <th class="px-6 py-3 font-semibold">Action Description</th>
+                            <th class="px-6 py-3 font-semibold">Account / Service Name</th>
+                            <th class="px-6 py-3 font-semibold">IP Constraint</th>
+                            <th class="px-6 py-3 font-semibold">Key Hash Prefix</th>
+                            <th class="px-6 py-3 font-semibold">Permissions</th>
                             <th class="px-6 py-3 font-semibold">Status</th>
+                            <th class="px-6 py-3 font-semibold">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 text-slate-700 text-xs">
+                    <tbody class="divide-y divide-slate-100 text-slate-705">
                         <tr>
-                            <td class="px-6 py-4 font-mono text-[10px]">2026-07-09 09:12:45 EAT</td>
-                            <td class="px-6 py-4 font-bold">System Syncer</td>
-                            <td class="px-6 py-4 font-mono">127.0.0.1</td>
-                            <td class="px-6 py-4">Completed Active Directory LDAP profile synchronization. Updated 48 files.</td>
                             <td class="px-6 py-4">
-                                <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px]">SUCCESS</span>
+                                <div class="font-bold text-slate-700 text-xs">Postgres Primary Root</div>
+                                <div class="text-[9px] text-slate-400">System database access credentials</div>
+                            </td>
+                            <td class="px-6 py-4 text-xs font-mono">10.150.12.5</td>
+                            <td class="px-6 py-4 text-xs font-mono">sha256_e8d47...</td>
+                            <td class="px-6 py-4 text-xs">
+                                <span class="bg-[#5A0C08] bg-opacity-[0.08] text-[#5A0C08] px-2 py-0.5 rounded text-[10px] font-semibold">DB_FULL_OWNER</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full text-[10px] flex items-center w-fit gap-1">
+                                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> Active
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button class="text-[#DD9024] hover:underline font-bold text-xs uppercase">Rotate</button>
                             </td>
                         </tr>
                         <tr>
-                            <td class="px-6 py-4 font-mono text-[10px]">2026-07-09 08:34:02 EAT</td>
-                            <td class="px-6 py-4 font-bold">S. Katumba (Admin)</td>
-                            <td class="px-6 py-4 font-mono">10.100.12.44</td>
-                            <td class="px-6 py-4">Invited user <span class="font-semibold text-[#5A0C08]">k.mugisha@bou.or.ug</span> with role Staff.</td>
                             <td class="px-6 py-4">
-                                <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px]">SUCCESS</span>
+                                <div class="font-bold text-slate-700 text-xs">API Gateway Gateway Token</div>
+                                <div class="text-[9px] text-slate-400">Used for innovation team statistics API</div>
+                            </td>
+                            <td class="px-6 py-4 text-xs font-mono">10.100.25.*</td>
+                            <td class="px-6 py-4 text-xs font-mono">sha256_ab02e...</td>
+                            <td class="px-6 py-4 text-xs">
+                                <span class="bg-[#5A0C08] bg-opacity-[0.08] text-[#5A0C08] px-2 py-0.5 rounded text-[10px] font-semibold">API_READ_STATS</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full text-[10px] flex items-center w-fit gap-1">
+                                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> Active
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 flex gap-3">
+                                <button class="text-amber-600 hover:underline font-bold text-xs uppercase">Revoke</button>
                             </td>
                         </tr>
                         <tr>
-                            <td class="px-6 py-4 font-mono text-[10px]">2026-07-08 17:42:19 EAT</td>
-                            <td class="px-6 py-4 font-bold">M. Reviewer (Team)</td>
-                            <td class="px-6 py-4 font-mono">10.100.15.2</td>
-                            <td class="px-6 py-4">Modified review status of idea #1029 to "Feasibility Study".</td>
                             <td class="px-6 py-4">
-                                <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px]">SUCCESS</span>
+                                <div class="font-bold text-slate-700 text-xs">LDAP Sync Adapter</div>
+                                <div class="text-[9px] text-slate-400">Syncs user credentials and profiles</div>
                             </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-mono text-[10px]">2026-07-08 11:00:15 EAT</td>
-                            <td class="px-6 py-4 font-bold">Anonymous Guest</td>
-                            <td class="px-6 py-4 font-mono">198.51.100.72</td>
-                            <td class="px-6 py-4 text-rose-600 font-semibold">Failed login attempt using invalid username "admin@bou.org". Refused access.</td>
+                            <td class="px-6 py-4 text-xs font-mono">10.100.1.200</td>
+                            <td class="px-6 py-4 text-xs font-mono">sha256_2c9ef...</td>
+                            <td class="px-6 py-4 text-xs">
+                                <span class="bg-[#5A0C08] bg-opacity-[0.08] text-[#5A0C08] px-2 py-0.5 rounded text-[10px] font-semibold">USER_SYNCS</span>
+                            </td>
                             <td class="px-6 py-4">
-                                <span class="bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded text-[10px]">REFUSED</span>
+                                <span class="bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded-full text-[10px] flex items-center w-fit gap-1">
+                                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> Locked
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button class="text-[#DD9024] hover:underline font-bold text-xs uppercase">Unlock</button>
                             </td>
                         </tr>
                     </tbody>

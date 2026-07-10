@@ -6,7 +6,6 @@
 <title>BOU IMTS - Admin Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet"/>
 <style>
         .material-symbols-outlined {
@@ -35,104 +34,7 @@
             box-shadow: 0 4px 6px -1px rgba(90, 12, 8, 0.04), 0 2px 4px -1px rgba(90, 12, 8, 0.02);
         }
     </style>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "tertiary-fixed-dim": "#d5c95b",
-                      "surface-container": "#f0eded",
-                      "surface-container-high": "#eae7e7",
-                      "inverse-primary": "#ffb4a9",
-                      "surface": "#fcf9f8",
-                      "secondary-fixed-dim": "#ffb964",
-                      "surface-tint": "#9f3f35",
-                      "on-secondary-container": "#6c4100",
-                      "tertiary-fixed": "#f2e574",
-                      "on-error": "#ffffff",
-                      "on-tertiary-container": "#464000",
-                      "surface-dim": "#dcd9d9",
-                      "on-secondary": "#ffffff",
-                      "surface-variant": "#e5e2e1",
-                      "on-secondary-fixed-variant": "#663e00",
-                      "on-primary-fixed": "#410001",
-                      "primary-fixed": "#ffdad5",
-                      "error": "#ba1a1a",
-                      "tertiary-container": "#b9ae43",
-                      "surface-container-lowest": "#ffffff",
-                      "surface-bright": "#fcf9f8",
-                      "outline-variant": "#dcc0bc",
-                      "primary": "#380001",
-                      "secondary-container": "#fcaa3e",
-                      "on-primary": "#ffffff",
-                      "surface-container-highest": "#e5e2e1",
-                      "on-tertiary": "#ffffff",
-                      "error-container": "#ffdad6",
-                      "inverse-on-surface": "#f3f0ef",
-                      "on-error-container": "#93000a",
-                      "outline": "#89726e",
-                      "on-primary-container": "#e27264",
-                      "on-background": "#1c1b1b",
-                      "tertiary": "#686000",
-                      "primary-fixed-dim": "#ffb4a9",
-                      "on-tertiary-fixed-variant": "#4e4800",
-                      "primary-container": "#5a0c08",
-                      "on-tertiary-fixed": "#1f1c00",
-                      "on-primary-fixed-variant": "#802820",
-                      "background": "#fcf9f8",
-                      "inverse-surface": "#313030",
-                      "secondary": "#875300",
-                      "on-surface-variant": "#56423f",
-                      "on-secondary-fixed": "#2b1700",
-                      "surface-container-low": "#f6f3f2",
-                      "secondary-fixed": "#ffddb9",
-                      "on-surface": "#1c1b1b",
-                      "brand-gold": "#DD9024",
-                      "brand-maroon": "#5A0C08",
-                      "brand-cream": "#FEF7EF",
-                      "brand-soft-yellow": "#FFF27F"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.125rem",
-                      "lg": "0.25rem",
-                      "xl": "0.5rem",
-                      "full": "0.75rem"
-              },
-              "spacing": {
-                      "margin": "32px",
-                      "gutter": "24px",
-                      "xs": "4px",
-                      "sm": "12px",
-                      "md": "24px",
-                      "lg": "48px",
-                      "xl": "80px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "title-lg": ["Public Sans"],
-                      "headline-lg": ["Public Sans"],
-                      "body-md": ["Public Sans"],
-                      "label-md": ["Public Sans"],
-                      "label-sm": ["Public Sans"],
-                      "display-lg": ["Public Sans"],
-                      "body-lg": ["Public Sans"],
-                      "headline-md": ["Public Sans"]
-              },
-              "fontSize": {
-                      "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
+<script src="tailwind-config.js"></script>
 </head>
 <body class="bg-brand-cream text-on-background font-body-md min-h-screen">
 <!-- SIDE NAVIGATION SHELL -->
@@ -146,11 +48,11 @@
 </div>
 <nav class="flex-1 space-y-1">
 <!-- Active Tab: Manage Users based on prompt context -->
-<a class="flex items-center gap-sm px-md py-sm text-on-primary-container hover:bg-primary-fixed-variant transition-colors duration-200 font-label-md text-label-md" href="admindashboard.html">
-<span class="material-symbols-outlined">dashboard</span>
+<a class="flex items-center gap-sm px-md py-sm text-on-secondary-container bg-secondary-container rounded-lg font-bold transition-transform active:scale-95 font-label-md text-label-md" href="ITadmin.html">
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">dashboard</span>
                 Dashboard
             </a>
-<a class="flex items-center gap-sm px-md py-sm text-on-secondary-container bg-secondary-container rounded-lg font-bold transition-transform active:scale-95 font-label-md text-label-md" href="ITadmin.html">
+            <a class="flex items-center gap-sm px-md py-sm text-on-primary-container hover:bg-primary-fixed-variant transition-colors duration-200 font-label-md text-label-md" href="ITadmin.html">
 <span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">group</span>
                 Manage Users
             </a>
@@ -512,6 +414,121 @@
 </div>
 </div>
 </main>
+<!-- SYSTEM INFRASTRUCTURE SECTION (merged from admindashboard.html) -->
+<div class="grid grid-cols-12 gap-gutter mt-lg">
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<div class="bg-white rounded-xl depth-card border border-outline-variant overflow-hidden">
+<div class="px-md py-md border-b border-outline-variant bg-surface-container-low flex items-center justify-between">
+<h3 class="font-bold text-primary text-sm">System Database & Resource Nodes</h3>
+<span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-sm py-xs rounded-full">All Nodes Normal</span>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<div class="px-md py-md flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-green-600">check_circle</span>
+<div>
+<h4 class="text-xs font-bold text-on-surface">Primary Database Engine</h4>
+<p class="text-[10px] text-on-surface-variant">PostgreSQL Cluster pool-01 (10.150.12.5)</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">23 ms latency</p>
+<p class="text-[9px] text-on-surface-variant">RAM Load: 42%</p>
+</div>
+</div>
+<div class="px-md py-md flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-green-600">check_circle</span>
+<div>
+<h4 class="text-xs font-bold text-on-surface">Secure LDAP Directory Sync</h4>
+<p class="text-[10px] text-on-surface-variant">Active Directory BOU (10.100.1.200)</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Synced</p>
+<p class="text-[9px] text-on-surface-variant">Interval: 15 min</p>
+</div>
+</div>
+<div class="px-md py-md flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-green-600">check_circle</span>
+<div>
+<h4 class="text-xs font-bold text-on-surface">Digital Vault Encryption Vault</h4>
+<p class="text-[10px] text-on-surface-variant">HashiCorp Vault Key Store</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Vault Sealed (Active)</p>
+<p class="text-[9px] text-on-surface-variant">Key Rotation: Auto</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl depth-card border border-outline-variant overflow-hidden">
+<div class="px-md py-md border-b border-outline-variant bg-surface-container-low flex items-center justify-between">
+<h3 class="font-bold text-primary text-sm">Critical Administration Timeline</h3>
+<a href="auditlog.html" class="text-xs text-brand-gold hover:underline font-bold">View Audit Ledger</a>
+</div>
+<div class="p-md">
+<div class="relative border-l-2 border-outline-variant pl-md space-y-md">
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-surface-variant border-2 border-white"></div>
+<p class="text-xs font-bold text-on-surface">LDAP Sync Completed</p>
+<p class="text-[10px] text-on-surface-variant">Today, 09:15 AM - Automated Syncer</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-white"></div>
+<p class="text-xs font-bold text-on-surface">Admin Role Invitation Sent</p>
+<p class="text-[10px] text-on-surface-variant">Today, 08:30 AM - S. Katumba invited User ID 4038</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-white"></div>
+<p class="text-xs font-bold text-on-surface">Backup Sequence Initiated</p>
+<p class="text-[10px] text-on-surface-variant">Yesterday, 11:59 PM - System Daemon (S3 Pool)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<div class="bg-white rounded-xl depth-card border border-outline-variant p-md">
+<h3 class="font-bold text-primary text-sm border-b border-outline-variant/20 pb-sm mb-md">Portal Resource Health</h3>
+<div class="space-y-md">
+<div>
+<div class="flex justify-between text-xs font-bold text-on-surface-variant mb-xs">
+<span>Storage Utilization</span>
+<span>64.8 GB / 250 GB</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-brand-gold h-full" style="width: 26%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold text-on-surface-variant mb-xs">
+<span>Memory Reservation</span>
+<span>2.8 GB / 8.0 GB</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 35%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl depth-card border border-outline-variant p-md">
+<h3 class="font-bold text-primary text-sm border-b border-outline-variant/20 pb-sm mb-md">System Actions Quick-Link</h3>
+<div class="grid grid-cols-2 gap-sm">
+<a href="ITadmin.html" class="flex flex-col items-center justify-center p-md bg-surface-container-low hover:bg-surface-container-high border border-outline-variant rounded-lg text-center transition-colors">
+<span class="material-symbols-outlined text-brand-maroon mb-xs">person_add</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Register User</span>
+</a>
+<a href="systemsettings.html" class="flex flex-col items-center justify-center p-md bg-surface-container-low hover:bg-surface-container-high border border-outline-variant rounded-lg text-center transition-colors">
+<span class="material-symbols-outlined text-brand-gold mb-xs">lock</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Set 2FA Policy</span>
+</a>
+</div>
+</div>
+</div>
+</div>
 <!-- FOOTER SHELL -->
 <footer class="flex justify-between items-center w-full px-lg py-md ml-64 max-w-[calc(100%-16rem)] bg-surface-container-low border-t border-outline-variant">
 <div class="flex flex-col">

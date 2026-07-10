@@ -6,105 +6,8 @@
 <title>My Ideas | Innovation Management System</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "tertiary-fixed": "#f2e574",
-                        "surface-container-lowest": "#ffffff",
-                        "on-tertiary-container": "#464000",
-                        "on-secondary-container": "#6c4100",
-                        "inverse-primary": "#ffb4a9",
-                        "surface-bright": "#fcf9f8",
-                        "on-tertiary": "#ffffff",
-                        "outline-variant": "#dcc0bc",
-                        "outline": "#89726e",
-                        "primary-fixed-dim": "#ffb4a9",
-                        "primary": "#380001",
-                        "on-primary": "#ffffff",
-                        "on-surface-variant": "#56423f",
-                        "on-secondary-fixed-variant": "#663e00",
-                        "tertiary-fixed-dim": "#d5c95b",
-                        "secondary-container": "#fcaa3e",
-                        "on-primary-fixed-variant": "#802820",
-                        "surface-variant": "#e5e2e1",
-                        "on-tertiary-fixed": "#1f1c00",
-                        "on-surface": "#1c1b1b",
-                        "primary-container": "#5a0c08",
-                        "on-background": "#1c1b1b",
-                        "surface-container-high": "#eae7e7",
-                        "inverse-on-surface": "#f3f0ef",
-                        "error-container": "#ffdad6",
-                        "secondary": "#875300",
-                        "surface-container-low": "#f6f3f2",
-                        "on-error-container": "#93000a",
-                        "surface-tint": "#9f3f35",
-                        "on-error": "#ffffff",
-                        "background": "#fcf9f8",
-                        "on-secondary": "#ffffff",
-                        "on-primary-container": "#e27264",
-                        "secondary-fixed-dim": "#ffb964",
-                        "on-secondary-fixed": "#2b1700",
-                        "error": "#ba1a1a",
-                        "surface-dim": "#dcd9d9",
-                        "on-tertiary-fixed-variant": "#4e4800",
-                        "inverse-surface": "#313030",
-                        "tertiary": "#686000",
-                        "secondary-fixed": "#ffddb9",
-                        "surface-container-highest": "#e5e2e1",
-                        "on-primary-fixed": "#410001",
-                        "tertiary-container": "#b9ae43",
-                        "primary-fixed": "#ffdad5",
-                        "surface-container": "#f0eded",
-                        "surface": "#fcf9f8",
-                        "brand-cream": "#FEF7EF",
-                        "brand-gold": "#DD9024",
-                        "brand-maroon": "#5A0C08",
-                        "brand-yellow-surface": "#FFF27F"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "base": "8px",
-                        "lg": "48px",
-                        "xs": "4px",
-                        "margin": "32px",
-                        "gutter": "24px",
-                        "xl": "80px",
-                        "sm": "12px",
-                        "md": "24px"
-                    },
-                    "fontFamily": {
-                        "headline-lg": ["Public Sans"],
-                        "body-md": ["Public Sans"],
-                        "body-lg": ["Public Sans"],
-                        "headline-md": ["Public Sans"],
-                        "title-lg": ["Public Sans"],
-                        "label-md": ["Public Sans"],
-                        "label-sm": ["Public Sans"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
-                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
-                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
-                    }
-                },
-            },
-        }
-    </script>
+<script src="tailwind-config.js"></script>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -261,7 +164,7 @@ Log Out
 <input class="w-full pl-10 pr-4 py-2.5 bg-white border border-outline-variant/50 rounded-lg text-label-md focus:ring-2 focus:ring-brand-gold" placeholder="Search by title, keywords or ID..." type="text"/>
 </div>
 <div class="flex items-center gap-sm w-full lg:w-auto">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-maroon-accent" href="support.html">Contact Support</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-brand-maroon" href="support.html">Contact Support</a>
 <select class="bg-white border-outline-variant/50 rounded-lg text-label-md px-md py-2.5 flex-1 lg:flex-none">
 <option>Latest First</option>
 <option>Oldest First</option>
@@ -295,7 +198,7 @@ Log Out
 <!-- Ideas List Grid -->
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
 <!-- Idea Card 1: In Development -->
-<div class="bg-brand-yellow-surface rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
+<div class="bg-brand-soft-yellow rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
 <div class="flex justify-between items-start mb-md">
 <h3 class="font-title-lg text-title-lg text-brand-maroon font-bold leading-tight flex-1">Blockchain for Cross-Border Settlement</h3>
 <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">In Development</span>
@@ -335,7 +238,7 @@ Log Out
 </div>
 </div>
 <!-- Idea Card 2: Under Review -->
-<div class="bg-brand-yellow-surface rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
+<div class="bg-brand-soft-yellow rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
 <div class="flex justify-between items-start mb-md">
 <h3 class="font-title-lg text-title-lg text-brand-maroon font-bold leading-tight flex-1">AI-Driven Fraud Detection Engine</h3>
 <span class="bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Under Review</span>
@@ -375,7 +278,7 @@ Log Out
 </div>
 </div>
 <!-- Idea Card 3: Submitted -->
-<div class="bg-brand-yellow-surface rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
+<div class="bg-brand-soft-yellow rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
 <div class="flex justify-between items-start mb-md">
 <h3 class="font-title-lg text-title-lg text-brand-maroon font-bold leading-tight flex-1">QR Code Standard for Small Vendors</h3>
 <span class="bg-outline-variant text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Submitted</span>
@@ -418,7 +321,7 @@ Log Out
 </div>
 </div>
 <!-- Idea Card 4: Approved -->
-<div class="bg-brand-yellow-surface rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
+<div class="bg-brand-soft-yellow rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group">
 <div class="flex justify-between items-start mb-md">
 <h3 class="font-title-lg text-title-lg text-brand-maroon font-bold leading-tight flex-1">Green Bond Verification Portal</h3>
 <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Approved</span>
@@ -458,7 +361,7 @@ Log Out
 </div>
 </div>
 <!-- Idea Card 5: Declined -->
-<div class="bg-brand-yellow-surface rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group opacity-90">
+<div class="bg-brand-soft-yellow rounded-xl p-md border border-brand-maroon/10 card-shadow card-hover transition-all duration-300 flex flex-col group opacity-90">
 <div class="flex justify-between items-start mb-md">
 <h3 class="font-title-lg text-title-lg text-brand-maroon font-bold leading-tight flex-1 line-clamp-2">Anonymous Whistleblower Token</h3>
 <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Declined</span>

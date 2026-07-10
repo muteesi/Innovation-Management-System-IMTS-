@@ -1,0 +1,42 @@
+# IMTS Correction Task: Fix Monolith Assumption → Microservices
+
+## Context
+
+You previously executed the **Phase 0 → Phase 1.5** prompt for the Bank of Uganda IMTS project (static mockup cleanup + Razor Pages migration). That prompt incorrectly instructed you to confirm a **modular monolith** architecture in `docs/scope-decisions.md`. This is wrong — **the confirmed architecture is microservices** (7 independently deployable ASP.NET Core services, each with its own database, communicating through a YARP API Gateway, per `docs/architecture-decisions.md` from Phase 2).
+
+This is a **correction task only**. Do not redo Phase 1 (static HTML cleanup) or re-migrate pages that are already working in Razor Pages — that work stands. You are fixing one wrong scope decision and its knock-on effects.
+
+## What to fix
+
+### 1. Correct `docs/scope-decisions.md`
+Find and replace the monolith decision with:
+> "This build targets **microservices**: 7 independently deployable ASP.NET Core services (Identity, Ideas, Workflow, Funding, Documents, Notifications, Reporting), each with its own MS SQL database, communicating through a YARP API Gateway. See `docs/architecture-decisions.md` for full service boundaries, communication patterns, and data ownership rules."
+
+Leave the deployment target (Windows Service + IIS) and Funding Pipeline scope open-question notes as they were — those are unaffected by this correction.
+
+### 2. Check the Razor Pages app for monolith assumptions and flag them
+Search the Phase 1.5 Razor Pages codebase for anything that assumes a single-process/single-database monolith, in particular:
+- A single shared `DbContext` spanning multiple bounded contexts (Ideas, Workflow, Funding, etc. in one context) — if found, do not refactor it yet, just list every file where this appears in a report (`docs/monolith-assumptions-found.md`), since untangling it into per-service data access is Phase 3 work, not this correction task.
+- Any direct in-process method calls between what should be separate bounded contexts (e.g. a Staff User PageModel directly calling into Workflow logic in the same process) — list these too, same reasoning.
+- Confirm the PageModels currently use **stub/sample data** rather than a real shared database — this is fine and expected at this stage; just confirm and note it, don't change it.
+
+**Do not attempt to split the app into 7 services in this task.** That is Phase 3 scope. This task only corrects the documentation and produces an inventory of monolith-shaped code for Phase 3 to address.
+
+### 3. Correct the JWT / auth flow description if it exists anywhere in the current docs or code comments
+If `docs/scope-decisions.md` or any code comments describe authentication as a single-hop JWT flow (browser directly holding and sending a Bearer token), correct the description to the two-hop model:
+- **Browser ↔ Razor Pages app**: standard ASP.NET Core cookie authentication (per Phase 1.5's login wiring) — this does not change.
+- **Razor Pages app (server-side) ↔ API Gateway**: JWT Bearer token, obtained by the Razor Pages backend at login time and held server-side (never exposed to the browser) — this is the BFF (Backend-for-Frontend) pattern already named in `docs/architecture-decisions.md`.
+
+If the current login page implementation already only does cookie auth (likely, since no Gateway/services exist yet to call), no code change is needed — just make sure no documentation implies the browser will handle a JWT directly.
+
+## Deliverables
+
+1. Corrected `docs/scope-decisions.md` (microservices, not monolith)
+2. New `docs/monolith-assumptions-found.md` — inventory of any single-DbContext or cross-boundary in-process calls found in the current Razor Pages code, for Phase 3 to address. If none are found (e.g. everything is still stub data with no real cross-boundary coupling), state that explicitly rather than leaving the file empty.
+3. Confirmation (in the same doc or a short note) that the JWT/cookie auth description is consistent with the two-hop BFF model, with any corrections made.
+
+## Constraints
+
+- No functional/UI changes to the working Razor Pages pages from Phase 1.5.
+- No service-splitting, no new projects, no new databases — that's Phase 3.
+- This is a documentation and inventory correction, not an implementation task.

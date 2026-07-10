@@ -21,9 +21,9 @@
                         "surface": "#FEF7EF",
                         "outline-variant": "#dcc0bc",
                         "on-surface-variant": "#56423f",
-                        "gold": "#DD9024",
-                        "maroon": "#5A0C08",
-                        "soft-yellow": "#FFF27F",
+                        "brand-gold": "#DD9024",
+                        "brand-maroon": "#5A0C08",
+                        "brand-soft-yellow": "#FFF27F",
                         "brand-cream": "#FEF7EF"
                     },
                     borderRadius: {
@@ -134,17 +134,17 @@
         <!-- Top App Bar -->
         <header class="flex justify-between items-center w-full px-gutter h-16 border-b border-outline-variant bg-surface sticky top-0 z-40">
             <div class="flex items-center gap-4">
-                <h2 class="font-title-lg text-title-lg text-maroon font-extrabold uppercase tracking-tight text-lg">Reports & Analytics Console</h2>
+                <h2 class="font-title-lg text-title-lg text-brand-maroon font-extrabold uppercase tracking-tight text-lg">Reports & Analytics Console</h2>
             </div>
             <div class="flex items-center gap-gutter">
                 <div class="relative hidden lg:block">
-                    <input class="pl-10 pr-4 py-2 rounded border border-on-surface/10 bg-white focus:border-gold focus:ring-2 focus:ring-gold/20 text-sm" placeholder="Search analytics..." type="text"/>
+                    <input class="pl-10 pr-4 py-2 rounded border border-on-surface/10 bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm" placeholder="Search analytics..." type="text"/>
                     <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button onclick="window.location.href='innovationteamdashboard.html'" class="material-symbols-outlined text-maroon hover:text-gold transition-colors">account_balance</button>
-                    <button onclick="window.location.href='support.html'" class="material-symbols-outlined text-maroon hover:text-gold transition-colors">help</button>
-                    <div class="w-10 h-10 rounded-full border-2 border-gold/30 bg-white flex items-center justify-center overflow-hidden cursor-pointer" onclick="window.location.href='../login.html'">
+                    <button onclick="window.location.href='innovationteamdashboard.html'" class="material-symbols-outlined text-brand-maroon hover:text-brand-gold transition-colors">account_balance</button>
+                    <button onclick="window.location.href='support.html'" class="material-symbols-outlined text-brand-maroon hover:text-brand-gold transition-colors">help</button>
+                    <div class="w-10 h-10 rounded-full border-2 border-brand-gold/30 bg-white flex items-center justify-center overflow-hidden cursor-pointer" onclick="window.location.href='../login.html'">
                         <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPEi3Dq35RpA-uhErae5k73Rn07gQW5Ch0R1GQRP5wkqXDhsxb9GAlQuC9tMrjUPJI6v265EVirfwVLnBLt0mEpSJ6qnvUBSKL0roA2F71WsHQ01Reqn7-VVlXzaNopK_5VJQnwxxlPO3XI9l2p5ACWkgSgVqUbBVOMSVqPQJSFpU_TsLrE9YL50ZLnn13q7qmL1cHQ0G-JTOBBl1gVPhf2_BeXlTwEUyatZBo93meEwFELH8JLRBTRQ"/>
                     </div>
                 </div>
@@ -155,23 +155,23 @@
             <!-- Breadcrumbs -->
             <nav aria-label="Breadcrumb" class="text-sm text-on-surface-variant">
                 <ol class="flex items-center space-x-2">
-                    <li><a class="hover:text-gold transition-colors" href="innovationteamdashboard.html">Dashboard</a></li>
+                    <li><a class="hover:text-brand-gold transition-colors" href="innovationteamdashboard.html">Dashboard</a></li>
                     <li><span class="material-symbols-outlined text-base">chevron_right</span></li>
-                    <li class="font-semibold text-maroon">Reports & Analytics</li>
+                    <li class="font-semibold text-brand-maroon">Reports & Analytics</li>
                 </ol>
             </nav>
 
             <!-- Metrics Header -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 class="text-2xl font-bold text-maroon">IMTS Insights</h1>
+                    <h1 class="text-2xl font-bold text-brand-maroon">IMTS Insights</h1>
                     <p class="text-sm text-on-surface-variant">Live key performance indicators and workflow velocity stats.</p>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="alert('Exporting data as CSV...')" class="bg-white border border-outline-variant hover:border-gold hover:text-gold transition-all text-on-surface-variant px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1">
+                    <button onclick="alert('Exporting data as CSV...')" class="bg-white border border-outline-variant hover:border-brand-gold hover:text-brand-gold transition-all text-on-surface-variant px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1">
                         <span class="material-symbols-outlined text-base">download</span> Export CSV
                     </button>
-                    <button onclick="window.print()" class="bg-gold hover:opacity-90 text-white transition-opacity px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1">
+                    <button onclick="window.print()" class="bg-brand-gold hover:opacity-90 text-white transition-opacity px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1">
                         <span class="material-symbols-outlined text-base">print</span> Print PDF Report
                     </button>
                 </div>
@@ -180,23 +180,23 @@
             <!-- Stats Grid -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-md">
                 <div class="bg-white p-md rounded-xl border border-outline-variant shadow-soft flex items-center gap-4">
-                    <div class="w-12 h-12 bg-maroon/10 rounded-lg flex items-center justify-center text-maroon flex-shrink-0">
+                    <div class="w-12 h-12 bg-brand-maroon/10 rounded-lg flex items-center justify-center text-brand-maroon flex-shrink-0">
                         <span class="material-symbols-outlined text-2xl fill-icon">lightbulb</span>
                     </div>
                     <div>
                         <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Submission Rate</span>
-                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">38 Ideas</h3>
+                        <h3 class="text-2xl font-extrabold text-brand-maroon mt-0.5">38 Ideas</h3>
                         <p class="text-xs text-emerald-600 mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-xs">trending_up</span> +12% this qtr</p>
                     </div>
                 </div>
 
                 <div class="bg-white p-md rounded-xl border border-outline-variant shadow-soft flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center text-gold flex-shrink-0">
+                    <div class="w-12 h-12 bg-brand-gold/10 rounded-lg flex items-center justify-center text-brand-gold flex-shrink-0">
                         <span class="material-symbols-outlined text-2xl">query_builder</span>
                     </div>
                     <div>
                         <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Avg. Review Speed</span>
-                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">4.8 Days</h3>
+                        <h3 class="text-2xl font-extrabold text-brand-maroon mt-0.5">4.8 Days</h3>
                         <p class="text-xs text-emerald-600 mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-xs">trending_down</span> -0.6 days improvement</p>
                     </div>
                 </div>
@@ -207,18 +207,18 @@
                     </div>
                     <div>
                         <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Approval Ratio</span>
-                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">31.5%</h3>
+                        <h3 class="text-2xl font-extrabold text-brand-maroon mt-0.5">31.5%</h3>
                         <p class="text-xs text-on-surface-variant mt-1">12 of 38 approved</p>
                     </div>
                 </div>
 
-                <div class="bg-soft-yellow/30 p-md rounded-xl border border-gold/20 shadow-soft flex items-center gap-4">
+                <div class="bg-brand-soft-yellow/30 p-md rounded-xl border border-brand-gold/20 shadow-soft flex items-center gap-4">
                     <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-secondary flex-shrink-0">
                         <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
                     </div>
                     <div>
                         <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Prototype Budgets</span>
-                        <h3 class="text-2xl font-extrabold text-maroon mt-0.5">UGX 145M</h3>
+                        <h3 class="text-2xl font-extrabold text-brand-maroon mt-0.5">UGX 145M</h3>
                         <p class="text-xs text-on-surface-variant mt-1">Allocated for experimentation</p>
                     </div>
                 </div>
@@ -229,7 +229,7 @@
                 <!-- SVG Chart: Submissions Over Time -->
                 <div class="bg-white border border-outline-variant p-md rounded-xl shadow-soft lg:col-span-2">
                     <div class="flex justify-between items-center mb-md">
-                        <h3 class="font-bold text-maroon text-base">Submission Velocity (Year 2026)</h3>
+                        <h3 class="font-bold text-brand-maroon text-base">Submission Velocity (Year 2026)</h3>
                         <select class="border border-outline-variant rounded p-1 text-xs outline-none bg-white">
                             <option>Monthly View</option>
                             <option>Quarterly View</option>
@@ -280,7 +280,7 @@
 
                 <!-- SVG Chart: Submissions by Category -->
                 <div class="bg-white border border-outline-variant p-md rounded-xl shadow-soft">
-                    <h3 class="font-bold text-maroon text-base mb-md">Ideas by Category</h3>
+                    <h3 class="font-bold text-brand-maroon text-base mb-md">Ideas by Category</h3>
                     <div class="flex flex-col items-center justify-center h-64 gap-sm">
                         <!-- Horizontal Bar Graph for Clarity -->
                         <div class="w-full space-y-3 px-sm">
@@ -290,7 +290,7 @@
                                     <span>12 Ideas (31.5%)</span>
                                 </div>
                                 <div class="w-full bg-[#eae7e7] h-2.5 rounded-full overflow-hidden">
-                                    <div class="bg-maroon h-full" style="width: 31.5%"></div>
+                                    <div class="bg-brand-maroon h-full" style="width: 31.5%"></div>
                                 </div>
                             </div>
                             <div>
@@ -299,7 +299,7 @@
                                     <span>9 Ideas (23.7%)</span>
                                 </div>
                                 <div class="w-full bg-[#eae7e7] h-2.5 rounded-full overflow-hidden">
-                                    <div class="bg-gold h-full" style="width: 23.7%"></div>
+                                    <div class="bg-brand-gold h-full" style="width: 23.7%"></div>
                                 </div>
                             </div>
                             <div>
@@ -337,56 +337,56 @@
             <!-- Past Reports & Exports -->
             <div class="bg-white border border-outline-variant rounded-xl shadow-soft overflow-hidden">
                 <div class="p-md border-b border-outline-variant flex items-center justify-between">
-                    <h3 class="font-bold text-maroon text-base">Archived Analytics Reports</h3>
-                    <button onclick="alert('Creating a new customized reports archive entry...')" class="bg-maroon text-white font-bold text-xs py-2 px-4 rounded hover:opacity-90 transition-opacity">+ Request New Period</button>
+                    <h3 class="font-bold text-brand-maroon text-base">Archived Analytics Reports</h3>
+                    <button onclick="alert('Creating a new customized reports archive entry...')" class="bg-brand-maroon text-white font-bold text-xs py-2 px-4 rounded hover:opacity-90 transition-opacity">+ Request New Period</button>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-surface border-b border-outline-variant">
-                                <th class="p-md text-maroon font-bold text-xs">Report Reference</th>
-                                <th class="p-md text-maroon font-bold text-xs">Reporting Period</th>
-                                <th class="p-md text-maroon font-bold text-xs">Submissions Count</th>
-                                <th class="p-md text-maroon font-bold text-xs">Approved Budget</th>
-                                <th class="p-md text-maroon font-bold text-xs">Generated By</th>
-                                <th class="p-md text-maroon font-bold text-xs text-right">Download Options</th>
+                                <th class="p-md text-brand-maroon font-bold text-xs">Report Reference</th>
+                                <th class="p-md text-brand-maroon font-bold text-xs">Reporting Period</th>
+                                <th class="p-md text-brand-maroon font-bold text-xs">Submissions Count</th>
+                                <th class="p-md text-brand-maroon font-bold text-xs">Approved Budget</th>
+                                <th class="p-md text-brand-maroon font-bold text-xs">Generated By</th>
+                                <th class="p-md text-brand-maroon font-bold text-xs text-right">Download Options</th>
                             </tr>
                         </thead>
                         <tbody class="text-sm">
-                            <tr class="border-b border-outline-variant/60 hover:bg-gold/5 transition-colors">
-                                <td class="p-md font-bold text-maroon">BOU-IMTS-REP-2026-Q2</td>
+                            <tr class="border-b border-outline-variant/60 hover:bg-brand-gold/5 transition-colors">
+                                <td class="p-md font-bold text-brand-maroon">BOU-IMTS-REP-2026-Q2</td>
                                 <td class="p-md text-on-surface-variant">Apr 01, 2026 - Jun 30, 2026</td>
                                 <td class="p-md font-medium">18 Submissions</td>
                                 <td class="p-md">UGX 65,000,000</td>
                                 <td class="p-md">Joseph Katumba (IT Admin)</td>
                                 <td class="p-md text-right space-x-2">
-                                    <button onclick="alert('Downloading PDF...')" class="text-maroon font-bold hover:underline text-xs">PDF</button>
+                                    <button onclick="alert('Downloading PDF...')" class="text-brand-maroon font-bold hover:underline text-xs">PDF</button>
                                     <span class="text-outline-variant">|</span>
-                                    <button onclick="alert('Downloading Excel...')" class="text-gold font-bold hover:underline text-xs">XLSX</button>
+                                    <button onclick="alert('Downloading Excel...')" class="text-brand-gold font-bold hover:underline text-xs">XLSX</button>
                                 </td>
                             </tr>
-                            <tr class="bg-soft-yellow/10 border-b border-outline-variant/60 hover:bg-gold/5 transition-colors">
-                                <td class="p-md font-bold text-maroon">BOU-IMTS-REP-2026-Q1</td>
+                            <tr class="bg-brand-soft-yellow/10 border-b border-outline-variant/60 hover:bg-brand-gold/5 transition-colors">
+                                <td class="p-md font-bold text-brand-maroon">BOU-IMTS-REP-2026-Q1</td>
                                 <td class="p-md text-on-surface-variant">Jan 01, 2026 - Mar 31, 2026</td>
                                 <td class="p-md font-medium">12 Submissions</td>
                                 <td class="p-md">UGX 40,000,000</td>
                                 <td class="p-md">Namaganda Rose (Reviewer)</td>
                                 <td class="p-md text-right space-x-2">
-                                    <button onclick="alert('Downloading PDF...')" class="text-maroon font-bold hover:underline text-xs">PDF</button>
+                                    <button onclick="alert('Downloading PDF...')" class="text-brand-maroon font-bold hover:underline text-xs">PDF</button>
                                     <span class="text-outline-variant">|</span>
-                                    <button onclick="alert('Downloading Excel...')" class="text-gold font-bold hover:underline text-xs">XLSX</button>
+                                    <button onclick="alert('Downloading Excel...')" class="text-brand-gold font-bold hover:underline text-xs">XLSX</button>
                                 </td>
                             </tr>
-                            <tr class="border-b border-outline-variant/60 hover:bg-gold/5 transition-colors">
-                                <td class="p-md font-bold text-maroon">BOU-IMTS-REP-2025-FY</td>
+                            <tr class="border-b border-outline-variant/60 hover:bg-brand-gold/5 transition-colors">
+                                <td class="p-md font-bold text-brand-maroon">BOU-IMTS-REP-2025-FY</td>
                                 <td class="p-md text-on-surface-variant">Jan 01, 2025 - Dec 31, 2025</td>
                                 <td class="p-md font-medium">42 Submissions</td>
                                 <td class="p-md">UGX 180,000,000</td>
                                 <td class="p-md">Executive Board Admin</td>
                                 <td class="p-md text-right space-x-2">
-                                    <button onclick="alert('Downloading PDF...')" class="text-maroon font-bold hover:underline text-xs">PDF</button>
+                                    <button onclick="alert('Downloading PDF...')" class="text-brand-maroon font-bold hover:underline text-xs">PDF</button>
                                     <span class="text-outline-variant">|</span>
-                                    <button onclick="alert('Downloading Excel...')" class="text-gold font-bold hover:underline text-xs">XLSX</button>
+                                    <button onclick="alert('Downloading Excel...')" class="text-brand-gold font-bold hover:underline text-xs">XLSX</button>
                                 </td>
                             </tr>
                         </tbody>
