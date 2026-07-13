@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Settings | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        .badge { margin-left: auto; background-color: #DD9024; color: white; font-size: 0.65rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 600; }
+        .form-input:focus { border-color: #DD9024; box-shadow: 0 0 0 3px rgba(221,144,36,0.15); outline: none; }
+        .setting-section { border-bottom: 1px solid #dcc0bc; padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+        .setting-section:last-child { border-bottom: none; margin-bottom: 0; }
+        .info-banner { background: #e8f5e9; border-left: 4px solid #2e7d32; }
+        .info-banner .material-symbols-outlined { color: #2e7d32; }
+    </style>
+</head>
+<body class="text-on-surface overflow-hidden h-screen flex">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">Staff Portal</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item" href="staffdashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item" href="MyIdeas.html">
+                <span class="icon material-symbols-outlined">lightbulb</span><span>My Ideas</span>
+            </a>
+            <a class="sidebar-item" href="submitinnovationideaform.html">
+                <span class="icon material-symbols-outlined">add_circle</span><span>Submit New Idea</span>
+            </a>
+            <a class="sidebar-item" href="notifications.html">
+                <span class="icon material-symbols-outlined">notifications</span><span>Notifications</span>
+                <span class="badge" id="notificationBadge">3</span>
+            </a>
+            <a class="sidebar-item" href="resources.html">
+                <span class="icon material-symbols-outlined">folder_open</span><span>Resources</span>
+            </a>
+            <a class="sidebar-item sidebar-active" href="settings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>Settings</span>
+            </a>
+            <a class="sidebar-item" href="../support.html?portal=staff">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="window.location.href='submitinnovationideaform.html'" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">add</span> Submit Idea
+            </button>
+            <button onclick="IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">Settings</h1>
+                <p class="text-sm text-[#56423f]">Manage your profile preferences and notification settings</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">Jonathan Doe</p>
+                    <p class="text-xs text-[#56423f]">IT Department</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    JD
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[900px] mx-auto w-full">
+            
+            <!-- ===== INFO BANNER ===== -->
+            <div class="info-banner p-4 rounded-lg mb-6 flex items-start gap-3">
+                <span class="material-symbols-outlined">info</span>
+                <div>
+                    <p class="text-sm font-semibold text-[#1b5e20]">Account Management</p>
+                    <p class="text-xs text-[#2e7d32]">For password changes, account lock/unlock, or user management, please contact IT Administration. These settings are restricted to maintain system security.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-[#dcc0bc] shadow-sm p-6">
+                
+                <!-- ===== PROFILE SECTION ===== -->
+                <div class="setting-section">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">👤 My Profile</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Full Name</label>
+                            <input type="text" id="fullName" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input bg-[#f6f3f2]" value="Jonathan Doe" readonly disabled>
+                            <p class="text-xs text-[#89726e] mt-1">Contact IT Admin to change your name</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Email Address</label>
+                            <input type="email" id="emailAddress" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input bg-[#f6f3f2]" value="j.doe@bou.or.ug" readonly disabled>
+                            <p class="text-xs text-[#89726e] mt-1">Contact IT Admin to change your email</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Department</label>
+                            <input type="text" id="department" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input bg-[#f6f3f2]" value="IT Department" readonly disabled>
+                            <p class="text-xs text-[#89726e] mt-1">Contact IT Admin to change your department</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Phone Number</label>
+                            <input type="tel" id="phoneNumber" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" value="+256 700 000 000">
+                            <p class="text-xs text-[#89726e] mt-1">Update your phone number for notifications</p>
+                        </div>
+                    </div>
+                    <button onclick="saveProfile()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Update Phone Number</button>
+                </div>
+
+                <!-- ===== NOTIFICATION PREFERENCES ===== -->
+                <div class="setting-section">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">🔔 Notification Preferences</h2>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Email notifications for idea status updates</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">In-app notifications for comments on my ideas</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Weekly innovation digest newsletter</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">SMS notifications for urgent updates</span>
+                        </label>
+                    </div>
+                    <button onclick="savePreferences()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Save Preferences</button>
+                </div>
+
+                <!-- ===== APPEARANCE ===== -->
+                <div class="setting-section">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">🎨 Appearance</h2>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="setTheme('light')" class="px-4 py-2 border-2 border-[#DD9024] bg-white text-[#5A0C08] rounded-lg font-semibold hover:bg-[#f6f3f2]">
+                            ☀️ Light
+                        </button>
+                        <button onclick="setTheme('dark')" class="px-4 py-2 border-2 border-[#dcc0bc] bg-[#1c1b1b] text-white rounded-lg font-semibold hover:bg-[#2d2d2d]">
+                            🌙 Dark
+                        </button>
+                        <button onclick="setTheme('system')" class="px-4 py-2 border-2 border-[#dcc0bc] bg-white text-[#5A0C08] rounded-lg font-semibold hover:bg-[#f6f3f2]">
+                            💻 System Default
+                        </button>
+                    </div>
+                    <p class="text-xs text-[#89726e] mt-2">Choose your preferred theme for the IMTS portal.</p>
+                </div>
+
+                <!-- ===== DASHBOARD PREFERENCES ===== -->
+                <div class="setting-section">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">📊 Dashboard Preferences</h2>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Show recent ideas on dashboard</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Show statistics cards on dashboard</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Show innovation goal tracker on dashboard</span>
+                        </label>
+                    </div>
+                    <button onclick="saveDashboardPrefs()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Save Dashboard Preferences</button>
+                </div>
+
+                <!-- ===== LANGUAGE PREFERENCE ===== -->
+                <div class="setting-section">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">🌐 Language Preference</h2>
+                    <select id="languagePref" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input max-w-xs">
+                        <option value="en">English</option>
+                        <option value="sw">Swahili</option>
+                        <option value="lg">Luganda</option>
+                        <option value="run">Runyankore</option>
+                        <option value="ach">Acholi</option>
+                        <option value="luo">Luo</option>
+                    </select>
+                    <p class="text-xs text-[#89726e] mt-1">Select your preferred language for the portal interface.</p>
+                    <button onclick="saveLanguage()" class="mt-3 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Save Language</button>
+                </div>
+
+                <!-- ===== DATA EXPORT ===== -->
+                <div class="setting-section">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">📤 Data Export</h2>
+                    <p class="text-sm text-[#56423f] mb-3">Download your data for personal records.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="exportData('ideas')" class="bg-[#5A0C08] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#4a0a07] flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">lightbulb</span> Export My Ideas
+                        </button>
+                        <button onclick="exportData('notifications')" class="bg-[#5A0C08] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#4a0a07] flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">notifications</span> Export Notifications
+                        </button>
+                        <button onclick="exportData('profile')" class="bg-[#5A0C08] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#4a0a07] flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">person</span> Export Profile
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== ACCOUNT INFO (Read-Only) ===== -->
+                <div class="setting-section">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">ℹ️ Account Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        <div>
+                            <p class="font-semibold text-[#89726e]">Username</p>
+                            <p class="text-[#5A0C08] font-medium">j.doe</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-[#89726e]">Role</p>
+                            <p class="text-[#5A0C08] font-medium">Staff</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-[#89726e]">Account Created</p>
+                            <p class="text-[#5A0C08] font-medium">January 15, 2024</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-[#89726e]">Last Login</p>
+                            <p class="text-[#5A0C08] font-medium">Today, 10:30 AM</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-[#89726e] mt-2">For account changes, please contact IT Administration.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Privacy Policy</a>
+                <a href="../support.html?portal=staff" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // ===== SETTINGS FUNCTIONS =====
+
+        // Save Phone Number
+        function saveProfile() {
+            const phone = document.getElementById('phoneNumber').value.trim();
+            
+            if (!phone) {
+                alert('Please enter your phone number.');
+                return;
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('imts_user_phone', phone);
+            
+            alert('✅ Phone number updated successfully!');
+        }
+
+        // Save Notification Preferences
+        function savePreferences() {
+            const prefs = {
+                email: document.querySelectorAll('input[type="checkbox"]')[0].checked,
+                inApp: document.querySelectorAll('input[type="checkbox"]')[1].checked,
+                weekly: document.querySelectorAll('input[type="checkbox"]')[2].checked,
+                sms: document.querySelectorAll('input[type="checkbox"]')[3].checked
+            };
+            
+            localStorage.setItem('imts_notification_prefs', JSON.stringify(prefs));
+            alert('✅ Notification preferences saved successfully!');
+        }
+
+        // Save Dashboard Preferences
+        function saveDashboardPrefs() {
+            const prefs = {
+                recentIdeas: document.querySelectorAll('input[type="checkbox"]')[4].checked,
+                statsCards: document.querySelectorAll('input[type="checkbox"]')[5].checked,
+                goalTracker: document.querySelectorAll('input[type="checkbox"]')[6].checked
+            };
+            
+            localStorage.setItem('imts_dashboard_prefs', JSON.stringify(prefs));
+            alert('✅ Dashboard preferences saved successfully!');
+        }
+
+        // Save Language
+        function saveLanguage() {
+            const lang = document.getElementById('languagePref').value;
+            localStorage.setItem('imts_language', lang);
+            alert(`✅ Language set to ${document.getElementById('languagePref').options[document.getElementById('languagePref').selectedIndex].text}`);
+        }
+
+        // Set Theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            localStorage.setItem('imts_theme', theme);
+            alert(`✅ Theme set to ${theme.charAt(0).toUpperCase() + theme.slice(1)}`);
+        }
+
+        // Export Data
+        function exportData(type) {
+            let data = {};
+            let filename = '';
+            
+            switch(type) {
+                case 'ideas':
+                    data = JSON.parse(localStorage.getItem('imts_ideas') || '[]');
+                    filename = 'my_ideas_export.json';
+                    break;
+                case 'notifications':
+                    data = JSON.parse(localStorage.getItem('imts_notifications') || '[]');
+                    filename = 'notifications_export.json';
+                    break;
+                case 'profile':
+                    data = {
+                        user: JSON.parse(localStorage.getItem('imts_session') || '{}'),
+                        phone: localStorage.getItem('imts_user_phone') || '',
+                        preferences: {
+                            notifications: JSON.parse(localStorage.getItem('imts_notification_prefs') || '{}'),
+                            dashboard: JSON.parse(localStorage.getItem('imts_dashboard_prefs') || '{}'),
+                            theme: localStorage.getItem('imts_theme') || 'light',
+                            language: localStorage.getItem('imts_language') || 'en'
+                        }
+                    };
+                    filename = 'profile_export.json';
+                    break;
+                default:
+                    return;
+            }
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert(`✅ ${filename} downloaded successfully!`);
+        }
+
+        // ===== LOAD SAVED PREFERENCES =====
+        function loadPreferences() {
+            // Load theme
+            const theme = localStorage.getItem('imts_theme') || 'light';
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            
+            // Load phone number
+            const phone = localStorage.getItem('imts_user_phone');
+            if (phone) {
+                document.getElementById('phoneNumber').value = phone;
+            }
+            
+            // Load notification preferences
+            const prefs = JSON.parse(localStorage.getItem('imts_notification_prefs') || '{"email":true,"inApp":true,"weekly":false,"sms":true}');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            if (checkboxes.length >= 4) {
+                checkboxes[0].checked = prefs.email !== false;
+                checkboxes[1].checked = prefs.inApp !== false;
+                checkboxes[2].checked = prefs.weekly === true;
+                checkboxes[3].checked = prefs.sms !== false;
+            }
+            
+            // Load dashboard preferences
+            const dashPrefs = JSON.parse(localStorage.getItem('imts_dashboard_prefs') || '{"recentIdeas":true,"statsCards":true,"goalTracker":false}');
+            if (checkboxes.length >= 7) {
+                checkboxes[4].checked = dashPrefs.recentIdeas !== false;
+                checkboxes[5].checked = dashPrefs.statsCards !== false;
+                checkboxes[6].checked = dashPrefs.goalTracker === true;
+            }
+            
+            // Load language
+            const lang = localStorage.getItem('imts_language') || 'en';
+            document.getElementById('languagePref').value = lang;
+        }
+
+        // ===== UPDATE BADGE =====
+        function updateBadge() {
+            const badge = document.getElementById('notificationBadge');
+            if (badge) {
+                const unread = parseInt(localStorage.getItem('imts_unread_notifications') || '3');
+                badge.textContent = unread;
+                badge.style.display = unread > 0 ? 'block' : 'none';
+            }
+        }
+
+        // ===== INIT =====
+        loadPreferences();
+        updateBadge();
+        
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'Jonathan Doe';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>

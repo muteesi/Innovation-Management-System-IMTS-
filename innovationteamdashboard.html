@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Innovation Team Dashboard | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        .badge { margin-left: auto; background-color: #DD9024; color: white; font-size: 0.65rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 600; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DD9024; border-radius: 4px; }
+        .stat-card { transition: all 0.2s; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(90,12,8,0.08); }
+        .status-badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
+        .status-pending { background: #fff3e0; color: #e65100; }
+        .status-review { background: #e3f2fd; color: #0d47a1; }
+        .status-approved { background: #e8f5e9; color: #1b5e20; }
+        .status-declined { background: #ffebee; color: #b71c1c; }
+        .status-development { background: #f3e5f5; color: #4a148c; }
+        .status-deployed { background: #e0f7fa; color: #00695c; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">Innovation Team</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item sidebar-active" href="innovationteamdashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item" href="reviewideas.html">
+                <span class="icon material-symbols-outlined">rate_review</span><span>Review Ideas</span>
+                <span class="badge">8</span>
+            </a>
+            <a class="sidebar-item" href="managecategories.html">
+                <span class="icon material-symbols-outlined">category</span><span>Manage Categories</span>
+            </a>
+            <a class="sidebar-item" href="manageresources.html">
+                <span class="icon material-symbols-outlined">inventory_2</span><span>Manage Resources</span>
+            </a>
+            <a class="sidebar-item" href="settimelines.html">
+                <span class="icon material-symbols-outlined">calendar_today</span><span>Set Timelines</span>
+            </a>
+            <a class="sidebar-item" href="reportsandanalytics.html">
+                <span class="icon material-symbols-outlined">analytics</span><span>Reports</span>
+            </a>
+            <a class="sidebar-item" href="settings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>Settings</span>
+            </a>
+            <a class="sidebar-item" href="support.html?portal=innovation">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <!-- ✅ CORRECT: Innovation Team should review ideas, NOT submit them -->
+            <button onclick="window.location.href='reviewideas.html'" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">rate_review</span> Review Ideas
+            </button>
+            <!-- ✅ LOGOUT BUTTON -->
+            <button onclick="window.IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">Innovation Management System</h1>
+                <p class="text-sm text-[#56423f]">Thursday, 24 October 2024</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">Milton Reviewer</p>
+                    <p class="text-xs text-[#56423f]">Innovation Team Lead</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    MR
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                <div class="stat-card bg-[#FFF27F] p-4 rounded-xl border border-[#DD9024]/10">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-[#5A0C08]">lightbulb</span>
+                        <span class="text-xl font-bold text-[#5A0C08]">45</span>
+                    </div>
+                    <p class="text-sm text-[#5A0C08]/80">Total Ideas</p>
+                </div>
+                <div class="stat-card bg-[#FFF27F] p-4 rounded-xl border border-[#DD9024]/10">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-[#DD9024]">pending_actions</span>
+                        <span class="text-xl font-bold text-[#5A0C08]">12</span>
+                    </div>
+                    <p class="text-sm text-[#5A0C08]/80">Pending Review</p>
+                </div>
+                <div class="stat-card bg-[#FFF27F] p-4 rounded-xl border border-[#DD9024]/10">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-blue-600">construction</span>
+                        <span class="text-xl font-bold text-[#5A0C08]">8</span>
+                    </div>
+                    <p class="text-sm text-[#5A0C08]/80">In Development</p>
+                </div>
+                <div class="stat-card bg-[#FFF27F] p-4 rounded-xl border border-[#DD9024]/10">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-emerald-600">rocket_launch</span>
+                        <span class="text-xl font-bold text-[#5A0C08]">5</span>
+                    </div>
+                    <p class="text-sm text-[#5A0C08]/80">Deployed</p>
+                </div>
+                <div class="stat-card bg-[#FFF27F] p-4 rounded-xl border border-[#DD9024]/10">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-emerald-700">check_circle</span>
+                        <span class="text-xl font-bold text-[#5A0C08]">15</span>
+                    </div>
+                    <p class="text-sm text-[#5A0C08]/80">Approved</p>
+                </div>
+                <div class="stat-card bg-[#FFF27F] p-4 rounded-xl border border-[#DD9024]/10">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-red-600">cancel</span>
+                        <span class="text-xl font-bold text-[#5A0C08]">5</span>
+                    </div>
+                    <p class="text-sm text-[#5A0C08]/80">Declined</p>
+                </div>
+            </div>
+
+            <!-- Pending Submissions -->
+            <div class="bg-white rounded-xl border border-[#dcc0bc] shadow-sm overflow-hidden">
+                <div class="px-6 py-4 border-b border-[#dcc0bc] flex justify-between items-center">
+                    <h3 class="font-bold text-[#5A0C08]">Pending Submissions</h3>
+                    <a href="reviewideas.html" class="text-[#DD9024] text-sm font-medium hover:underline">View All →</a>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-[#f6f3f2]">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#5A0C08]">Idea Title</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#5A0C08]">Submitter</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#5A0C08]">Date</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#5A0C08]">Status</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#5A0C08]">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#dcc0bc]/50">
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-[#5A0C08]">Blockchain Remittance Portal</td>
+                                <td class="px-4 py-3">O. Mubiru</td>
+                                <td class="px-4 py-3 text-[#56423f]">12 Oct 2023</td>
+                                <td class="px-4 py-3"><span class="status-badge status-pending">Pending</span></td>
+                                <td class="px-4 py-3"><a href="reviewideas.html" class="bg-[#DD9024] text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-[#c47e1d] transition-colors">Review</a></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-[#5A0C08]">AI-Driven Fraud Detection</td>
+                                <td class="px-4 py-3">J. Namubiru</td>
+                                <td class="px-4 py-3 text-[#56423f]">14 Oct 2023</td>
+                                <td class="px-4 py-3"><span class="status-badge status-review">In Review</span></td>
+                                <td class="px-4 py-3"><a href="reviewideas.html" class="bg-[#DD9024] text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-[#c47e1d] transition-colors">Review</a></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-[#5A0C08]">Digital Asset Custody Framework</td>
+                                <td class="px-4 py-3">K. Okello</td>
+                                <td class="px-4 py-3 text-[#56423f]">15 Oct 2023</td>
+                                <td class="px-4 py-3"><span class="status-badge status-pending">Pending</span></td>
+                                <td class="px-4 py-3"><a href="reviewideas.html" class="bg-[#DD9024] text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-[#c47e1d] transition-colors">Review</a></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-[#5A0C08]">CBDC Pilot Program</td>
+                                <td class="px-4 py-3">S. Kateregga</td>
+                                <td class="px-4 py-3 text-[#56423f]">16 Oct 2023</td>
+                                <td class="px-4 py-3"><span class="status-badge status-approved">Approved</span></td>
+                                <td class="px-4 py-3"><a href="reviewideas.html" class="bg-[#DD9024] text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-[#c47e1d] transition-colors">Review</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Compliance Standards</a>
+                <a href="support.html?portal=innovation" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'Milton Reviewer';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>

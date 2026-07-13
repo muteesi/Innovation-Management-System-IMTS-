@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>IT Admin Settings | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DD9024; border-radius: 4px; }
+        .setting-card { transition: all 0.2s; }
+        .setting-card:hover { border-color: #DD9024; }
+        .form-input:focus { border-color: #DD9024; box-shadow: 0 0 0 3px rgba(221,144,36,0.15); outline: none; }
+        .admin-banner { background: #e3f2fd; border-left: 4px solid #0d47a1; }
+        .admin-banner .material-symbols-outlined { color: #0d47a1; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">IT Administration</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item" href="admindashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item" href="ITadmin.html">
+                <span class="icon material-symbols-outlined">group</span><span>Manage Users</span>
+            </a>
+            <a class="sidebar-item" href="manageaccounts.html">
+                <span class="icon material-symbols-outlined">account_balance_wallet</span><span>Manage Accounts</span>
+            </a>
+            <a class="sidebar-item sidebar-active" href="systemsettings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>System Settings</span>
+            </a>
+            <a class="sidebar-item" href="auditlog.html">
+                <span class="icon material-symbols-outlined">security</span><span>Audit Log</span>
+            </a>
+            <a class="sidebar-item" href="reports.html">
+                <span class="icon material-symbols-outlined">assessment</span><span>Reports</span>
+            </a>
+            <a class="sidebar-item" href="../support.html?portal=itadmin">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="window.location.href='reports.html'" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">assessment</span> New Security Report
+            </button>
+            <!-- ✅ LOGOUT BUTTON -->
+            <button onclick="window.IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">IT Admin Settings</h1>
+                <p class="text-sm text-[#56423f]">Administrator preferences and configurations</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">S. Katumba</p>
+                    <p class="text-xs text-[#56423f]">System Administrator</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    SK
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[900px] mx-auto w-full">
+            <div class="admin-banner p-4 rounded-lg mb-6 flex items-start gap-3">
+                <span class="material-symbols-outlined">admin_panel_settings</span>
+                <div>
+                    <p class="text-sm font-semibold text-[#0d47a1]">Administrator Access</p>
+                    <p class="text-xs text-[#1565c0]">You have full system access. Changes made here affect all users and system configurations.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-[#dcc0bc] shadow-sm p-6">
+                <!-- Admin Profile -->
+                <div class="setting-card border-b border-[#dcc0bc] pb-6 mb-6">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">👤 Administrator Profile</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Full Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" value="S. Katumba">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Email Address</label>
+                            <input type="email" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" value="s.katumba@bou.or.ug">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Department</label>
+                            <input type="text" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" value="IT Security">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Phone Number</label>
+                            <input type="tel" id="adminPhone" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" value="+256 700 000 000">
+                        </div>
+                    </div>
+                    <button onclick="saveAdminProfile()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Update Profile</button>
+                </div>
+
+                <!-- Admin Preferences -->
+                <div class="setting-card border-b border-[#dcc0bc] pb-6 mb-6">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">⚙️ Administrator Preferences</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Default Dashboard View</label>
+                            <select id="defaultView" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input">
+                                <option value="system">System Overview</option>
+                                <option value="users" selected>User Management</option>
+                                <option value="security">Security Dashboard</option>
+                                <option value="audit">Audit Log</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Notification Preferences</label>
+                            <select id="adminNotifications" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input">
+                                <option value="all" selected>All Notifications</option>
+                                <option value="security">Security Alerts Only</option>
+                                <option value="critical">Critical Alerts Only</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#5A0C08] mb-1">Date/Time Format</label>
+                            <select id="dateFormat" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input">
+                                <option value="12h">12-Hour (MM/DD/YYYY hh:mm AM/PM)</option>
+                                <option value="24h" selected>24-Hour (DD/MM/YYYY HH:mm)</option>
+                                <option value="iso">ISO (YYYY-MM-DD HH:mm:ss)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="saveAdminPreferences()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Save Preferences</button>
+                </div>
+
+                <!-- Appearance -->
+                <div class="setting-card border-b border-[#dcc0bc] pb-6 mb-6">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">🎨 Appearance</h2>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="setTheme('light')" class="px-4 py-2 border-2 border-[#DD9024] bg-white text-[#5A0C08] rounded-lg font-semibold hover:bg-[#f6f3f2]">☀️ Light</button>
+                        <button onclick="setTheme('dark')" class="px-4 py-2 border-2 border-[#dcc0bc] bg-[#1c1b1b] text-white rounded-lg font-semibold hover:bg-[#2d2d2d]">🌙 Dark</button>
+                        <button onclick="setTheme('system')" class="px-4 py-2 border-2 border-[#dcc0bc] bg-white text-[#5A0C08] rounded-lg font-semibold hover:bg-[#f6f3f2]">💻 System Default</button>
+                    </div>
+                </div>
+
+                <!-- Security Settings -->
+                <div class="setting-card border-b border-[#dcc0bc] pb-6 mb-6">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">🔐 Security Preferences</h2>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input id="adminTwoFactor" type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Require 2FA for admin accounts</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input id="adminIpWhitelist" type="checkbox" class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">IP whitelisting enforcement</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input id="adminAuditLogging" type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Audit log all admin actions</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input id="adminSessionTimeout" type="checkbox" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Session timeout on inactivity</span>
+                        </label>
+                    </div>
+                    <button onclick="saveSecurityPreferences()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Save Security Settings</button>
+                </div>
+
+                <!-- Account Info -->
+                <div class="setting-card">
+                    <h2 class="text-lg font-bold text-[#5A0C08] mb-4">ℹ️ Account Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        <div><p class="font-semibold text-[#89726e]">Username</p><p class="text-[#5A0C08] font-medium">s.katumba</p></div>
+                        <div><p class="font-semibold text-[#89726e]">Role</p><p class="text-[#5A0C08] font-medium">IT Administrator</p></div>
+                        <div><p class="font-semibold text-[#89726e]">Account Created</p><p class="text-[#5A0C08] font-medium">January 1, 2024</p></div>
+                        <div><p class="font-semibold text-[#89726e]">Last Login</p><p class="text-[#5A0C08] font-medium">Today, 08:45 AM</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Audit Standards</a>
+                <a href="../support.html?portal=itadmin" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // ===== SETTINGS FUNCTIONS =====
+        function saveAdminProfile() {
+            const phone = document.getElementById('adminPhone').value.trim();
+            if (!phone) { alert('Please enter your phone number.'); return; }
+            localStorage.setItem('imts_admin_phone', phone);
+            alert('✅ Profile updated successfully!');
+        }
+
+        function saveAdminPreferences() {
+            const view = document.getElementById('defaultView').value;
+            const notifications = document.getElementById('adminNotifications').value;
+            const dateFormat = document.getElementById('dateFormat').value;
+            
+            localStorage.setItem('imts_admin_preferences', JSON.stringify({
+                defaultView: view,
+                notifications: notifications,
+                dateFormat: dateFormat
+            }));
+            
+            alert('✅ Administrator preferences saved successfully!');
+        }
+
+        function saveSecurityPreferences() {
+            const securityPrefs = {
+                twoFactor: document.getElementById('adminTwoFactor').checked,
+                ipWhitelisting: document.getElementById('adminIpWhitelist').checked,
+                auditLogging: document.getElementById('adminAuditLogging').checked,
+                sessionTimeout: document.getElementById('adminSessionTimeout').checked
+            };
+            localStorage.setItem('imts_admin_security', JSON.stringify(securityPrefs));
+            alert('✅ Security settings saved successfully!');
+        }
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        function setTheme(theme, showAlert = true) {
+            const resolvedTheme = theme === 'system'
+                ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                : theme;
+
+            applyTheme(resolvedTheme);
+            localStorage.setItem('imts_theme', theme);
+
+            if (showAlert) {
+                alert(`✅ Theme set to ${theme.charAt(0).toUpperCase() + theme.slice(1)}`);
+            }
+        }
+
+        // ===== LOAD SETTINGS =====
+        function loadSettings() {
+            const prefs = JSON.parse(localStorage.getItem('imts_admin_preferences') || '{}');
+            if (prefs.defaultView) {
+                document.getElementById('defaultView').value = prefs.defaultView;
+            }
+            if (prefs.notifications) {
+                document.getElementById('adminNotifications').value = prefs.notifications;
+            }
+            if (prefs.dateFormat) {
+                document.getElementById('dateFormat').value = prefs.dateFormat;
+            }
+
+            const securityPrefs = JSON.parse(localStorage.getItem('imts_admin_security') || '{"twoFactor":true,"ipWhitelisting":false,"auditLogging":true,"sessionTimeout":true}');
+            document.getElementById('adminTwoFactor').checked = securityPrefs.twoFactor;
+            document.getElementById('adminIpWhitelist').checked = securityPrefs.ipWhitelisting;
+            document.getElementById('adminAuditLogging').checked = securityPrefs.auditLogging;
+            document.getElementById('adminSessionTimeout').checked = securityPrefs.sessionTimeout;
+
+            const phone = localStorage.getItem('imts_admin_phone');
+            if (phone) {
+                document.getElementById('adminPhone').value = phone;
+            }
+
+            const theme = localStorage.getItem('imts_theme') || 'light';
+            setTheme(theme, false);
+        }
+
+        // ===== INIT =====
+        loadSettings();
+
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'S. Katumba';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>

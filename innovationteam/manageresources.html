@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Manage Resources | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        .badge { margin-left: auto; background-color: #DD9024; color: white; font-size: 0.65rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 600; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DD9024; border-radius: 4px; }
+        .resource-card { transition: all 0.2s; }
+        .resource-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(90,12,8,0.08); }
+        .category-chip { transition: all 0.2s; cursor: pointer; }
+        .category-chip.active { background: #5A0C08; color: white; }
+        .category-chip:hover:not(.active) { background: #f0eded; }
+        .modal-animation { animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">Innovation Team</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item" href="innovationteamdashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item" href="reviewideas.html">
+                <span class="icon material-symbols-outlined">rate_review</span><span>Review Ideas</span>
+                <span class="badge">8</span>
+            </a>
+            <a class="sidebar-item" href="managecategories.html">
+                <span class="icon material-symbols-outlined">category</span><span>Manage Categories</span>
+            </a>
+            <a class="sidebar-item sidebar-active" href="manageresources.html">
+                <span class="icon material-symbols-outlined">inventory_2</span><span>Manage Resources</span>
+            </a>
+            <a class="sidebar-item" href="settimelines.html">
+                <span class="icon material-symbols-outlined">calendar_today</span><span>Set Timelines</span>
+            </a>
+            <a class="sidebar-item" href="reportsandanalytics.html">
+                <span class="icon material-symbols-outlined">analytics</span><span>Reports</span>
+            </a>
+            <a class="sidebar-item" href="settings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>Settings</span>
+            </a>
+            <a class="sidebar-item" href="../support.html?portal=innovation">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="openUploadModal()" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">cloud_upload</span> Upload Resource
+            </button>
+            <!-- ✅ LOGOUT BUTTON -->
+            <button onclick="window.IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">Innovation Resources Library</h1>
+                <p class="text-sm text-[#56423f]">Manage key documents, policies, templates, and resources for the innovation ecosystem</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">Milton Reviewer</p>
+                    <p class="text-xs text-[#56423f]">Innovation Team Lead</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    MR
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-[#5A0C08]" id="totalResources">0</p>
+                    <p class="text-sm text-[#56423f]">Total Resources</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-[#DD9024]" id="publishedResources">0</p>
+                    <p class="text-sm text-[#56423f]">Published</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-[#89726e]" id="draftResources">0</p>
+                    <p class="text-sm text-[#56423f]">Drafts</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-[#5A0C08]" id="totalDownloads">0</p>
+                    <p class="text-sm text-[#56423f]">Total Downloads</p>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <button onclick="filterResources('all')" class="category-chip active px-4 py-1.5 bg-[#5A0C08] text-white rounded-full text-sm font-semibold">All Resources</button>
+                <button onclick="filterResources('policy')" class="category-chip px-4 py-1.5 bg-white border border-[#dcc0bc] text-[#56423f] rounded-full text-sm font-semibold hover:bg-[#f6f3f2]">Policy & Guidelines</button>
+                <button onclick="filterResources('templates')" class="category-chip px-4 py-1.5 bg-white border border-[#dcc0bc] text-[#56423f] rounded-full text-sm font-semibold hover:bg-[#f6f3f2]">Templates</button>
+                <button onclick="filterResources('training')" class="category-chip px-4 py-1.5 bg-white border border-[#dcc0bc] text-[#56423f] rounded-full text-sm font-semibold hover:bg-[#f6f3f2]">Training & Guides</button>
+                <button onclick="filterResources('research')" class="category-chip px-4 py-1.5 bg-white border border-[#dcc0bc] text-[#56423f] rounded-full text-sm font-semibold hover:bg-[#f6f3f2]">Research & Reports</button>
+                <button onclick="filterResources('tools')" class="category-chip px-4 py-1.5 bg-white border border-[#dcc0bc] text-[#56423f] rounded-full text-sm font-semibold hover:bg-[#f6f3f2]">Tools & Software</button>
+            </div>
+
+            <!-- Resources Grid -->
+            <div id="resourcesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Resources rendered by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-12">
+                <span class="material-symbols-outlined text-6xl text-[#dcc0bc]">folder_open</span>
+                <p class="text-lg font-semibold text-[#5A0C08] mt-4">No resources found</p>
+                <p class="text-sm text-[#56423f]">Upload your first resource to get started.</p>
+                <button onclick="openUploadModal()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Upload Resource</button>
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Compliance Standards</a>
+                <a href="../support.html?portal=innovation" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ===== UPLOAD MODAL ===== -->
+    <div id="uploadModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+        <div class="modal-animation bg-white rounded-xl max-w-lg w-full mx-4 p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-[#5A0C08]">Upload Resource</h2>
+                <button onclick="closeUploadModal()" class="text-[#89726e] hover:text-[#5A0C08]">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="uploadForm" onsubmit="uploadResource(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Resource Title *</label>
+                        <input type="text" id="resourceTitle" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Enter resource title" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Category *</label>
+                        <select id="resourceCategory" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" required>
+                            <option value="">Select category</option>
+                            <option value="policy">Policy & Guidelines</option>
+                            <option value="templates">Templates</option>
+                            <option value="training">Training & Guides</option>
+                            <option value="research">Research & Reports</option>
+                            <option value="tools">Tools & Software</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Description</label>
+                        <textarea id="resourceDescription" rows="3" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Describe this resource"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">File Type</label>
+                        <select id="resourceType" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input">
+                            <option value="PDF">PDF</option>
+                            <option value="DOCX">DOCX</option>
+                            <option value="XLSX">XLSX</option>
+                            <option value="PPTX">PPTX</option>
+                            <option value="ZIP">ZIP</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">File Size</label>
+                        <input type="text" id="resourceSize" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="e.g. 4.2 MB">
+                    </div>
+                    <div>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="resourcePublished" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Publish immediately</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="closeUploadModal()" class="flex-1 px-4 py-2 border border-[#dcc0bc] text-[#56423f] rounded-lg font-semibold hover:bg-[#f6f3f2]">Cancel</button>
+                    <button type="submit" class="flex-1 bg-[#DD9024] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Upload Resource</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ===== RESOURCES DATA =====
+        let resources = [
+            { id: 1, title: 'Innovation Strategy 2024-2026', description: 'Comprehensive policy document outlining the innovation management process.', category: 'policy', type: 'PDF', size: '4.2 MB', icon: 'description', downloads: 128, status: 'Published' },
+            { id: 2, title: 'Project Budget Template V2', description: 'Excel template for measuring and documenting the impact of implemented innovations.', category: 'templates', type: 'XLSX', size: '850 KB', icon: 'table_chart', downloads: 45, status: 'Published' },
+            { id: 3, title: 'Innovation Pitch Deck 2024', description: 'Five-part video series covering the innovation lifecycle from ideation to implementation.', category: 'training', type: 'PPTX', size: '12.5 MB', icon: 'slideshow', downloads: 0, status: 'Draft' },
+            { id: 4, title: 'Research Survey Results - Q1', description: 'External portal with additional resources and case studies.', category: 'research', type: 'ZIP', size: '85 MB', icon: 'folder_zip', downloads: 22, status: 'Published' },
+            { id: 5, title: 'Innovation Project Canvas', description: 'Strategic canvas template for mapping innovation projects.', category: 'templates', type: 'PDF', size: '1.2 MB', icon: 'dashboard', downloads: 67, status: 'Published' },
+            { id: 6, title: 'Agile Innovation Methodology', description: 'Guide to applying agile principles in innovation projects.', category: 'training', type: 'PDF', size: '3.1 MB', icon: 'menu_book', downloads: 34, status: 'Published' },
+            { id: 7, title: 'Innovation Metrics Dashboard', description: 'Power BI template for tracking innovation KPIs.', category: 'tools', type: 'Power BI', size: '4.2 MB', icon: 'insights', downloads: 18, status: 'Published' },
+            { id: 8, title: 'Regulatory Innovation Guidelines', description: 'Framework for developing regulatory innovations in the financial sector.', category: 'policy', type: 'PDF', size: '2.8 MB', icon: 'gavel', downloads: 56, status: 'Draft' },
+        ];
+
+        let currentCategory = 'all';
+
+        // ===== RENDER RESOURCES =====
+        function renderResources() {
+            const container = document.getElementById('resourcesContainer');
+            const emptyState = document.getElementById('emptyState');
+            
+            let filtered = resources;
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(r => r.category === currentCategory);
+            }
+            
+            // Update stats
+            document.getElementById('totalResources').textContent = resources.length;
+            document.getElementById('publishedResources').textContent = resources.filter(r => r.status === 'Published').length;
+            document.getElementById('draftResources').textContent = resources.filter(r => r.status === 'Draft').length;
+            document.getElementById('totalDownloads').textContent = resources.reduce((sum, r) => sum + r.downloads, 0);
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+            
+            container.innerHTML = filtered.map(r => `
+                <div class="resource-card bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="w-12 h-12 bg-[#f6f3f2] rounded-lg flex items-center justify-center text-[#5A0C08]">
+                            <span class="material-symbols-outlined text-2xl">${r.icon}</span>
+                        </div>
+                        <span class="text-xs font-semibold ${r.status === 'Published' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'} px-2 py-0.5 rounded-full">${r.status}</span>
+                    </div>
+                    <h3 class="font-bold text-[#5A0C08] mt-3">${r.title}</h3>
+                    <p class="text-sm text-[#56423f] mt-1 line-clamp-2">${r.description}</p>
+                    <div class="flex justify-between items-center mt-3 pt-3 border-t border-[#dcc0bc]">
+                        <span class="text-xs text-[#89726e]">${r.type} · ${r.size} · ${r.downloads} downloads</span>
+                        <div class="flex gap-2">
+                            <button onclick="editResource(${r.id})" class="text-[#DD9024] hover:bg-[#DD9024]/10 p-1 rounded" title="Edit">
+                                <span class="material-symbols-outlined text-sm">edit</span>
+                            </button>
+                            <button onclick="deleteResource(${r.id})" class="text-red-600 hover:bg-red-100 p-1 rounded" title="Delete">
+                                <span class="material-symbols-outlined text-sm">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== FILTER FUNCTIONS =====
+        function filterResources(category) {
+            currentCategory = category;
+            document.querySelectorAll('.category-chip').forEach(chip => {
+                chip.className = 'category-chip px-4 py-1.5 bg-white border border-[#dcc0bc] text-[#56423f] rounded-full text-sm font-semibold hover:bg-[#f6f3f2]';
+            });
+            const activeChip = document.querySelector(`.category-chip[onclick*="${category}"]`);
+            if (activeChip) {
+                activeChip.className = 'category-chip active px-4 py-1.5 bg-[#5A0C08] text-white rounded-full text-sm font-semibold';
+            }
+            renderResources();
+        }
+
+        // ===== UPLOAD MODAL =====
+        function openUploadModal() {
+            document.getElementById('uploadModal').classList.remove('hidden');
+            document.getElementById('uploadForm').reset();
+        }
+
+        function closeUploadModal() {
+            document.getElementById('uploadModal').classList.add('hidden');
+        }
+
+        function uploadResource(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('resourceTitle').value.trim();
+            const category = document.getElementById('resourceCategory').value;
+            const description = document.getElementById('resourceDescription').value.trim();
+            const type = document.getElementById('resourceType').value;
+            const size = document.getElementById('resourceSize').value.trim();
+            const published = document.getElementById('resourcePublished').checked;
+            
+            if (!title || !category) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            const newResource = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                description: description || 'No description provided',
+                type: type,
+                size: size || 'Unknown',
+                icon: ['policy','templates','training','research','tools'].includes(category) ? 
+                    ['description','table_chart','menu_book','folder_zip','insights'][['policy','templates','training','research','tools'].indexOf(category)] : 'description',
+                downloads: 0,
+                status: published ? 'Published' : 'Draft'
+            };
+            
+            resources.push(newResource);
+            closeUploadModal();
+            renderResources();
+            alert(`✅ Resource "${title}" uploaded successfully!`);
+        }
+
+        // ===== RESOURCE ACTIONS =====
+        function editResource(id) {
+            const resource = resources.find(r => r.id === id);
+            if (!resource) return;
+            
+            const newTitle = prompt('Edit Title:', resource.title);
+            if (newTitle && newTitle.trim()) {
+                resource.title = newTitle.trim();
+                const newDesc = prompt('Edit Description:', resource.description);
+                if (newDesc !== null) {
+                    resource.description = newDesc.trim() || resource.description;
+                    renderResources();
+                    alert('✅ Resource updated successfully!');
+                }
+            }
+        }
+
+        function deleteResource(id) {
+            const resource = resources.find(r => r.id === id);
+            if (!resource) return;
+            
+            if (confirm(`Are you sure you want to delete "${resource.title}"?`)) {
+                resources = resources.filter(r => r.id !== id);
+                renderResources();
+                alert(`✅ Resource "${resource.title}" deleted successfully.`);
+            }
+        }
+
+        // ===== INIT =====
+        renderResources();
+
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'Milton Reviewer';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>
