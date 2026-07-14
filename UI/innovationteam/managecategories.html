@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Manage Categories | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        .badge { margin-left: auto; background-color: #DD9024; color: white; font-size: 0.65rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 600; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DD9024; border-radius: 4px; }
+        .category-card { transition: all 0.2s; }
+        .category-card:hover { transform: translateX(4px); border-color: #DD9024; }
+        .modal-animation { animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">Innovation Team</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item" href="innovationteamdashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item" href="reviewideas.html">
+                <span class="icon material-symbols-outlined">rate_review</span><span>Review Ideas</span>
+                <span class="badge">8</span>
+            </a>
+            <a class="sidebar-item sidebar-active" href="managecategories.html">
+                <span class="icon material-symbols-outlined">category</span><span>Manage Categories</span>
+            </a>
+            <a class="sidebar-item" href="manageresources.html">
+                <span class="icon material-symbols-outlined">inventory_2</span><span>Manage Resources</span>
+            </a>
+            <a class="sidebar-item" href="settimelines.html">
+                <span class="icon material-symbols-outlined">calendar_today</span><span>Set Timelines</span>
+            </a>
+            <a class="sidebar-item" href="reportsandanalytics.html">
+                <span class="icon material-symbols-outlined">analytics</span><span>Reports</span>
+            </a>
+            <a class="sidebar-item" href="settings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>Settings</span>
+            </a>
+            <a class="sidebar-item" href="../support.html?portal=innovation">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="openAddCategoryModal()" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">add</span> Add Category
+            </button>
+            <!-- ✅ LOGOUT BUTTON -->
+            <button onclick="window.IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">Manage Categories</h1>
+                <p class="text-sm text-[#56423f]">Organize and classify innovation submissions</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">Milton Reviewer</p>
+                    <p class="text-xs text-[#56423f]">Innovation Team Lead</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    MR
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-[#5A0C08]" id="totalCategories">0</p>
+                    <p class="text-sm text-[#56423f]">Total Categories</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-[#DD9024]" id="activeCategories">0</p>
+                    <p class="text-sm text-[#56423f]">Active</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-[#89726e]" id="inactiveCategories">0</p>
+                    <p class="text-sm text-[#56423f]">Inactive</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm text-center">
+                    <p class="text-2xl font-bold text-green-600" id="totalIdeasInCategories">0</p>
+                    <p class="text-sm text-[#56423f]">Total Ideas</p>
+                </div>
+            </div>
+
+            <!-- Categories List -->
+            <div id="categoriesContainer" class="space-y-3">
+                <!-- Categories rendered by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-12">
+                <span class="material-symbols-outlined text-6xl text-[#dcc0bc]">category</span>
+                <p class="text-lg font-semibold text-[#5A0C08] mt-4">No categories yet</p>
+                <p class="text-sm text-[#56423f]">Create your first category to organize innovation ideas.</p>
+                <button onclick="openAddCategoryModal()" class="mt-4 bg-[#DD9024] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Add Category</button>
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Compliance Standards</a>
+                <a href="../support.html?portal=innovation" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ===== ADD/EDIT CATEGORY MODAL ===== -->
+    <div id="categoryModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+        <div class="modal-animation bg-white rounded-xl max-w-md w-full mx-4 p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="categoryModalTitle" class="text-xl font-bold text-[#5A0C08]">Add Category</h2>
+                <button onclick="closeCategoryModal()" class="text-[#89726e] hover:text-[#5A0C08]">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="categoryForm" onsubmit="saveCategory(event)">
+                <input type="hidden" id="editCategoryId" value="">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Category Name *</label>
+                        <input type="text" id="categoryName" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Enter category name" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Description</label>
+                        <textarea id="categoryDescription" rows="3" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Describe this category"></textarea>
+                    </div>
+                    <div>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="categoryActive" checked class="w-4 h-4 rounded border-[#dcc0bc] text-[#DD9024] focus:ring-[#DD9024]">
+                            <span class="text-sm text-[#56423f]">Active (visible to users)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="closeCategoryModal()" class="flex-1 px-4 py-2 border border-[#dcc0bc] text-[#56423f] rounded-lg font-semibold hover:bg-[#f6f3f2]">Cancel</button>
+                    <button type="submit" class="flex-1 bg-[#DD9024] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Save Category</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ===== CATEGORIES DATA =====
+        let categories = [
+            { id: 1, name: 'FinTech', description: 'Financial technology innovations focusing on mobile money and digital banking.', active: true, ideaCount: 12 },
+            { id: 2, name: 'Security', description: 'Cyber security, data protection, and fraud prevention initiatives.', active: true, ideaCount: 8 },
+            { id: 3, name: 'Policy', description: 'Regulatory and compliance frameworks for future banking.', active: true, ideaCount: 5 },
+            { id: 4, name: 'Operations', description: 'Internal process improvements and automation workflows.', active: true, ideaCount: 15 },
+            { id: 5, name: 'Innovation', description: 'Pure research and development for long-term strategies.', active: false, ideaCount: 5 },
+        ];
+
+        // ===== RENDER CATEGORIES =====
+        function renderCategories() {
+            const container = document.getElementById('categoriesContainer');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (categories.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+            
+            // Update stats
+            document.getElementById('totalCategories').textContent = categories.length;
+            document.getElementById('activeCategories').textContent = categories.filter(c => c.active).length;
+            document.getElementById('inactiveCategories').textContent = categories.filter(c => !c.active).length;
+            document.getElementById('totalIdeasInCategories').textContent = categories.reduce((sum, c) => sum + c.ideaCount, 0);
+            
+            container.innerHTML = categories.map(cat => `
+                <div class="category-card bg-white p-4 rounded-xl border ${cat.active ? 'border-[#dcc0bc]' : 'border-[#dcc0bc] opacity-70'} shadow-sm flex items-center justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3">
+                            <h3 class="font-bold text-[#5A0C08]">${cat.name}</h3>
+                            ${cat.active ? '<span class="text-xs text-green-600 font-semibold">● Active</span>' : '<span class="text-xs text-[#89726e] font-semibold">● Inactive</span>'}
+                        </div>
+                        <p class="text-sm text-[#56423f]">${cat.description}</p>
+                        <div class="flex items-center gap-4 mt-1 text-xs text-[#89726e]">
+                            <span>📊 ${cat.ideaCount} ideas</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="editCategory(${cat.id})" class="text-[#DD9024] hover:bg-[#DD9024]/10 p-1 rounded" title="Edit">
+                            <span class="material-symbols-outlined text-sm">edit</span>
+                        </button>
+                        <button onclick="toggleCategory(${cat.id})" class="${cat.active ? 'text-[#5A0C08]' : 'text-green-600'} hover:bg-[#f6f3f2] p-1 rounded" title="${cat.active ? 'Deactivate' : 'Activate'}">
+                            <span class="material-symbols-outlined text-sm">${cat.active ? 'visibility_off' : 'visibility'}</span>
+                        </button>
+                        <button onclick="deleteCategory(${cat.id})" class="text-red-600 hover:bg-red-100 p-1 rounded" title="Delete">
+                            <span class="material-symbols-outlined text-sm">delete</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== CATEGORY ACTIONS =====
+        function openAddCategoryModal() {
+            document.getElementById('categoryModalTitle').textContent = 'Add Category';
+            document.getElementById('editCategoryId').value = '';
+            document.getElementById('categoryName').value = '';
+            document.getElementById('categoryDescription').value = '';
+            document.getElementById('categoryActive').checked = true;
+            document.getElementById('categoryModal').classList.remove('hidden');
+        }
+
+        function editCategory(id) {
+            const cat = categories.find(c => c.id === id);
+            if (!cat) return;
+            
+            document.getElementById('categoryModalTitle').textContent = 'Edit Category';
+            document.getElementById('editCategoryId').value = id;
+            document.getElementById('categoryName').value = cat.name;
+            document.getElementById('categoryDescription').value = cat.description;
+            document.getElementById('categoryActive').checked = cat.active;
+            document.getElementById('categoryModal').classList.remove('hidden');
+        }
+
+        function closeCategoryModal() {
+            document.getElementById('categoryModal').classList.add('hidden');
+            document.getElementById('categoryForm').reset();
+        }
+
+        function saveCategory(e) {
+            e.preventDefault();
+            
+            const id = document.getElementById('editCategoryId').value;
+            const name = document.getElementById('categoryName').value.trim();
+            const description = document.getElementById('categoryDescription').value.trim();
+            const active = document.getElementById('categoryActive').checked;
+            
+            if (!name) {
+                alert('Please enter a category name.');
+                return;
+            }
+            
+            if (id) {
+                // Edit existing
+                const cat = categories.find(c => c.id === parseInt(id));
+                if (cat) {
+                    cat.name = name;
+                    cat.description = description || 'No description provided';
+                    cat.active = active;
+                }
+                alert('✅ Category updated successfully!');
+            } else {
+                // Add new
+                const newCategory = {
+                    id: Date.now(),
+                    name: name,
+                    description: description || 'No description provided',
+                    active: active,
+                    ideaCount: 0
+                };
+                categories.push(newCategory);
+                alert('✅ Category added successfully!');
+            }
+            
+            closeCategoryModal();
+            renderCategories();
+        }
+
+        function toggleCategory(id) {
+            const cat = categories.find(c => c.id === id);
+            if (!cat) return;
+            
+            cat.active = !cat.active;
+            renderCategories();
+            alert(`✅ Category "${cat.name}" ${cat.active ? 'activated' : 'deactivated'}.`);
+        }
+
+        function deleteCategory(id) {
+            const cat = categories.find(c => c.id === id);
+            if (!cat) return;
+            
+            if (cat.ideaCount > 0) {
+                if (!confirm(`⚠️ "${cat.name}" has ${cat.ideaCount} ideas. Deleting it will affect these ideas. Continue?`)) {
+                    return;
+                }
+            }
+            
+            if (confirm(`Are you sure you want to delete "${cat.name}"?`)) {
+                categories = categories.filter(c => c.id !== id);
+                renderCategories();
+                alert(`✅ Category "${cat.name}" deleted successfully.`);
+            }
+        }
+
+        // ===== INIT =====
+        renderCategories();
+
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'Milton Reviewer';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>

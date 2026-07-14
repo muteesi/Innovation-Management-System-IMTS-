@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Manage Users | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DD9024; border-radius: 4px; }
+        .user-row { transition: all 0.2s; }
+        .user-row:hover { background: #f6f3f2; }
+        .status-active { color: #2e7d32; }
+        .status-locked { color: #c62828; }
+        .status-disabled { color: #89726e; }
+        .role-badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
+        .role-admin { background: #5A0C08; color: white; }
+        .role-innovation { background: #DD9024; color: white; }
+        .role-staff { background: #e5e2e1; color: #1c1b1b; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">IT Administration</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item" href="admindashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item sidebar-active" href="ITadmin.html">
+                <span class="icon material-symbols-outlined">group</span><span>Manage Users</span>
+            </a>
+            <a class="sidebar-item" href="manageaccounts.html">
+                <span class="icon material-symbols-outlined">account_balance_wallet</span><span>Manage Accounts</span>
+            </a>
+            <!-- ❌ REMOVED: System Settings -->
+            <a class="sidebar-item" href="auditlog.html">
+                <span class="icon material-symbols-outlined">security</span><span>Audit Log</span>
+            </a>
+            <a class="sidebar-item" href="reports.html">
+                <span class="icon material-symbols-outlined">assessment</span><span>Reports</span>
+            </a>
+            <a class="sidebar-item" href="systemsettings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>Admin Settings</span>
+            </a>
+            <a class="sidebar-item" href="../support.html?portal=itadmin">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="openCreateUserModal()" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">person_add</span> Create New User
+            </button>
+            <!-- ✅ LOGOUT BUTTON -->
+            <button onclick="window.IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">User Management</h1>
+                <p class="text-sm text-[#56423f]">Manage institutional access and roles</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">S. Katumba</p>
+                    <p class="text-xs text-[#56423f]">System Administrator</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    SK
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
+            <div class="bg-white rounded-xl border border-[#dcc0bc] shadow-sm overflow-hidden">
+                <div class="p-4 bg-[#f6f3f2] border-b border-[#dcc0bc] flex flex-wrap justify-between items-center gap-3">
+                    <div class="flex items-center gap-3 flex-wrap">
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#89726e] text-sm">search</span>
+                            <input id="searchUsers" onkeyup="filterUsers()" class="pl-9 pr-4 py-2 border border-[#dcc0bc] rounded-lg text-sm focus:ring-2 focus:ring-[#DD9024] outline-none w-48 md:w-64" placeholder="Search users..." type="text">
+                        </div>
+                        <select id="filterRole" onchange="filterUsers()" class="px-4 py-2 border border-[#dcc0bc] rounded-lg text-sm focus:ring-2 focus:ring-[#DD9024] outline-none">
+                            <option value="all">All Roles</option>
+                            <option value="ITAdmin">IT Admin</option>
+                            <option value="InnovationTeam">Innovation Team</option>
+                            <option value="Staff">Staff</option>
+                        </select>
+                        <select id="filterStatus" onchange="filterUsers()" class="px-4 py-2 border border-[#dcc0bc] rounded-lg text-sm focus:ring-2 focus:ring-[#DD9024] outline-none">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="locked">Locked</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                    </div>
+                    <button onclick="openCreateUserModal()" class="bg-[#DD9024] hover:bg-[#c47e1d] text-white px-4 py-2 rounded-lg font-semibold text-sm flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">person_add</span> Add User
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-[#fcf9f8] border-b border-[#dcc0bc]">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">User</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Role</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Department</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Status</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Last Login</th>
+                                <th class="px-4 py-3 text-right text-xs font-semibold text-[#56423f] uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody" class="divide-y divide-[#dcc0bc]/50"></tbody>
+                    </table>
+                </div>
+                <div class="p-4 bg-[#f6f3f2] border-t border-[#dcc0bc] flex justify-between items-center text-sm text-[#56423f]">
+                    <span id="userCount">Showing 0 users</span>
+                    <div class="flex gap-2">
+                        <button onclick="previousPage()" class="px-3 py-1 border border-[#dcc0bc] rounded hover:bg-white transition-colors">← Prev</button>
+                        <span id="pageInfo" class="px-3 py-1">Page 1 of 1</span>
+                        <button onclick="nextPage()" class="px-3 py-1 border border-[#dcc0bc] rounded hover:bg-white transition-colors">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Audit Standards</a>
+                <a href="../support.html?portal=itadmin" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ===== CREATE USER MODAL ===== -->
+    <div id="createUserModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+        <div class="bg-white rounded-xl max-w-md w-full mx-4 p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-[#5A0C08]">Create New User</h2>
+                <button onclick="closeCreateUserModal()" class="text-[#89726e] hover:text-[#5A0C08]">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="createUserForm" onsubmit="createUser(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Full Name *</label>
+                        <input type="text" id="newFullName" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Enter full name" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Username *</label>
+                        <input type="text" id="newUsername" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Enter username" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Email *</label>
+                        <input type="email" id="newEmail" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Enter email address" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Department</label>
+                        <select id="newDepartment" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input">
+                            <option value="IT Department">IT Department</option>
+                            <option value="Financial Markets">Financial Markets</option>
+                            <option value="Risk Management">Risk Management</option>
+                            <option value="Supervision">Supervision</option>
+                            <option value="Human Resources">Human Resources</option>
+                            <option value="Strategy & Innovation">Strategy & Innovation</option>
+                            <option value="Legal Services">Legal Services</option>
+                            <option value="Internal Audit">Internal Audit</option>
+                            <option value="Corporate Affairs">Corporate Affairs</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Role *</label>
+                        <select id="newRole" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" required>
+                            <option value="Staff">Staff</option>
+                            <option value="InnovationTeam">Innovation Team</option>
+                            <option value="ITAdmin">IT Admin</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#5A0C08] mb-1">Temporary Password *</label>
+                        <input type="text" id="newPassword" class="w-full px-4 py-2 border border-[#dcc0bc] rounded-lg form-input" placeholder="Enter temporary password" required>
+                        <p class="text-xs text-[#89726e] mt-1">User will be prompted to change password on first login.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="closeCreateUserModal()" class="flex-1 px-4 py-2 border border-[#dcc0bc] text-[#56423f] rounded-lg font-semibold hover:bg-[#f6f3f2]">Cancel</button>
+                    <button type="submit" class="flex-1 bg-[#DD9024] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#c47e1d]">Create User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ===== USER DATA =====
+        let users = [
+            { id: 1, name: 'Joseph Katumba', username: 'j.katumba', email: 'j.katumba@bou.or.ug', role: 'ITAdmin', department: 'IT Department', status: 'active', lastLogin: '2024-10-24 09:15 AM' },
+            { id: 2, name: 'Margaret Okello', username: 'm.okello', email: 'm.okello@bou.or.ug', role: 'InnovationTeam', department: 'Strategy & Innovation', status: 'locked', lastLogin: '2024-10-23 04:30 PM' },
+            { id: 3, name: 'Sarah Namono', username: 's.namono', email: 's.namono@bou.or.ug', role: 'Staff', department: 'Operations', status: 'active', lastLogin: '2024-10-24 08:45 AM' },
+            { id: 4, name: 'Paul Mugisha', username: 'p.mugisha', email: 'p.mugisha@bou.or.ug', role: 'Staff', department: 'Fintech Support', status: 'disabled', lastLogin: '2024-10-20 11:20 AM' },
+            { id: 5, name: 'Rebecca Nalwoga', username: 'r.nalwoga', email: 'r.nalwoga@bou.or.ug', role: 'InnovationTeam', department: 'Strategy & Innovation', status: 'active', lastLogin: '2024-10-24 10:00 AM' },
+            { id: 6, name: 'David Ssempijja', username: 'd.ssempijja', email: 'd.ssempijja@bou.or.ug', role: 'Staff', department: 'Risk Management', status: 'active', lastLogin: '2024-10-23 02:15 PM' },
+        ];
+
+        let currentPage = 1;
+        const pageSize = 5;
+
+        // ===== RENDER USERS =====
+        function renderUsers() {
+            const search = document.getElementById('searchUsers').value.toLowerCase();
+            const roleFilter = document.getElementById('filterRole').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+
+            let filtered = users.filter(user => {
+                const matchSearch = user.name.toLowerCase().includes(search) || 
+                                   user.username.toLowerCase().includes(search) || 
+                                   user.email.toLowerCase().includes(search);
+                const matchRole = roleFilter === 'all' || user.role === roleFilter;
+                const matchStatus = statusFilter === 'all' || user.status === statusFilter;
+                return matchSearch && matchRole && matchStatus;
+            });
+
+            const total = filtered.length;
+            const totalPages = Math.ceil(total / pageSize) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * pageSize;
+            const end = start + pageSize;
+            const pageUsers = filtered.slice(start, end);
+
+            const tbody = document.getElementById('usersTableBody');
+            if (pageUsers.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-[#89726e]">No users found</td></tr>`;
+            } else {
+                tbody.innerHTML = pageUsers.map(user => {
+                    const roleClass = user.role === 'ITAdmin' ? 'role-admin' : 
+                                     user.role === 'InnovationTeam' ? 'role-innovation' : 'role-staff';
+                    const statusClass = user.status === 'active' ? 'status-active' : 
+                                       user.status === 'locked' ? 'status-locked' : 'status-disabled';
+                    const statusDot = user.status === 'active' ? '🟢' : 
+                                     user.status === 'locked' ? '🔴' : '⚪';
+                    return `
+                        <tr class="user-row">
+                            <td class="px-4 py-3">
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-[#5A0C08]">${user.name}</span>
+                                    <span class="text-xs text-[#89726e]">${user.username} · ${user.email}</span>
+                                </div>
+                            </td>
+                            <td class="px-4 py-3"><span class="role-badge ${roleClass}">${user.role}</span></td>
+                            <td class="px-4 py-3 text-sm text-[#56423f]">${user.department}</td>
+                            <td class="px-4 py-3"><span class="${statusClass} font-semibold text-sm">${statusDot} ${user.status}</span></td>
+                            <td class="px-4 py-3 text-sm text-[#89726e]">${user.lastLogin}</td>
+                            <td class="px-4 py-3 text-right">
+                                <div class="flex justify-end gap-2">
+                                    <button onclick="editUser(${user.id})" class="text-[#DD9024] hover:bg-[#DD9024]/10 p-1 rounded" title="Edit"><span class="material-symbols-outlined text-sm">edit</span></button>
+                                    ${user.status === 'active' ? `<button onclick="toggleLockUser(${user.id})" class="text-[#5A0C08] hover:bg-[#5A0C08]/10 p-1 rounded" title="Lock"><span class="material-symbols-outlined text-sm">lock</span></button>` : 
+                                                               `<button onclick="toggleLockUser(${user.id})" class="text-green-600 hover:bg-green-100 p-1 rounded" title="Unlock"><span class="material-symbols-outlined text-sm">lock_open</span></button>`}
+                                    <button onclick="resetPassword(${user.id})" class="text-[#DD9024] hover:bg-[#DD9024]/10 p-1 rounded" title="Reset Password"><span class="material-symbols-outlined text-sm">password</span></button>
+                                    <button onclick="deleteUser(${user.id})" class="text-red-600 hover:bg-red-100 p-1 rounded" title="Delete"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            document.getElementById('userCount').textContent = `Showing ${pageUsers.length} of ${total} users`;
+            document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+        }
+
+        // ===== FILTER FUNCTIONS =====
+        function filterUsers() {
+            currentPage = 1;
+            renderUsers();
+        }
+
+        function previousPage() {
+            if (currentPage > 1) { currentPage--; renderUsers(); }
+        }
+
+        function nextPage() {
+            const total = users.length;
+            const totalPages = Math.ceil(total / pageSize);
+            if (currentPage < totalPages) { currentPage++; renderUsers(); }
+        }
+
+        // ===== USER ACTIONS =====
+        function openCreateUserModal() {
+            document.getElementById('createUserModal').classList.remove('hidden');
+        }
+
+        function closeCreateUserModal() {
+            document.getElementById('createUserModal').classList.add('hidden');
+            document.getElementById('createUserForm').reset();
+        }
+
+        function createUser(e) {
+            e.preventDefault();
+            const name = document.getElementById('newFullName').value.trim();
+            const username = document.getElementById('newUsername').value.trim();
+            const email = document.getElementById('newEmail').value.trim();
+            const department = document.getElementById('newDepartment').value;
+            const role = document.getElementById('newRole').value;
+            const password = document.getElementById('newPassword').value.trim();
+
+            if (!name || !username || !email || !password) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now(),
+                name: name,
+                username: username,
+                email: email,
+                role: role,
+                department: department,
+                status: 'active',
+                lastLogin: 'Never'
+            };
+
+            users.push(newUser);
+            closeCreateUserModal();
+            renderUsers();
+            alert(`✅ User "${name}" created successfully!\n\nUsername: ${username}\nTemporary Password: ${password}\nRole: ${role}`);
+        }
+
+        function editUser(id) {
+            const user = users.find(u => u.id === id);
+            if (user) {
+                const newName = prompt('Edit Full Name:', user.name);
+                if (newName && newName.trim()) {
+                    user.name = newName.trim();
+                    const newDept = prompt('Edit Department:', user.department);
+                    if (newDept && newDept.trim()) {
+                        user.department = newDept.trim();
+                        renderUsers();
+                        alert('✅ User updated successfully!');
+                    }
+                }
+            }
+        }
+
+        function toggleLockUser(id) {
+            const user = users.find(u => u.id === id);
+            if (user) {
+                const action = user.status === 'active' ? 'lock' : 'unlock';
+                if (confirm(`Are you sure you want to ${action} user "${user.name}"?`)) {
+                    user.status = user.status === 'active' ? 'locked' : 'active';
+                    renderUsers();
+                    alert(`✅ User "${user.name}" has been ${user.status === 'active' ? 'unlocked' : 'locked'}.`);
+                }
+            }
+        }
+
+        function resetPassword(id) {
+            const user = users.find(u => u.id === id);
+            if (user) {
+                const newPass = prompt(`Reset password for "${user.name}":`, 'Temp@123');
+                if (newPass && newPass.trim()) {
+                    alert(`✅ Password for "${user.name}" has been reset.\n\nNew Password: ${newPass.trim()}`);
+                }
+            }
+        }
+
+        function deleteUser(id) {
+            const user = users.find(u => u.id === id);
+            if (user) {
+                if (confirm(`⚠️ Are you sure you want to delete user "${user.name}"?\n\nThis action cannot be undone.`)) {
+                    if (confirm(`Final confirmation: Delete "${user.name}"?`)) {
+                        users = users.filter(u => u.id !== id);
+                        renderUsers();
+                        alert(`✅ User "${user.name}" has been deleted.`);
+                    }
+                }
+            }
+        }
+
+        // ===== INIT =====
+        renderUsers();
+
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'S. Katumba';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>
+

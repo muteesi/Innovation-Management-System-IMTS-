@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Manage Accounts | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DD9024; border-radius: 4px; }
+        .account-row { transition: all 0.2s; }
+        .account-row:hover { background: #f6f3f2; }
+        .status-active { color: #2e7d32; }
+        .status-locked { color: #c62828; }
+        .status-expired { color: #ed6c02; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">IT Administration</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item" href="admindashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item" href="ITadmin.html">
+                <span class="icon material-symbols-outlined">group</span><span>Manage Users</span>
+            </a>
+            <a class="sidebar-item sidebar-active" href="manageaccounts.html">
+                <span class="icon material-symbols-outlined">account_balance_wallet</span><span>Manage Accounts</span>
+            </a>
+            <!-- ❌ REMOVED: System Settings -->
+            <a class="sidebar-item" href="auditlog.html">
+                <span class="icon material-symbols-outlined">security</span><span>Audit Log</span>
+            </a>
+            <a class="sidebar-item" href="reports.html">
+                <span class="icon material-symbols-outlined">assessment</span><span>Reports</span>
+            </a>
+            <a class="sidebar-item" href="systemsettings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>Admin Settings</span>
+            </a>
+            <a class="sidebar-item" href="../support.html?portal=itadmin">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="generateToken()" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">key</span> Generate API Token
+            </button>
+            <!-- ✅ LOGOUT BUTTON -->
+            <button onclick="window.IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">Database & API Accounts</h1>
+                <p class="text-sm text-[#56423f]">Configure secure access keys, ledger keys, and database server pool links</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">S. Katumba</p>
+                    <p class="text-xs text-[#56423f]">System Administrator</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    SK
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
+            <div class="bg-white rounded-xl border border-[#dcc0bc] shadow-sm overflow-hidden">
+                <div class="p-4 bg-[#f6f3f2] border-b border-[#dcc0bc] flex justify-between items-center">
+                    <h2 class="font-bold text-[#5A0C08]">Credential Allocation & Keys Directory</h2>
+                    <span class="text-xs text-[#89726e] font-semibold">ISO 27001 Security Locked</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-[#fcf9f8] border-b border-[#dcc0bc]">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Account / Service Name</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">IP Constraint</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Key Hash Prefix</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Permissions</th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold text-[#56423f] uppercase tracking-wider">Status</th>
+                                <th class="px-4 py-3 text-right text-xs font-semibold text-[#56423f] uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="accountsTableBody" class="divide-y divide-[#dcc0bc]/50"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Audit Standards</a>
+                <a href="../support.html?portal=itadmin" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        let accounts = [
+            { id: 1, name: 'Postgres Primary Root', description: 'System database access credentials', ip: '10.150.12.5', key: 'sha256_e8d47...', permission: 'DB_FULL_OWNER', status: 'active' },
+            { id: 2, name: 'API Gateway Token', description: 'Used for innovation team statistics API', ip: '10.100.25.*', key: 'sha256_ab02e...', permission: 'API_READ_STATS', status: 'active' },
+            { id: 3, name: 'LDAP Sync Adapter', description: 'Syncs user credentials and profiles', ip: '10.100.1.200', key: 'sha256_2c9ef...', permission: 'USER_SYNCS', status: 'locked' },
+            { id: 4, name: 'Document Store Service', description: 'Handles document uploads and retrieval', ip: '10.100.30.15', key: 'sha256_7f3a1...', permission: 'DOC_READ_WRITE', status: 'active' },
+            { id: 5, name: 'Notification Service', description: 'Email and SMS notification delivery', ip: '10.100.40.22', key: 'sha256_4b8d2...', permission: 'NOTIFY_SEND', status: 'expired' },
+        ];
+
+        function renderAccounts() {
+            const tbody = document.getElementById('accountsTableBody');
+            tbody.innerHTML = accounts.map(acc => {
+                const statusClass = acc.status === 'active' ? 'status-active' : 
+                                   acc.status === 'locked' ? 'status-locked' : 'status-expired';
+                const statusDot = acc.status === 'active' ? '🟢' : 
+                                 acc.status === 'locked' ? '🔴' : '🟡';
+                return `
+                    <tr class="account-row">
+                        <td class="px-4 py-3">
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-[#5A0C08]">${acc.name}</span>
+                                <span class="text-xs text-[#89726e]">${acc.description}</span>
+                            </div>
+                        </td>
+                        <td class="px-4 py-3 text-sm font-mono text-[#56423f]">${acc.ip}</td>
+                        <td class="px-4 py-3 text-sm font-mono text-[#89726e]">${acc.key}</td>
+                        <td class="px-4 py-3"><span class="bg-[#5A0C08]/10 text-[#5A0C08] px-2 py-0.5 rounded text-xs font-semibold">${acc.permission}</span></td>
+                        <td class="px-4 py-3"><span class="${statusClass} font-semibold text-sm">${statusDot} ${acc.status}</span></td>
+                        <td class="px-4 py-3 text-right">
+                            <div class="flex justify-end gap-2">
+                                ${acc.status === 'active' ? 
+                                    `<button onclick="toggleAccountStatus(${acc.id})" class="text-[#5A0C08] hover:bg-[#5A0C08]/10 p-1 rounded" title="Lock"><span class="material-symbols-outlined text-sm">lock</span></button>` :
+                                    `<button onclick="toggleAccountStatus(${acc.id})" class="text-green-600 hover:bg-green-100 p-1 rounded" title="Unlock"><span class="material-symbols-outlined text-sm">lock_open</span></button>`}
+                                <button onclick="rotateKey(${acc.id})" class="text-[#DD9024] hover:bg-[#DD9024]/10 p-1 rounded" title="Rotate Key"><span class="material-symbols-outlined text-sm">refresh</span></button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function toggleAccountStatus(id) {
+            const account = accounts.find(a => a.id === id);
+            if (account) {
+                const action = account.status === 'active' ? 'lock' : 'unlock';
+                if (confirm(`Are you sure you want to ${action} account "${account.name}"?`)) {
+                    account.status = account.status === 'active' ? 'locked' : 'active';
+                    renderAccounts();
+                    alert(`✅ Account "${account.name}" has been ${account.status === 'active' ? 'unlocked' : 'locked'}.`);
+                }
+            }
+        }
+
+        function rotateKey(id) {
+            const account = accounts.find(a => a.id === id);
+            if (account) {
+                if (confirm(`Rotate API key for "${account.name}"?`)) {
+                    const newKey = 'sha256_' + Math.random().toString(36).substring(2, 10) + '...';
+                    account.key = newKey;
+                    renderAccounts();
+                    alert(`✅ API key for "${account.name}" has been rotated.\n\nNew Key: ${newKey}`);
+                }
+            }
+        }
+
+        function generateToken() {
+            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' + 
+                         btoa(JSON.stringify({ sub: 'admin', iat: Date.now() })) + 
+                         '.' + Math.random().toString(36).substring(2, 15);
+            alert(`🔑 New API Token Generated:\n\n${token}\n\nThis token will expire in 24 hours.`);
+        }
+
+        renderAccounts();
+
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'S. Katumba';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>
+

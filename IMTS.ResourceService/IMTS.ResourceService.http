@@ -1,0 +1,6 @@
+@IMTS.ResourceService_HostAddress = http://localhost:5201
+
+GET {{IMTS.ResourceService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

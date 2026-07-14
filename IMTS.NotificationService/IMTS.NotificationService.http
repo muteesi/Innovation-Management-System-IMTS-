@@ -1,0 +1,6 @@
+@IMTS.NotificationService_HostAddress = http://localhost:5242
+
+GET {{IMTS.NotificationService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

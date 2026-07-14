@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Idea Submitted",
+    "message": "Your idea \"Digital KYC Blockchain Ledger\" has been submitted successfully.",
+    "type": "success",
+    "recipientUserId": "staff-001",
+    "actionUrl": "/staff/ideas"
+  },
+  {
+    "title": "Status Update",
+    "message": "Your idea \"Micro-Loan AI Risk Engine\" has moved to the Experimentation stage.",
+    "type": "info",
+    "recipientUserId": "staff-001",
+    "actionUrl": "/staff/ideas"
+  },
+  {
+    "title": "System Update",
+    "message": "The IMTS platform will undergo maintenance on Saturday from 02:00 to 04:00 EAT.",
+    "type": "system",
+    "recipientUserId": "staff-001",
+    "actionUrl": "/support"
+  }
+]

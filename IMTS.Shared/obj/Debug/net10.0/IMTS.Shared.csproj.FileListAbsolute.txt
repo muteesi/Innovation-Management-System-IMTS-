@@ -1,0 +1,11 @@
+D:\kasamba\innovate bou\IMTS.Shared\bin\Debug\net10.0\IMTS.Shared.deps.json
+D:\kasamba\innovate bou\IMTS.Shared\bin\Debug\net10.0\IMTS.Shared.dll
+D:\kasamba\innovate bou\IMTS.Shared\bin\Debug\net10.0\IMTS.Shared.pdb
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\IMTS.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\IMTS.Shared.AssemblyInfoInputs.cache
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\IMTS.Shared.AssemblyInfo.cs
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\IMTS.Shared.csproj.CoreCompileInputs.cache
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\IMTS.Shared.dll
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\refint\IMTS.Shared.dll
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\IMTS.Shared.pdb
+D:\kasamba\innovate bou\IMTS.Shared\obj\Debug\net10.0\ref\IMTS.Shared.dll

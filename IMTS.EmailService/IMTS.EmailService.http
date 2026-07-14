@@ -1,0 +1,6 @@
+@IMTS.EmailService_HostAddress = http://localhost:5211
+
+GET {{IMTS.EmailService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

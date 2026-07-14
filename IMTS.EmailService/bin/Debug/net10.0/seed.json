@@ -1,0 +1,20 @@
+[
+  {
+    "templateKey": "idea-submitted",
+    "subject": "Idea Submitted",
+    "bodyHtml": "<p>Your innovation idea has been received by the Bank of Uganda Innovation Team.</p>",
+    "description": "Idea Submitted"
+  },
+  {
+    "templateKey": "idea-approved",
+    "subject": "Idea Approved",
+    "bodyHtml": "<p>Your innovation idea has been approved and is now moving forward.</p>",
+    "description": "Idea Approved"
+  },
+  {
+    "templateKey": "resource-uploaded",
+    "subject": "Resource Uploaded",
+    "bodyHtml": "<p>A new innovation resource has been uploaded to the library.</p>",
+    "description": "Resource Uploaded"
+  }
+]

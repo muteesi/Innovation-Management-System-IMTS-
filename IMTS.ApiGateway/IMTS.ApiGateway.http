@@ -1,0 +1,6 @@
+@IMTS.ApiGateway_HostAddress = http://localhost:5177
+
+GET {{IMTS.ApiGateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

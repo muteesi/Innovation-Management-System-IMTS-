@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>IT Admin Dashboard | Bank of Uganda IMTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="../js/auth.js"></script>
+    <style>
+        body { background-color: #FEF7EF; font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #DD9024 !important; color: #ffffff !important; border-radius: 0.5rem; }
+        .sidebar-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem;
+            margin: 0.125rem 0.5rem; border-radius: 0.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .sidebar-item:hover { background-color: rgba(255,255,255,0.08); color: #ffffff; }
+        .sidebar-item .icon { font-size: 1.25rem; width: 24px; text-align: center; flex-shrink: 0; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DD9024; border-radius: 4px; }
+        .stat-card { transition: all 0.2s; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(90,12,8,0.08); }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-[#5A0C08] flex flex-col z-50 shadow-lg">
+        <div class="flex items-center gap-3 px-5 py-6 border-b border-white/10">
+            <img alt="Bank of Uganda Logo" class="w-12 h-12 object-contain bg-white rounded-full p-1" src="../assets/images/BOU logo.png" />
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-tight">IMTS</h1>
+                <p class="text-[10px] text-[#DD9024] uppercase tracking-wider">IT Administration</p>
+            </div>
+        </div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <a class="sidebar-item sidebar-active" href="admindashboard.html">
+                <span class="icon material-symbols-outlined">dashboard</span><span>Dashboard</span>
+            </a>
+            <a class="sidebar-item" href="ITadmin.html">
+                <span class="icon material-symbols-outlined">group</span><span>Manage Users</span>
+            </a>
+            <a class="sidebar-item" href="manageaccounts.html">
+                <span class="icon material-symbols-outlined">account_balance_wallet</span><span>Manage Accounts</span>
+            </a>
+            <!-- ❌ REMOVED: System Settings (systemsettings.html) -->
+            <a class="sidebar-item" href="auditlog.html">
+                <span class="icon material-symbols-outlined">security</span><span>Audit Log</span>
+            </a>
+            <a class="sidebar-item" href="reports.html">
+                <span class="icon material-symbols-outlined">assessment</span><span>Reports</span>
+            </a>
+            <a class="sidebar-item" href="systemsettings.html">
+                <span class="icon material-symbols-outlined">settings</span><span>Admin Settings</span>
+            </a>
+            <a class="sidebar-item" href="../support.html?portal=itadmin">
+                <span class="icon material-symbols-outlined">help</span><span>Support</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="window.location.href='reports.html'" 
+                    class="w-full bg-[#DD9024] hover:bg-[#c47e1d] text-white font-bold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1;">assessment</span> New Security Report
+            </button>
+            <!-- ✅ LOGOUT BUTTON -->
+            <button onclick="window.IMTS.logout()" 
+                    class="flex items-center gap-2 mt-3 text-red-400 hover:text-red-300 text-sm px-2 py-1 rounded transition-colors w-full">
+                <span class="material-symbols-outlined text-sm">logout</span> Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#dcc0bc] px-6 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-[#5A0C08]">IT Administrative Control Center</h1>
+                <p class="text-sm text-[#56423f]">Thursday, 24 October 2024</p>
+            </div>
+            <div class="flex items-center gap-3 pl-4 border-l border-[#dcc0bc]">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-[#1c1b1b]" id="userNameDisplay">S. Katumba</p>
+                    <p class="text-xs text-[#56423f]">System Administrator</p>
+                </div>
+                <div class="w-10 h-10 rounded-full border-2 border-[#DD9024] overflow-hidden bg-[#DD9024]/20 flex items-center justify-center text-[#5A0C08] font-bold">
+                    SK
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="stat-card bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm">
+                    <p class="text-sm text-[#56423f]">Server Status</p>
+                    <p class="text-2xl font-bold text-[#5A0C08]">99.98%</p>
+                    <p class="text-xs text-emerald-600">● Online</p>
+                </div>
+                <div class="stat-card bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm">
+                    <p class="text-sm text-[#56423f]">Audit Events (24h)</p>
+                    <p class="text-2xl font-bold text-[#5A0C08]">1,248</p>
+                    <p class="text-xs text-[#56423f]">ISO 27001 Logged</p>
+                </div>
+                <div class="stat-card bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm">
+                    <p class="text-sm text-[#56423f]">Active Sessions</p>
+                    <p class="text-2xl font-bold text-[#5A0C08]">14</p>
+                    <p class="text-xs text-[#56423f]">Across 3 Roles</p>
+                </div>
+                <div class="stat-card bg-white p-4 rounded-xl border border-[#dcc0bc] shadow-sm">
+                    <p class="text-sm text-[#56423f]">Failed Logins</p>
+                    <p class="text-2xl font-bold text-[#5A0C08]">2</p>
+                    <p class="text-xs text-[#56423f]">Whitelisted IPs only</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-white rounded-xl border border-[#dcc0bc] shadow-sm overflow-hidden">
+                    <div class="px-6 py-4 bg-[#f6f3f2] border-b border-[#dcc0bc]">
+                        <h3 class="font-bold text-[#5A0C08]">System Database & Resource Nodes</h3>
+                    </div>
+                    <div class="divide-y divide-[#dcc0bc]/50">
+                        <div class="px-6 py-4 flex justify-between items-center">
+                            <div><p class="font-semibold text-[#5A0C08]">Primary Database Engine</p><p class="text-sm text-[#56423f]">PostgreSQL Cluster pool-01</p></div>
+                            <span class="text-emerald-600 text-sm font-semibold">● Online</span>
+                        </div>
+                        <div class="px-6 py-4 flex justify-between items-center">
+                            <div><p class="font-semibold text-[#5A0C08]">Secure LDAP Directory Sync</p><p class="text-sm text-[#56423f]">Active Directory BOU</p></div>
+                            <span class="text-emerald-600 text-sm font-semibold">● Synced</span>
+                        </div>
+                        <div class="px-6 py-4 flex justify-between items-center">
+                            <div><p class="font-semibold text-[#5A0C08]">Digital Vault Encryption</p><p class="text-sm text-[#56423f]">HashiCorp Vault Key Store</p></div>
+                            <span class="text-emerald-600 text-sm font-semibold">● Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-[#dcc0bc] shadow-sm p-6">
+                    <h3 class="font-bold text-[#5A0C08] border-b border-[#dcc0bc] pb-3 mb-4">Resource Health</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm text-[#56423f]"><span>Storage Utilization</span><span>64.8 GB / 250 GB</span></div>
+                            <div class="w-full bg-[#f0eded] h-2 rounded-full overflow-hidden mt-1"><div class="bg-[#DD9024] h-full" style="width: 26%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm text-[#56423f]"><span>Memory Reservation</span><span>2.8 GB / 8.0 GB</span></div>
+                            <div class="w-full bg-[#f0eded] h-2 rounded-full overflow-hidden mt-1"><div class="bg-[#5A0C08] h-full" style="width: 35%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 grid grid-cols-2 gap-2">
+                        <a href="ITadmin.html" class="text-center py-2 bg-[#f6f3f2] rounded-lg text-sm font-semibold text-[#5A0C08] hover:bg-[#eae7e7] transition-colors">Manage Users</a>
+                        <a href="systemsettings.html" class="text-center py-2 bg-[#f6f3f2] rounded-lg text-sm font-semibold text-[#5A0C08] hover:bg-[#eae7e7] transition-colors">Admin Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-white border-t border-[#dcc0bc] px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="text-xs text-[#56423f]">© 2024 Bank of Uganda Innovation Hub. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xs">
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Security Policy</a>
+                <a href="#" class="text-[#56423f] hover:text-[#5A0C08]">Audit Standards</a>
+                <a href="../support.html?portal=itadmin" class="text-[#56423f] hover:text-[#5A0C08]">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        try {
+            const session = localStorage.getItem('imts_session');
+            if (session) {
+                const data = JSON.parse(session);
+                document.getElementById('userNameDisplay').textContent = data.name || 'S. Katumba';
+            }
+        } catch(e) {}
+    </script>
+
+</body>
+</html>
+

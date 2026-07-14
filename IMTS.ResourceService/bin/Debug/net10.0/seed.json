@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Innovation Strategy 2024-2026",
+    "description": "Comprehensive document outlining innovation management process and evaluation criteria.",
+    "category": "policy",
+    "fileType": "PDF",
+    "fileName": "innovation-strategy-2024-2026.pdf",
+    "fileUrl": "/files/innovation-strategy-2024-2026.pdf",
+    "status": "Published",
+    "version": "1.0"
+  },
+  {
+    "title": "Project Budget Template V2",
+    "description": "Excel template for measuring and documenting innovation impact with KPI dashboards.",
+    "category": "templates",
+    "fileType": "XLSX",
+    "fileName": "project-budget-template-v2.xlsx",
+    "fileUrl": "/files/project-budget-template-v2.xlsx",
+    "status": "Published",
+    "version": "2.0"
+  },
+  {
+    "title": "Agile Innovation Methodology",
+    "description": "Guide to applying agile principles in innovation projects with practical frameworks.",
+    "category": "training",
+    "fileType": "PDF",
+    "fileName": "agile-innovation-methodology.pdf",
+    "fileUrl": "/files/agile-innovation-methodology.pdf",
+    "status": "Published",
+    "version": "1.0"
+  }
+]
